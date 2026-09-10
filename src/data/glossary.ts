@@ -111,7 +111,8 @@ export const glossary: GlossaryEntry[] = [
     aliases: ['OI'],
     shortDef:
       'Contracts still open after the last official snapshot. Classic OI GEX is last night’s inventory map.',
-    firstDefinedIn: 'plans/02-classic',
+    firstDefinedIn: 'plans/01-what-gexbot-is',
+    alsoAppears: ['plans/02-classic'],
     seeAlso: ['gex-by-oi', 'volume'],
     kind: 'options',
     neededForPlan: 'Classic',
@@ -121,7 +122,8 @@ export const glossary: GlossaryEntry[] = [
     headword: 'volume',
     shortDef:
       'Contracts that traded. Classic volume GEX is today’s footprints, still unsigned for owner.',
-    firstDefinedIn: 'plans/02-classic',
+    firstDefinedIn: 'plans/01-what-gexbot-is',
+    alsoAppears: ['plans/02-classic'],
     seeAlso: ['gex-by-volume', 'residual'],
     kind: 'options',
     neededForPlan: 'Classic',
@@ -173,8 +175,8 @@ export const glossary: GlossaryEntry[] = [
     aliases: ['Δ'],
     shortDef:
       'How much the option’s value moves if spot moves $1. A 0.50-delta call behaves like half a share times the multiplier.',
-    firstDefinedIn: 'plans/04-state',
-    alsoAppears: ['plans/03-classification'],
+    firstDefinedIn: 'plans/03-classification',
+    alsoAppears: ['plans/04-state', 'plans/05-orderflow'],
     seeAlso: ['share-equivalent', 'dex-ladder'],
     kind: 'options',
     neededForPlan: 'State',
@@ -185,10 +187,11 @@ export const glossary: GlossaryEntry[] = [
     aliases: ['delta equivalent'],
     shortDef:
       'Delta × size × multiplier. That is what a dealer hedges in ES, NQ, or SPY.',
-    firstDefinedIn: 'plans/04-state',
+    firstDefinedIn: 'plans/03-classification',
+    alsoAppears: ['plans/04-state', 'layer/06-nq-es-layer'],
     seeAlso: ['delta', 'dex-ladder'],
     kind: 'options',
-    neededForPlan: 'State',
+    neededForPlan: 'Classification',
   },
   {
     id: 'vega',
@@ -232,10 +235,31 @@ export const glossary: GlossaryEntry[] = [
     neededForPlan: 'State',
   },
   {
+    id: 'gex',
+    headword: 'GEX',
+    aliases: ['gamma exposure'],
+    shortDef:
+      'Gamma exposure: a picture of how much extra buying or selling in the index might be forced when price moves, because of options. Stacked by strike.',
+    firstDefinedIn: 'plans/01-what-gexbot-is',
+    alsoAppears: ['plans/02-classic'],
+    seeAlso: ['gamma', 'classic'],
+    kind: 'gexbot',
+  },
+  {
+    id: 'unsigned',
+    headword: 'unsigned',
+    shortDef:
+      'A GEX picture that shows where the exposure sits, but not who is long or short the options. You see the pile, not the owner.',
+    firstDefinedIn: 'plans/01-what-gexbot-is',
+    alsoAppears: ['plans/02-classic'],
+    seeAlso: ['classic', 'gex'],
+    kind: 'gexbot',
+  },
+  {
     id: 'classic',
     headword: 'Classic',
     shortDef:
-      'Gexbot plan that plots unsigned GEX from open interest and from volume. It does not use the classification engine.',
+      'Gexbot’s first screen: a map of gamma exposure from last night’s leftover contracts (open interest) and from today’s trading (volume). It does not say who owns the options.',
     firstDefinedIn: 'plans/01-what-gexbot-is',
     alsoAppears: ['plans/02-classic'],
     seeAlso: ['state', 'gex-by-oi', 'gex-by-volume'],
@@ -248,7 +272,7 @@ export const glossary: GlossaryEntry[] = [
     id: 'state',
     headword: 'State',
     shortDef:
-      'Gexbot plan that plots classified residual ladders: OP, GEX profile, DEX, convexity.',
+      'Gexbot screen that draws leftover option trades so far today after labeling each trade as customer bought or customer sold. Chapter 4 names the drawings.',
     firstDefinedIn: 'plans/01-what-gexbot-is',
     alsoAppears: ['plans/04-state'],
     seeAlso: ['classification-engine', 'options-profile', 'dex-ladder'],
@@ -259,7 +283,7 @@ export const glossary: GlossaryEntry[] = [
     headword: 'Orderflow',
     aliases: ['orderflow plan'],
     shortDef:
-      'Gexbot plan that plots the classified leftover as time series: dexoflow, gexoflow, cvroflow, and their nets.',
+      'Gexbot screen that plots the same leftover trades as a tape over time: what just changed, and the running score for the day. Chapter 5 names the meters.',
     firstDefinedIn: 'plans/01-what-gexbot-is',
     alsoAppears: ['plans/05-orderflow'],
     kind: 'plan',
@@ -268,7 +292,7 @@ export const glossary: GlossaryEntry[] = [
     id: 'quant',
     headword: 'Quant',
     shortDef:
-      'API and WebSocket access. Quant WS publishes in cash RTH 09:30–16:00 ET. Explicit-expiry groups are live-only.',
+      'A way to pull Gexbot numbers into your own tools (live feed during U.S. cash hours). This book does not teach you to build on it.',
     firstDefinedIn: 'plans/01-what-gexbot-is',
     kind: 'plan',
   },
@@ -277,7 +301,7 @@ export const glossary: GlossaryEntry[] = [
     headword: 'Research',
     aliases: ['gbR'],
     shortDef:
-      'Sibling product for any-ticker surfaces. Not the classified engine. Not this course.',
+      'A separate Gexbot product for many individual tickers. It is not the leftover-trade engine this book teaches. Not this course.',
     firstDefinedIn: 'plans/01-what-gexbot-is',
     kind: 'plan',
   },
@@ -287,6 +311,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Millisecond aggressor label: customer long (bought the option) or customer short (sold the option). Powers State, Orderflow, and Quant. Classic does not use it.',
     firstDefinedIn: 'plans/03-classification',
+    alsoAppears: ['plans/01-what-gexbot-is'],
     unit: 'Sign on a print: +1 buy, −1 sell',
     notCounted: 'OCC ownership; open vs close; who the counterparty is',
     nearestCousin: 'Premium / sweep flow tools that tag buy/sell',
@@ -342,7 +367,7 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'residual',
     headword: 'residual imbalance',
-    aliases: ['residual'],
+    aliases: ['residual', 'classified residual'],
     shortDef:
       'After same-contract customer buys and sells net out, only the leftover remains. The chart is the needle, not the tape width.',
     firstDefinedIn: 'plans/03-classification',
@@ -440,6 +465,7 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'zero-gamma',
     headword: 'zero gamma',
+    aliases: ['fulcrum'],
     shortDef:
       'The weighted center of the Classic volume-GEX complex. Not necessarily a traded strike.',
     firstDefinedIn: 'plans/02-classic',
@@ -691,7 +717,7 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'next',
     headword: 'next / one',
-    aliases: ['gex_one'],
+    aliases: ['gex_one', 'one_dexoflow'],
     shortDef: 'The following expiry. Use when latest is dead or you are studying the roll.',
     firstDefinedIn: 'layer/06-nq-es-layer',
     kind: 'gexbot',
@@ -774,6 +800,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'A ladder, major, or net is only knowable at the clock it was last updated — not at the open of the bar that produced it.',
     firstDefinedIn: 'intro',
+    alsoAppears: ['plans/05-orderflow', 'practice/08-heuristics-as-reading', 'practice/10-misreads-and-mastery'],
     kind: 'hygiene',
   },
   {
@@ -824,6 +851,7 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'assumed',
     headword: 'assumed',
+    aliases: ['assumption'],
     shortDef: 'Ownership on an unsigned screen. “Dealers are short the OI” is an assumption.',
     firstDefinedIn: 'intro',
     kind: 'hygiene',
@@ -861,6 +889,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Classic OI and volume bars. The location of gamma is real; the owner’s sign is not visible.',
     firstDefinedIn: 'plans/02-classic',
+    alsoAppears: ['practice/10-misreads-and-mastery'],
     kind: 'hygiene',
   },
   {
@@ -898,7 +927,7 @@ export const glossary: GlossaryEntry[] = [
     id: 'cousin-unsigned-gex',
     headword: 'unsigned GEX maps',
     shortDef:
-      'OI × gamma, “the GEX map,” zero-gamma flip, call wall / put wall as if ownership were known. Closest Gexbot cousin is Classic.',
+      'Public gamma-exposure maps built from leftover contracts times gamma, often with a fulcrum line and named walls, as if the owner were known. Closest Gexbot cousin is Classic.',
     firstDefinedIn: 'plans/01-what-gexbot-is',
     kind: 'cousin',
   },
@@ -959,6 +988,748 @@ export const glossary: GlossaryEntry[] = [
       'SPX options are European and cash-settled (PM for daily expiries). SPY options are American and physically settled. Do not transfer 0DTE resolution without saying so. Market-general.',
     firstDefinedIn: 'layer/07-clocks-and-late-greeks',
     kind: 'market-general',
+  },
+  {
+    id: 'information-layer',
+    headword: 'information layer',
+    shortDef:
+      'A Gexbot picture you sit beside an ES or NQ chart. It does not replace the futures tape and is not a buy or sell signal.',
+    firstDefinedIn: 'plans/01-what-gexbot-is',
+    kind: 'hygiene',
+  },
+  {
+    id: 'option-contract',
+    headword: 'option',
+    aliases: ['option contract', 'options'],
+    shortDef:
+      'A contract that is a right, not an obligation, to buy or sell at a chosen level by a chosen time. Chapter 2 teaches the two kinds: call and put.',
+    firstDefinedIn: 'plans/01-what-gexbot-is',
+    alsoAppears: ['plans/02-classic'],
+    seeAlso: ['call', 'put'],
+    kind: 'options',
+  },
+  {
+    id: 'dealer',
+    headword: 'dealer',
+    aliases: ['market maker'],
+    shortDef:
+      'Shorthand for a population of professional firms who stand in the middle of the options market and usually keep their index exposure near flat. Not one desk.',
+    firstDefinedIn: 'plans/03-classification',
+    seeAlso: ['mandate', 'delta-neutral'],
+    kind: 'market-general',
+  },
+  {
+    id: 'customer',
+    headword: 'customer',
+    shortDef:
+      'The aggressive side of an option trade as Gexbot labels it. Not necessarily a retail trader. Not “new long.”',
+    firstDefinedIn: 'plans/03-classification',
+    seeAlso: ['customer-long', 'aggressor'],
+    kind: 'gexbot',
+  },
+  {
+    id: 'hedge',
+    headword: 'hedge',
+    shortDef:
+      'A trade in the index or futures meant to offset option risk. Gexbot never shows the hedge print itself. Inferred, never observed on the tape.',
+    firstDefinedIn: 'plans/03-classification',
+    kind: 'market-general',
+  },
+  {
+    id: 'print',
+    headword: 'print',
+    shortDef:
+      'An option trade that crossed the spread. Hedge-chain link 1. An Orderflow bar is this moment.',
+    firstDefinedIn: 'plans/03-classification',
+    alsoAppears: ['plans/05-orderflow'],
+    kind: 'gexbot',
+  },
+  {
+    id: 'absorb',
+    headword: 'absorb',
+    shortDef:
+      'The other side of the print now holds the mirror position. Often a dealer, sometimes another customer. Two customers cancel. Hedge-chain link 2.',
+    firstDefinedIn: 'plans/03-classification',
+    kind: 'gexbot',
+  },
+  {
+    id: 'liquidity-role',
+    headword: 'liquidity role',
+    aliases: ['supply liquidity', 'take liquidity'],
+    shortDef:
+      'Supplying liquidity means resting and absorbing. Taking liquidity means lifting or hitting. Inferred from Gexbot, never seen as a labeled futures print.',
+    firstDefinedIn: 'plans/03-classification',
+    kind: 'hygiene',
+  },
+  {
+    id: 'chase',
+    headword: 'chase',
+    shortDef:
+      'Buy rips and sell dips. The inferred hedge of a book that is short gamma. Amplifies the move.',
+    firstDefinedIn: 'plans/03-classification',
+    seeAlso: ['fade', 'gamma'],
+    kind: 'market-general',
+  },
+  {
+    id: 'fade',
+    headword: 'fade',
+    shortDef:
+      'Sell rips and buy dips. The inferred hedge of a book that is long gamma. Dampens the move; the usual “pin / calm” story.',
+    firstDefinedIn: 'plans/03-classification',
+    seeAlso: ['chase'],
+    kind: 'market-general',
+  },
+  {
+    id: 'pin',
+    headword: 'pin',
+    aliases: ['magnet'],
+    shortDef:
+      'Price stalling near a strike because hedges or incentives pull toward it. A hypothesis, not a fact. Last-hour pinning is a different family from a morning wall.',
+    firstDefinedIn: 'plans/03-classification',
+    alsoAppears: ['layer/07-clocks-and-late-greeks'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'self-hedge',
+    headword: 'self-hedge',
+    shortDef:
+      'The customer already offset their option in the futures (for example bought calls and sold ES). Two hedgers can cancel net forced flow. Gexbot cannot see this. Inferred.',
+    firstDefinedIn: 'plans/03-classification',
+    kind: 'hygiene',
+  },
+  {
+    id: 'forced-flow-sentence',
+    headword: 'forced-flow sentence',
+    shortDef:
+      'A one-line read: actor · pressure · trigger · direction · venue — or the word unknown.',
+    firstDefinedIn: 'plans/03-classification',
+    alsoAppears: ['practice/09-grammar-and-journal'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'node',
+    headword: 'node',
+    aliases: ['stack', 'significant strike'],
+    shortDef:
+      'A strike where leftover (or Classic GEX) is large enough to name. A quiet ladder can mean leftover cancelled, not that nothing traded.',
+    firstDefinedIn: 'plans/02-classic',
+    kind: 'gexbot',
+  },
+  {
+    id: 'theta',
+    headword: 'theta',
+    aliases: ['time decay'],
+    shortDef:
+      'How much an option’s value tends to leak as the clock runs, if nothing else changes. A reason a customer long may be incentivized to dump. Not a Gexbot ladder.',
+    firstDefinedIn: 'plans/02-classic',
+    alsoAppears: ['plans/04-state'],
+    kind: 'options',
+    neededForPlan: 'Classic',
+  },
+  {
+    id: 'moneyness',
+    headword: 'moneyness',
+    shortDef:
+      'Where the strike sits versus the index: at, in, or out of the money. ATM, ITM, and OTM are the three usual labels.',
+    firstDefinedIn: 'plans/02-classic',
+    seeAlso: ['atm', 'itm', 'otm'],
+    kind: 'options',
+    neededForPlan: 'Classic',
+  },
+  {
+    id: 'cash-rth',
+    headword: 'cash RTH',
+    aliases: ['RTH', 'regular trading hours'],
+    shortDef:
+      'U.S. cash regular hours, 09:30–16:00 Eastern. Gexbot’s classified leftover is built in this window. Quant’s live feed publishes here.',
+    firstDefinedIn: 'plans/02-classic',
+    alsoAppears: ['layer/07-clocks-and-late-greeks'],
+    kind: 'market-general',
+  },
+  {
+    id: 'spx',
+    headword: 'SPX',
+    shortDef:
+      'The S&P 500 cash index. Gexbot’s core live object for 0DTE. ES on Gexbot is usually converted SPX options, not CME ES volume.',
+    firstDefinedIn: 'plans/02-classic',
+    alsoAppears: ['layer/06-nq-es-layer'],
+    seeAlso: ['es-spx'],
+    kind: 'market-general',
+  },
+  {
+    id: 'spy',
+    headword: 'SPY',
+    shortDef:
+      'The S&P 500 ETF. Docs treat its options as more directional than SPX. Physically settled and American. Do not copy SPX 0DTE resolution onto SPY without saying so.',
+    firstDefinedIn: 'plans/05-orderflow',
+    alsoAppears: ['layer/07-clocks-and-late-greeks'],
+    kind: 'market-general',
+  },
+  {
+    id: 'ndx',
+    headword: 'NDX',
+    shortDef:
+      'The Nasdaq-100 cash index. NQ on Gexbot is usually converted NDX options. Thinner book than SPX — treat NQ reads as weaker evidence (inferred).',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    seeAlso: ['nq-ndx'],
+    kind: 'market-general',
+  },
+  {
+    id: 'dex',
+    headword: 'DEX',
+    aliases: ['delta exposure'],
+    shortDef:
+      'Delta exposure: leftover share-equivalent. Customer long calls and short puts are +. Customer short calls and long puts are −. A record of a lean, not pending buying.',
+    firstDefinedIn: 'plans/04-state',
+    seeAlso: ['dex-ladder', 'dex-orderflow'],
+    kind: 'gexbot',
+  },
+  {
+    id: 'convexity',
+    headword: 'convexity',
+    shortDef:
+      'Gexbot’s name for leftover gamma signed bought-option minus sold-option. It is vol ownership, not up or down.',
+    firstDefinedIn: 'plans/04-state',
+    seeAlso: ['convexity-ladder', 'convexity-orderflow'],
+    kind: 'gexbot',
+  },
+  {
+    id: 'vol-regime',
+    headword: 'vol regime',
+    aliases: ['falling vol', 'rising vol'],
+    shortDef:
+      'Whether implied vol is generally crushing or lifting through the session. Gexbot’s options-profile wall/fuel story flips with the regime. Folklore. If you cannot tell, stand down.',
+    firstDefinedIn: 'plans/04-state',
+    seeAlso: ['options-profile', 'implied-vol'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'wall',
+    headword: 'wall',
+    shortDef:
+      'A leftover node that, in Gexbot’s falling-vol story, is a stall candidate because holders dump and supply liquidity. Hypothesis, not a fact. Folklore.',
+    firstDefinedIn: 'plans/04-state',
+    alsoAppears: ['practice/08-heuristics-as-reading', 'practice/09-grammar-and-journal'],
+    seeAlso: ['fuel', 'options-profile'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'fuel',
+    headword: 'fuel',
+    shortDef:
+      'A leftover node that, in Gexbot’s falling-vol story, is a continuation candidate because holders hedge or add and take liquidity. Hypothesis. Folklore.',
+    firstDefinedIn: 'plans/04-state',
+    alsoAppears: ['practice/08-heuristics-as-reading', 'practice/09-grammar-and-journal'],
+    seeAlso: ['wall'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'path-conditional',
+    headword: 'path-conditional',
+    shortDef:
+      'Forced re-hedge that appears only if the index walks a certain way. Convexity shows where and with which sign. It cannot show the path.',
+    firstDefinedIn: 'plans/04-state',
+    kind: 'hygiene',
+  },
+  {
+    id: 'net-gex',
+    headword: 'net GEX',
+    aliases: ['zgr', 'ogr'],
+    shortDef:
+      'Running total of call-sided leftover gamma minus put-sided leftover gamma so far today. Integral of GEX orderflow. Not knowable before it was built.',
+    firstDefinedIn: 'plans/05-orderflow',
+    kind: 'gexbot',
+  },
+  {
+    id: 'net-convexity',
+    headword: 'net convexity',
+    aliases: ['zcvr', 'ocvr'],
+    shortDef:
+      'Running total of leftover option buying minus leftover option selling so far today. Integral of convexity orderflow.',
+    firstDefinedIn: 'plans/05-orderflow',
+    kind: 'gexbot',
+  },
+  {
+    id: 'agg-dex',
+    headword: 'aggregate DEX',
+    aliases: ['aggDEX', 'net DEX'],
+    shortDef:
+      'Running total of DEX orderflow: share-equivalents leftover so far today. Can be split call versus put.',
+    firstDefinedIn: 'plans/05-orderflow',
+    kind: 'gexbot',
+  },
+  {
+    id: 'long-call',
+    headword: 'long call',
+    shortDef:
+      '2×2 cell: +DEX and +convexity. Paid for upside expansion. Same +DEX as a short put; opposite story.',
+    firstDefinedIn: 'plans/05-orderflow',
+    seeAlso: ['two-by-two', 'short-put'],
+    kind: 'gexbot',
+  },
+  {
+    id: 'short-put',
+    headword: 'short put',
+    shortDef:
+      '2×2 cell: +DEX and −convexity. Collected premium; wants a pin above the strike.',
+    firstDefinedIn: 'plans/05-orderflow',
+    seeAlso: ['two-by-two', 'long-call'],
+    kind: 'gexbot',
+  },
+  {
+    id: 'long-put',
+    headword: 'long put',
+    shortDef: '2×2 cell: −DEX and +convexity. Paid for downside expansion.',
+    firstDefinedIn: 'plans/05-orderflow',
+    kind: 'gexbot',
+  },
+  {
+    id: 'short-call',
+    headword: 'short call',
+    shortDef:
+      '2×2 cell: −DEX and −convexity. Collected premium on a call. Same +GEX orderflow as a long call; opposite cell.',
+    firstDefinedIn: 'plans/05-orderflow',
+    kind: 'gexbot',
+  },
+  {
+    id: 'expansion',
+    headword: 'expansion',
+    shortDef:
+      'The thesis of a paid-gamma cell (long call or long put): the index needs to leave the strike. Opposite of a pin thesis.',
+    firstDefinedIn: 'plans/05-orderflow',
+    seeAlso: ['pin', 'long-call'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'vix',
+    headword: 'VIX',
+    shortDef:
+      'A popular fear quote on S&P options. Gexbot docs say that when VIX is above 20, SPX starts trading more like SPY. Folklore. Instrument-specific.',
+    firstDefinedIn: 'plans/05-orderflow',
+    kind: 'market-general',
+  },
+  {
+    id: 'cme',
+    headword: 'CME',
+    shortDef:
+      'The futures exchange where ES and NQ trade. Gexbot’s ES/NQ picture is not CME volume and not CME aggressor truth.',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    kind: 'market-general',
+  },
+  {
+    id: 'clock-family',
+    headword: 'clock family',
+    shortDef:
+      'A window with its own legal claim: early regular hours, midday residual, last-hour magnet, or knowability. Do not pool families.',
+    firstDefinedIn: 'layer/07-clocks-and-late-greeks',
+    kind: 'hygiene',
+  },
+  {
+    id: 'knowability',
+    headword: 'knowability',
+    aliases: ['knowability clock'],
+    shortDef:
+      'You need enough leftover to name a major. That is usually after the open auction, not at 09:30:01. A so-far map keeps rewriting.',
+    firstDefinedIn: 'layer/07-clocks-and-late-greeks',
+    kind: 'hygiene',
+  },
+  {
+    id: 'beta-feature',
+    headword: 'beta (Gexbot)',
+    aliases: ['beta'],
+    shortDef:
+      'Gexbot’s own warning on −vanna and charm: applied to today’s leftover only, still being practiced, not the full inventory vault.',
+    firstDefinedIn: 'layer/07-clocks-and-late-greeks',
+    kind: 'gexbot',
+  },
+  {
+    id: 'h1',
+    headword: 'H1',
+    aliases: ['SPX GEX-orderflow pivot'],
+    shortDef:
+      'Naming drill: a standout GEX orderflow bar on SPX as a local-top or local-bottom candidate. Folklore. Not a system.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    kind: 'hygiene',
+  },
+  {
+    id: 'h2',
+    headword: 'H2',
+    aliases: ['name the +DEX'],
+    shortDef:
+      'Naming drill: pair DEX orderflow with convexity orderflow to name the 2×2 cell (expansion vs pin).',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    kind: 'hygiene',
+  },
+  {
+    id: 'h3',
+    headword: 'H3',
+    aliases: ['fear tape vs grind tape'],
+    shortDef:
+      'Naming drill: a sequence of convexity bars names day-type (vol-bid vs premium-sale). No entry. Folklore.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    kind: 'hygiene',
+  },
+  {
+    id: 'h4',
+    headword: 'H4',
+    aliases: ['walk into a stack'],
+    shortDef:
+      'Naming drill: spot approaches an options-profile node; wall vs fuel depends on vol regime. Hypothesis. Folklore.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    kind: 'hygiene',
+  },
+  {
+    id: 'h5',
+    headword: 'H5',
+    aliases: ['last-hour magnet'],
+    shortDef:
+      'Naming drill: last-hour 0DTE short-convexity as a pin, via −vanna and charm. Beta. Separate clock family.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    kind: 'hygiene',
+  },
+  {
+    id: 'acceptance-through',
+    headword: 'acceptance through',
+    shortDef:
+      'Price trades through a named node and stays, rather than wicking. Inferred stop grammar for a wall or pin thesis. Grain not stated in the docs.',
+    firstDefinedIn: 'practice/09-grammar-and-journal',
+    kind: 'hygiene',
+  },
+  {
+    id: 'journal-line',
+    headword: 'journal line',
+    shortDef:
+      'A written read: clock family, screen, 2×2 cell, node, vol regime, forced-flow sentence, what the screen does not show, falsifier. No entry required.',
+    firstDefinedIn: 'practice/09-grammar-and-journal',
+    kind: 'hygiene',
+  },
+  {
+    id: 'leftover',
+    headword: 'leftover',
+    aliases: ['leftover trades', 'leftover paper'],
+    shortDef:
+      'What remains after matched buys and sells of the same option contract cancel. Two-way trading can be huge while leftover is tiny. Gexbot’s name on later screens is residual.',
+    firstDefinedIn: 'plans/01-what-gexbot-is',
+    alsoAppears: ['plans/03-classification', 'plans/04-state', 'plans/05-orderflow'],
+    seeAlso: ['residual', 'classification-engine'],
+    kind: 'gexbot',
+  },
+  {
+    id: 'index-options',
+    headword: 'index options',
+    shortDef:
+      'Option contracts on a cash index (SPX, NDX), not on the ES or NQ future itself. Gexbot’s live leftover is built from these.',
+    firstDefinedIn: 'plans/01-what-gexbot-is',
+    alsoAppears: ['layer/06-nq-es-layer'],
+    seeAlso: ['spx', 'ndx', 'conversion'],
+    kind: 'market-general',
+  },
+  {
+    id: 'histogram',
+    headword: 'histogram',
+    shortDef:
+      'A stack of bars, one bar per strike. Classic and the GEX profile are histograms. Left and right do not mean the same thing on every histogram.',
+    firstDefinedIn: 'plans/02-classic',
+    alsoAppears: ['plans/04-state'],
+    kind: 'gexbot',
+  },
+  {
+    id: 'debit',
+    headword: 'debit',
+    aliases: ['ticket price'],
+    shortDef:
+      'What the buyer paid for the option. Gexbot does not weight leftover by debit. A cheap 0DTE can still be a huge gamma pile.',
+    firstDefinedIn: 'plans/02-classic',
+    seeAlso: ['premium', 'cousin-premium-flow'],
+    kind: 'options',
+  },
+  {
+    id: 'balanced-node',
+    headword: 'balanced node',
+    shortDef:
+      'A strike where two huge opposite piles net toward zero. Not an empty warehouse. Classic call-versus-put netting can hide both piles.',
+    firstDefinedIn: 'plans/02-classic',
+    seeAlso: ['call-put-netting', 'node'],
+    kind: 'gexbot',
+  },
+  {
+    id: 'bid-ask-spread',
+    headword: 'spread',
+    aliases: ['bid-ask spread'],
+    shortDef:
+      'The gap between the bid and the ask. The aggressor is the side that stepped across it.',
+    firstDefinedIn: 'plans/03-classification',
+    seeAlso: ['bid', 'ask', 'aggressor'],
+    kind: 'options',
+    neededForPlan: 'Classification',
+  },
+  {
+    id: 'per-right',
+    headword: 'per right',
+    aliases: ['right (call or put)'],
+    shortDef:
+      'Each option is one right: a call or a put. The options profile stacks leftover per strike and per right, not netted into one bar.',
+    firstDefinedIn: 'plans/04-state',
+    seeAlso: ['options-profile', 'call', 'put'],
+    kind: 'options',
+  },
+  {
+    id: 'day-type',
+    headword: 'day-type',
+    aliases: ['fear tape', 'grind tape', 'vol-bid', 'premium-sale'],
+    shortDef:
+      'A session character named from a sequence of convexity bars, not from one spike. Fear / vol-bid versus grind / premium-sale. Folklore. Not an entry.',
+    firstDefinedIn: 'plans/05-orderflow',
+    alsoAppears: ['practice/08-heuristics-as-reading'],
+    seeAlso: ['spike-sequence-noise', 'h3'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'es-future',
+    headword: 'ES',
+    aliases: ['E-mini S&P', 'ES future'],
+    shortDef:
+      'The CME E-mini future on the S&P 500, $50 per point. Gexbot’s ES picture is usually converted SPX options, not CME volume.',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    seeAlso: ['es-spx', 'spx', 'cme'],
+    kind: 'market-general',
+  },
+  {
+    id: 'nq-future',
+    headword: 'NQ',
+    aliases: ['E-mini Nasdaq', 'NQ future'],
+    shortDef:
+      'The CME E-mini future on the Nasdaq-100, $20 per point. Gexbot’s NQ picture is usually converted NDX options, not CME volume.',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    seeAlso: ['nq-ndx', 'ndx', 'cme'],
+    kind: 'market-general',
+  },
+  {
+    id: 'conversion',
+    headword: 'conversion',
+    aliases: ['multiplier conversion'],
+    shortDef:
+      'Stretching index-option leftover onto ES or NQ with a multiplier. The print happened on the cash-index option. The hedge may land in the future.',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    seeAlso: ['es-spx', 'nq-ndx', 'conversion-limit'],
+    kind: 'gexbot',
+  },
+  {
+    id: 'thinner-book',
+    headword: 'thinner book',
+    shortDef:
+      'Fewer contracts, easier to move. NDX options are thinner than SPX. Treat NQ reads as weaker evidence (inferred).',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    seeAlso: ['ndx', 'nq-ndx'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'roll',
+    headword: 'roll',
+    shortDef:
+      'The handoff from the nearest expiry to the following expiry. Sit “next” when latest is dead or you are studying that handoff.',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    seeAlso: ['latest', 'next'],
+    kind: 'options',
+  },
+  {
+    id: 'conversion-limit',
+    headword: 'conversion limit',
+    shortDef:
+      'The information layer sits beside NQ and ES. Converted leftover is not the futures tape, not CME volume, and not a futures print you can circle as “the dealer.”',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    alsoAppears: ['practice/10-misreads-and-mastery'],
+    seeAlso: ['conversion', 'es-spx'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'transfer-rule',
+    headword: 'transfer rule',
+    shortDef:
+      'Whether a sentence that is true (or folkloric) on one instrument may be copied onto another. SPX folklore does not automatically apply to NQ. Rename the claim.',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    seeAlso: ['vix', 'spy', 'nq-ndx'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'explicit-expiry',
+    headword: 'explicit-expiry',
+    aliases: ['explicit expiry'],
+    shortDef:
+      'Expiry groupings that Gexbot’s docs say exist on the live feed only and are not stored in the history files. Mentioned as a limit. This book does not teach the pipe.',
+    firstDefinedIn: 'layer/07-clocks-and-late-greeks',
+    kind: 'gexbot',
+  },
+  {
+    id: 'residual-only',
+    headword: 'residual-only',
+    shortDef:
+      'Applied to today’s classified leftover, not to last night’s whole inventory vault. Minus-vanna and charm on Gexbot are residual-only.',
+    firstDefinedIn: 'layer/07-clocks-and-late-greeks',
+    seeAlso: ['minus-vanna-ladder', 'charm-ladder', 'beta-feature'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'gamma-rehedge',
+    headword: 'gamma re-hedge',
+    aliases: ['gamma rehedge'],
+    shortDef:
+      'Hedge-chain link 4: the index walks, delta changes, the professional tops up or unwinds. Pending and path-conditional.',
+    firstDefinedIn: 'plans/03-classification',
+    alsoAppears: ['plans/04-state', 'layer/07-clocks-and-late-greeks'],
+    seeAlso: ['hedge-chain', 'convexity-ladder', 'path-conditional'],
+    kind: 'gexbot',
+  },
+  {
+    id: 'clock-rehedge',
+    headword: 'clock re-hedge',
+    aliases: ['clock rehedge'],
+    shortDef:
+      'Hedge-chain link 5: time or implied vol changes delta while the index may sit still. Last-hour minus-vanna and charm live here.',
+    firstDefinedIn: 'plans/03-classification',
+    alsoAppears: ['layer/07-clocks-and-late-greeks'],
+    seeAlso: ['hedge-chain', 'charm-ladder'],
+    kind: 'gexbot',
+  },
+  {
+    id: 'european-style',
+    headword: 'European',
+    aliases: ['European-style'],
+    shortDef:
+      'Cannot be exercised before expiry. SPX options are European. Market-general.',
+    firstDefinedIn: 'layer/07-clocks-and-late-greeks',
+    seeAlso: ['settlement', 'american-style', 'spx'],
+    kind: 'market-general',
+  },
+  {
+    id: 'american-style',
+    headword: 'American',
+    aliases: ['American-style'],
+    shortDef:
+      'May be exercised before expiry. SPY options are American. Market-general.',
+    firstDefinedIn: 'layer/07-clocks-and-late-greeks',
+    seeAlso: ['settlement', 'european-style', 'spy'],
+    kind: 'market-general',
+  },
+  {
+    id: 'cash-settled',
+    headword: 'cash-settled',
+    shortDef:
+      'At expiry, no shares change hands — only cash. SPX options settle this way. Market-general.',
+    firstDefinedIn: 'layer/07-clocks-and-late-greeks',
+    seeAlso: ['settlement', 'physically-settled'],
+    kind: 'market-general',
+  },
+  {
+    id: 'physically-settled',
+    headword: 'physically settled',
+    aliases: ['physical settlement'],
+    shortDef:
+      'At expiry, the underlying can be delivered. SPY options settle this way. Market-general.',
+    firstDefinedIn: 'layer/07-clocks-and-late-greeks',
+    seeAlso: ['settlement', 'cash-settled', 'spy'],
+    kind: 'market-general',
+  },
+  {
+    id: 'pm-settlement',
+    headword: 'PM settlement',
+    aliases: ['afternoon settlement'],
+    shortDef:
+      'Daily SPX expiries settle in the afternoon, not at the open. Market-general. Do not copy onto SPY without saying so.',
+    firstDefinedIn: 'layer/07-clocks-and-late-greeks',
+    seeAlso: ['settlement', 'spx'],
+    kind: 'market-general',
+  },
+  {
+    id: 'heuristic',
+    headword: 'heuristic',
+    aliases: ['heuristics'],
+    shortDef:
+      'In this book: a naming drill, not a trading system and not a hit rate. Practice saying what you are looking at.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['naming-drill', 'h1'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'naming-drill',
+    headword: 'naming drill',
+    shortDef:
+      'Practice naming the object (2×2 cell, clock family, pressure word) without sending an order.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['heuristic', 'forced-flow-sentence'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'stand-down',
+    headword: 'stand down',
+    shortDef:
+      'Do not name a read. Used when leftover is too thin, Orderflow is noise, clock families are pooled, or the vol-regime map is the wrong one.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    kind: 'hygiene',
+  },
+  {
+    id: 'local-top',
+    headword: 'local top',
+    aliases: ['local-top', 'local bottom', 'local-bottom'],
+    shortDef:
+      'A candidate turning area, not a forecast. H1 treats a standout SPX GEX-orderflow bar as a local-top or local-bottom candidate. Folklore.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['h1', 'gex-orderflow'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'failure-to-take',
+    headword: 'failure to take',
+    aliases: ['reclaim'],
+    shortDef:
+      'Inferred stop grammar for a fuel or expansion thesis: the index cannot hold through the named node, or reclaims back through the long-option strike.',
+    firstDefinedIn: 'practice/09-grammar-and-journal',
+    seeAlso: ['acceptance-through', 'expansion', 'fuel'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'falsifier',
+    headword: 'falsifier',
+    shortDef:
+      'The observation that would make you withdraw the read. Write it before the session walks. Part of the journal line.',
+    firstDefinedIn: 'practice/09-grammar-and-journal',
+    alsoAppears: ['practice/10-misreads-and-mastery'],
+    seeAlso: ['journal-line', 'acceptance-through'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'imported-tool-misread',
+    headword: 'imported-tool misread',
+    aliases: ['imported mistake'],
+    shortDef:
+      'Bringing another product’s object into Gexbot and treating it as the same measurement. Cousin families stay cousins.',
+    firstDefinedIn: 'practice/10-misreads-and-mastery',
+    seeAlso: ['cousin-unsigned-gex', 'cousin-futures-native', 'cousin-premium-flow'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'guardrail',
+    headword: 'guardrail',
+    shortDef:
+      'A sentence that keeps a later chapter from undoing an earlier one. Example: “must” is mandate only; Classic is unknown.',
+    firstDefinedIn: 'practice/10-misreads-and-mastery',
+    kind: 'hygiene',
+  },
+  {
+    id: 'mastery-rubric',
+    headword: 'mastery rubric',
+    shortDef:
+      'Five names, not a locked edge: the 2×2 or cannot; clock family; conversion limit; forced-flow sentence or unknown; one falsifier.',
+    firstDefinedIn: 'practice/10-misreads-and-mastery',
+    kind: 'hygiene',
+  },
+  {
+    id: 'capstone',
+    headword: 'capstone',
+    shortDef:
+      'One annotated cash-hours session on ES and one on NQ. Forced-flow sentences only. No entry. If you write an entry, you left the course.',
+    firstDefinedIn: 'practice/10-misreads-and-mastery',
+    kind: 'hygiene',
   },
 ];
 

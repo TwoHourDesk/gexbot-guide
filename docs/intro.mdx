@@ -9,55 +9,57 @@ import CheckYourself from '@site/src/components/textbook/CheckYourself';
 
 # How to use this book
 
-**Which Gexbot plan this is.** None yet. This page is the contract with the reader.
+You already know how to follow an ES or NQ chart. You do **not** need to have traded an option. This page is the contract with you as a reader. It is not a Gexbot screen.
 
-**What you will be able to do.** Open Chapter 1 knowing what this wiki is, what it is not, and which words this book uses for evidence and pressure.
+**What you will be able to do after this page.** Open Chapter 1 knowing what kind of book this is, what it will not try to do, and how this book marks a fact versus a guess.
 
-**What you already need.** You can follow an NQ or ES chart. You do not need to have traded an option.
+## What this book is
 
-Everyone starts at [What Gexbot is](/docs/plans/01-what-gexbot-is). There is no five-chapter options pre-course. When a screen needs a schoolbook word, a **Needed to read this screen** box defines it, then the chapter returns to the Gexbot object.
+Gexbot is a set of screens that look at **index options** — contracts tied to the same world as ES and NQ — and draw pictures of leftover positioning. You sit those screens **beside** your futures chart. They do not replace the tape.
 
-## Information layer
+This book teaches you to **read** those pictures. It is not a trading system. It will not give you a hit rate, a robot, or a dollar profit target. When later chapters walk through “heuristics,” those are naming drills: practice saying what you are looking at, not orders to send.
 
-Gexbot answers: *who is stuck with which greek, where, so far today.* It does not replace the futures tape. It is not a signal machine. It is not locked edge. It is not a color-rule cheat sheet.
+There is no options pre-course. When a screen needs a schoolbook word (call, put, strike, and so on), that chapter will stop, define the word in ordinary language, and then return to the Gexbot object. If you already know the word, you can collapse that box and keep walking.
 
-This wiki does not write a robot, a hit rate, or a dollar PnL. Part B heuristics, when they appear, are **naming drills**.
+## How this book marks claims
 
-## Claim labels
+Gexbot’s own help pages say things this book has not measured. Other sentences are ordinary market facts, not Gexbot inventions. We keep those kinds of sentence from looking the same.
 
 <TermFirst id="docs-label" />
 <TermFirst id="folklore" />
 <TermFirst id="inferred" />
 <TermFirst id="not-stated" />
 <TermFirst id="market-general" />
-<TermFirst id="labeling-leak" />
 
-## Three verbs
+A picture on a Gexbot screen, at the clock you are looking at it, is **observed**. A hedge you did not see on that screen is **inferred**. A guess about who owns an unsigned pile is **assumed**.
 
 <TermFirst id="observed" />
-<TermFirst id="inferred" />
 <TermFirst id="assumed" />
 
-Use them precisely. A bar on the screen is **observed**. A hedge you did not see is **inferred**. Ownership on Classic is **assumed** until State classifies it.
+A number that only exists at the end of the day cannot explain a fill from the morning. This book calls that a **labeling leak**. Chapter 7 will sit with clocks. For now: do not use a later picture as if it were known earlier.
 
-## Four pressure words
+<TermFirst id="labeling-leak" />
 
-These are the book’s most important vocabulary after the Gexbot terms. They are taught on the screens that own them; here they are only named.
+## Four words you will need later
 
-- **Mandate** — a dealer book runs delta-neutral by policy. This is the only flow the book may call **forced**.
-- **Incentive** — the customer is not obliged to act. Write **incentivized**, never forced.
-- **None** — cancelled two-way volume. No residual, no node, no pressure.
-- **Unknown** — Classic OI and volume. The location is real; the owner is not visible.
+Later chapters ask, for each picture: *who has to do something?* They will use four pressure words. You do not need to apply them yet. You only need to know they exist, and that this book is strict about “must.”
 
-“Must” is reserved for mandate. Never write “dealers must buy” from a Classic bar. Write “if the usual ownership shortcut holds, dealers would buy.”
+- **Mandate** — a professional options book is run so that a move in the index does not leave them accidentally long or short. When that policy makes them trade the index, this book may say **forced**. Chapter 3 teaches this.
+- **Incentive** — the customer who still holds the leftover options is not obliged to do anything. Theta, fear, and profit-and-loss can push them. Write **incentivized**, never forced.
+- **None** — buys and sells cancelled. Nobody is left holding the bag. A quiet picture can mean “everything matched,” not “nothing traded.”
+- **Unknown** — you can see *where* a pile sits and still not know *who* owns it. Classic, in the next chapter, lives here.
 
-## Terms you will meet
+Never write “dealers must buy” from a picture that cannot show the owner. Write “if the usual shortcut about ownership holds, dealers would buy.”
 
-Gexbot terms wait for the plan chapters. Hygiene terms above are first-use on this page.
+## How to read a chapter
+
+Each chapter opens with which Gexbot product you are sitting, what you will be able to read, and what you already need. It closes with a short summary, the terms just introduced, a few newcomer questions, and a gate to the next chapter.
+
+Definition boxes in the page match the [glossary](/docs/reference/glossary). The box is a checkpoint, not a substitute for the paragraph that taught the word.
 
 ## Summary
 
-You will sit Gexbot’s plans in order: Classic, classification, State, Orderflow, then NQ/ES conversion and clocks. Schoolbook words appear just-in-time. Every Gexbot object later answers who must act and what the screen does not show.
+Start at Chapter 1. Learn the product as a set of screens, not as a list of acronyms. Options words appear when a screen needs them. Every later picture will answer who must act — or will honestly say unknown.
 
 ## Terms introduced
 
@@ -66,22 +68,22 @@ You will sit Gexbot’s plans in order: Classic, classification, State, Orderflo
 ## Newcomer questions
 
 1. **Is this a trading system?** No. It is a reading course.
-2. **Do I need options first?** You need an ES or NQ chart. Options words are defined when Classic needs them.
-3. **Why so many labels?** So a docs sentence, a folklore read, and a guess do not look the same.
+2. **Do I need to know options first?** You need an ES or NQ chart. Options words are defined when a screen first needs them.
+3. **Why so many labels?** So a sentence from Gexbot’s docs, a common story, and a guess do not look like the same kind of fact.
 
 <CheckYourself
   items={[
     {
-      q: 'A Classic bar is tall at 5400. May you write “dealers must sell there”?',
-      a: 'No. Classic ownership is unknown (assumed if you use the shortcut). “Must” is reserved for mandate after classification.',
+      q: 'You see a tall bar on a Gexbot map and want to write “dealers must sell there.” What is wrong?',
+      a: '“Must” is reserved for a professional book that is forced to hedge, and only after a screen can show leftover ownership. If you cannot see the owner, the honest word is unknown — or assumed, if you state the shortcut.',
     },
     {
-      q: 'You use 15:50 net GEX to explain a 09:35 fill. What is that called here?',
-      a: 'A labeling leak. The net was not knowable at 09:35.',
+      q: 'You explain a morning futures fill using a Gexbot score from 15:50. What did you do?',
+      a: 'A labeling leak: you used a picture that was not knowable at the time of the fill.',
     },
   ]}
 />
 
 ## Gate
 
-Next: [What Gexbot is](/docs/plans/01-what-gexbot-is) — the plans and what each can name.
+Next: [What Gexbot is](/docs/plans/01-what-gexbot-is). You will learn the names of the screens and what each one is allowed to claim — in ordinary language first.

@@ -1,0 +1,48 @@
+---
+description: Write the Gexbot wiki as a book for readers new to options, not as a specialist reference.
+globs: docs/**/*.mdx
+alwaysApply: true
+---
+
+# Textbook prose (uninitiated reader)
+
+The reader can follow an ES/NQ chart and has **not** traded options. Every `docs/**/*.mdx` page is a book chapter, not a reference card.
+
+## Before you use a word
+
+- If this chapter has not defined it, and no earlier chapter has, **do not use it**. Teach it in a sentence first, then name it.
+- Acronyms get the long form once: “gamma exposure (GEX)”, “open interest (OI)”.
+- API names (`dexoflow`, `ES_SPX`) wait until the chapter that owns that screen.
+- A summary table may **repeat** terms already taught. It may not **introduce** them.
+
+## Track introductions
+
+- Open with what this chapter may assume (link the prior chapter).
+- Close with “terms introduced here.” Do not treat a `<TermFirst>` box as the only teaching.
+- Do not preview later objects by dumping their names (no “OP, DEX, convexity” in Chapter 1).
+
+## Glossary and index (required)
+
+Every named term a chapter teaches or uses as a term — headword, acronym, or Gexbot screen name — **must** have a row in `src/data/glossary.ts`. The Glossary and keyword index pages are generated from that file. A prose definition or a `<TermFirst>` box is not enough.
+
+- Add the entry in the same edit as the chapter that first teaches the word. Set `firstDefinedIn` to that chapter’s doc id (for example `plans/02-classic`).
+- Put every reader-facing alias on `aliases` (OI, 0DTE, fulcrum, `dexoflow`). The index lists those strings; it cannot invent them.
+- Point `alsoAppears` at later chapters that treat the term again. Point `seeAlso` only at ids that exist.
+- After the edit, every `<TermFirst>`, `<GexbotConcept>`, and `NeededForThisScreen` id must resolve. Chapter 10 (and every other chapter) must not render “No lexicon headwords list this page.”
+
+## Voice
+
+- One idea per paragraph. Plain English first, then the Gexbot name, then a tiny picture.
+- Prefer “leftover trades so far today” over “classified residual” until residual is taught.
+- Prefer “we can see the pile, not who owns it” over “unsigned” until unsigned is taught.
+
+```mdx
+<!-- BAD: Chapter 1 table -->
+| Classic | Unsigned GEX from OI and from volume |
+
+<!-- GOOD: teach, then name -->
+Open interest is the pile of option contracts still open from earlier days.
+Volume is what traded today. Classic draws gamma exposure from each pile.
+That drawing does not say who is long or short. This book calls that
+**unsigned**.
+```

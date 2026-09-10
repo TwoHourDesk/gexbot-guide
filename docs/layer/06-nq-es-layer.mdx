@@ -3,6 +3,7 @@ title: "6. NQ and ES as an information layer"
 ---
 
 import NeededForThisScreen from '@site/src/components/textbook/NeededForThisScreen';
+import TermFirst from '@site/src/components/textbook/TermFirst';
 import GexbotConcept from '@site/src/components/textbook/GexbotConcept';
 import WhoMustAct from '@site/src/components/textbook/WhoMustAct';
 import DistinguishingNote from '@site/src/components/textbook/DistinguishingNote';
@@ -12,11 +13,27 @@ import ConversionMap from '@site/src/components/charts/ConversionMap';
 
 # NQ and ES as an information layer
 
-**Which Gexbot capability this is.** Conversion: `ES_SPX` and `NQ_NDX` sit on top of the plans you already read.
+**Which Gexbot capability this is.** Stretching index-option leftover onto the futures chart you already sit.
 
-**What you will be able to do.** Say where the option print happened, where the inferred hedge lands, and what you may claim next to a futures tape.
+**What you will be able to do.** Say where the option print happened, where the inferred hedge *may* land, and what you may claim next to an ES or NQ tape.
 
-**What you already need.** The three meters and the hedge chain.
+**What you already need.** The three Orderflow meters, the 2×2, and the hedge chain. Chapter 1 already warned: a Gexbot picture “on ES” is usually still looking at cash-index options.
+
+## The print is not on the futures exchange
+
+**ES** is the CME’s E-mini future on the S&P 500. **NQ** is the CME’s E-mini future on the Nasdaq-100. **CME** is the futures exchange where those contracts trade.
+
+Gexbot’s live leftover is built from **index options** — mainly **SPX** (S&P 500 cash index) and **NDX** (Nasdaq-100 cash index). It then stretches those strikes onto ES or NQ with a **multiplier**. This book calls that stretch **conversion**.
+
+The hedge *may* land in ES or NQ. The print did **not** happen there. Converted leftover is not CME volume and not a futures aggressor tape.
+
+Gexbot’s names for the converted pictures are **ES_SPX** and **NQ_NDX**. Those API names wait until this chapter because this is the chapter that owns them.
+
+<TermFirst id="es-future" />
+<TermFirst id="nq-future" />
+<TermFirst id="cme" />
+<TermFirst id="ndx" />
+<TermFirst id="conversion" />
 
 <NeededForThisScreen
   title="Needed to convert a print"
@@ -33,11 +50,32 @@ import ConversionMap from '@site/src/components/charts/ConversionMap';
 
 <DistinguishingNote
   cousin="Futures-native gamma products"
-  cut="Gexbot converts index options. It does not compute gamma on CME ES/NQ lots."
+  cut="Gexbot converts index options. It does not compute gamma on CME ES or NQ lots."
   doNotImport="Pre-drawn futures levels, or treating converted walls as exchange volume."
 />
 
-## Latest / next / full
+## The multipliers (*market-general*)
+
+One SPX option is $100 per index point. One ES future is $50 per point. So **one ATM SPX option is about one ES** of delta. That is the **SPX multiplier** this book uses as a toy.
+
+One NDX option is $100 per index point. One NQ future is $20 per point. So **one ATM NDX option is about 2.5 NQ**. That is the **NDX multiplier**.
+
+<TermFirst id="spx-multiplier" />
+<TermFirst id="ndx-multiplier" />
+
+NDX options are a **thinner book** than SPX: fewer contracts, easier to move. Treat NQ reads as weaker evidence (*inferred*).
+
+<TermFirst id="thinner-book" />
+
+## Today’s expiry, the next one, and the ninety-day mix
+
+State and Orderflow can draw leftover from three **expiry groups**. This chapter names them.
+
+**Latest** (also called **zero**) is the nearest expiry. On a 0DTE day, that is today. Intraday ES or NQ “walls” that matter for the open are usually this group.
+
+**Next** (also called **one**) is the following expiry. Use it when latest is dead, or when you are studying the **roll** — the handoff from this expiry to the next.
+
+**Full** is classified or Classic leftover across expiries within about ninety days. That is overnight context, not a 0DTE scalp line. Mixing full-book zero gamma with a morning scalp is a misread.
 
 <GexbotConcept id="latest" />
 <WhoMustAct id="latest" />
@@ -46,32 +84,40 @@ import ConversionMap from '@site/src/components/charts/ConversionMap';
 <GexbotConcept id="full" />
 <WhoMustAct id="full" />
 
-Intraday walls that matter for the open are usually **latest**. Full is overnight context. Mixing full-book zero gamma with a 0DTE scalp is a misread.
+<TermFirst id="roll" />
 
 ## What you may claim next to a futures tape
 
-**Observed:** a Gexbot residual node at a converted strike.  
-**Inferred:** a dealer hedge *may* land in ES or NQ in that share-equivalent.  
-**Never:** “that ES print *is* the dealer hedge.”
+**Observed:** a Gexbot leftover node at a converted strike.
 
-NDX options are a thinner book than SPX. Treat NQ reads as weaker evidence (*inferred*).
+**Inferred:** a dealer hedge *may* land in ES or NQ in that share-equivalent.
+
+**Never:** “that ES print *is* the dealer hedge.” You cannot identify it.
+
+This book’s **conversion limit**: the information layer sits *beside* NQ and ES. The option residual is not the futures tape. Conversion is a multiplier, not aggressor truth.
+
+<TermFirst id="conversion-limit" />
 
 ## Transfer rules
 
-- SPX docs folklore (+GEX OF as local top in a quiet short-gamma tape) does **not** automatically apply to NQ. Rename the claim if you use it.
+A **transfer rule** is whether a sentence that is true (or folkloric) on one instrument may be copied onto another.
+
+- SPX docs folklore (plus GEX orderflow as a local top in a quiet short-gamma tape) does **not** automatically apply to NQ. Rename the claim if you use it.
 - SPY is described as more directional than SPX. ES is converted SPX, not SPY.
-- When VIX > 20, docs say SPX starts trading like SPY (*folklore*). That sentence is still an SPX sentence.
+- When VIX is above 20, docs say SPX starts trading like SPY (*folklore*). That sentence is still an SPX sentence.
+
+<TermFirst id="transfer-rule" />
 
 ## Running example
 
-Same 500 ATM contracts, Δ 0.50, $25,000/pt.
+Same 500 ATM contracts, delta 0.50, $25,000 per point.
 
-- If they are **SPX** calls: ≈ **500 ES**. Print is SPX; hedge venue is ES.
-- If they are **NDX** calls: $25,000 / $20 ≈ **1,250 NQ**. Print is NDX; hedge venue is NQ. **1 ATM NDX ≈ 2.5 NQ.**
+- If they are **SPX** calls: about **500 ES**. Print is SPX; inferred hedge venue is ES.
+- If they are **NDX** calls: $25,000 / $20 ≈ **1,250 NQ**. Print is NDX; inferred hedge venue is NQ. One ATM NDX ≈ 2.5 NQ.
 
 ## Summary
 
-The information layer sits *beside* NQ and ES. The option residual is not the futures tape. Conversion is a multiplier, not aggressor truth.
+The information layer sits beside NQ and ES. The option leftover is not the futures tape. Latest is the usual open lens. Full is overnight context. NQ evidence is weaker because NDX is thinner.
 
 ## Terms introduced
 
@@ -79,23 +125,23 @@ The information layer sits *beside* NQ and ES. The option residual is not the fu
 
 ## Newcomer questions
 
-1. **Does Gexbot show ES volume?** No. `ES_SPX` is converted SPX options.
-2. **Is 1 SPX option 1 ES?** ATM, as a toy: 1 ATM SPX ≈ 1 ES of delta (*market-general*).
+1. **Does Gexbot show ES volume?** No. ES_SPX is converted SPX options.
+2. **Is one SPX option one ES?** ATM, as a toy: one ATM SPX ≈ one ES of delta (*market-general*).
 3. **Can I copy an SPX local-top read onto NQ?** Only if you rename the claim. NDX is thinner (*inferred*).
 
 <CheckYourself
   items={[
     {
-      q: 'Where did the print happen vs where the hedge lands for NQ_NDX?',
+      q: 'Where did the print happen versus where the hedge lands for NQ_NDX?',
       a: 'Print: NDX options. Inferred hedge venue: NQ. Not CME aggressor truth.',
     },
     {
       q: 'Full-book zero gamma as an NQ open scalp?',
-      a: 'Misread. Full is 90-day context. Use latest, and still unknown on Classic.',
+      a: 'Misread. Full is ninety-day context. Use latest, and still unknown on Classic.',
     },
   ]}
 />
 
 ## Gate
 
-Next: [Clocks and late greeks](/docs/layer/07-clocks-and-late-greeks) — a different family after 15:00.
+Next: [Clocks and late greeks](/docs/layer/07-clocks-and-late-greeks) — a different family after 15:00, even if the index has not moved.

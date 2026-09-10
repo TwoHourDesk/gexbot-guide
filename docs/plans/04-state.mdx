@@ -8,7 +8,6 @@ import GexbotConcept from '@site/src/components/textbook/GexbotConcept';
 import WhoMustAct from '@site/src/components/textbook/WhoMustAct';
 import ScreenOrientation from '@site/src/components/textbook/ScreenOrientation';
 import DistinguishingNote from '@site/src/components/textbook/DistinguishingNote';
-import DefinedTerm from '@site/src/components/textbook/DefinedTerm';
 import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
 import CheckYourself from '@site/src/components/textbook/CheckYourself';
 import OfficialFigure from '@site/src/components/textbook/OfficialFigure';
@@ -17,11 +16,25 @@ import DealerHedgeSim from '@site/src/components/charts/DealerHedgeSim';
 
 # State
 
-**Which Gexbot plan this is.** State — classified residual ladders.
+**Which Gexbot screen this is.** State — leftover trades so far today, by strike, labeled customer bought versus customer sold.
 
-**What you will be able to do.** Read OP, GEX profile, DEX, and convexity without mixing their axes, and split **already hedged** from **pending**.
+**What you will be able to do.** Read four drawings without mixing their left-and-right meanings, and split a hedge that is **already done** from a hedge that is still **ahead** if the index walks.
 
-**What you already need.** [Classification and the hedge chain](/docs/plans/03-classification).
+**What you already need.** [Classification](/docs/plans/03-classification): residual, customer long versus short, delta, share-equivalent, mandate versus incentive, and the six-link hedge chain.
+
+State starts empty at 09:30 Eastern and rewrites during cash regular hours. It is today’s leftover, not last night’s open interest.
+
+## Leftover contracts by strike: the options profile
+
+The first drawing is the simplest. At each strike, on each kind of option (call or put — this book says **per right**), Gexbot stacks how many leftover contracts are customer long versus customer short.
+
+Long leftover is drawn to the **right**. Short leftover is drawn to the **left**. Puts are usually purple. Calls are usually orange.
+
+<TermFirst id="per-right" />
+
+This book, and Gexbot’s docs, call that picture the **options profile**, or **OP**.
+
+It only draws **today’s expiry** and the **following expiry**. It does not draw a ninety-day mix. Chapter 6 will name those three groups. Until then: OP is a near-dated leftover count, not Classic’s open-interest warehouse.
 
 <ScreenOrientation
   screen="State options profile"
@@ -30,48 +43,14 @@ import DealerHedgeSim from '@site/src/components/charts/DealerHedgeSim';
   left="Customer short residual"
   color="Puts default purple; calls orange"
   unit="Leftover contracts so far today, per strike, per right"
-  expiry="Latest and next only (no 90-day OP)"
+  expiry="Today’s expiry and the following expiry only — no ninety-day mix"
   clock="Starts empty at 09:30 ET. Rewrites during cash RTH."
 />
-
-<ScreenOrientation
-  screen="State GEX profile"
-  axis="Strike × residual gamma imbalance"
-  right="Call-GEX imbalance"
-  left="Put-GEX imbalance"
-  color="Same left/right visual as Classic, but classified leftover"
-  unit="Call-minus-put residual gamma"
-  expiry="full / latest / next"
-  clock="Today so far"
-/>
-
-## Needed to read DEX
-
-State plots <DefinedTerm id="dex-ladder">DEX</DefinedTerm> in share-equivalents. That is why delta appears here, not in Classic.
-
-<NeededForThisScreen
-  title="Needed to read State DEX and convexity"
-  ids={['delta', 'share-equivalent', 'implied-vol', 'already-hedged-vs-pending']}
-/>
-
-<GreeksSurface defaultMetric="delta" />
-
-<TermFirst id="already-hedged-vs-pending" />
-
-- **DEX** → hedge is **already on**. Read it as where customers lean.
-- **Convexity / GEX profile** → hedge is **ahead**, if spot moves.
-- Only the second is “forced flow ahead.” The first is a record.
-
-“DEX bar = pending buying” is the second import mistake on this page. “Long bar = support” is the first.
-
-## Options profile
 
 <GexbotConcept id="options-profile" />
 <WhoMustAct screenId="state-op" />
 
-Significant strikes are liquidity concentrations — “stops on the roadmap” (*docs*). Direction comes from incentives, not from the bar existing.
-
-Falling-vol tape (*folklore*): customer **longs** act like walls (dump, supply liquidity); customer **shorts** act like fuel (hedge/add, take liquidity). Rising vol **flips** both. If you cannot tell the regime, the OP read is off.
+A tall pile here is a **node** you can name — a concentration of leftover paper. Gexbot’s docs call significant strikes “stops on the roadmap.” The bar existing is not a direction. Direction, if any, comes from incentives.
 
 <OfficialFigure
   src="/img/gexbot/options-profile.png"
@@ -83,70 +62,146 @@ Falling-vol tape (*folklore*): customer **longs** act like walls (dump, supply l
 
 <DistinguishingNote id="options-profile" />
 
-## GEX profile
+## Implied volatility, walls, and fuel
+
+The price of an option embeds a guess about how much the index will wiggle. That guess is **implied volatility**, often written **IV**.
+
+Through a session, that guess can generally be falling (a **crush**) or rising. This book calls that the **vol regime**. If you cannot tell which regime you are in, stand down on any “wall versus fuel” story.
+
+Gexbot’s own docs tell a *folklore* story that **flips** with the regime:
+
+In a **falling-vol** tape, customer **longs** often act like **walls**: holders may sell the option on approach and supply liquidity — a stall *candidate*. Customer **shorts** often act like **fuel**: holders may hedge or add and take liquidity — a continuation *candidate*.
+
+In a **rising-vol** tape, both stories invert. A long leftover can become fuel. A short leftover can become a wall.
+
+A wall is a **hypothesis**, not a fact. “Long bar = support” is the first import mistake on this page.
+
+<TermFirst id="implied-vol" />
+<TermFirst id="vol-regime" />
+<TermFirst id="wall" />
+<TermFirst id="fuel" />
+
+Customer pressure on OP is **incentive**. The dealer on the mirror still has **mandate**. Do not write “the customer must dump.”
+
+## Which wing is heavy: the GEX profile
+
+The second drawing keeps leftover, but now weights it by **gamma** and nets leftover *calls* against leftover *puts* at each strike.
+
+Right means the **call wing** of the leftover is heavier. Left means the **put wing** is heavier. That is **not** bought versus sold. Two huge leftover books, one call and one put, can net toward zero here the same way Classic’s unsigned bars can.
+
+This book calls that picture the **GEX profile**. It looks like Classic’s histogram. It is not Classic: the bars are classified leftover, not open interest or raw volume.
+
+<ScreenOrientation
+  screen="State GEX profile"
+  axis="Strike × residual gamma imbalance"
+  right="Call-GEX imbalance"
+  left="Put-GEX imbalance"
+  color="Same left/right visual as Classic, but classified leftover"
+  unit="Call-minus-put residual gamma"
+  expiry="Ninety-day mix, today’s expiry, or the following expiry — Chapter 6 names those groups"
+  clock="Today so far"
+/>
 
 <GexbotConcept id="gex-profile" />
 <WhoMustAct screenId="gex-profile" />
-
-This is the **shape** of the leftover: upside curvature vs downside curvature, not bought vs sold.
 
 <OfficialFigure
   src="/img/gexbot/gex-profile.png"
   alt="Gexbot GEX profile"
   source="gexbot.com/docs"
-  teaching="Call imbalance right, put imbalance left — classified leftover, not Classic OI."
+  teaching="Call imbalance right, put imbalance left — classified leftover, not Classic open interest."
   whoMustAct="which wing forces the re-hedge"
 />
+
+The largest call-sided leftover node and the largest put-sided leftover node are **major call** and **major put**. They are not Classic’s major positive / major negative. Those were unsigned.
 
 <GexbotConcept id="major-call-put" />
 <WhoMustAct id="major-call-put" />
 
-## DEX ladder
+## Leftover share-equivalent: the DEX ladder
+
+Chapter 3 taught delta and share-equivalent. State now plots leftover **delta** at each strike.
+
+Customer long calls and customer short puts both lean the same way: they are **plus** leftover share-equivalent. Customer short calls and customer long puts are **minus**.
+
+Gexbot’s name is **DEX** — delta exposure — drawn as a **DEX ladder**.
+
+<NeededForThisScreen
+  title="Needed to read DEX and convexity — collapse if you already own these words"
+  ids={['delta', 'share-equivalent', 'already-hedged-vs-pending']}
+/>
+
+<GreeksSurface defaultMetric="delta" />
 
 <GexbotConcept id="dex-ladder" />
 <WhoMustAct screenId="dex-ladder" />
 
-Metaphor: an options depth ladder. Heavy −DEX above spot is a stack of synthetic offers (*folklore*). +DEX is not “they bought calls” — it can be short puts.
+<TermFirst id="dex" />
+
+Metaphor: an options depth ladder. Heavy minus-DEX above the index is a stack of synthetic offers (*folklore*). Plus-DEX is **not** “they bought calls.” It can be short puts. Chapter 5’s two-by-two will split those.
 
 <OfficialFigure
   src="/img/gexbot/delta-ladder.png"
   alt="Gexbot DEX / delta ladder"
   source="gexbot.com/docs"
-  teaching="Share-equivalent leftover. Record of a lean, not a queue."
+  teaching="Share-equivalent leftover. Record of a lean, not a queue of buying still to come."
   whoMustAct="dealer initial hedge — mostly already done"
 />
 
-## Convexity ladder
+## Already done versus still ahead
+
+This is the hinge of State.
+
+When leftover delta appears on the DEX ladder, hedge-chain **link 3** — the initial offset in the futures — is mostly **already on**. DEX is a **record** of a lean. It is not a queue of buying still to come. “DEX bar = pending buying” is the second import mistake on this page.
+
+What is still **ahead** is hedge-chain **link 4**: if the index walks, gamma changes delta, and the professional must top up or unwind. That pending force is **path-conditional**. It appears only if the index walks a certain way. The next drawing shows where and with which sign. It cannot show the path.
+
+<TermFirst id="already-hedged-vs-pending" />
+<TermFirst id="path-conditional" />
+
+## Leftover gamma, bought minus sold: convexity
+
+The fourth drawing weights leftover by **gamma**, then signs it **long option minus short option**.
+
+Paid leftover (long calls and long puts) is **plus**. Collected leftover (short calls and short puts) is **minus**.
+
+Gexbot’s name is **convexity**. They chose the word to stress **vol ownership**, not up or down. Convexity has no bullish or bearish. Plus means leftover paper that *wants a larger move than priced*. Minus means leftover paper that *wants a smaller move*.
 
 <GexbotConcept id="convexity-ladder" />
 <WhoMustAct screenId="convexity-ladder" />
 
-They named it convexity to stress **risk**, not direction. Falling vol (*folklore*): travel through −convexity; stall at +convexity. Rising vol flips. Transitions reshuffle incentives.
+<TermFirst id="convexity" />
+
+Falling vol (*folklore*): travel through minus-convexity; stall at plus-convexity. Rising vol flips. When the regime changes, incentives reshuffle.
 
 <OfficialFigure
   src="/img/gexbot/gamma-ladder.png"
   alt="Gexbot convexity / gamma ladder"
   source="gexbot.com/docs"
-  teaching="Long option minus short option. Not up/down."
+  teaching="Long option minus short option. Not up or down."
   whoMustAct="dealer mirror gamma — pending, path-conditional"
 />
+
+The largest customer-long gamma node and the largest customer-short gamma node on this ladder are **major long** and **major short**.
 
 <GexbotConcept id="major-long-short" />
 <WhoMustAct id="major-long-short" />
 
 <DealerHedgeSim />
 
+GEX profile versus convexity, in one line: GEX profile asks **which wing** (call versus put). Convexity asks **paid versus collected**. Do not swap them.
+
 ## Running example
 
-**Bought 500 ATM calls.** OP long-call bar **right**; DEX **+**; convexity **+** at the strike. Customer incentivized (theta, falling vol) to sell on approach (*folklore*). Dealer mandated to **chase** if spot rips (pending gamma).
+**Bought 500 ATM calls.** Options profile: long-call bar to the **right**. DEX: **plus**. Convexity: **plus** at the strike. Customer **incentivized** (theta, falling vol) to sell on approach (*folklore*). Dealer **mandated** to **chase** if the index rips — pending gamma, link 4.
 
-**Sold 500 ATM calls.** OP short-call bar **left**; DEX **−**; convexity **−**. Customer incentivized to sit / defend. Dealer mandated to **fade**.
+**Sold 500 ATM calls.** Options profile: short-call bar to the **left**. DEX: **minus**. Convexity: **minus**. Customer incentivized to sit or defend. Dealer mandated to **fade**.
 
-DEX is the record of the ~500 ES already done. Convexity is the ~300 ES that appear only if spot walks +15.
+DEX is the record of the about-500 ES already done (link 3). Convexity is the about-300 ES that appear only if the index walks +15 (link 4).
 
 ## Summary
 
-State shows leftover paper by strike. Read the orientation card before the color. DEX is already hedged; convexity is pending and path-conditional.
+State shows leftover paper by strike. Read the orientation of *this* drawing before the color. DEX is a record — already hedged. Convexity and the GEX profile are pending and path-conditional. Left on the options profile is not left on the GEX profile.
 
 ## Terms introduced
 
@@ -155,22 +210,22 @@ State shows leftover paper by strike. Read the orientation card before the color
 ## Newcomer questions
 
 1. **Long bar = support?** Only as a falling-vol *incentive* hypothesis (*folklore*). Rising vol can make that long into fuel.
-2. **DEX printed + — will they buy ES?** Inferred initial hedge is mostly done. Pending force is on gamma.
-3. **Is GEX profile the same as convexity?** No. Wing (call vs put) vs ownership (paid vs collected).
+2. **DEX printed plus — will they buy ES?** The inferred initial hedge is mostly done. Pending force is on gamma.
+3. **Is GEX profile the same as convexity?** No. Wing (call versus put) versus ownership (paid versus collected).
 
 <CheckYourself
   items={[
     {
       q: 'Which State ladder is a record, and which is pending force?',
-      a: 'DEX is a record (already hedged). Convexity / GEX profile are pending, path-conditional.',
+      a: 'DEX is a record (already hedged). Convexity and the GEX profile are pending, path-conditional.',
     },
     {
-      q: 'Right on OP vs right on GEX profile?',
-      a: 'OP right = customer long. GEX profile right = call-sided leftover gamma. Different axes.',
+      q: 'Right on the options profile versus right on the GEX profile?',
+      a: 'Options profile right = customer long leftover. GEX profile right = call-sided leftover gamma. Different axes.',
     },
   ]}
 />
 
 ## Gate
 
-Next: [Orderflow](/docs/plans/05-orderflow) — the same leftover as a tape, and the 2×2 that names the print.
+Next: [Orderflow](/docs/plans/05-orderflow). The same leftover as a tape over time, and the two signs you need to *name* a print.

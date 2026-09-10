@@ -7,6 +7,7 @@ import WhoMustAct from '@site/src/components/textbook/WhoMustAct';
 import ScreenOrientation from '@site/src/components/textbook/ScreenOrientation';
 import DistinguishingNote from '@site/src/components/textbook/DistinguishingNote';
 import NeededForThisScreen from '@site/src/components/textbook/NeededForThisScreen';
+import TermFirst from '@site/src/components/textbook/TermFirst';
 import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
 import CheckYourself from '@site/src/components/textbook/CheckYourself';
 import OfficialFigure from '@site/src/components/textbook/OfficialFigure';
@@ -14,31 +15,49 @@ import TwoByTwoExplorer from '@site/src/components/charts/TwoByTwoExplorer';
 
 # Orderflow
 
-**Which Gexbot plan this is.** Orderflow — classified leftover as a time series.
+**Which Gexbot screen this is.** Orderflow — the same leftover you learned to locate on State, plotted as time passes.
 
-**What you will be able to do.** Name a print with the 2×2, tell spike from sequence from noise, and treat the bar as the moment pressure was created.
+**What you will be able to do.** Tell a bar (“what just changed”) from a running score (“what is leftover so far today”), name a print with two signs, and treat the bar as the moment leftover pressure was created.
 
-**What you already need.** [State](/docs/plans/04-state) DEX and convexity.
+**What you already need.** [State](/docs/plans/04-state): DEX as a record, convexity as pending gamma, GEX profile as which wing. You also need Chapter 3’s hedge chain: an Orderflow bar *is* link 1, the print.
+
+## Three pictures of the same leftover
+
+State’s ladders are a **stock**: leftover by strike, so far today.
+
+An Orderflow **bar** is an **increment**: what just changed. That is the print.
+
+A **net** (a running score) is the **integral**: leftover so far today, added up through time. Nets start empty at the cash open. Using a 15:50 net to explain a 09:35 fill is a **labeling leak**.
+
+This book calls that trio **ladder versus increment versus net**. All three are residual. None of them is CME futures volume.
+
+<NeededForThisScreen
+  title="Needed to read ladder vs bar vs net"
+  ids={['ladder-increment-net', 'labeling-leak']}
+/>
+
+<TermFirst id="ladder-increment-net" />
 
 <ScreenOrientation
   screen="Orderflow subplots"
   axis="Time × signed increment"
-  right="Not left/right — bar up vs bar down"
+  right="Not left/right — bar up versus bar down"
   left="Depends on the series (see each meter)"
-  color="DEX / GEX / convexity each have their own up meaning"
-  unit="Greek-weighted residual increment; nets are running integrals"
-  expiry="Nearest (`dexoflow`) and following (`one_dexoflow`)"
-  clock="Cash RTH. Nets start at the open. Labeling leak if you back-cast a late net."
+  color="DEX, GEX, and convexity each have their own “up” meaning"
+  unit="Leftover increment weighted by the same schoolbook sensitivities as State; nets are running totals"
+  expiry="Today’s expiry, or the following expiry — Chapter 6 names those groups"
+  clock="Cash RTH. Nets start at the open. A late net is not knowable at the open."
 />
 
-<NeededForThisScreen
-  title="Needed to read ladder vs bar vs net"
-  ids={['ladder-increment-net']}
-/>
+The bar is hedge-chain **link 1**. The net is the day’s lean of leftover — including pending gamma re-hedge — not a forecast.
 
-The bar is the **print** (hedge-chain link 1). The net is the day’s lean of leftover — including pending gamma re-hedge, not a forecast.
+## Increment of leftover delta: DEX orderflow
 
-## DEX orderflow
+Take the DEX ladder from State. Now plot *how that leftover delta just changed*.
+
+A bar up means customers just got **longer** in share-equivalent. A bar down means they just got **shorter**. Gexbot’s name is **DEX orderflow**.
+
+This is still a **record** of a lean, not buying still to come. The professional who absorbed is doing link 3 *now*.
 
 <GexbotConcept id="dex-orderflow" />
 <WhoMustAct screenId="orderflow-bars" />
@@ -51,12 +70,18 @@ The bar is the **print** (hedge-chain link 1). The net is the day’s lean of le
   whoMustAct="dealer absorbs now · mandate"
 />
 
-## GEX orderflow
+Plus-DEX orderflow is not “they bought calls.” It can be short puts. You need the second meter.
+
+## Increment of which wing: GEX orderflow
+
+Take the GEX profile. Plot how call-sided leftover gamma minus put-sided leftover gamma just changed.
+
+A bar up means **more call-sided leftover**, not a buy signal. Gexbot’s name is **GEX orderflow**.
+
+On SPX, Gexbot’s own docs often read a standout plus bar as call *selling* — a local-top *candidate* (*folklore*). That sentence is instrument-specific. It is not “bullish gamma.”
 
 <GexbotConcept id="gex-orderflow" />
 <WhoMustAct id="gex-orderflow" />
-
-Positive GEX OF is **not a buy signal**. It adds call-sided leftover. On SPX, docs folklore often reads a standout + bar as call *selling* = local-top candidate. Instrument-specific. When VIX > 20 they say SPX starts trading like SPY (*folklore*).
 
 <OfficialFigure
   src="/img/gexbot/gex-of.png"
@@ -68,7 +93,18 @@ Positive GEX OF is **not a buy signal**. It adds call-sided leftover. On SPX, do
 
 <DistinguishingNote id="gex-orderflow" />
 
-## Convexity orderflow
+**SPY** is the S&P 500 exchange-traded fund. Gexbot’s docs treat its options as more directional than SPX. **VIX** is a popular fear quote on S&P options. When VIX is above 20, those docs say SPX starts trading more like SPY (*folklore*). That sentence is still an SPX sentence. Chapter 6 will refuse to copy it onto NQ without renaming the claim.
+
+<TermFirst id="spy" />
+<TermFirst id="vix" />
+
+## Increment of paid versus collected: convexity orderflow
+
+Take the convexity ladder. Plot how leftover option *buying* minus leftover option *selling* just changed.
+
+A bar up is leftover **paid** gamma (vol bid). A bar down is leftover **collected** gamma (vol offer). Gexbot’s name is **convexity orderflow**.
+
+This meter has no up or down for the *index*. Persistent plus-convexity often prints on selloffs; persistent minus-convexity on quiet grinds (*folklore*). Pair it with DEX to recover the cell below.
 
 <GexbotConcept id="convexity-orderflow" />
 <WhoMustAct id="convexity-orderflow" />
@@ -77,29 +113,58 @@ Positive GEX OF is **not a buy signal**. It adds call-sided leftover. On SPX, do
   src="/img/gexbot/convexity-of.png"
   alt="Gexbot convexity orderflow"
   source="gexbot.com/docs"
-  teaching="Vol bid vs vol offer. Direction needs DEX."
+  teaching="Vol bid versus vol offer. Direction needs DEX."
   whoMustAct="dealer absorb now; pending gamma sign is this increment"
 />
 
-Persistent +convexity often prints on selloffs; persistent −convexity on grinds (*folklore*). Pair DEX to recover the cell.
+## Two signs name the print: the 2×2
 
-## The 2×2
+DEX gives you a sign. Convexity gives you a second sign. Together they name four leftover prints:
+
+|  | Convexity plus (paid) | Convexity minus (collected) |
+|---|---|---|
+| **DEX plus** | **Long call** — paid for upside **expansion** | **Short put** — collected; wants a **pin** above the strike |
+| **DEX minus** | **Long put** — paid for downside expansion | **Short call** — collected on a call |
+
+Same plus-DEX, opposite story. That is why this book refuses to act on DEX alone.
+
+This book calls that table the **2×2**.
 
 <GexbotConcept id="two-by-two" />
 <WhoMustAct id="two-by-two" />
 
+<TermFirst id="long-call" />
+<TermFirst id="short-put" />
+<TermFirst id="long-put" />
+<TermFirst id="short-call" />
+<TermFirst id="expansion" />
+
 <TwoByTwoExplorer />
 
-## Nets
+Name the cell or do not name the print.
+
+## Running scores (nets)
+
+Add DEX orderflow through the day and you get **aggregate DEX**: share-equivalents leftover so far today. It can be split call versus put.
+
+Add GEX orderflow and you get **net GEX**: running call-sided leftover gamma minus put-sided leftover gamma.
+
+Add convexity orderflow and you get **net convexity**: leftover option buying minus leftover option selling so far today.
+
+None of these nets existed at 09:30:01. They are so-far maps.
 
 <GexbotConcept id="ladder-increment-net" />
 <WhoMustAct screenId="nets" />
+
+<TermFirst id="agg-dex" />
+<TermFirst id="net-gex" />
+<TermFirst id="net-convexity" />
 
 <OfficialFigure
   src="/img/gexbot/agg-dex.png"
   alt="Gexbot aggregate DEX"
   source="gexbot.com/docs"
-  teaching="Running integral of DEX OF. Call/put splits can name a short-vol day."
+  teaching="Running total of DEX orderflow. Call/put splits can name a short-vol day."
   whoMustAct="day’s aggregate lean"
 />
 
@@ -107,24 +172,30 @@ Persistent +convexity often prints on selloffs; persistent −convexity on grind
   src="/img/gexbot/net-convexity.png"
   alt="Gexbot net convexity"
   source="gexbot.com/docs"
-  teaching="Integral of convexity OF. High + = net option buying today."
+  teaching="Running total of convexity orderflow. High plus = net option buying today."
   whoMustAct="day’s pending gamma lean"
 />
 
-## Spike vs sequence vs noise
+## Spike, sequence, noise
+
+One large bar is an **event**: something just printed. Many small bars of the same sign are a **sequence**: they name a **day-type** (fear versus grind) only after you have enough of them. Alternating tiny bars are two-way cancel — **noise**. Ignore them. Pressure: **none**.
+
+Do not name the day at 09:35 from one spike.
 
 <GexbotConcept id="spike-sequence-noise" />
 <WhoMustAct id="spike-sequence-noise" />
 
+<TermFirst id="day-type" />
+
 ## Running example
 
-**Bought 500 ATM calls at 10:05.** +DEX, +convexity, +GEX OF → 2×2 names **long call**. Not “bullish”: paid convexity with a dealer who chases.
+**Bought 500 ATM calls at 10:05.** Plus DEX, plus convexity, plus GEX orderflow → the 2×2 names **long call**. Not “bullish”: paid convexity with a dealer who chases if the index walks up.
 
-**Sold 500 ATM calls.** −DEX, −convexity, **+GEX OF** → **short call**. Same +GEX OF bar, opposite cell. That is why GEX OF is not a buy signal.
+**Sold 500 ATM calls.** Minus DEX, minus convexity, **plus GEX orderflow** → **short call**. Same plus GEX-orderflow bar, opposite cell. That is why GEX orderflow is not a buy signal.
 
 ## Summary
 
-Orderflow is the increment of the leftover you already learned to locate. Name the 2×2 or do not name the print.
+Orderflow is the increment of the leftover you already learned to locate. A bar is the print. A net is the day’s lean, not a forecast. Name the 2×2 or do not name the print.
 
 ## Terms introduced
 
@@ -132,15 +203,15 @@ Orderflow is the increment of the leftover you already learned to locate. Name t
 
 ## Newcomer questions
 
-1. **+GEX OF means buy?** No. It means call-sided leftover grew. On SPX that is often selling (*folklore*).
-2. **One spike is the day-type?** No. Sequence names the day; a spike marks a level.
+1. **Plus GEX orderflow means buy?** No. It means call-sided leftover grew. On SPX that is often selling (*folklore*).
+2. **One spike is the day-type?** No. Sequence names the day; a spike marks a moment.
 3. **Can I use the 15:50 net on a 09:35 fill?** Labeling leak.
 
 <CheckYourself
   items={[
     {
-      q: 'Same +GEX OF: how do the two running-example branches differ?',
-      a: 'Bought: +DEX +convexity = long call. Sold: −DEX −convexity = short call.',
+      q: 'Same plus GEX orderflow: how do the two running-example branches differ?',
+      a: 'Bought: plus DEX and plus convexity = long call. Sold: minus DEX and minus convexity = short call.',
     },
     {
       q: 'What hedge-chain link is an Orderflow bar?',
@@ -151,4 +222,4 @@ Orderflow is the increment of the leftover you already learned to locate. Name t
 
 ## Gate
 
-Next: [NQ and ES](/docs/layer/06-nq-es-layer) — where the print happened vs where the hedge lands.
+Next: [NQ and ES](/docs/layer/06-nq-es-layer) — where the option print happened versus where the inferred hedge lands.

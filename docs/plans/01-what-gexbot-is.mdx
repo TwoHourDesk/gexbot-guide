@@ -11,42 +11,128 @@ import NotTheSame from '@site/src/components/charts/NotTheSame';
 
 # What Gexbot is
 
-**Which Gexbot plan this is.** The map of all plans.
+**Which Gexbot product this is.** The map of the screens. You are not sitting a live ladder yet.
 
-**What you will be able to do.** Name Classic, State, Orderflow, Quant, and Research, and say what pressure each can name.
+**What you will be able to do.** Name Classic, State, Orderflow, Quant, and Research in your own words, and say what kind of claim each screen is allowed to make.
 
-**What you already need.** [How to use this book](/docs/intro).
+**What you already need.** [How to use this book](/docs/intro) — what this course is, and how this book marks a fact versus a guess. You still do not need to have traded an option.
 
-## Plans and capabilities
+## Why a futures trader opens Gexbot
+
+ES and NQ are futures on large stock indexes. Alongside those futures, people also trade **options** on the same indexes: contracts that are a *right*, not an obligation, to buy or sell at a chosen level by a chosen time. Chapter 2 will teach the contract properly. For this chapter you only need one fact:
+
+<TermFirst id="option-contract" />
+
+When those option contracts exist, professional firms who stand in the middle of the options market often have to buy or sell the index (or the futures) as the index moves, so they do not end up accidentally long or short. That extra buying and selling is **not** printed as “the dealer hedge” on your ES or NQ tape. Gexbot tries to show you *where the leftover options sit* so you have a second picture beside the tape.
+
+Gexbot does not replace the futures chart. It is an **information layer**.
+
+<TermFirst id="information-layer" />
+<TermFirst id="index-options" />
+
+## Gamma exposure, then the letters GEX
+
+Some options change their “how stock-like am I?” number very quickly when the index ticks. The schoolbook name for that sensitivity is **gamma**. Chapter 2 will sit with gamma as a number. Here, you only need the consequence:
+
+If a lot of that sensitivity sits at one index level, a move through that level can force a lot of extra hedging in the futures. People stack that effect by strike — by price level on the option — and call the stack **gamma exposure**, or **GEX**.
+
+<TermFirst id="gex" />
+
+GEX is a picture of *exposure*, not a buy or sell signal. A tall pile at a level does not mean “the market will go there” and does not, by itself, tell you who will be forced to do what.
+
+## Two piles: last night, and today
+
+Option contracts that are still open after previous sessions sit in a slow official count. The usual name is **open interest** — leftover contracts, not today’s tape. This book will often write **OI** after this paragraph.
+
+What traded *today* is **volume**. A strike can have a huge overnight pile and almost no trading today. Another strike can be quiet overnight and dominate today’s tape.
+
+Classic, below, draws GEX from **both** piles: a map from last night’s leftover contracts, and a map from today’s trading.
+
+## Unsigned: you see the pile, not the owner
+
+A GEX map can tell you *where* the exposure sits and still hide *who* is long the options and who is short them. This book calls that **unsigned**.
+
+Think of a warehouse photo: you can see how high the boxes are stacked on each shelf. You cannot see whose name is on the boxes. Many public “GEX maps” on the internet are this kind of photo. They often assume a story about who owns the pile (“dealers are always short”). That story is an **assumption**, not something the picture proved.
+
+<TermFirst id="unsigned" />
+
+## Classic
+
+**Classic** is Gexbot’s first screen. It is that warehouse photo.
+
+It draws GEX from last night’s open interest, and it draws GEX from today’s volume. At each price level it nets the “call side” of the picture against the “put side” — Chapter 2 will teach call and put. What Classic will **not** do is label leftover trades as “the customer bought the option” or “the customer sold the option.” So the honest pressure word from the intro is **unknown**: the location of the pile can be real; the owner is not visible.
 
 <TermFirst id="classic" />
+
+## What Classic cannot see, and what the next screens add
+
+Gexbot also watches individual option trades during the U.S. cash session and asks a narrow question: did the *aggressive* side of that trade **buy** the option or **sell** it? It calls the buyer **customer long** and the seller **customer short**. It does **not** know whether that person was opening a new position or closing an old one. Chapter 3 is the whole lesson.
+
+After matched buys and sells of the *same* contract cancel, a **leftover** remains. Two-way trading can be huge while the leftover is tiny. The leftover is what the later screens draw.
+
+<TermFirst id="leftover" />
+
+That leftover-and-label machinery is the **classification engine**. Classic does not use it. State and Orderflow do. That is the only reason this book will later say Classic is not State.
+
+You do not need the names of State’s drawings yet. You only need: State is the leftover, by price level, with a bought-versus-sold label. Orderflow is the same leftover plotted **over time**, like a tape.
+
+## State
+
+**State** is the leftover-by-level screen. Because the leftover is labeled bought versus sold, State can talk about customer **incentive** (the holder is not forced, but may be pushed) and about a professional **mandate** on the other side of that leftover (Chapter 3). Classic cannot honestly do that.
+
 <TermFirst id="state" />
+
+Chapter 4 will name the separate State drawings and teach you that left and right mean different things on different pictures. Do not memorize those names here.
+
+## Orderflow
+
+**Orderflow** takes the same leftover and plots it as time passes. A bar is “what just changed.” A running score is “what is leftover so far today.” The moment a leftover was created is where professional absorption, if it happened, happened. The running score is the day’s lean — not a forecast, and not knowable before it was built.
+
 <TermFirst id="orderflow-plan" />
+
+Chapter 5 will name the three meters on that tape. Until then, do not treat an Orderflow bar as “bullish” or “bearish.” You do not yet have the two signs you need to name a print.
+
+## Quant and Research (on the map, not in this course)
+
+**Quant** is how some people pull the same numbers into their own platforms. The live feed runs in U.S. cash regular hours, about 09:30–16:00 Eastern. This book will mention that clock. It will not teach you to write software against the feed.
+
 <TermFirst id="quant" />
+
+**Research** (sometimes written gbR) is a sibling product: many individual stock tickers, many charts. It is not the leftover-label engine that powers State and Orderflow. This course does not sit Research.
+
 <TermFirst id="research" />
 
-| Plan | What it can see | Pressure it can name |
+## The five names, now that the words exist
+
+You have the words. Here is the same map as a recap, not as the first introduction.
+
+| Screen | In one sentence | What you may claim about pressure |
 |---|---|---|
-| **Classic** | Unsigned GEX from OI and from volume | **Unknown.** Location is real; owner is not. |
-| **State** | Classified residual ladders (OP, GEX profile, DEX, convexity) | Customer **incentive** and dealer **mandate** on the leftover |
-| **Orderflow** | Time series of that leftover (`dexoflow`, `gexoflow`, `cvroflow`) | Mandate at the **print** (increment); day’s lean in the nets |
-| **Quant** | API / WebSocket, cash RTH 09:30–16:00 ET | Same objects as State/OF, live. Explicit-expiry groups are live-only. Not a trading chapter. |
-| **Research (gbR)** | Any-ticker surfaces | Sibling product. Not the classified engine. Not this course. |
-
-The **classification engine** is the capability that turns Classic into State and Orderflow. Chapter 3 teaches it, and teaches the hedge chain once.
-
-NQ/ES on Gexbot is a **multiplier conversion** (`ES_SPX`, `NQ_NDX`), not CME volume. One paragraph here; [Chapter 6](/docs/layer/06-nq-es-layer) is the full claim.
+| **Classic** | GEX map from last night’s leftover contracts and from today’s trading, without an owner label | **Unknown.** The pile can be real; the owner is not visible. |
+| **State** | Leftover trades so far today, by price level, labeled customer bought vs sold | Customer **incentive** and professional **mandate** on that leftover — after Chapter 3 |
+| **Orderflow** | The same leftover as a tape over time | Mandate at the moment leftover was created; the day’s lean in the running score |
+| **Quant** | The live numbers in your own tools, cash hours | Same objects as State and Orderflow. Not a trading chapter. |
+| **Research** | A sibling product for many tickers | Not the leftover engine. Not this course. |
 
 <OfficialFigure
   src="/img/gexbot/gexbot-charts.png"
   alt="Gexbot product charts collage"
   source="gexbot.com"
-  teaching="The product is a set of plans — unsigned Classic, classified State, and Orderflow time series — not one “GEX line.”"
+  teaching="Several screens, not one magic GEX line. Classic is the unsigned map. State and Orderflow need leftover labels you will learn in Chapter 3."
 />
 
-## Cousin families
+## ES and NQ on Gexbot (one paragraph)
 
-Name a well-known tool once so you can place the family. Never import that tool’s named levels as objects to trade.
+When Gexbot shows a picture “on ES” or “on NQ,” it is usually still looking at **index options** (on the cash index), then stretching the levels onto the futures with a multiplier. It is not CME volume and not a futures aggressor tape. Chapter 6 is the full claim. Until then: do not fold a Gexbot pile into “ES bought here.”
+
+## Cousin pictures you may already have seen
+
+Other tools reuse the English words gamma, GEX, wall, and flow. They are not the same measurement. Name the *family* once so you can place it. Do not import that family’s drawn levels as objects to trade.
+
+- **Textbook dealer gamma** — a schoolbook story: when the professional book is short that fast-changing sensitivity, they chase the move; when they are long it, they fade. Gexbot keeps that polarity. It also keeps a **customer** side, which a dealer-only lecture leaves out.
+- **Unsigned GEX maps** — last night’s inventory times gamma, often with a “zero line” and named walls. Classic is Gexbot’s cousin. State and Orderflow refuse the shortcut that pretends the owner is known.
+- **Futures-native gamma products** — gamma computed on ES or NQ themselves, sometimes with levels already drawn. Gexbot’s ES/NQ picture is converted index options, not that.
+- **Premium / sweep flow tools** — they highlight large option purchases by dollar debit, sometimes with “opened” vs “closed.” Gexbot weights leftover by those schoolbook sensitivities, not by how expensive the ticket was, and it does not split open from close.
 
 <TermFirst id="cousin-dealer-gamma" />
 <TermFirst id="cousin-unsigned-gex" />
@@ -56,18 +142,20 @@ Name a well-known tool once so you can place the family. Never import that tool�
 <NotTheSame />
 
 <DistinguishingNote
-  cousin="Unsigned GEX maps and futures-native level products"
-  cut="Gexbot’s backbone is residual classification plus three meters. Classic is the unsigned cousin; State/OF reject unsigned ownership. ES/NQ is converted index options."
-  doNotImport="HVL, call-resistance lines, or premium-flow open/close tags as if they were Gexbot objects."
+  cousin="Unsigned public GEX maps, and products that draw futures gamma levels for you"
+  cut="Classic is the unsigned cousin. State and Orderflow only exist once leftover trades are labeled bought versus sold. ES/NQ on Gexbot is converted index options."
+  doNotImport="Another product’s named levels, or a debit-and-sweep tape’s open/close tag, as if they were Gexbot objects."
 />
 
-## What no plan shows
+## What no Gexbot screen shows
 
-The hedge itself. How much is already hedged. Overnight inventory beyond Classic OI. Whether the customer hedged their own delta. Open vs close. A futures print you can point at and call “the dealer.”
+The hedge itself on ES or NQ. How much of that hedge is already done. Overnight inventory beyond Classic’s open-interest map. Whether the customer already hedged their own option in the futures. Whether a buy was a new long or a short covering. A futures print you can point at and call “the dealer.”
 
 ## Summary
 
-Sit Classic first (unsigned map). Then the engine that upgrades it. Then State and Orderflow. Then where the hedge lands (ES/NQ) and when the clock family changes.
+GEX is a stack of “this much extra hedging might appear if price moves,” by level. Classic draws it from last night’s leftover contracts and from today’s trading, **without** an owner. State and Orderflow draw **leftover labeled trades** from today. Quant is the live pipe. Research is a sibling product this book does not sit.
+
+Sit Classic next. That is where call, put, strike, and gamma become words you can use, because that is the screen that needs them.
 
 ## Terms introduced
 
@@ -75,23 +163,23 @@ Sit Classic first (unsigned map). Then the engine that upgrades it. Then State a
 
 ## Newcomer questions
 
-1. **Is Classic “the GEX map” people tweet?** It is the closest Gexbot cousin. Ownership is still unknown.
-2. **Does State tell me who will buy ES next?** It names leftover paper. The initial delta hedge is mostly already done. Pending flow lives on gamma and on the clock.
-3. **Can I skip to Orderflow?** Not if you cannot say why Classic ≠ State.
+1. **Is Classic “the GEX map” people post online?** It is the closest Gexbot cousin. You still cannot see who owns the pile.
+2. **Does State tell me the next ES buyer?** It names leftover option paper. Who hedges, when, and in which size is a later chapter — and even then, inferred, never a futures print you can circle.
+3. **Can I skip to Orderflow?** Not until you can say, in a sentence, why Classic’s pile and State’s leftover are not the same object.
 
 <CheckYourself
   items={[
     {
-      q: 'Which plan can honestly fill WhoMustAct with “unknown”?',
-      a: 'Classic. State and Orderflow report a customer sign on the leftover.',
+      q: 'In one sentence, what does “unsigned” mean on Classic?',
+      a: 'You can see where the GEX pile sits (from last night’s leftover contracts and/or today’s trading) and you cannot see who is long or short the options.',
     },
     {
-      q: 'What capability do State and Orderflow share that Classic does not?',
-      a: 'The classification engine (customer long vs customer short on residual).',
+      q: 'What do State and Orderflow use that Classic does not?',
+      a: 'The leftover-and-label machinery: aggressive option buys versus sells, after matched trades cancel. This book calls that the classification engine. Chapter 3 teaches it.',
     },
   ]}
 />
 
 ## Gate
 
-Next: [Classic](/docs/plans/02-classic) — the unsigned map, and the schoolbook words that map needs.
+Next: [Classic](/docs/plans/02-classic). You will sit the unsigned map, and you will learn call, put, strike, and gamma *because that screen is drawn from them*.
