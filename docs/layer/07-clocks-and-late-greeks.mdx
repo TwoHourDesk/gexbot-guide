@@ -20,7 +20,7 @@ import DealerHedgeSim from '@site/src/components/charts/DealerHedgeSim';
 
 **What you will be able to do.** Pick a legal claim for a clock window, and read last-hour leftover as clock-forced re-hedge — hedge-chain link 5 — with the index unchanged.
 
-**What you already need.** Hedge-chain links 5 and 6 from [Chapter 3](/docs/plans/03-classification), and conversion from [Chapter 6](/docs/layer/06-nq-es-layer). Do not start here for a morning tape.
+**What you already need.** Hedge-chain links 5 and 6 from [Chapter 3](/docs/plans/03-classification), and the Nasdaq family plus conversion from [Chapter 6](/docs/layer/06-nq-es-layer). Do not start here for a morning tape.
 
 ## Clock families
 
@@ -130,17 +130,13 @@ Use the hours-left slider with the index fixed: that is clock re-hedge (link 5),
 
 Hedge-chain **link 6** is resolution: the contract expires.
 
-**SPX** options are **European** (you cannot exercise early) and **cash-settled** (no shares change hands). Daily expiries settle in the afternoon (**PM settlement**).
+[Chapter 6](/docs/layer/06-nq-es-layer) already named the Nasdaq pair: NDX options are European and cash-settled; QQQ options are American and physically settled.
 
-**SPY** options are **American** (early exercise is allowed) and **physically settled** (shares can be delivered).
+The S&P pair is the same shape. **SPX** options are European and cash-settled. Daily SPX expiries settle in the afternoon (**PM settlement**). **SPY** options are American and physically settled.
 
-Do not copy an SPX 0DTE resolution story onto SPY without saying so. Gexbot shows none of link 6 directly.
+Do not copy an SPX 0DTE resolution story onto SPY — or an NDX story onto QQQ — without saying so. Gexbot shows none of link 6 directly.
 
 <TermFirst id="settlement" />
-<TermFirst id="european-style" />
-<TermFirst id="american-style" />
-<TermFirst id="cash-settled" />
-<TermFirst id="physically-settled" />
 <TermFirst id="pm-settlement" />
 
 ## Running example at 15:30

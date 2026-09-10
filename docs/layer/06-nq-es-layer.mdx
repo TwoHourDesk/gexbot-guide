@@ -1,5 +1,5 @@
 ---
-title: "6. NQ and ES as an information layer"
+title: "6. NQ and the Nasdaq family"
 ---
 
 import NeededForThisScreen from '@site/src/components/textbook/NeededForThisScreen';
@@ -10,68 +10,212 @@ import DistinguishingNote from '@site/src/components/textbook/DistinguishingNote
 import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
 import CheckYourself from '@site/src/components/textbook/CheckYourself';
 import ConversionMap from '@site/src/components/charts/ConversionMap';
+import NasdaqFamily from '@site/src/components/charts/NasdaqFamily';
 
-# NQ and ES as an information layer
+# NQ and the Nasdaq family
 
-**Which Gexbot capability this is.** Stretching index-option leftover onto the futures chart you already sit.
+**Which Gexbot capability this is.** Sitting leftover Nasdaq-100 index options beside the NQ chart you already sit. Gexbot’s name for that picture is **NQ_NDX**.
 
-**What you will be able to do.** Say where the option print happened, where the inferred hedge *may* land, and what you may claim next to an ES or NQ tape.
+**What you will be able to do.** Name the three Nasdaq contracts, place a broker quote on the same basket relative to them, say who uses each and why, say what leftover is on this picture, walk the NQ_NDX stretch in numbers, and say why the inferred hedge — if it happens — is most likely to land in NQ.
 
-**What you already need.** The three Orderflow meters, the 2×2, and the hedge chain. Chapter 1 already warned: a Gexbot picture “on ES” is usually still looking at cash-index options.
+**What you already need.** Leftover, share-equivalent, and the hedge chain from [Classification](/docs/plans/03-classification). The three Orderflow meters. Chapter 1 already warned: a Gexbot picture “on NQ” is usually still looking at cash-index options.
 
-## The print is not on the futures exchange
+This chapter is written for the NQ seat. The S&P cousins (SPX, SPY, ES) wait until a short mapping table after the Nasdaq family is taught.
 
-**ES** is the CME’s E-mini future on the S&P 500. **NQ** is the CME’s E-mini future on the Nasdaq-100. **CME** is the futures exchange where those contracts trade.
+## You already sit NQ
 
-Gexbot’s live leftover is built from **index options** — mainly **SPX** (S&P 500 cash index) and **NDX** (Nasdaq-100 cash index). It then stretches those strikes onto ES or NQ with a **multiplier**. This book calls that stretch **conversion**.
+The chart this book assumes you already know how to follow is **NQ**. NQ is a futures contract on the Nasdaq-100: one ticket that tracks that basket, almost around the clock.
 
-The hedge *may* land in ES or NQ. The print did **not** happen there. Converted leftover is not CME volume and not a futures aggressor tape.
+It trades on a futures exchange. The exchange’s name is **CME**. CME lists and clears the contract. Nasdaq publishes the list NQ tracks. CME does not own that list.
 
-Gexbot’s names for the converted pictures are **ES_SPX** and **NQ_NDX**. Those API names wait until this chapter because this is the chapter that owns them.
+One NQ is worth **$20** for each one-point move. If the last goes from 20,000 to 20,001, one contract is worth twenty dollars more. If it goes the other way, twenty dollars less. That dollar size is what later lets this chapter stretch leftover index options onto the same ruler as your chart.
 
-<TermFirst id="es-future" />
+You cannot buy “the Nasdaq-100” as a single stock. NQ is one way professionals take that basket in size, in one ticket, almost around the clock.
+
 <TermFirst id="nq-future" />
 <TermFirst id="cme" />
-<TermFirst id="ndx" />
-<TermFirst id="conversion" />
 
-<NeededForThisScreen
-  title="Needed to convert a print"
-  ids={['spx-multiplier', 'ndx-multiplier']}
+## One basket, three contracts
+
+The Nasdaq-100 is a list of large non-financial names listed on Nasdaq. Three different contracts point at that same list. They move together. They are not interchangeable prints.
+
+The list, turned into a single published number, is the **cash index**. “Cash” here means the live index — not the NQ future, and not a pile of dollars. That number is **NDX**. You cannot buy NDX. It is a scoreboard.
+
+You can still trade **options on NDX**: a right, not an obligation, at a strike you choose. Chapter 1 named that family **index options**. This chapter owns the Nasdaq member.
+
+The option does not deliver the 100 stocks. At expiry, if it is in the money, the exchange pays — or collects — **dollars** for how far the NDX number sits from the strike. Picture a 20,000 call. NDX finishes at 20,100. Nobody receives Apple or Microsoft. The exchange pays for that 100-point gap.
+
+<TermFirst id="ndx" />
+
+A fund that *holds* those stocks, so you can buy the basket as ordinary shares, is **QQQ**. A company named **Invesco** runs that fund. You can buy the shares in an ordinary brokerage account. The usual name for that kind of fund is an **exchange-traded fund**, or **ETF**.
+
+Invesco does not own the Nasdaq-100 list. Nasdaq publishes the list. Invesco’s fund is built to track it.
+
+Options on QQQ, if exercised, can deliver QQQ shares. That is a different contract from an NDX option.
+
+<TermFirst id="etf" />
+<TermFirst id="qqq" />
+
+NQ is the future you chart. It tracks NDX, not QQQ. QQQ, NDX, and NQ stay glued in *direction*. A print on one is not a print on the others.
+
+<NasdaqFamily />
+
+Some readers sit a broker quote that tracks the same basket, not NQ itself. You agree with the broker to pay — or be paid — the *difference* as the Nasdaq-100 number moves. You do not own the stocks, QQQ, or an NQ contract. This book calls that an **index CFD** (contract for difference).
+
+The quote is glued to NDX and NQ in direction. It is not a CME print. Brokers write their own letters on the chart. **NAS100** and **US100** are common.
+
+Gexbot does not draw leftover CFDs. NQ_NDX is still leftover NDX options. Sit that picture *beside* the CFD the same way this chapter sits it beside NQ. Your broker may hedge *your* CFD in NQ. That is a different sentence from the option-dealer hedge, and it is still **inferred**. Never “this CFD tick is the dealer.”
+
+<TermFirst id="index-cfd" />
+
+<DistinguishingNote
+  cousin="Index CFDs (NAS100 / US100 and cousins)"
+  cut="A broker quote on the same basket. Not CME NQ. Not leftover NDX options."
+  doNotImport="CFD volume or the broker last as if they were NQ tape or a Gexbot node."
 />
 
-<GexbotConcept id="es-spx" />
-<WhoMustAct id="es-spx" />
+## Who trades which, and why
+
+**NQ** is your tape: futures traders, prop desks, and futures funds. It is also the venue options dealers most often use when they need Nasdaq-100 exposure in size. One ticket. A deep book. Hours that continue when the stock market is closed.
+
+**NDX options** are a large-ticket, institutional book. At expiry they settle the way this section already pictured: dollars for how far NDX sits from the strike. No one receives the 100 stocks. This book calls that **cash-settled**. You can exercise them only at expiry. The schoolbook name is **European**. A single NDX contract is $100 per index point, so one at-the-money contract is a large dollar claim. That is why the book is **thinner** than the S&P’s SPX book: fewer contracts, easier to move, fewer retail tickets.
+
+<TermFirst id="cash-settled" />
+<TermFirst id="european-style" />
+<TermFirst id="thinner-book" />
+
+**QQQ** is how a fund or a smaller account owns the basket without futures. **QQQ options** can deliver the shares. This book calls that **physically settled**. They may be exercised before expiry. The schoolbook name is **American**. The share price is much smaller than the NDX number, so one QQQ option is a much smaller ticket. That book is busier and more retail. It is not the leftover NQ_NDX draws.
+
+<TermFirst id="physically-settled" />
+<TermFirst id="american-style" />
+
+A dealer hedging an NDX option is usually not reaching for QQQ first. A dealer hedging a QQQ option may use QQQ shares, or NQ as a substitute. Do not fold those two books into one picture.
+
+That QQQ-option dealer is the same job Chapter 3 named: a professional who stands in the middle and usually keeps the book near flat. The offset is still **inferred**. Gexbot never prints it. NQ_NDX does not draw that leftover.
+
+Invesco is not that person. Invesco runs the fund. The QQQ-option dealer stands in a different market: rights on Invesco’s shares.
+
+When that dealer hedges, they often buy or sell those same shares. When the option is exercised, those shares can change hands. Invesco still does not take the other side of the option, and it does not hedge the leftover.
+
+## What leftover is on this picture
+
+Chapter 1 named leftover. Chapter 3 named it **residual** once buys and sells of the *same* contract cancel.
+
+On NQ_NDX the contract being watched is an **NDX option**, during U.S. cash regular hours.
+
+[Classification](/docs/plans/03-classification) already named the two posted prices. A resting buyer will pay the **bid**. A resting seller will take the **ask** — also called the **offer**. The gap between them is the **spread**.
+
+Someone has to step across that gap for a trade to print. If they pay the offer, they **lifted the offer**. They bought the NDX option. Picture a 20,000 NDX call offered at 12.00. Someone pays 12.00. That is a lift.
+
+If they sell at the bid, they **hit the bid**. They sold the NDX option. Same call, bid 11.60. Someone sells at 11.60. That is a hit.
+
+This book calls the person who crossed the **aggressor**. Gexbot labels an aggressive buy **customer long** and an aggressive sell **customer short**. “Customer” is a label, not “a retail trader,” and not “they just put on a new long.”
+
+A buy and a sell only cancel if they are the *same* NDX contract: the same strike, and the same kind — call or put. [State](/docs/plans/04-state) called that kind a **right**. A lift of the 20,000 NDX call cancels a hit of the 20,000 NDX call. It does not cancel a 20,000 NDX put.
+
+What remains after those matched trades cancel is the leftover. Two-way NDX volume can be huge while that leftover is tiny.
+
+That leftover is what State and Orderflow draw. Classic on this ticker still draws unsigned gamma from last night’s NDX open interest and from today’s NDX volume. None of those pictures is NQ volume. None is leftover QQQ options.
+
+<NeededForThisScreen
+  title="Needed to read leftover on NQ_NDX — collapse if you already own these words"
+  ids={['leftover', 'residual', 'share-equivalent', 'hedge', 'index-options', 'bid', 'ask', 'aggressor', 'customer-long', 'customer-short', 'per-right']}
+/>
 
 <GexbotConcept id="nq-ndx" />
-<WhoMustAct id="nq-ndx" />
+<WhoMustAct screenId="nq-ndx" />
+
+## How NQ_NDX is calculated
+
+Gexbot does not publish a private source-code formula. What follows is the **market-general** stretch this book will own, plus the one extra slide Gexbot’s public futures notes mention. Do not treat the toy arithmetic as a locked Gexbot constant.
+
+**Step 1 — the print is NDX.** An NDX option trades. Gexbot signs the aggressor. Matched same-contract trades cancel. Leftover remains at that NDX strike.
+
+**Step 2 — weight the leftover on NDX.** The schoolbook numbers you already have — how stock-like the leftover is (**delta**), how fast that stock-ness changes (**gamma**) — are computed against **NDX spot** and **NDX strikes**. One NDX option is **$100 per NDX point**. Size times delta times $100 is the leftover **share-equivalent** in dollars per index point.
+
+**Step 3 — stretch dollars onto NQ.** One NQ is $20 per point, and NQ is quoted in the same index points as NDX (almost). Divide the dollar share-equivalent by $20. That is how many NQ the leftover *represents*.
+
+One at-the-money NDX option (delta about 0.50) is $50 per NDX point. $50 / $20 = **2.5 NQ**. That is the **NDX multiplier** this book uses as a toy: **one ATM NDX option ≈ 2.5 NQ**.
+
+<TermFirst id="ndx-multiplier" />
+
+**Step 4 — draw the ladder on an NQ ruler.** The leftover piles are still NDX leftover. The strike numbers are those NDX levels placed on an NQ-scale ruler so you can sit the picture beside NQ. This book calls that stretch **conversion**.
+
+The live NDX level is **spot**. The marker through the ladder is the **price line**. It is a “you are here,” not a wall and not a forecast. On NQ_NDX that line is NDX spot on the same NQ-scale ruler.
+
+<TermFirst id="conversion" />
+<TermFirst id="spot" />
+<TermFirst id="price-line" />
+
+NQ and NDX are glued, not identical. The small gap between the cash-index number and the futures last is the **basis**. Gexbot’s public NinjaTrader notes say the API can also send an **additive offset** with the multiplier, so the converted line can sit nearer the futures. This book does not claim Gexbot’s private offset equation. The market-general stretch is $100 / $20. An offset, if applied, only slides the ruler.
+
+<TermFirst id="basis" />
+
+**What is not in the calculation.** Not CME NQ lots. Not who lifted NQ. Not leftover QQQ options. Not whether the customer already sold NQ against the option. Not open versus close.
 
 <ConversionMap />
 
 <DistinguishingNote
   cousin="Futures-native gamma products"
-  cut="Gexbot converts index options. It does not compute gamma on CME ES or NQ lots."
+  cut="Gexbot converts leftover NDX options onto NQ. It does not compute gamma on CME NQ lots."
   doNotImport="Pre-drawn futures levels, or treating converted walls as exchange volume."
 />
 
-## The multipliers (*market-general*)
+## Why the inferred hedge is most likely to land in NQ
 
-One SPX option is $100 per index point. One ES future is $50 per point. So **one ATM SPX option is about one ES** of delta. That is the **SPX multiplier** this book uses as a toy.
+A professional who absorbed leftover NDX options now has Nasdaq-100 *delta*: they are accidentally long or short the basket. Their book is usually run **delta-neutral**, so they offset that exposure. That offset is the **hedge**. Gexbot never prints it. The sentence is always **inferred**.
 
-One NDX option is $100 per index point. One NQ future is $20 per point. So **one ATM NDX option is about 2.5 NQ**. That is the **NDX multiplier**.
+They cannot buy NDX. It is a number. Three practical doors exist.
 
+**The 100 stocks.** Buy or sell every name. Many tickets, slow, expensive. Used when someone needs the exact basket. Not the usual reflex for a 0DTE leftover print.
+
+**QQQ.** Works. You need a large share clip to match one NDX contract, and shorting the fund needs shares to borrow. Some books use it, especially for smaller QQQ-option risk. It is not the first door for large NDX delta.
+
+**NQ.** One ticket (or a few). Deepest Nasdaq-100 futures book. Almost twenty-four hours. The same point scale as NDX. That is why dealers who must move Nasdaq-100 risk in size usually reach for NQ. This book therefore says: the inferred hedge, *if it happens*, is the one most likely to land in NQ.
+
+“If it happens” is doing real work.
+
+- The absorber may have been another customer. Leftover cancelled. Pressure: **none**. No hedge from *this* tape.
+- The customer may already have sold (or bought) NQ against the option. Chapter 3 called that a **self-hedge**. Two hedgers can cancel net forced flow. Gexbot cannot see this.
+- Professionals hedge in **bands**, not tick by tick. Location and direction can be real; the second and the exact size are not on the screen.
+- They might still use QQQ or a stock basket. “Most likely NQ” is not “this NQ print is the dealer.”
+
+<TermFirst id="conversion-limit" />
+
+**Observed:** a Gexbot leftover node at a converted strike.
+
+**Inferred:** a dealer hedge *may* land in NQ in that share-equivalent.
+
+**Never:** “that NQ print *is* the dealer hedge.” You cannot identify it.
+
+## The S&P cousins (a recap table, not a first introduction)
+
+You already have SPX from Classic and SPY from Orderflow. The S&P cousin of NQ is **ES**: same kind of futures contract, on the S&P 500, also on CME. One ES is worth **$50** for each one-point move. Gexbot’s name for converted SPX leftover is **ES_SPX**.
+
+<TermFirst id="es-future" />
 <TermFirst id="spx-multiplier" />
-<TermFirst id="ndx-multiplier" />
 
-NDX options are a **thinner book** than SPX: fewer contracts, easier to move. Treat NQ reads as weaker evidence (*inferred*).
+<GexbotConcept id="es-spx" />
+<WhoMustAct screenId="es-spx" />
 
-<TermFirst id="thinner-book" />
+This table only **repeats** names this book has already taught.
+
+| What it is | S&P 500 | Nasdaq-100 |
+|---|---|---|
+| Cash index (a number) | SPX | NDX |
+| Fund you can buy | SPY | QQQ |
+| Futures you chart | ES | NQ |
+| Gexbot leftover source | SPX options | NDX options |
+| Gexbot converted picture | ES_SPX | NQ_NDX |
+| Toy ATM stretch | 1 SPX ≈ 1 ES | 1 NDX ≈ 2.5 NQ |
+
+NDX options are a thinner book than SPX. Treat an NQ read as weaker evidence (*inferred*).
 
 ## Today’s expiry, the next one, and the ninety-day mix
 
 State and Orderflow can draw leftover from three **expiry groups**. This chapter names them.
 
-**Latest** (also called **zero**) is the nearest expiry. On a 0DTE day, that is today. Intraday ES or NQ “walls” that matter for the open are usually this group.
+**Latest** (also called **zero**) is the nearest expiry. On a 0DTE day, that is today. Intraday NQ “walls” that matter for the open are usually this group.
 
 **Next** (also called **one**) is the following expiry. Use it when latest is dead, or when you are studying the **roll** — the handoff from this expiry to the next.
 
@@ -86,38 +230,28 @@ State and Orderflow can draw leftover from three **expiry groups**. This chapter
 
 <TermFirst id="roll" />
 
-## What you may claim next to a futures tape
-
-**Observed:** a Gexbot leftover node at a converted strike.
-
-**Inferred:** a dealer hedge *may* land in ES or NQ in that share-equivalent.
-
-**Never:** “that ES print *is* the dealer hedge.” You cannot identify it.
-
-This book’s **conversion limit**: the information layer sits *beside* NQ and ES. The option residual is not the futures tape. Conversion is a multiplier, not aggressor truth.
-
-<TermFirst id="conversion-limit" />
-
 ## Transfer rules
 
 A **transfer rule** is whether a sentence that is true (or folkloric) on one instrument may be copied onto another.
 
 - SPX docs folklore (plus GEX orderflow as a local top in a quiet short-gamma tape) does **not** automatically apply to NQ. Rename the claim if you use it.
-- SPY is described as more directional than SPX. ES is converted SPX, not SPY.
+- SPY is described as more directional than SPX. ES is converted SPX, not SPY. QQQ is the Nasdaq cousin of SPY, not a substitute for NQ_NDX.
 - When VIX is above 20, docs say SPX starts trading like SPY (*folklore*). That sentence is still an SPX sentence.
 
 <TermFirst id="transfer-rule" />
 
 ## Running example
 
-Same 500 ATM contracts, delta 0.50, $25,000 per point.
+Same 500 at-the-money contracts, delta 0.50, $25,000 per point.
 
-- If they are **SPX** calls: about **500 ES**. Print is SPX; inferred hedge venue is ES.
 - If they are **NDX** calls: $25,000 / $20 ≈ **1,250 NQ**. Print is NDX; inferred hedge venue is NQ. One ATM NDX ≈ 2.5 NQ.
+- If they are **SPX** calls: about **500 ES**. Print is SPX; inferred hedge venue is ES.
+
+The 500-contract Classic bar is still unsigned. The stretch does not name the owner.
 
 ## Summary
 
-The information layer sits beside NQ and ES. The option leftover is not the futures tape. Latest is the usual open lens. Full is overnight context. NQ evidence is weaker because NDX is thinner.
+You sit NQ. NDX is the cash index, QQQ is the fund, NQ is the future. An index CFD is a broker quote on the same basket — sit NQ_NDX beside it the same way. NQ_NDX is leftover NDX options, weighted on NDX, stretched onto NQ by $100 / $20. Leftover is what remains after matched NDX trades cancel — not NQ volume, not QQQ, not a CFD tape. The inferred hedge, if it happens, is most likely NQ because that is the practical door for large Nasdaq-100 delta. Latest is the usual open lens. Full is overnight context. NQ evidence is weaker because NDX is thinner.
 
 ## Terms introduced
 
@@ -125,15 +259,21 @@ The information layer sits beside NQ and ES. The option leftover is not the futu
 
 ## Newcomer questions
 
-1. **Does Gexbot show ES volume?** No. ES_SPX is converted SPX options.
-2. **Is one SPX option one ES?** ATM, as a toy: one ATM SPX ≈ one ES of delta (*market-general*).
+1. **Does Gexbot show NQ volume?** No. NQ_NDX is converted leftover NDX options.
+2. **Is one NDX option one NQ?** ATM, as a toy: one ATM NDX ≈ 2.5 NQ of delta (*market-general*).
 3. **Can I copy an SPX local-top read onto NQ?** Only if you rename the claim. NDX is thinner (*inferred*).
+4. **Why isn’t the hedge in QQQ?** It can be. For large NDX leftover, NQ is the usual door: one ticket, deep book, same point scale. Still inferred. Never “that NQ print is the dealer.”
+5. **I sit NAS100, not NQ. Wrong chapter?** Same basket. Sit NQ_NDX beside the CFD. The leftover is still NDX options. The CFD last is not the Gexbot node.
 
 <CheckYourself
   items={[
     {
       q: 'Where did the print happen versus where the hedge lands for NQ_NDX?',
-      a: 'Print: NDX options. Inferred hedge venue: NQ. Not CME aggressor truth.',
+      a: 'Print: NDX options. Inferred hedge venue: NQ, because that is the practical door for large Nasdaq-100 delta. Not CME aggressor truth.',
+    },
+    {
+      q: 'What leftover does NQ_NDX draw?',
+      a: 'Leftover NDX option trades so far today, after matched buys and sells of the same contract cancel. Not NQ volume. Not leftover QQQ options.',
     },
     {
       q: 'Full-book zero gamma as an NQ open scalp?',

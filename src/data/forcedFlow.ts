@@ -96,6 +96,32 @@ export const ledgerRows: LedgerRow[] = [
     pressure: 'mandate',
   },
   {
+    id: 'nq-ndx',
+    screen: 'NQ_NDX (converted leftover)',
+    shows:
+      'Leftover NDX options, weighted on NDX, stretched onto NQ by the $100-to-$20 multiplier.',
+    whoActs:
+      'Dealer on the NDX leftover · mandate · inferred hedge most likely in NQ.',
+    trigger: 'The NDX print; then the NDX path',
+    hedgeVenue: 'NQ (inferred, most likely)',
+    notShown: 'The NQ hedge print; leftover QQQ; whether they used QQQ or a stock basket; self-hedge',
+    chapter: 'layer/06-nq-es-layer',
+    pressure: 'mandate',
+  },
+  {
+    id: 'es-spx',
+    screen: 'ES_SPX (converted leftover)',
+    shows:
+      'Leftover SPX options stretched onto ES by a multiplier. The S&P cousin of NQ_NDX.',
+    whoActs:
+      'Dealer on the SPX leftover · mandate · inferred hedge most likely in ES.',
+    trigger: 'The SPX print; then the SPX path',
+    hedgeVenue: 'ES (inferred, most likely)',
+    notShown: 'The ES hedge print; leftover SPY; self-hedge',
+    chapter: 'layer/06-nq-es-layer',
+    pressure: 'mandate',
+  },
+  {
     id: 'vanna-charm',
     screen: '−vanna / charm ladders (beta)',
     shows:

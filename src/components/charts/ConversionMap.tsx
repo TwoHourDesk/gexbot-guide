@@ -40,15 +40,15 @@ export default function ConversionMap(): JSX.Element {
           {n} × {delta.toFixed(2)} × $100 = <strong>${dollarPerPt.toLocaleString()}</strong> per
           index point
         </dd>
-        <dt>If the option is SPX</dt>
-        <dd>
-          Gexbot ticker <code>ES_SPX</code>. Inferred hedge venue ES ($50/pt) ≈{' '}
-          <strong>{es.toFixed(0)} ES</strong>. Rule of thumb: 1 ATM SPX ≈ 1 ES.
-        </dd>
-        <dt>If the option is NDX</dt>
+        <dt>If the option is NDX (your default)</dt>
         <dd>
           Gexbot ticker <code>NQ_NDX</code>. Inferred hedge venue NQ ($20/pt) ≈{' '}
           <strong>{nq.toFixed(0)} NQ</strong>. Rule of thumb: 1 ATM NDX ≈ 2.5 NQ.
+        </dd>
+        <dt>If the option is SPX (the S&P cousin)</dt>
+        <dd>
+          Gexbot ticker <code>ES_SPX</code>. Inferred hedge venue ES ($50/pt) ≈{' '}
+          <strong>{es.toFixed(0)} ES</strong>. Rule of thumb: 1 ATM SPX ≈ 1 ES.
         </dd>
       </dl>
       <p>

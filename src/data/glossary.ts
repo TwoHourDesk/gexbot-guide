@@ -133,6 +133,7 @@ export const glossary: GlossaryEntry[] = [
     headword: 'bid',
     shortDef: 'The price a resting buyer will pay. Hitting the bid is a sell.',
     firstDefinedIn: 'plans/03-classification',
+    alsoAppears: ['layer/06-nq-es-layer'],
     seeAlso: ['ask', 'aggressor'],
     kind: 'options',
     neededForPlan: 'Classification',
@@ -143,6 +144,7 @@ export const glossary: GlossaryEntry[] = [
     aliases: ['offer'],
     shortDef: 'The price a resting seller will take. Lifting the offer is a buy.',
     firstDefinedIn: 'plans/03-classification',
+    alsoAppears: ['layer/06-nq-es-layer'],
     seeAlso: ['bid', 'aggressor'],
     kind: 'options',
     neededForPlan: 'Classification',
@@ -332,6 +334,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'The side that crossed the spread — lifted the offer or hit the bid. Gexbot labels that side customer long or customer short.',
     firstDefinedIn: 'plans/03-classification',
+    alsoAppears: ['layer/06-nq-es-layer'],
     unit: 'Trade sign',
     notCounted: 'Resting inventory; overnight OI',
     nearestCousin: 'Futures aggressor / uptick tape',
@@ -347,6 +350,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Gexbot’s label for an aggressive buy of the option. Buying to close a short looks the same.',
     firstDefinedIn: 'plans/03-classification',
+    alsoAppears: ['layer/06-nq-es-layer'],
     unit: 'Signed leftover after residual',
     notCounted: 'Intent to open vs close',
     nearestCousin: '“They bought calls” on a flow tape',
@@ -361,6 +365,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Gexbot’s label for an aggressive sell of the option. Selling to close a long looks the same.',
     firstDefinedIn: 'plans/03-classification',
+    alsoAppears: ['layer/06-nq-es-layer'],
     kind: 'gexbot',
     seeAlso: ['customer-long', 'open-vs-close'],
   },
@@ -371,6 +376,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'After same-contract customer buys and sells net out, only the leftover remains. The chart is the needle, not the tape width.',
     firstDefinedIn: 'plans/03-classification',
+    alsoAppears: ['layer/06-nq-es-layer'],
     unit: 'Σ signed prints of the same contract',
     notCounted: 'Two-way volume that cancelled; percent of total OI (not stated)',
     nearestCousin: 'Raw options volume histograms',
@@ -736,13 +742,19 @@ export const glossary: GlossaryEntry[] = [
     headword: 'ES_SPX',
     aliases: ['ES on Gexbot'],
     shortDef:
-      'SPX options converted onto ES by a multiplier. Not CME volume. Not futures aggressor truth. The hedge may land in ES; the print did not happen there.',
+      'Leftover SPX options stretched onto ES by a multiplier. Not CME volume. The hedge may land in ES; the print did not happen there.',
     firstDefinedIn: 'layer/06-nq-es-layer',
-    unit: 'Converted index-option residual',
+    unit: 'Converted index-option leftover',
     notCounted: 'CME ES lots; pit/electronic aggressor',
     nearestCousin: 'Futures-native gamma products',
-    distinguishingCut: 'Multiplier conversion of SPX options.',
+    distinguishingCut: 'Multiplier conversion of leftover SPX options.',
     importMistake: 'Folding these prints into an esnqfeed volume claim.',
+    pressure: 'mandate',
+    actor: 'Dealer on the SPX leftover (inferred)',
+    trigger: 'The SPX print; then the SPX path',
+    hedgeVenue: 'ES (inferred, most likely)',
+    liquidityRole: 'Inferred. Never a labeled ES print.',
+    notShown: 'The hedge itself; SPY leftover; customer self-hedge',
     kind: 'gexbot',
   },
   {
@@ -750,13 +762,19 @@ export const glossary: GlossaryEntry[] = [
     headword: 'NQ_NDX',
     aliases: ['NQ on Gexbot'],
     shortDef:
-      'NDX options converted onto NQ by a multiplier. NDX is a thinner book than SPX; treat NQ reads as weaker evidence (inferred).',
+      'Leftover NDX options, weighted on NDX, stretched onto NQ by the $100-to-$20 multiplier (1 ATM NDX ≈ 2.5 NQ). Not CME volume. Not leftover QQQ. NDX is thinner than SPX (inferred).',
     firstDefinedIn: 'layer/06-nq-es-layer',
-    unit: 'Converted index-option residual',
-    notCounted: 'CME NQ lots',
+    unit: 'Converted index-option leftover',
+    notCounted: 'CME NQ lots; QQQ leftover',
     nearestCousin: 'Futures-native NQ gamma',
-    distinguishingCut: 'Multiplier conversion of NDX options.',
+    distinguishingCut: 'Multiplier conversion of leftover NDX options.',
     importMistake: 'Copying SPX “+GEX OF = local top” folklore onto NQ without renaming the claim.',
+    pressure: 'mandate',
+    actor: 'Dealer on the NDX leftover (inferred)',
+    trigger: 'The NDX print; then the NDX path',
+    hedgeVenue: 'NQ (inferred, most likely)',
+    liquidityRole: 'Inferred. Never a labeled NQ print.',
+    notShown: 'The hedge itself; QQQ or stock-basket hedges; customer self-hedge',
     kind: 'gexbot',
   },
   {
@@ -985,7 +1003,7 @@ export const glossary: GlossaryEntry[] = [
     id: 'settlement',
     headword: 'settlement style',
     shortDef:
-      'SPX options are European and cash-settled (PM for daily expiries). SPY options are American and physically settled. Do not transfer 0DTE resolution without saying so. Market-general.',
+      'How the contract dies. NDX and SPX options are European and cash-settled (SPX daily expiries are PM). QQQ and SPY options are American and physically settled. Do not transfer 0DTE resolution without saying so. Market-general.',
     firstDefinedIn: 'layer/07-clocks-and-late-greeks',
     kind: 'market-general',
   },
@@ -1033,6 +1051,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'A trade in the index or futures meant to offset option risk. Gexbot never shows the hedge print itself. Inferred, never observed on the tape.',
     firstDefinedIn: 'plans/03-classification',
+    alsoAppears: ['layer/06-nq-es-layer'],
     kind: 'market-general',
   },
   {
@@ -1162,16 +1181,47 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'The S&P 500 ETF. Docs treat its options as more directional than SPX. Physically settled and American. Do not copy SPX 0DTE resolution onto SPY without saying so.',
     firstDefinedIn: 'plans/05-orderflow',
-    alsoAppears: ['layer/07-clocks-and-late-greeks'],
+    alsoAppears: ['layer/06-nq-es-layer', 'layer/07-clocks-and-late-greeks'],
     kind: 'market-general',
   },
   {
     id: 'ndx',
     headword: 'NDX',
+    aliases: ['Nasdaq-100'],
     shortDef:
-      'The Nasdaq-100 cash index. NQ on Gexbot is usually converted NDX options. Thinner book than SPX — treat NQ reads as weaker evidence (inferred).',
+      'The Nasdaq-100 cash index — a number. You cannot buy it. NQ_NDX leftover is built from options on this number. Thinner book than SPX — treat NQ reads as weaker evidence (inferred).',
     firstDefinedIn: 'layer/06-nq-es-layer',
-    seeAlso: ['nq-ndx'],
+    seeAlso: ['nq-ndx', 'qqq', 'nq-future'],
+    kind: 'market-general',
+  },
+  {
+    id: 'etf',
+    headword: 'ETF',
+    aliases: ['exchange-traded fund'],
+    shortDef:
+      'A fund you can buy as shares that holds a basket of stocks. QQQ is the Nasdaq-100 ETF. SPY is the S&P 500 ETF.',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    seeAlso: ['qqq', 'spy'],
+    kind: 'market-general',
+  },
+  {
+    id: 'qqq',
+    headword: 'QQQ',
+    aliases: ['Invesco QQQ'],
+    shortDef:
+      'The Nasdaq-100 ETF, run by Invesco. You can buy the shares. Its options can deliver those shares. A different pile from NDX leftover. Not what NQ_NDX draws.',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    seeAlso: ['ndx', 'etf', 'nq-future', 'physically-settled'],
+    kind: 'market-general',
+  },
+  {
+    id: 'index-cfd',
+    headword: 'index CFD',
+    aliases: ['CFD', 'contract for difference', 'NAS100', 'US100'],
+    shortDef:
+      'A broker contract that pays the difference as a Nasdaq-100 (or S&P) number moves. Not CME. Not leftover. Sit NQ_NDX beside it the same way you sit it beside NQ. The inferred option hedge still lands in NQ (inferred).',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    seeAlso: ['nq-future', 'ndx', 'conversion-limit', 'basis'],
     kind: 'market-general',
   },
   {
@@ -1312,7 +1362,7 @@ export const glossary: GlossaryEntry[] = [
     id: 'cme',
     headword: 'CME',
     shortDef:
-      'The futures exchange where ES and NQ trade. Gexbot’s ES/NQ picture is not CME volume and not CME aggressor truth.',
+      'The futures exchange that lists ES and NQ. Nasdaq publishes the Nasdaq-100 list NQ tracks; CME does not own that list. Gexbot’s ES/NQ picture is not CME volume and not CME aggressor truth.',
     firstDefinedIn: 'layer/06-nq-es-layer',
     kind: 'market-general',
   },
@@ -1410,7 +1460,12 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'What remains after matched buys and sells of the same option contract cancel. Two-way trading can be huge while leftover is tiny. Gexbot’s name on later screens is residual.',
     firstDefinedIn: 'plans/01-what-gexbot-is',
-    alsoAppears: ['plans/03-classification', 'plans/04-state', 'plans/05-orderflow'],
+    alsoAppears: [
+      'plans/03-classification',
+      'plans/04-state',
+      'plans/05-orderflow',
+      'layer/06-nq-es-layer',
+    ],
     seeAlso: ['residual', 'classification-engine'],
     kind: 'gexbot',
   },
@@ -1421,7 +1476,7 @@ export const glossary: GlossaryEntry[] = [
       'Option contracts on a cash index (SPX, NDX), not on the ES or NQ future itself. Gexbot’s live leftover is built from these.',
     firstDefinedIn: 'plans/01-what-gexbot-is',
     alsoAppears: ['layer/06-nq-es-layer'],
-    seeAlso: ['spx', 'ndx', 'conversion'],
+    seeAlso: ['spx', 'ndx', 'qqq', 'conversion'],
     kind: 'market-general',
   },
   {
@@ -1459,6 +1514,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'The gap between the bid and the ask. The aggressor is the side that stepped across it.',
     firstDefinedIn: 'plans/03-classification',
+    alsoAppears: ['layer/06-nq-es-layer'],
     seeAlso: ['bid', 'ask', 'aggressor'],
     kind: 'options',
     neededForPlan: 'Classification',
@@ -1470,6 +1526,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Each option is one right: a call or a put. The options profile stacks leftover per strike and per right, not netted into one bar.',
     firstDefinedIn: 'plans/04-state',
+    alsoAppears: ['layer/06-nq-es-layer'],
     seeAlso: ['options-profile', 'call', 'put'],
     kind: 'options',
   },
@@ -1489,7 +1546,7 @@ export const glossary: GlossaryEntry[] = [
     headword: 'ES',
     aliases: ['E-mini S&P', 'ES future'],
     shortDef:
-      'The CME E-mini future on the S&P 500, $50 per point. Gexbot’s ES picture is usually converted SPX options, not CME volume.',
+      'The futures contract you chart on the S&P 500. One contract is $50 per point. It trades on CME. Gexbot’s ES picture is usually converted SPX options, not CME volume.',
     firstDefinedIn: 'layer/06-nq-es-layer',
     seeAlso: ['es-spx', 'spx', 'cme'],
     kind: 'market-general',
@@ -1499,9 +1556,9 @@ export const glossary: GlossaryEntry[] = [
     headword: 'NQ',
     aliases: ['E-mini Nasdaq', 'NQ future'],
     shortDef:
-      'The CME E-mini future on the Nasdaq-100, $20 per point. Gexbot’s NQ picture is usually converted NDX options, not CME volume.',
+      'The futures contract you chart on the Nasdaq-100. One contract is $20 per point. It trades on CME. Gexbot’s NQ picture is leftover NDX options, not CME volume.',
     firstDefinedIn: 'layer/06-nq-es-layer',
-    seeAlso: ['nq-ndx', 'ndx', 'cme'],
+    seeAlso: ['nq-ndx', 'ndx', 'qqq', 'cme', 'index-cfd'],
     kind: 'market-general',
   },
   {
@@ -1509,9 +1566,9 @@ export const glossary: GlossaryEntry[] = [
     headword: 'conversion',
     aliases: ['multiplier conversion'],
     shortDef:
-      'Stretching index-option leftover onto ES or NQ with a multiplier. The print happened on the cash-index option. The hedge may land in the future.',
+      'Stretching leftover cash-index options onto ES or NQ with a multiplier ($100 / $20 for NDX → NQ). The print happened on the cash-index option. The hedge may land in the future.',
     firstDefinedIn: 'layer/06-nq-es-layer',
-    seeAlso: ['es-spx', 'nq-ndx', 'conversion-limit'],
+    seeAlso: ['es-spx', 'nq-ndx', 'ndx-multiplier', 'conversion-limit', 'basis'],
     kind: 'gexbot',
   },
   {
@@ -1539,8 +1596,38 @@ export const glossary: GlossaryEntry[] = [
       'The information layer sits beside NQ and ES. Converted leftover is not the futures tape, not CME volume, and not a futures print you can circle as “the dealer.”',
     firstDefinedIn: 'layer/06-nq-es-layer',
     alsoAppears: ['practice/10-misreads-and-mastery'],
-    seeAlso: ['conversion', 'es-spx'],
+    seeAlso: ['conversion', 'es-spx', 'nq-ndx', 'basis', 'index-cfd'],
     kind: 'hygiene',
+  },
+  {
+    id: 'spot',
+    headword: 'spot',
+    aliases: ['spot price', 'cash index level'],
+    shortDef:
+      'The live level of the cash index. On NQ_NDX that number is NDX. It is not a GEX wall and not a forecast.',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    seeAlso: ['price-line', 'ndx', 'basis'],
+    kind: 'market-general',
+  },
+  {
+    id: 'price-line',
+    headword: 'price line',
+    aliases: ['spot line'],
+    shortDef:
+      'The marker through a Gexbot ladder that shows live spot among the strikes. On NQ_NDX it is NDX spot on an NQ-scale ruler, not CME volume.',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    seeAlso: ['spot', 'nq-ndx', 'basis'],
+    kind: 'gexbot',
+  },
+  {
+    id: 'basis',
+    headword: 'basis',
+    aliases: ['cash-futures basis'],
+    shortDef:
+      'The small gap between the cash-index number and the futures last. NQ and NDX are glued, not identical. A converted price line can sit a few points off your NQ last.',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    seeAlso: ['spot', 'price-line', 'nq-future', 'ndx'],
+    kind: 'market-general',
   },
   {
     id: 'transfer-rule',
@@ -1548,7 +1635,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Whether a sentence that is true (or folkloric) on one instrument may be copied onto another. SPX folklore does not automatically apply to NQ. Rename the claim.',
     firstDefinedIn: 'layer/06-nq-es-layer',
-    seeAlso: ['vix', 'spy', 'nq-ndx'],
+    seeAlso: ['vix', 'spy', 'qqq', 'nq-ndx'],
     kind: 'hygiene',
   },
   {
@@ -1596,9 +1683,10 @@ export const glossary: GlossaryEntry[] = [
     headword: 'European',
     aliases: ['European-style'],
     shortDef:
-      'Cannot be exercised before expiry. SPX options are European. Market-general.',
-    firstDefinedIn: 'layer/07-clocks-and-late-greeks',
-    seeAlso: ['settlement', 'american-style', 'spx'],
+      'Cannot be exercised before expiry. NDX options are European. SPX options are too. Market-general.',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    alsoAppears: ['layer/07-clocks-and-late-greeks'],
+    seeAlso: ['settlement', 'american-style', 'ndx', 'spx'],
     kind: 'market-general',
   },
   {
@@ -1606,28 +1694,31 @@ export const glossary: GlossaryEntry[] = [
     headword: 'American',
     aliases: ['American-style'],
     shortDef:
-      'May be exercised before expiry. SPY options are American. Market-general.',
-    firstDefinedIn: 'layer/07-clocks-and-late-greeks',
-    seeAlso: ['settlement', 'european-style', 'spy'],
+      'May be exercised before expiry. QQQ options are American. SPY options are too. Market-general.',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    alsoAppears: ['layer/07-clocks-and-late-greeks'],
+    seeAlso: ['settlement', 'european-style', 'qqq', 'spy'],
     kind: 'market-general',
   },
   {
     id: 'cash-settled',
     headword: 'cash-settled',
     shortDef:
-      'At expiry, no shares change hands — only cash. SPX options settle this way. Market-general.',
-    firstDefinedIn: 'layer/07-clocks-and-late-greeks',
-    seeAlso: ['settlement', 'physically-settled'],
+      'At expiry, no shares change hands — only cash. NDX options settle this way. SPX options do too. Market-general.',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    alsoAppears: ['layer/07-clocks-and-late-greeks'],
+    seeAlso: ['settlement', 'physically-settled', 'ndx'],
     kind: 'market-general',
   },
   {
     id: 'physically-settled',
     headword: 'physically settled',
-    aliases: ['physical settlement'],
+    aliases: ['physical settlement', 'share delivery'],
     shortDef:
-      'At expiry, the underlying can be delivered. SPY options settle this way. Market-general.',
-    firstDefinedIn: 'layer/07-clocks-and-late-greeks',
-    seeAlso: ['settlement', 'cash-settled', 'spy'],
+      'At expiry, the shares can be delivered. QQQ options settle this way. SPY options do too. Market-general.',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    alsoAppears: ['layer/07-clocks-and-late-greeks'],
+    seeAlso: ['settlement', 'cash-settled', 'qqq', 'spy'],
     kind: 'market-general',
   },
   {

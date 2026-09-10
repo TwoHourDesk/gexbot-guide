@@ -22,7 +22,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'NQ and ES layer',
+      label: 'NQ layer',
       collapsed: false,
       items: ['layer/06-nq-es-layer', 'layer/07-clocks-and-late-greeks'],
     },
