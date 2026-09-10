@@ -1,0 +1,341 @@
+---
+title: "11. Further learning: the first two hours"
+---
+
+import TermFirst from '@site/src/components/textbook/TermFirst';
+import DistinguishingNote from '@site/src/components/textbook/DistinguishingNote';
+import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
+import CheckYourself from '@site/src/components/textbook/CheckYourself';
+
+# Further learning: scalping NQ and ES with Gexbot in the 0DTE era
+
+**Which Gexbot capability this is.** None new. This chapter maps what to learn *after* the book so that Classic, State, Orderflow, and the Quant feed can serve as a context layer for short-horizon trading in ES and NQ during the first two hours of cash trading.
+
+**What you will be able to do.** Follow a staged path — mathematical intuition, then microstructure of the open, then the published evidence on dealer hedging, then your own measurement — and know at each stage what Gexbot can and cannot add to a fast futures tape.
+
+**What you already need.** The whole book. The four pressure words, the hedge chain, the clock families, the S-reads, and the rookie list in [Chapter 9b](/docs/practice/09b-structure-and-gexbot).
+
+This chapter still writes no entry. It names books, papers, formulas, and drills. It is the syllabus for the course you take next, not the course itself.
+
+## The goal, stated honestly
+
+Trading a futures contract for a few ticks, over seconds to minutes, is what this book calls **scalping**. It is a tape skill. The trigger comes from what price is doing in the ES or NQ book right now.
+
+<TermFirst id="scalping" />
+
+Gexbot does not produce that trigger. It produces context: who is positioned near price, which pressure exists, which way the pending re-hedge points. Three limits sit between that context and a scalp, and the whole chapter is built around them.
+
+**Horizon mismatch.** A scalp lives on a clock of seconds. A Gexbot node lives on a clock of minutes to hours: leftover accumulates through the session, dealers re-hedge in bands, and the published evidence on hedging effects is measured at half-hour to daily horizons. This book calls the gap between those clocks the **horizon mismatch**. The correct use of Gexbot on a scalp is to decide *which* tape reads to take and *which* to leave, not *when* to click.
+
+<TermFirst id="horizon-mismatch" />
+
+**Early-session thinness.** The first two hours hold the best structure of the day and the least Gexbot leftover. State starts empty at 09:30. Classic open interest is last night's map with an unknown owner. The screens become nameable at different times, and the drills below are about learning those times on your own tape.
+
+**Partial picture.** Chapter 9b said it. Gexbot is one measured slice of the hedge complex. On a scalp horizon that slice is smaller still.
+
+## Early session, defined
+
+The book's ES/NQ claim clock for the early map was 09:29–11:00 Eastern. For study purposes this chapter takes the **early session** to be the first two hours of cash trading, 09:30–11:30, because the second hour is often where State first becomes thick enough to name (*inferred*; measure it yourself in Drill 2).
+
+<TermFirst id="early-session" />
+
+What each screen can say, by clock. Every row is a hypothesis to test in Drill 2, not a schedule.
+
+| Clock | Classic | State | Orderflow | What you may write |
+|---|---|---|---|---|
+| 09:30–09:45 | Last night's open-interest map, re-marked to the new spot. Volume GEX begins. | Empty, then first prints. | First bars. Events, not sequences. | Location only. Pressure unknown. Structure: the opening range is forming. |
+| 09:45–10:15 | Volume GEX starts to dominate. Max-change strikes move often. | Majors begin to be nameable on busy days. | A sequence may start. H3 may or may not be nameable. | H13 at each candidate node. Wall or fuel only if H12 has a regime. |
+| 10:15–11:30 | Stable enough to compare with lookbacks. | Usually nameable. Transition zones visible. | Nets have shape. Day-type usually nameable. | Full H-reads and S-reads inside the early family. Do not carry them past 11:30 without renaming. |
+
+The times in that table are folklore of this book's own making until you measure them. That is the point of the drills.
+
+## Part 1 — Mathematical intuition for the 0DTE session
+
+Every module below gives one idea in words, one toy number, the Gexbot screen it explains, and where to read more. The toy uses an index at 6000 with implied volatility of 16 percent a year. Those are illustration values, not today's market.
+
+### 1. Time scales as a square root
+
+Variance adds across time; volatility does not. If a year of trading carries a volatility of 16 percent, one day carries about 16 divided by the square root of 252, close to 1 percent. Half a day carries not half of that but about 71 percent of it. This book calls the rule the **square root of time**.
+
+<TermFirst id="square-root-of-time" />
+
+Toy. One percent of 6000 is about 60 points for the full cash day. With two hours left, the fraction of the day is 120 of 390 minutes, whose square root is about 0.55: about 33 points. With thirty minutes left: about 17 points. With five minutes left: about 7 points.
+
+Gexbot screen: the reason 0DTE bars dominate every ladder is hidden in that shrinking number. The next module makes it explicit.
+
+Read: Natenberg, *Option Volatility and Pricing* (2nd ed., 2015), the chapters on volatility. Sinclair, *Volatility Trading* (2nd ed., 2013), chapters 1–3.
+
+Caveat (*market-general*). Conventions differ. Some desks count calendar time and include overnight variance; others count trading minutes only. A 0DTE option at the open often carries variance for a scheduled release that the square-root rule does not know about. Use the rule for intuition, and use the traded straddle (module 3) for the number.
+
+### 2. The day is not flat
+
+Realized volatility inside a cash session is U-shaped: high in the first thirty to sixty minutes, low around midday, rising again into the close. This book calls that **intraday seasonality**. It has been documented for decades (*market-general*).
+
+<TermFirst id="intraday-seasonality" />
+
+Toy. The 7-point five-minute figure above is a day-average. In the first half hour the realized five-minute move is routinely larger, and at midday routinely smaller. The scalper's implied-versus-realized comparison must be made against the seasonal shape, not the flat average.
+
+Gexbot screen: the vol-regime tag from H12. A falling skew dot at 10:30 is normal seasonality; the same fall at 09:40 is more informative.
+
+Read: Wood, McInish, and Ord, "An investigation of transactions data for NYSE stocks" (1985, *Journal of Finance*). Andersen and Bollerslev, "Intraday periodicity and volatility persistence in financial markets" (1997, *Journal of Empirical Finance*). Admati and Pfleiderer, "A theory of intraday patterns" (1988, *Review of Financial Studies*) for why the pattern exists.
+
+### 3. The market's own expected move
+
+A bought call and a bought put at the same strike, held together, is a **straddle**. Its price is the market's estimate of how far the index will travel by expiry, in either direction, with a fudge factor: the at-the-money straddle is worth about 0.8 times the index times volatility times the square root of remaining time. This book calls that number the **expected move**.
+
+<TermFirst id="straddle" />
+<TermFirst id="expected-move" />
+
+Toy. Full day: 0.8 times 60, about 48 points. Two hours left: about 27 points. Thirty minutes left: about 13 points. Notice that the straddle from two hours to thirty minutes lost exactly half its value while three quarters of the time passed. Value decays like the square root of time, so the last quarter of the clock takes half of what is left.
+
+Gexbot screen: the options profile at the money is where that straddle trades. The expected move is the yardstick for calling a node "near" or "far": a node 30 points away at 09:35 is inside the day's expected move; the same node at 15:30 is outside it.
+
+Read: Natenberg, the chapters on theta and on the at-the-money straddle. Bennett, *Trading Volatility* (2014), a free practitioner text, for the 0.8 approximation and its limits.
+
+### 4. Why gamma explodes at the end
+
+Gamma measures how fast delta changes per point of index move. At the money it is roughly 0.4 divided by the expected one-standard-deviation move in points. As the time left shrinks, that denominator shrinks, and gamma grows.
+
+Toy. Full day, expected move about 60 points: gamma about 0.0066 per point. Two hours: about 0.012 per point. Thirty minutes: about 0.024 per point, three and a half times the open. A 15-point move with thirty minutes left carries an at-the-money delta from 0.50 to about 0.82. That is the Chapter 3 running example, now with its arithmetic.
+
+Gexbot screen: the convexity ladder and the 0DTE dominance of every bar. Also the re-marking caveat from Chapter 9b: bars grow into the afternoon because this number grows, whether or not anyone trades.
+
+Hedge size follows. A dealer short 500 of those calls with thirty minutes left must buy roughly 0.32 times 500 times 100 divided by 50, about 320 ES, for that 15-point move — after having already bought about 500 ES at the print. The same dealer with two hours left would need about half as much. The clock, not the crowd, doubled the forced flow.
+
+Read: Taleb, *Dynamic Hedging* (1997), the chapters on gamma and on short-dated options. Sinclair, *Positional Option Trading* (2020) for the practitioner's view of gamma near expiry.
+
+### 5. Gamma against theta: the hedger's ledger
+
+A hedged option position earns from movement and pays for time. Over a short interval the ledger is roughly one half of gamma times the squared index move, minus the theta paid for that interval. Summed over a session, the result is proportional to realized variance minus implied variance. This book calls it the **gamma-theta tradeoff**.
+
+<TermFirst id="gamma-theta-tradeoff" />
+<TermFirst id="realized-vol" />
+
+Toy. If the index actually moves 7 points every five minutes while the straddle priced 5, the long-gamma side wins and the short-gamma side bleeds. If it moves 3, the reverse. The **vol regime** you tag with H12 is the sign of that difference, seen through implied vol alone. The scalper can see the other half: realized five-minute ranges on the futures tape, adjusted for the seasonal shape from module 2.
+
+Gexbot screen: this is the arithmetic under the OP folklore. A customer long options in a falling-vol tape is on the losing side of the ledger and is incentivized to dump. A customer short options is on the winning side and is incentivized to hold. The incentive words come from this line.
+
+Read: Sinclair, *Volatility Trading*, the chapter on hedging P&L. Ahmad and Wilmott, "Which free lunch would you like today, Sir?" (2005, *Wilmott* magazine) for what happens when you hedge at one vol and the market realizes another.
+
+### 6. Why dealers hedge in bands, and how wide
+
+Every hedge trade costs a spread. Hedging on every tick would bleed the position to death. The classical answer is a band around the target delta: do nothing inside it, trade back to the edge when outside. In the Whalley–Wilmott approximation the half-width grows with the cost of trading and with gamma to the two-thirds power, and shrinks with the dealer's risk aversion (*market-general*).
+
+Two consequences for the early session. First, high 0DTE gamma means *wider* bands, not tick-by-tick chasing; but delta crosses those bands more often because it moves faster. Second, the band is different for every desk. A Gexbot node tells you the direction and rough location of the forced flow. It cannot tell you the second or the size, because those depend on bands you cannot see. Chapter 3 said hedge in bands; this is the reason.
+
+Gexbot screen: the DealerHedgeSim band toggle in Chapter 3. Turn the width up and watch forced flow arrive in steps.
+
+Read: Whalley and Wilmott, "An asymptotic analysis of an optimal hedging model for option pricing with transaction costs" (1997, *Mathematical Finance*). Leland, "Option pricing and replication with transactions costs" (1985, *Journal of Finance*). Sepp, "When you hedge discretely" (2013, *Journal of Investment Strategies*) for a practitioner's optimization.
+
+### 7. Dollar gamma and the GEX conventions
+
+Gamma per option is a small number per point. To compare across strikes and sizes, practitioners scale it: gamma times the index squared times one percent gives the delta change, in index units, for a one-percent move. Multiplied by contract size and open interest, that is the usual public "GEX" number. This book calls the per-option version **dollar gamma**.
+
+<TermFirst id="dollar-gamma" />
+
+Caveat. The source-of-truth file does not record Gexbot's exact scaling for its GEX, DEX, or convexity bars (*not stated*). Treat Gexbot's units as Gexbot's. Compare bars to other bars on the same screen, never to a number you computed from this formula.
+
+Gexbot screen: the reason Classic and State bars are tall where open interest or leftover is large *and* the strike is near the money. Both factors multiply.
+
+Read: any options text on dollar greeks; Gatheral, *The Volatility Surface* (2006) if you want the surface behind them. For the public GEX family as a cousin, SqueezeMetrics, "The Implied Order Book" (2020, white paper) — read it to place the family, not to import its levels.
+
+<DistinguishingNote
+  cousin="Public GEX white papers and dashboards"
+  cut="They compute dealer gamma from open interest under an ownership assumption. Gexbot Classic is the nearest cousin; State and Orderflow use classified customer residual instead."
+  doNotImport="Their level names, their scaling, or their sign convention as if they were Gexbot's."
+/>
+
+### 8. Skewed distributions, not directions
+
+The docs say a positive GEX-orderflow bar raises the chance the index falls while making a rise travel farther (*folklore*). That sentence is about a *distribution*, not a direction: lower probability on one side, larger payoff on that side. Newcomers collapse it to "bullish" or "bearish." Professionals hold both moments at once.
+
+Toy. Suppose after such a bar the market offers a 60 percent chance of a 10-point fall and a 40 percent chance of a 20-point rise. The expected move is 8 minus 6, plus 2 points. The most likely outcome is down. Both statements are true. A scalper playing the likely side and a scalper playing the payoff side are both consistent with the read; they differ in how they size and where they exit.
+
+Gexbot screen: GEX orderflow, and the target grammar in Chapter 9 — near target and scaled exit for expansion, node-as-target for pins.
+
+Read: Taleb, *Dynamic Hedging*, on asymmetric payoffs. Derman and Miller, *The Volatility Smile* (2016), for the skew that prices this asymmetry.
+
+## Part 2 — Microstructure of the open
+
+Gexbot's docs describe what customers and dealers do at strikes. They do not describe how the futures book itself works in the first hour. That is the reading gap this part fills.
+
+### What to understand
+
+**The opening auction and its aftermath.** Cash equities open through an auction at 09:30 that sets a single price from all accumulated orders. Index futures have been trading all night; at 09:30 they absorb the cash open's information in minutes. This book calls that window the **opening auction** period (*market-general*). Index-option leftover cannot exist before it; Classic open interest is the only Gexbot picture, and it is being re-marked to a spot that may have moved a hundred points overnight.
+
+<TermFirst id="opening-auction" />
+
+**Who trades early.** Overnight risk being reset. Hedgers rolling protection. Systematic flows keyed to the open. Market makers rebuilding inventory and quotes. Retail 0DTE buyers. The mixture changes minute by minute, and the mixture is what Gexbot's classification is sampling. Know the population before trusting the sample.
+
+**Resting orders, aggressors, and absorption.** A limit order rests; a market order takes. When a run of aggressive selling hits a price and price does not move, resting buyers are *absorbing*. When aggressive buying lifts through several prices quickly, price is being *swept*. Chapter 9b named the sweep as a structural fact. Both behaviors can be seen on a futures tape. Neither can be attributed to "the dealer." The book's stance holds: observe the behavior, infer the pressure, never name the counterparty.
+
+**Price impact.** Large aggressive flow moves price roughly with the square root of its size, not linearly (*market-general*, an empirical regularity). A dealer hedging 500 ES in bands over ten minutes leaves a different footprint from a fund hitting 500 ES at once. Gexbot tells you the first kind may be coming; the tape shows you which kind arrived.
+
+**Informed versus uninformed flow.** The classical models treat a market maker as someone who loses to informed traders and earns from uninformed ones, and who widens spreads when the informed share rises. The early session is when that share is highest. This is why spreads in ES and NQ are wider and books thinner in the first minutes, and why a node touch at 09:33 behaves differently from the same touch at 10:45.
+
+### What to read, in order
+
+1. Harris, *Trading and Exchanges: Market Microstructure for Practitioners* (2003). The whole book. It is the plain-English foundation.
+2. Bouchaud, Bonart, Donier, and Gould, *Trades, Quotes and Prices* (2018). Order books, price impact, and the square-root law, with data.
+3. Kyle, "Continuous auctions and insider trading" (1985, *Econometrica*), and Glosten and Milgrom, "Bid, ask and transaction prices in a specialist market with heterogeneously informed traders" (1985, *Journal of Financial Economics*). The two models everyone else builds on.
+4. Cont, Kukanov, and Stoikov, "The price impact of order book events" (2014, *Journal of Financial Econometrics*). Order-flow imbalance as a measurable object on the futures tape — the closest legitimate cousin to what Chapter 9b called futures-tape delta.
+5. Menkveld, "High frequency trading and the new market makers" (2013, *Journal of Financial Markets*), and Budish, Cramton, and Shim, "The high-frequency trading arms race" (2015, *Quarterly Journal of Economics*). Who your counterparties in the ES book actually are.
+6. O'Hara, *Market Microstructure Theory* (1995), and Hasbrouck, *Empirical Market Microstructure* (2007), when you want the formal versions. Cartea, Jaimungal, and Penalva, *Algorithmic and High-Frequency Trading* (2015), if you build.
+7. Gao, Han, Li, and Zhou, "Market intraday momentum" (2018, *Journal of Financial Economics*); Lou, Polk, and Skouras, "A tug of war: overnight versus intraday expected returns" (2019, *Journal of Financial Economics*); Bogousslavsky, "The cross-section of intraday and overnight returns" (2021, *Journal of Financial Economics*). The measured shape of the trading day.
+
+## Part 3 — Evidence on dealer hedging and 0DTE
+
+The book labeled every Gexbot mechanism sentence as docs, folklore, or inferred. The academic literature has measured some of those mechanisms. Knowing what has been measured, at which horizon, is the difference between a professional and a believer.
+
+| Question | Where it has been studied | Horizon | Bearing on Gexbot sentences |
+|---|---|---|---|
+| Does option demand move option prices and the skew? | Bollen and Whaley (2004, *Journal of Finance*); Gârleanu, Pedersen, and Poteshman, "Demand-based option pricing" (2009, *Review of Financial Studies*) | Daily | Supports the premise that customer flow, not only dealer inventory, matters. The customer book is real. |
+| Do stocks pin to strikes at expiry? | Ni, Pearson, and Poteshman (2005, *Journal of Financial Economics*); Ni, Pearson, Poteshman, and White (2021, *Review of Financial Studies*) | Expiry day, daily returns | Supports pinning as a measured effect. Says nothing about intraday 09:30–11:30. |
+| Does dealer gamma amplify or dampen index moves? | Barbon and Buraschi, "Gamma fragility" (working paper, 2021) | Daily | Supports the polarity: negative dealer gamma, larger moves. Daily, not tick. |
+| Does hedging demand drive intraday momentum? | Baltussen, Da, Lammers, and Martens, "Hedging demand and market intraday momentum" (2021, *Journal of Financial Economics*) | Half-hour buckets, especially the last | Supports a hedging channel in the *last* half hour. The morning is not where the effect is measured. |
+| What has 0DTE done to volatility and to who trades? | Brogaard, Han, and Won (working paper, 2023); Beckmeyer, Branger, and Gayda, "Retail traders love 0DTE options" (working paper, 2023); Dim, Eraker, and Vilkov, "0DTEs: trading, gamma risk and volatility propagation" (working paper, 2024); Cboe research notes on SPX 0DTE volume (2022–2024) | Daily and intraday | Mixed findings on volatility; strong findings on who trades and when. Read them for population, not for a signal. |
+
+Working papers change between versions. Cite the version you read.
+
+Read the table's last column twice. Nothing in it is measured at the horizon of a scalp. That is the horizon mismatch in the literature, not just in this book. A scalper who says "dealers must buy here in the next thirty seconds" is making a claim no paper has tested.
+
+## Part 4 — The staged path
+
+Five stages. Each has readings, a Gexbot drill, and a gate. Move on when you pass the gate, not when the calendar says so.
+
+### Stage 1 — Time and variance
+
+Readings: Natenberg on volatility; Sinclair, *Volatility Trading*, chapters 1–3; Andersen and Bollerslev.
+Gexbot drill: Drill 1 (the morning card) every day for two weeks.
+Gate: from the at-the-money straddle alone, you can state the expected move for the day, for the next hour, and for the next five minutes, and say which seasonal adjustment you would apply at 09:40 versus 12:00.
+
+### Stage 2 — The hedger's ledger
+
+Readings: Taleb on gamma and short-dated options; Sinclair on hedging P&L; Whalley–Wilmott; Bennett.
+Gexbot drill: Drill 3 (hedge-chain reconstruction) on three prints a day, both branches, with the DealerHedgeSim band toggle.
+Gate: given one print and a spot path, you can write the dealer's initial hedge, the gamma re-hedge at two points on the path, and the charm re-hedge at 15:30, in ES-equivalents, and say which of those numbers a band would delay.
+
+### Stage 3 — Microstructure of the open
+
+Readings: Harris; Bouchaud et al.; Kyle; Glosten–Milgrom; Cont–Kukanov–Stoikov.
+Gexbot drill: Drill 4 (node-touch behavior log) for twenty sessions.
+Gate: you can describe a node touch in tape words — absorbed, swept, rotated — and write the Gexbot pressure word next to it, without using the word "dealer" for any print.
+
+### Stage 4 — Evidence
+
+Readings: the Part 3 table, one paper per week.
+Gexbot drill: for each paper, one paragraph naming its horizon, instrument, and which Gexbot folklore sentence it supports, undermines, or does not touch.
+Gate: you can list which of H1–H15 rest on measured effects, which on docs folklore only, and which on this book's inference.
+
+### Stage 5 — Your own measurement
+
+Readings: López de Prado, *Advances in Financial Machine Learning* (2018), the chapters on backtest overfitting and sample weights; Harvey, Liu, and Zhu (2016, *Review of Financial Studies*) on multiple testing; Bailey, Borwein, López de Prado, and Zhu, "Pseudo-mathematics and financial charlatanism" (2014, *Notices of the AMS*).
+Gexbot drill: Drills 2, 5, and 6 with the Quant feed or your journal data.
+Gate: you have written down, before looking, the number of hypotheses you tested, and you can say why a hit rate from forty sessions is not evidence.
+
+## Part 5 — Drills for the first two hours
+
+All drills are structural. None produces an entry or a profit-and-loss number. Keep them outside the book's repository; they are your data.
+
+**Drill 1 — The morning card.** Before 09:30, from the nearest-expiry at-the-money straddle: the expected move for the day, for the first hour, and for five minutes. Note the scheduled releases. At 11:30, write the realized first-hour range next to the expected one. After two weeks, plot the ratio. This is the vol-regime tag with numbers on it. This book calls the page the **morning card**.
+
+<TermFirst id="morning-card" />
+
+**Drill 2 — The knowability log.** Each session, write the clock at which you could first name a State major, a transition zone, a day-type (H3), and a vol regime (H12). After twenty sessions you have your own version of the table in "Early session, defined." Expect it to differ by day-type and by instrument.
+
+**Drill 3 — Hedge-chain reconstruction.** Take one standout Orderflow bar in the first two hours. Write the six links from Chapter 3 for both branches (customer bought / customer sold). Use the DealerHedgeSim with the band toggle on. Then write what the ES or NQ tape did in the following ten minutes, in tape words only. Do not write "that was the hedge."
+
+**Drill 4 — The node-touch behavior log.** Each time price reaches a nameable node in the early session, record: the node type, the pressure word, the vol regime, whether the touch was absorbed, swept, or rotated (tape words), and both falsifier sentences. Do not record outcome in points. After twenty sessions, sort by pressure word and look at the behavior distribution. This is a reading study, not a backtest.
+
+**Drill 5 — Re-marking versus flow.** Twice each morning, at 09:50 and 10:50, note the size of the largest at-the-money convexity bar and whether Orderflow printed a matching bar in the previous ten minutes. Learn how much of ladder change is the clock on your instrument.
+
+**Drill 6 — Expiry group and structure.** For each S-read you write, add which expiry group it used. Once a week, check whether any read mixed groups. Monthly and quarterly expiry days get their own column.
+
+**Drill 7 — Replay with the slider.** Use Gexbot's history slider to replay one early session per week at the clock it was live. Write reads at 09:45, 10:15, and 10:45 from what was visible *then*. Compare with the end-of-day ladder. The gap is the labeling leak, made personal.
+
+## Part 6 — Your own measurement
+
+The Quant plan publishes the classified series during cash hours. Explicit-expiry groups are live-only. The book does not teach the pipe, but the syllabus can say what to build toward.
+
+- **Data.** Gexbot's feed for leftover; a futures tick source for ES and NQ; the exchange's own options-print data if you want to verify classification on a sample. Keep timestamps in one clock and write which one.
+- **Tools.** A scripting language with a standard options library for Black–Scholes greeks; a notebook for plots. The DealerHedgeSim in this wiki is a toy model of the same formulas.
+- **Statistics hygiene.** Write hypotheses before looking. Count how many you tested. Forty sessions is a small sample for anything intraday; two hundred is the start. A study that finds an effect at every horizon and on every instrument has probably found the researcher. This book calls the failure mode **backtest overfitting**.
+
+<TermFirst id="backtest-overfitting" />
+
+- **What to measure first.** Knowability (Drill 2) and re-marking (Drill 5) are measurable with no outcome variable and no overfitting risk. Start there. Node-touch behavior (Drill 4) comes second. Anything with a return in it comes last and with the smallest claims.
+
+## What scalping changes
+
+A few numbers that are not on any Gexbot screen and that a scalper must own (*market-general*).
+
+The smallest price step in ES is a quarter point, worth $12.50 per contract. In NQ it is a quarter point, worth $5.00. This book calls that the **tick value**. A five-point SPX strike spacing is twenty ES ticks. NDX strikes are wider still, so a single NQ node spans many dozens of ticks. A Gexbot node is a coarse object beside a scalp target.
+
+<TermFirst id="tick-value" />
+
+Spread, slippage, and commission are paid on every scalp; a node does not pay them for you. Latency matters at this horizon; Gexbot's display cadence is not stated in the source-of-truth file, and the leftover it shows is by construction a running total, not a tick.
+
+So the working rule for a scalper: Gexbot decides *which* tape setups you are willing to take today — near which nodes, in which direction, with which pressure word, in which regime — and the tape decides *when*. If you find yourself clicking because a bar printed, you have inverted the layers.
+
+## Open questions the docs do not answer
+
+A professional keeps a list of what the tool has not told them. Start with these, all *not stated* in the source of truth:
+
+- How complex orders (spreads, synthetics) are signed by the classification engine.
+- The exact scaling of GEX, DEX, and convexity bars.
+- Leftover as a share of open interest or of futures volume.
+- The display cadence of ladders and Orderflow bars.
+- How thin the NDX book is relative to SPX on a given day, in numbers.
+- Behavior of the latest group on monthly and quarterly expiry days.
+- Any hit rate for any heuristic, anywhere.
+
+If you learn an answer from a public source, add it to your notes with the label the book uses. If you learn it by measurement, it is yours and it is still not doctrine.
+
+## Summary
+
+Gexbot is context for a scalp, not its trigger. The early session has the most structure and the least leftover; learn on your own tape when each screen becomes nameable. The mathematics you need is small and concrete: square root of time, the U-shaped day, the straddle as expected move, gamma growing as the clock dies, the gamma-theta ledger, hedging bands, dollar gamma, and skewed distributions. The microstructure you need is the futures book at the open. The evidence you need is real but measured at horizons longer than a scalp. Then measure for yourself, with the hypotheses written first.
+
+## Terms introduced
+
+<ChapterTerms docId="practice/11-further-learning" />
+
+## Newcomer questions
+
+1. **Can Gexbot give me a scalp entry?** No. Horizon mismatch. It can tell you which tape setups to consider and which to leave.
+2. **Which one book first?** Harris, *Trading and Exchanges*, for the tape. Natenberg for the options. Read both before any paper.
+3. **How much math is really needed?** Eight ideas, each with a toy number in this chapter. You need to be able to redo the toys with today's straddle, not derive them.
+4. **Is there evidence dealers hedge the way the book says?** At daily and last-half-hour horizons, yes. At the horizon of a scalp, no paper has measured it.
+5. **When is State usable in the morning?** Measure it (Drill 2). This book's guess is the second hour, and the guess is inferred.
+
+<CheckYourself
+  items={[
+    {
+      q: 'Implied vol 16 percent, index 6000, thirty minutes left. Expected move and at-the-money gamma?',
+      a: 'About 17 points; gamma about 0.024 per point. A 15-point move takes an at-the-money delta from 0.50 to about 0.82.',
+    },
+    {
+      q: 'The straddle was 27 points with two hours left and is 13 with thirty minutes left. Did vol collapse?',
+      a: 'Not necessarily. Value decays like the square root of time; three quarters of the time passing removes half the value. Check the skew dots before calling a regime.',
+    },
+    {
+      q: 'Which published effect is measured in the first hour of cash trading?',
+      a: 'None in the Part 3 table. Pinning is expiry-day; gamma fragility is daily; hedging-demand momentum is the last half hour. The morning is your own measurement.',
+    },
+    {
+      q: 'Why does high 0DTE gamma not mean tick-by-tick dealer chasing?',
+      a: 'Bands. Half-width grows with gamma to the two-thirds power. Delta crosses the band more often, but the hedge still arrives in steps whose timing you cannot see.',
+    },
+    {
+      q: 'You computed a GEX number from open interest and it disagrees with Gexbot’s bar. Who is wrong?',
+      a: 'Neither, necessarily. Gexbot’s scaling is not stated. Compare bars to bars on the same screen, never to your formula.',
+    },
+    {
+      q: 'Forty sessions, one heuristic, 65 percent of node touches “worked.” What do you write?',
+      a: 'The number of hypotheses you tested, the definition of “worked” you fixed beforehand, and that forty intraday sessions is not evidence. Then keep logging.',
+    },
+  ]}
+/>
+
+## After this chapter
+
+There is no next chapter. Keep the [forced-flow ledger](/docs/reference/forced-flow-ledger) and [guardrails](/docs/reference/guardrails) open. Run the drills. Read one paper a week. Write the hypothesis before the plot. The book's last rule holds: if you write an entry, you left the course — but the course was never the point. The tape is.

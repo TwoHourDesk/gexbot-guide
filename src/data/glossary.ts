@@ -1192,7 +1192,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'A one-line read: actor · pressure · trigger · direction · venue — or the word unknown.',
     firstDefinedIn: 'plans/03-classification',
-    alsoAppears: ['practice/09-grammar-and-journal'],
+    alsoAppears: ['practice/09-grammar-and-journal', 'practice/09b-structure-and-gexbot'],
     kind: 'hygiene',
   },
   {
@@ -1320,7 +1320,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Whether implied vol is generally crushing or lifting through the session. Gexbot’s options-profile wall/fuel story flips with the regime. This book calls that flip the vol flip. Folklore. If you cannot tell, stand down.',
     firstDefinedIn: 'plans/04-state',
-    alsoAppears: ['practice/08-heuristics-as-reading'],
+    alsoAppears: ['practice/08-heuristics-as-reading', 'practice/09b-structure-and-gexbot'],
     seeAlso: ['options-profile', 'implied-vol', 'h12'],
     kind: 'hygiene',
   },
@@ -1330,7 +1330,11 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'A leftover node that, in Gexbot’s falling-vol story, is a stall candidate because holders dump and supply liquidity. Hypothesis, not a fact. Folklore.',
     firstDefinedIn: 'plans/04-state',
-    alsoAppears: ['practice/08-heuristics-as-reading', 'practice/09-grammar-and-journal'],
+    alsoAppears: [
+      'practice/08-heuristics-as-reading',
+      'practice/09-grammar-and-journal',
+      'practice/09b-structure-and-gexbot',
+    ],
     seeAlso: ['fuel', 'options-profile'],
     kind: 'hygiene',
   },
@@ -1340,7 +1344,11 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'A leftover node that, in Gexbot’s falling-vol story, is a continuation candidate because holders hedge or add and take liquidity. Hypothesis. Folklore.',
     firstDefinedIn: 'plans/04-state',
-    alsoAppears: ['practice/08-heuristics-as-reading', 'practice/09-grammar-and-journal'],
+    alsoAppears: [
+      'practice/08-heuristics-as-reading',
+      'practice/09-grammar-and-journal',
+      'practice/09b-structure-and-gexbot',
+    ],
     seeAlso: ['wall'],
     kind: 'hygiene',
   },
@@ -1449,7 +1457,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'A window with its own legal claim: early regular hours, midday residual, last-hour magnet, or knowability. Do not pool families.',
     firstDefinedIn: 'layer/07-clocks-and-late-greeks',
-    alsoAppears: ['practice/08-heuristics-as-reading'],
+    alsoAppears: ['practice/08-heuristics-as-reading', 'practice/09b-structure-and-gexbot'],
     kind: 'hygiene',
   },
   {
@@ -1459,6 +1467,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'You need enough leftover to name a major. That is usually after the open auction, not at 09:30:01. A so-far map keeps rewriting.',
     firstDefinedIn: 'layer/07-clocks-and-late-greeks',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
     kind: 'hygiene',
   },
   {
@@ -1478,6 +1487,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Naming drill: a standout GEX orderflow bar on SPX as a local-top or local-bottom candidate. Folklore. Not a system.',
     firstDefinedIn: 'practice/08-heuristics-as-reading',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
     kind: 'hygiene',
   },
   {
@@ -1496,6 +1506,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Naming drill: a sequence of convexity bars names day-type (vol-bid vs premium-sale). No entry. Folklore.',
     firstDefinedIn: 'practice/08-heuristics-as-reading',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
     kind: 'hygiene',
   },
   {
@@ -1505,6 +1516,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Naming drill: spot approaches an options-profile node; wall vs fuel depends on vol regime. An alert times the touch; it does not name the node. Hypothesis. Folklore.',
     firstDefinedIn: 'practice/08-heuristics-as-reading',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
     seeAlso: ['alert', 'h6', 'h7', 'h12'],
     kind: 'hygiene',
   },
@@ -1515,6 +1527,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Naming drill: last-hour 0DTE short-convexity as a pin, via −vanna and charm. Beta. Separate clock family.',
     firstDefinedIn: 'practice/08-heuristics-as-reading',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
     kind: 'hygiene',
   },
   {
@@ -1524,6 +1537,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Naming drill: reads the shape of the convexity ladder. Crowded customer-short gamma just under or over the index is a shove candidate; well-distributed is a premium-selling tape. Folklore (docs’ favorite SPY pattern).',
     firstDefinedIn: 'practice/08-heuristics-as-reading',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
     seeAlso: ['crowded-short-convexity', 'convexity-ladder', 'h4', 'alert'],
     kind: 'hygiene',
   },
@@ -1550,6 +1564,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Naming drill: where a DEX or convexity ladder changes sign, pressure ends or reverses. The docs’ reversion zone / pivot. Target side of H4. Folklore.',
     firstDefinedIn: 'practice/08-heuristics-as-reading',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
     seeAlso: ['transition-zone', 'h4', 'alert'],
     kind: 'hygiene',
   },
@@ -1560,6 +1575,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Where a State ladder changes sign: heavy customer-short bars give way to fresh customer-long bars, or minus-convexity gives way to plus. Docs: DEX transition is a target / reversion zone; convexity flip is a pivot where incentives reshuffle. Folklore.',
     firstDefinedIn: 'practice/08-heuristics-as-reading',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
     seeAlso: ['dex-ladder', 'convexity-ladder', 'h7'],
     kind: 'gexbot',
     unit: 'Sign change along the strike axis',
@@ -1576,6 +1592,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Naming drill: net GEX read with GEX-profile distribution and net convexity. Equal bars above the index and rising upside convexity → squeeze candidate; one dominant bar → reversion at that bar. Folklore.',
     firstDefinedIn: 'practice/08-heuristics-as-reading',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
     seeAlso: ['net-gex', 'net-convexity', 'squeeze', 'reversion', 'h1', 'h3'],
     kind: 'hygiene',
   },
@@ -1605,6 +1622,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Naming drill: know the SPX aggregate-DEX baseline in low vol and name the deviation; on SPY, price versus its own aggregate DEX divergence. A record of leans, not pending flow. Folklore.',
     firstDefinedIn: 'practice/08-heuristics-as-reading',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
     seeAlso: ['agg-dex', 'spx-baseline', 'spx', 'spy'],
     kind: 'hygiene',
   },
@@ -1645,6 +1663,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Naming drill: read the skew dots on the options profile across lookbacks to tag falling or rising vol before any wall-versus-fuel name. Prerequisite for H4, H6, H7. Docs feature; rules inferred.',
     firstDefinedIn: 'practice/08-heuristics-as-reading',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
     seeAlso: ['skew-dots', 'vol-regime', 'implied-vol', 'h4'],
     kind: 'hygiene',
   },
@@ -1671,6 +1690,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Naming drill: a large Classic pile with a thin State leftover means two-sided trading that cancelled (pressure none — stand down). Classic pile plus customer-short leftover is fuel in falling vol; plus customer-long is a wall candidate. Inferred from the residual definition.',
     firstDefinedIn: 'practice/08-heuristics-as-reading',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
     seeAlso: ['residual', 'gex-by-volume', 'options-profile', 'balanced-node', 'none-pressure'],
     kind: 'hygiene',
   },
@@ -1681,6 +1701,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Naming drill and deliberate negative: a local bottom can be an aggressive plus-DEX buyer or a minus-DEX flush; closing a long call and opening a short call print the same. Hedge inference survives; intent inference does not. Folklore plus the documented open-versus-close limit.',
     firstDefinedIn: 'practice/08-heuristics-as-reading',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
     seeAlso: ['flush', 'dex-orderflow', 'open-vs-close', 'h2'],
     kind: 'hygiene',
   },
@@ -1701,6 +1722,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Naming drill: where the minus-vanna or charm ladder crosses zero, passive buying turns into passive selling or the reverse; the docs call these sharp pivots. Last-hour family only. Folklore. Beta.',
     firstDefinedIn: 'practice/08-heuristics-as-reading',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
     seeAlso: ['local-zero', 'minus-vanna-ladder', 'charm-ladder', 'h5'],
     kind: 'hygiene',
   },
@@ -1732,7 +1754,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'A Gexbot notification that the index touched a named node: Classic major positive / negative; State major call / put and major long / short; Orderflow bars past a size you set. A touch, not a signal. Timing for H4, H6, H7. Docs.',
     firstDefinedIn: 'practice/08-heuristics-as-reading',
-    alsoAppears: ['practice/09-grammar-and-journal'],
+    alsoAppears: ['practice/09-grammar-and-journal', 'practice/09b-structure-and-gexbot'],
     seeAlso: ['major-pos-neg', 'major-call-put', 'major-long-short', 'h4', 'h6', 'h7', 'touch', 'journal-line'],
     kind: 'gexbot',
     unit: 'A touch event on a named node or a bar size threshold',
@@ -1748,7 +1770,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'The index arriving at a named node. An alert is this event with a sound. H4, H6, and H7 read the node; the touch is only the clock. Not a signal.',
     firstDefinedIn: 'practice/08-heuristics-as-reading',
-    alsoAppears: ['practice/09-grammar-and-journal'],
+    alsoAppears: ['practice/09-grammar-and-journal', 'practice/09b-structure-and-gexbot'],
     seeAlso: ['alert', 'h4', 'node'],
     kind: 'hygiene',
   },
@@ -1758,7 +1780,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Price trades through a named node and stays, rather than wicking. Inferred stop grammar for a wall or pin thesis. Grain not stated in the docs.',
     firstDefinedIn: 'practice/09-grammar-and-journal',
-    alsoAppears: ['practice/08-heuristics-as-reading'],
+    alsoAppears: ['practice/08-heuristics-as-reading', 'practice/09b-structure-and-gexbot'],
     kind: 'hygiene',
   },
   {
@@ -1767,6 +1789,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'A written read: clock family, screen, 2×2 cell, node, vol regime, forced-flow sentence, what the screen does not show, falsifier. An alert times the line; it does not fill it. No entry required.',
     firstDefinedIn: 'practice/09-grammar-and-journal',
+    alsoAppears: ['practice/09b-structure-and-gexbot', 'practice/10-misreads-and-mastery'],
     seeAlso: ['alert', 'forced-flow-sentence', 'falsifier'],
     kind: 'hygiene',
   },
@@ -1783,6 +1806,7 @@ export const glossary: GlossaryEntry[] = [
       'plans/05-orderflow',
       'layer/06-nq-es-layer',
       'practice/08-heuristics-as-reading',
+      'practice/09b-structure-and-gexbot',
     ],
     seeAlso: ['residual', 'classification-engine'],
     kind: 'gexbot',
@@ -1855,7 +1879,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'A session character named from a sequence of convexity bars, not from one spike. Fear / vol-bid versus grind / premium-sale. Folklore. Not an entry.',
     firstDefinedIn: 'plans/05-orderflow',
-    alsoAppears: ['practice/08-heuristics-as-reading'],
+    alsoAppears: ['practice/08-heuristics-as-reading', 'practice/09b-structure-and-gexbot'],
     seeAlso: ['spike-sequence-noise', 'h3'],
     kind: 'hygiene',
   },
@@ -1895,6 +1919,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Fewer contracts, easier to move. NDX options are thinner than SPX. Treat NQ reads as weaker evidence (inferred).',
     firstDefinedIn: 'layer/06-nq-es-layer',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
     seeAlso: ['ndx', 'nq-ndx'],
     kind: 'hygiene',
   },
@@ -1914,7 +1939,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'The information layer sits beside NQ and ES. Converted leftover is not the futures tape, not CME volume, and not a futures print you can circle as “the dealer.”',
     firstDefinedIn: 'layer/06-nq-es-layer',
-    alsoAppears: ['practice/10-misreads-and-mastery'],
+    alsoAppears: ['practice/09b-structure-and-gexbot', 'practice/10-misreads-and-mastery'],
     seeAlso: ['conversion', 'es-spx', 'nq-ndx', 'basis', 'index-cfd'],
     kind: 'hygiene',
   },
@@ -1935,6 +1960,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'The marker through a Gexbot ladder that shows live spot among the strikes. On NQ_NDX it is NDX spot on an NQ-scale ruler, not CME volume.',
     firstDefinedIn: 'layer/06-nq-es-layer',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
     seeAlso: ['spot', 'nq-ndx', 'basis'],
     kind: 'gexbot',
   },
@@ -1945,6 +1971,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'The small gap between the cash-index number and the futures last. NQ and NDX are glued, not identical. A converted price line can sit a few points off your NQ last.',
     firstDefinedIn: 'layer/06-nq-es-layer',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
     seeAlso: ['spot', 'price-line', 'nq-future', 'ndx'],
     kind: 'market-general',
   },
@@ -1954,6 +1981,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Whether a sentence that is true (or folkloric) on one instrument may be copied onto another. SPX folklore does not automatically apply to NQ. Rename the claim.',
     firstDefinedIn: 'layer/06-nq-es-layer',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
     seeAlso: ['vix', 'spy', 'qqq', 'nq-ndx'],
     kind: 'hygiene',
   },
@@ -2095,6 +2123,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Inferred stop grammar for a fuel or expansion thesis: the index cannot hold through the named node, or reclaims back through the long-option strike.',
     firstDefinedIn: 'practice/09-grammar-and-journal',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
     seeAlso: ['acceptance-through', 'expansion', 'fuel'],
     kind: 'hygiene',
   },
@@ -2104,7 +2133,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'The observation that would make you withdraw the read. Write it before the session walks. Part of the journal line.',
     firstDefinedIn: 'practice/09-grammar-and-journal',
-    alsoAppears: ['practice/10-misreads-and-mastery'],
+    alsoAppears: ['practice/09b-structure-and-gexbot', 'practice/10-misreads-and-mastery'],
     seeAlso: ['journal-line', 'acceptance-through'],
     kind: 'hygiene',
   },
@@ -2130,7 +2159,7 @@ export const glossary: GlossaryEntry[] = [
     id: 'mastery-rubric',
     headword: 'mastery rubric',
     shortDef:
-      'Five names, not a locked edge: the 2×2 or cannot; clock family; conversion limit; forced-flow sentence or unknown; one falsifier.',
+      'Six names, not a locked edge: the 2×2 or cannot; clock family; conversion limit; forced-flow sentence or unknown; falsifier in both languages; structural location or Gexbot-only.',
     firstDefinedIn: 'practice/10-misreads-and-mastery',
     kind: 'hygiene',
   },
@@ -2138,9 +2167,509 @@ export const glossary: GlossaryEntry[] = [
     id: 'capstone',
     headword: 'capstone',
     shortDef:
-      'One annotated cash-hours session on ES and one on NQ. Forced-flow sentences only. No entry. If you write an entry, you left the course.',
+      'One annotated cash-hours session on ES and one on NQ. Forced-flow sentences only, now with a Structure field. No entry. If you write an entry, you left the course.',
     firstDefinedIn: 'practice/10-misreads-and-mastery',
     kind: 'hygiene',
+  },
+  {
+    id: 'combined-setup',
+    headword: 'combined setup',
+    aliases: ['S-form', 'S-read', 'S-number'],
+    shortDef:
+      'A naming drill that puts a futures-tape location next to a Gexbot node. Numbered S1–S10 so they do not collide with H1–H15. Not an entry.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['structural-location', 'heuristic', 'dual-falsifier', 'journal-line'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'structural-location',
+    headword: 'structural location',
+    aliases: ['structure'],
+    shortDef:
+      'Where price is and what it just did, observed on the futures tape. Not a Gexbot node. Map a nearby leftover strike through the basis.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    alsoAppears: ['practice/10-misreads-and-mastery'],
+    seeAlso: ['structure-field', 'basis', 'combined-setup'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'dual-falsifier',
+    headword: 'dual falsifier',
+    aliases: ['both-language falsifier', 'falsifier in both languages'],
+    shortDef:
+      'The observation that withdraws a combined read, stated twice: as a price fact (acceptance through or failure to take) and as a leftover fact (the leftover flips sign or vanishes).',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    alsoAppears: ['practice/10-misreads-and-mastery'],
+    seeAlso: ['falsifier', 'acceptance-through', 'failure-to-take', 'combined-setup'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'combination-order',
+    headword: 'combination order',
+    aliases: ['order of operations'],
+    shortDef:
+      'Day-type first (H3 / H8 / H9), then structural location, then the Gexbot node at that location (H13 to confirm leftover), then pressure, then the dual falsifier.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['combined-setup', 'h3', 'h13', 'dual-falsifier'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'structure-field',
+    headword: 'Structure:',
+    aliases: ['Structure field'],
+    shortDef:
+      'The journal-line field added in Chapter 9b: a tape sentence for what price did at the node. Not a Gexbot screen name.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    alsoAppears: ['practice/10-misreads-and-mastery'],
+    seeAlso: ['journal-line', 'structural-location', 'combined-setup'],
+    kind: 'hygiene',
+  },
+  {
+    id: 's1',
+    headword: 'S1',
+    aliases: ['confluence node setup'],
+    shortDef:
+      'Combined read: a prior-day, overnight, or opening-range extreme sitting near a State leftover node, mapped through the basis. Inferred. Overnight structure has no leftover at 09:30.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['confluence-node', 'overnight-structure', 'prior-day-extreme', 'h4', 'h13', 'basis'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'confluence-node',
+    headword: 'confluence node',
+    aliases: ['confluence'],
+    shortDef:
+      'A leftover node within a few strikes of a tape location (prior-day high/low, overnight high/low, opening-range extreme), mapped through the basis. Expect a few points of offset. Inferred.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['s1', 'structural-location', 'node', 'basis'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'prior-day-extreme',
+    headword: 'prior-day high or low',
+    aliases: ['prior-day high', 'prior-day low', "yesterday's high", "yesterday's low"],
+    shortDef:
+      'Yesterday’s high or low on the futures tape. A structural location, not a Gexbot node. Pair it with leftover only after H13 confirms a pile.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['s1', 'overnight-structure', 'structural-location'],
+    kind: 'market-general',
+  },
+  {
+    id: 'overnight-structure',
+    headword: 'overnight structure',
+    aliases: ['overnight high', 'overnight low'],
+    shortDef:
+      'A high or low printed while cash was closed. At 09:30 there is no State leftover behind it. Only Classic open interest can mark the location; pressure is unknown until leftover builds.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['s1', 's4', 'gex-by-oi', 'unknown-pressure'],
+    kind: 'hygiene',
+  },
+  {
+    id: 's2',
+    headword: 'S2',
+    aliases: ['sweep into a stack'],
+    shortDef:
+      'Combined read: a stop-run through a swing high or low into the leftover just beyond. Sweep into a wall → reversal candidate; into fuel → continuation. Uses H4 and H14. Inferred.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['sweep', 'swing-high', 'h4', 'h14', 'wall', 'fuel'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'swing-high',
+    headword: 'swing high',
+    aliases: ['swing low', 'swing high/low'],
+    shortDef:
+      'A peak the futures tape has not yet taken, or the trough mirror. Plain tape structure. Not a methodology level and not a Gexbot node.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['sweep', 'failed-break', 'structural-location'],
+    kind: 'market-general',
+  },
+  {
+    id: 'sweep',
+    headword: 'sweep',
+    aliases: ['stop run', 'stop-run'],
+    shortDef:
+      'Price runs through a swing high or low and prints beyond it, taking resting stops. A futures-tape fact. Not the premium-and-sweep cousin family, and not a Gexbot print.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['s2', 'swing-high', 'cousin-premium-flow', 'h14'],
+    kind: 'market-general',
+  },
+  {
+    id: 's3',
+    headword: 'S3',
+    aliases: ['opening-range break'],
+    shortDef:
+      'Combined read: a break of the first 30–60 minute cash range, read against H3 day-type and H12 vol regime. Grind through short gamma; two-sided air on a fear tape. Inferred.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['opening-range', 'h3', 'h12', 'day-type'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'opening-range',
+    headword: 'opening range',
+    aliases: ['first-hour range', 'opening-range high', 'opening-range low'],
+    shortDef:
+      'The high and low printed in the first thirty to sixty minutes of cash hours. A tape box, not a Gexbot node. A break is price leaving that box and staying out.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['s3', 'knowability', 'structural-location'],
+    kind: 'market-general',
+  },
+  {
+    id: 's4',
+    headword: 'S4',
+    aliases: ['gap context'],
+    shortDef:
+      'Combined read: an overnight gap versus prior close. At 09:30 use Classic open interest and latest zero gamma as location only. As State builds, leftover between price and the fill names fuel or stall. Inferred.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['gap', 'overnight-structure', 'gex-by-oi', 'zero-gamma', 'h13'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'gap',
+    headword: 'gap',
+    aliases: ['overnight gap', 'fill', 'gap fill'],
+    shortDef:
+      'The empty stretch between last night’s close and the cash open. The path back toward that close is the fill. Overnight structure: no State leftover at 09:30.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['s4', 'overnight-structure', 'structural-location'],
+    kind: 'market-general',
+  },
+  {
+    id: 's5',
+    headword: 'S5',
+    aliases: ['reversion target by transition zone'],
+    shortDef:
+      'Combined read: a tape target (VWAP, yesterday’s range edge, range midpoint) is confirmed only if an H7 transition zone sits at or before it. For a pin cell the node is still the target. Inferred.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['h7', 'transition-zone', 'vwap', 'pin'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'vwap',
+    headword: 'VWAP',
+    aliases: ['volume-weighted average price'],
+    shortDef:
+      'The session’s average futures price, weighted by how much traded at each price. A tape location, not a Gexbot node. Confirm it as a target only with a transition zone at or before it.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['s5', 's7', 's8', 'transition-zone'],
+    kind: 'market-general',
+  },
+  {
+    id: 's6',
+    headword: 'S6',
+    aliases: ['failed break with GEX-orderflow pivot'],
+    shortDef:
+      'Combined read: a failed break of a swing, paired with H1’s plus GEX-orderflow bar into a call-heavy node and minus convexity. Folklore on SPX; inferred as a combination. Rename on NQ.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['failed-break', 'h1', 'local-top', 'transfer-rule'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'failed-break',
+    headword: 'failed break',
+    aliases: ['failed break of structure'],
+    shortDef:
+      'Price prints beyond a swing high or low and immediately returns inside. Tape structure. Not a Gexbot object until paired with a node and a pressure word.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['s6', 'swing-high', 'acceptance-through'],
+    kind: 'market-general',
+  },
+  {
+    id: 's7',
+    headword: 'S7',
+    aliases: ['trend-day recognition', 'continuation checkpoint'],
+    shortDef:
+      'Combined read: higher highs and higher lows that do not reach VWAP (or the down-day mirror), with H6 crowded short convexity taken, H8 squeeze form, or H3 one-sided sequence. Short-gamma mandate chasing. Inferred.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['trend-day', 'h6', 'h8', 'h3', 'squeeze'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'trend-day',
+    headword: 'trend day',
+    aliases: ['trend-day'],
+    shortDef:
+      'Higher highs and higher lows with shallow pullbacks that do not reach VWAP — or the down-day mirror. A day-type name from the tape, confirmed by Gexbot. Not an entry.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['s7', 'range-day', 'day-type', 'vwap'],
+    kind: 'market-general',
+  },
+  {
+    id: 's8',
+    headword: 'S8',
+    aliases: ['range-day recognition'],
+    shortDef:
+      'Combined read: price inside yesterday’s range, rotating around VWAP, failed breaks both ways, with well-distributed minus-convexity, flat nets, and a balanced GEX profile. Long-gamma fade. Inferred.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['range-day', 'h6', 'vwap', 'crowded-short-convexity'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'range-day',
+    headword: 'range day',
+    aliases: ['range-day'],
+    shortDef:
+      'Price stays inside yesterday’s range, rotates around VWAP, and fails to hold breaks both ways. A day-type name from the tape, confirmed by Gexbot. Not an entry.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['s8', 'trend-day', 'day-type', 'vwap'],
+    kind: 'market-general',
+  },
+  {
+    id: 's9',
+    headword: 'S9',
+    aliases: ['last-hour pin versus unwind', 'pin versus unwind'],
+    shortDef:
+      'Combined read for the last-hour family only: afternoon range plus H5’s 0DTE minus-convexity magnet and an H15 local zero. Inside the range → pin candidate; trending away with charm → magnet lost. Folklore. Beta. Nothing from S1–S8 carries in.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['h5', 'h15', 'local-zero', 'clock-family', 'settlement'],
+    kind: 'hygiene',
+  },
+  {
+    id: 's10',
+    headword: 'S10',
+    aliases: ['ES and NQ disagreement', 'ES/NQ disagreement'],
+    shortDef:
+      'Combined read: ES holds a level while NQ breaks the equivalent, or the reverse. Different option books; NDX is thinner. Weight ES for pressure. Mostly a stand-down. Inferred. Transfer rule.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['es-spx', 'nq-ndx', 'thinner-book', 'transfer-rule', 'stand-down'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'futures-tape-delta',
+    headword: 'futures-tape delta',
+    aliases: ['tape delta'],
+    shortDef:
+      'Who is lifting or hitting the ES or NQ book. Some desks call that tape delta. It is not Gexbot DEX (leftover share-equivalent). Do not add them or read one as confirming the other.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['dex', 'conversion-limit'],
+    kind: 'cousin',
+    nearestCousin: 'Gexbot DEX',
+    distinguishingCut: 'Futures-book aggression versus classified leftover share-equivalent on index options.',
+    importMistake: 'Adding tape delta to a DEX bar, or calling a futures print the dealer.',
+  },
+  {
+    id: 'strike-spacing',
+    headword: 'strike spacing',
+    aliases: ['strike bucket', 'within one strike'],
+    shortDef:
+      'The distance between listed strikes. SPX near the money is five index points; NDX is wider. A node is a bucket that wide, not a tick. Write “at the node” as within one strike spacing, mapped through the basis. Market-general.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['strike', 'basis', 'confluence-node', 'acceptance-through'],
+    kind: 'market-general',
+  },
+  {
+    id: 'confluence-bias',
+    headword: 'confluence bias',
+    shortDef:
+      'Finding a Gexbot node under every chart level because strikes are dense near the money. A node counts only if it is significant relative to today’s ladder — a major or a standout bar — not merely present.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['confluence-node', 'strike-spacing', 's1'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'same-print-stacking',
+    headword: 'same-print stacking',
+    aliases: ['three bars one print'],
+    shortDef:
+      'Counting DEX, convexity, and GEX orderflow — or Classic volume and State bars — as separate confirmations when they are cuts of the same prints. One print is one piece of evidence seen from three sides.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['dex-orderflow', 'convexity-orderflow', 'gex-orderflow', 'two-by-two'],
+    kind: 'hygiene',
+  },
+  {
+    id: 're-marking',
+    headword: 're-marking',
+    aliases: ['re-mark', 'ladder moved no trade'],
+    shortDef:
+      'A State ladder bar changing size with no new print, because the sensitivity (delta or gamma) moved with spot or the clock. Docs: max-change strikes jump when a bigger node prints or when spot moves the gamma surface. Orderflow bars are prints; ladders re-mark. Check Orderflow for the same minute. Inferred for ladders generally.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['dex-ladder', 'convexity-ladder', 'max-change', 'ladder-increment-net', 'knowability'],
+    kind: 'gexbot',
+    unit: 'Change in sensitivity × unchanged leftover size',
+    notCounted: 'New leftover; any customer decision',
+    nearestCousin: 'Greek drift on a risk report',
+    distinguishingCut: 'Visible as a ladder change with a quiet Orderflow subplot for the same window.',
+    importMistake: 'Reading afternoon at-the-money ladder growth as afternoon buying.',
+    pressure: 'none',
+  },
+  {
+    id: 'multi-leg',
+    headword: 'multi-leg structure',
+    aliases: ['spread', 'vertical', 'synthetic', 'complex order', 'risk reversal'],
+    shortDef:
+      'Two or more option legs sent together: a bought and a sold call at different strikes, a bought call and a sold put at one strike, and so on. Gexbot signs each leg as its own print (how complex orders are signed: not stated). Read opposite-sign bars at nearby strikes in the same minute as one structure. DEX largely adds; convexity largely cancels.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['two-by-two', 'dex-orderflow', 'convexity-orderflow', 'not-stated'],
+    kind: 'options',
+    neededForPlan: 'Orderflow',
+  },
+  {
+    id: 'hedged-holder',
+    headword: 'hedged holder',
+    aliases: ['protective put', 'overwrite'],
+    shortDef:
+      'A customer whose option sits against a position in the index: a long book buying puts, or selling calls. Prints the same 2×2 cell as a speculator; carries a different incentive at the strike. The 2×2 names the option, not the account. Inferred.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['two-by-two', 'long-put', 'short-call', 'incentive', 'self-hedge'],
+    kind: 'options',
+  },
+  {
+    id: 'event-day',
+    headword: 'event day',
+    aliases: ['scheduled release', 'data print'],
+    shortDef:
+      'A session with a scheduled release (a data print at 10:00, a central-bank statement at 14:00). The vol regime can flip for a stretch and every ladder re-marks at once. Docs describe well-distributed plus-convexity as informed vol expectation, often pre-event. Re-tag the regime after the release. Market-general.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['vol-regime', 'skew-dots', 'h12', 're-marking'],
+    kind: 'market-general',
+  },
+  {
+    id: 'partial-picture',
+    headword: 'partial picture',
+    aliases: ['no Gexbot object here'],
+    shortDef:
+      'Gexbot’s residual is one measured slice: today’s classified index-option leftover. The ES tape also carries hedging from books it does not merge — options on the ES future at CME, SPY and other ETF options, single stocks, VIX products. Absence of a node is not absence of pressure. Write “no Gexbot object here,” not “nothing here.”',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['es-spx', 'cme', 'spy', 'conversion-limit', 'residual'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'scalping',
+    headword: 'scalping',
+    aliases: ['scalp'],
+    shortDef:
+      'Trading a futures contract for a few ticks over seconds to minutes. A tape skill; the trigger comes from the ES or NQ book. Gexbot supplies context (which reads to consider), not the trigger.',
+    firstDefinedIn: 'practice/11-further-learning',
+    seeAlso: ['horizon-mismatch', 'tick-value', 'structural-location'],
+    kind: 'market-general',
+  },
+  {
+    id: 'horizon-mismatch',
+    headword: 'horizon mismatch',
+    shortDef:
+      'A scalp lives on seconds; a Gexbot node lives on minutes to hours (leftover accumulates, dealers hedge in bands, published hedging effects are measured at half-hour to daily horizons). Use Gexbot to choose which tape reads to take, not when to click.',
+    firstDefinedIn: 'practice/11-further-learning',
+    seeAlso: ['scalping', 'hedge-in-bands', 'knowability'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'early-session',
+    headword: 'early session',
+    aliases: ['first two hours'],
+    shortDef:
+      'For study purposes, 09:30–11:30 Eastern. The book’s ES/NQ early claim clock was 09:29–11:00. The second hour is often where State first becomes thick enough to name (inferred; measure it with the knowability log).',
+    firstDefinedIn: 'practice/11-further-learning',
+    seeAlso: ['cash-rth', 'clock-family', 'knowability'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'square-root-of-time',
+    headword: 'square root of time',
+    aliases: ['root-T', 'variance adds'],
+    shortDef:
+      'Variance adds across time; volatility scales with the square root. One day of a 16 percent annual vol is about 1 percent; half a day is about 71 percent of that, not half. Conventions (calendar vs trading time, overnight variance) differ. Market-general.',
+    firstDefinedIn: 'practice/11-further-learning',
+    seeAlso: ['implied-vol', 'expected-move', 'zero-dte'],
+    kind: 'market-general',
+  },
+  {
+    id: 'intraday-seasonality',
+    headword: 'intraday seasonality',
+    aliases: ['U-shape', 'U-shaped volatility'],
+    shortDef:
+      'Realized volatility inside a cash session is U-shaped: high in the first 30–60 minutes, low at midday, rising into the close. Implied-versus-realized comparisons must use the seasonal shape, not the flat daily average. Market-general.',
+    firstDefinedIn: 'practice/11-further-learning',
+    seeAlso: ['realized-vol', 'vol-regime', 'h12'],
+    kind: 'market-general',
+  },
+  {
+    id: 'straddle',
+    headword: 'straddle',
+    aliases: ['ATM straddle'],
+    shortDef:
+      'A bought call and a bought put at the same strike, held together. At the money it is worth about 0.8 × index × vol × √time. Its price is the market’s own expected move.',
+    firstDefinedIn: 'practice/11-further-learning',
+    seeAlso: ['expected-move', 'call', 'put', 'atm'],
+    kind: 'options',
+  },
+  {
+    id: 'expected-move',
+    headword: 'expected move',
+    aliases: ['implied move', 'one-sigma move'],
+    shortDef:
+      'How far the market prices the index to travel by expiry, read from the at-the-money straddle (≈ 0.8 × index × vol × √time). The yardstick for calling a node near or far. Toy: 16 percent vol at 6000 → about 48 points for the day, 27 with two hours left, 13 with thirty minutes.',
+    firstDefinedIn: 'practice/11-further-learning',
+    seeAlso: ['straddle', 'square-root-of-time', 'morning-card'],
+    kind: 'options',
+  },
+  {
+    id: 'gamma-theta-tradeoff',
+    headword: 'gamma-theta tradeoff',
+    aliases: ['hedger’s ledger', 'realized minus implied'],
+    shortDef:
+      'A hedged option earns about ½ × gamma × (move)² and pays theta for the interval; summed, the result is proportional to realized minus implied variance. The arithmetic under the OP wall/fuel folklore: long options lose in falling vol and are incentivized to dump; short options win and are incentivized to hold.',
+    firstDefinedIn: 'practice/11-further-learning',
+    seeAlso: ['gamma', 'theta', 'realized-vol', 'vol-regime', 'incentive'],
+    kind: 'options',
+  },
+  {
+    id: 'realized-vol',
+    headword: 'realized volatility',
+    aliases: ['realized vol', 'realized variance'],
+    shortDef:
+      'How much the index actually moved over a window, as opposed to the implied vol the option price quoted. A scalper can read it from futures ranges; adjust for intraday seasonality before comparing to implied.',
+    firstDefinedIn: 'practice/11-further-learning',
+    seeAlso: ['implied-vol', 'intraday-seasonality', 'gamma-theta-tradeoff'],
+    kind: 'market-general',
+  },
+  {
+    id: 'dollar-gamma',
+    headword: 'dollar gamma',
+    aliases: ['GEX convention', 'gamma per 1 percent'],
+    shortDef:
+      'Gamma scaled by index² × 1 percent: the delta change for a one-percent move. Times contract size and open interest, it is the usual public GEX number. Gexbot’s exact scaling is not stated; compare Gexbot bars to bars, never to this formula.',
+    firstDefinedIn: 'practice/11-further-learning',
+    seeAlso: ['gamma', 'gex', 'cousin-unsigned-gex', 'not-stated'],
+    kind: 'market-general',
+  },
+  {
+    id: 'opening-auction',
+    headword: 'opening auction',
+    aliases: ['cash open', '09:30 auction'],
+    shortDef:
+      'Cash equities open through a single-price auction at 09:30; index futures, which traded overnight, absorb that information in minutes. Index-option leftover cannot exist before it; Classic open interest is the only Gexbot picture, re-marked to the new spot. Market-general.',
+    firstDefinedIn: 'practice/11-further-learning',
+    seeAlso: ['cash-rth', 'knowability', 'gex-by-oi', 're-marking'],
+    kind: 'market-general',
+  },
+  {
+    id: 'morning-card',
+    headword: 'morning card',
+    shortDef:
+      'Drill 1: before 09:30, from the nearest-expiry ATM straddle, write the expected move for the day, the first hour, and five minutes, plus scheduled releases. At 11:30 write the realized first-hour range beside it. The vol-regime tag with numbers on it.',
+    firstDefinedIn: 'practice/11-further-learning',
+    seeAlso: ['expected-move', 'vol-regime', 'event-day', 'h12'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'backtest-overfitting',
+    headword: 'backtest overfitting',
+    aliases: ['multiple testing', 'data mining'],
+    shortDef:
+      'Finding an effect because many hypotheses were tried on a small sample. Write hypotheses before looking; count how many you tested; forty intraday sessions is not evidence. Measure knowability and re-marking (no outcome variable) before anything with a return in it.',
+    firstDefinedIn: 'practice/11-further-learning',
+    seeAlso: ['folklore', 'inferred', 'labeling-leak'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'tick-value',
+    headword: 'tick value',
+    aliases: ['minimum tick', '$12.50', '$5.00'],
+    shortDef:
+      'The smallest price step and its dollar value: ES 0.25 point = $12.50; NQ 0.25 point = $5.00. A five-point SPX strike spacing is twenty ES ticks; NDX strikes span many dozens of NQ ticks. A Gexbot node is coarse beside a scalp target. Market-general.',
+    firstDefinedIn: 'practice/11-further-learning',
+    seeAlso: ['point-value', 'strike-spacing', 'scalping', 'es-future', 'nq-future'],
+    kind: 'market-general',
   },
 ];
 

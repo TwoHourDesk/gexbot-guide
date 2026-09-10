@@ -12,7 +12,7 @@ import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
 
 **What you will be able to do.** Pair each guardrail with its misread, and annotate a session with forced-flow sentences only.
 
-**What you already need.** The whole book.
+**What you already need.** The whole book, including the `Structure:` field and the S-reads from [Chapter 9b](/docs/practice/09b-structure-and-gexbot).
 
 ## Imported-tool misreads
 
@@ -26,6 +26,7 @@ An **imported-tool misread** is bringing another product’s object into Gexbot 
 | Open/close tag | Gexbot does not split |
 | Full-book charm pin at 10:00 | Residual-only, last-hour family |
 | Green = bullish | Call-sided leftover; on SPX often sold (*folklore*) |
+| Named charting level = Gexbot node | Structure is observed on the futures; nodes are converted index strikes |
 
 <TermFirst id="imported-tool-misread" />
 
@@ -47,6 +48,15 @@ A **guardrail** is a sentence that keeps a later chapter from undoing an earlier
 | ES print = the hedge | You cannot identify it. Conversion limit. |
 | SPX 0DTE resolution on SPY | Settlement styles differ |
 | 15:50 net on a 09:35 fill | Labeling leak |
+| Overnight high is a State wall at 09:31 | No leftover yet; Classic open interest is unknown |
+| Futures print confirms the DEX bar | Different objects. Never “the dealer.” |
+| Alert during a sweep is the S2 read | The ping is the touch. Fill Structure, node, pressure, both falsifiers |
+| Node “at” a level three points away | Strike spacing: a node is a bucket, not a tick. Write the width down |
+| Three orderflow bars = three confirmations | Same-print stacking. One print, three cuts |
+| Ladder grew, so someone bought | Re-marking. Check Orderflow for the same minute |
+| Two opposite bars = buyers versus sellers | Multi-leg structure. Read together; convexity cancels |
+| No node, so nothing there | Partial picture. Absence of a node is not absence of pressure |
+| VIX fell, so falling vol | VIX is thirty-day. Intraday regime comes from the skew dots (H12) |
 
 <TermFirst id="guardrail" />
 
@@ -58,7 +68,8 @@ You can:
 2. Name the **clock family**.
 3. Name the **conversion limit** (ES_SPX / NQ_NDX).
 4. Write a **forced-flow sentence** or **unknown**.
-5. Name **one falsifier** for the read.
+5. Name a **falsifier** in both languages: a price observation and a leftover observation.
+6. Name the **structural location** (`Structure:`), or write that you are sitting a Gexbot-only line.
 
 <TermFirst id="mastery-rubric" />
 
@@ -69,18 +80,22 @@ A **capstone** here is one annotated session, not a trade.
 Annotate one full cash regular-hours session on **ES** and one on **NQ**. No entry. Every annotated node carries:
 
 ```
+Structure:
 actor · pressure · trigger · direction · venue
+Falsifier:
+  price —
+  leftover —
 ```
 
 or `UNKNOWN`.
 
-If you write an entry, you left the course.
+The `Structure:` field turns those annotations into S-form reads. It does not introduce an entry. If you write an entry, you left the course.
 
 <TermFirst id="capstone" />
 
 ## Summary
 
-The cousins stay cousins. Guardrails are the same sentences you already learned, stacked so you can see the pairs. Mastery is naming — cell, clock, conversion limit, pressure sentence, falsifier — not a locked edge.
+The cousins stay cousins. Guardrails are the same sentences you already learned, stacked so you can see the pairs. Mastery is naming — cell, clock, conversion limit, pressure sentence, structure, falsifier in both languages — not a locked edge.
 
 ## Terms introduced
 
@@ -102,3 +117,5 @@ The cousins stay cousins. Guardrails are the same sentences you already learned,
 ## After the book
 
 Keep the [forced-flow ledger](/docs/reference/forced-flow-ledger) and [guardrails](/docs/reference/guardrails) open while you sit the product. The source-of-truth file in the repo is the concept lock. This wiki is the teaching order.
+
+If your goal is short-horizon trading in ES and NQ during the first two hours, [Chapter 11](/docs/practice/11-further-learning) is the syllabus for what to learn next: the mathematics of the 0DTE session, the microstructure of the open, the published evidence on dealer hedging, and drills for your own measurement. It still writes no entry.

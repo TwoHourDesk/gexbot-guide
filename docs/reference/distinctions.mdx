@@ -22,6 +22,14 @@ Gamma computed on ES/NQ (sometimes RTY), often with pre-drawn levels. Gexbot’s
 
 Debit-credit tapes, often with open vs close. Gexbot is **greek-weighted residual**. It does **not** split open from close. A large debit is not a large DEX print. A cheap 0DTE can dominate.
 
+## Futures structure versus Gexbot nodes
+
+Swing highs, range breaks, sweeps, gaps, and VWAP are **observed** on the futures tape. Gexbot nodes are index strikes on a converted ruler. Map through the basis; expect a few points of offset. Overnight structure has no State leftover at 09:30.
+
+Futures-tape delta (who is lifting or hitting ES or NQ) is **not** Gexbot DEX. Do not add them. A futures print is never “the dealer.”
+
+Use plain tape words. Never import a charting methodology’s named levels or setups as if they were Gexbot objects.
+
 ## Full-book vanna/charm vs residual-only
 
 Pinning literature usually uses the whole OI vault. Gexbot’s −vanna / charm ladders are **beta** and applied to **today’s classified residual only**. Last-hour family. Not a morning object.

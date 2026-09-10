@@ -32,7 +32,9 @@ const sidebars: SidebarsConfig = {
       items: [
         'practice/08-heuristics-as-reading',
         'practice/09-grammar-and-journal',
+        'practice/09b-structure-and-gexbot',
         'practice/10-misreads-and-mastery',
+        'practice/11-further-learning',
       ],
     },
     {

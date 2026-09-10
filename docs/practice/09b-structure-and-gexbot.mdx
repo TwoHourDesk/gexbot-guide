@@ -1,0 +1,445 @@
+---
+title: "9b. Structure and Gexbot together"
+---
+
+import TermFirst from '@site/src/components/textbook/TermFirst';
+import DistinguishingNote from '@site/src/components/textbook/DistinguishingNote';
+import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
+import CheckYourself from '@site/src/components/textbook/CheckYourself';
+
+# Structure and Gexbot together
+
+**Which Gexbot capability this is.** None new. Chapter 6 already sat the price line beside ES and NQ. Chapter 8 already numbered fifteen naming drills. Chapter 9 already wrote the journal line and the falsifier.
+
+**What you will be able to do.** Put a location you *see* on the futures tape next to a leftover node you *infer* on Gexbot, and write the falsifier in both languages. This book numbers those combined reads **S1** through **S10** so they do not reuse the H numbers.
+
+**What you already need.** [Chapter 6](/docs/layer/06-nq-es-layer) for the basis and the converted ruler. [Chapter 8](/docs/practice/08-heuristics-as-reading) for H1–H15. [Chapter 9](/docs/practice/09-grammar-and-journal) for acceptance through, failure to take, and the journal line.
+
+A **heuristic** names one Gexbot object. A **combined setup** names two objects at once: where price is, and who is positioned there.
+
+<TermFirst id="combined-setup" />
+
+## The combination rule
+
+On the futures tape you can see where price is and what it just did. That is **structure**. It is observed. A high or low you can already see. A box the morning printed. A run through a peak. An empty stretch from last night. An average of the session. Those are tape facts. The sections below name each one.
+
+Gexbot answers a different question: who is still positioned at that location, which pressure exists, and which way the pending re-hedge points. That is inferred. The node is an index strike on a converted ruler.
+
+<TermFirst id="structural-location" />
+
+A combined setup needs all six, or you stand down:
+
+- a **structural location**
+- a **Gexbot node** at or near it
+- a **pressure** word
+- a **clock family**
+- a **vol regime**
+- a **falsifier** stated twice: once as a price observation (acceptance through, or failure to take), and once as a leftover observation (the leftover flips sign, or vanishes)
+
+<TermFirst id="dual-falsifier" />
+
+Write them in this order. Day-type first (H3, H8, or H9). Then the structural location. Then the Gexbot node at that location — H13 first, so you know leftover exists. Then the pressure word. Then the falsifier in both languages.
+
+<TermFirst id="combination-order" />
+
+<DistinguishingNote
+  cousin="Charting methodologies with named session levels"
+  cut="This chapter uses plain tape words for what price just did. Gexbot nodes are converted index strikes, mapped through the basis."
+  doNotImport="A methodology’s named levels or setups as if they were Gexbot objects."
+/>
+
+## S1 — Confluence node (*inferred*)
+
+Price often pauses or turns at a high or low you can already see. Yesterday’s high or low is one. A high or low printed while cash was closed is **overnight structure**. The high or low of the first thirty to sixty minutes of cash hours is a third — this book calls that box the **opening range**. Those are tape locations. They are not Gexbot nodes.
+
+A leftover pile on State can sit within a few strikes of that same location, once you map the strike through the basis from Chapter 6. Expect a few points of offset. When the tape location and the leftover node sit that close, this book calls a **confluence node**.
+
+<TermFirst id="s1" />
+<TermFirst id="confluence-node" />
+<TermFirst id="prior-day-extreme" />
+<TermFirst id="overnight-structure" />
+<TermFirst id="opening-range" />
+
+Pressure: customer incentive at the leftover, plus dealer mandate on the mirror.
+
+The read: falling vol and customer-long leftover there → a stall candidate, now reinforced by structure. Customer-short leftover there → the structural level is likely to fail. That is fuel, not support. H4 still supplies the wall-versus-fuel map. H13 must confirm leftover exists before you name either.
+
+Overnight structure has a clock limit. At 09:30 there is no State leftover behind it. Last night’s open-interest pile on Classic can mark the location. Its owner is unknown, so the pressure word is unknown. Wait until leftover builds before you name wall or fuel there.
+
+Falsifier: price accepts through both the tape level and the node, or the leftover flips sign as price arrives.
+
+Misread: treating the overnight high as a State wall at the open.
+
+## S2 — Sweep into a stack (*inferred*, uses H4 and H14)
+
+A swing high is a peak the tape has not yet taken. A swing low is the mirror. Price sometimes runs through that peak or trough and prints beyond it, taking the resting stops that sat just on the other side. This book calls that a **sweep** — a stop run on the futures tape. It is not the premium-and-sweep cousin from Chapter 1.
+
+<TermFirst id="swing-high" />
+<TermFirst id="sweep" />
+
+What sits just beyond, on Gexbot, decides the candidate. Customer-long leftover is a wall: a sweep into a wall is a reversal candidate. Customer-short leftover is fuel: a sweep into fuel is a continuation candidate. That is H4, applied to the far side of the swing.
+
+You may read the DEX orderflow bar at the sweep. Per H14 you may name the dealer’s hedge direction. You may not name the customer’s intent. A flush of longs and a fresh short look identical on that bar.
+
+<TermFirst id="s2" />
+
+Pressure: customer incentive at the stack beyond the swing; dealer mandate on the mirror. Intent stays blank.
+
+Falsifier: a wall thesis dies on acceptance beyond the node. A fuel thesis dies on failure to take it.
+
+Misread: calling every sweep a reversal, before you have named what sits beyond it.
+
+## S3 — Opening-range break in a named tape (*inferred*, uses H3, H12)
+
+S1 already named the **opening range**: the high and low of the first thirty to sixty minutes of cash hours. A **break** is price leaving that box and staying out.
+
+<TermFirst id="s3" />
+
+By then leftover is usually nameable. The knowability clock from Chapter 7 often coincides with the range being complete. H13 still has to confirm thickness.
+
+Pressure and read depend on the day-type H3 already named, tagged with H12 so you are not using the falling-vol map on a rising-vol tape.
+
+Falling vol and a persistent drip of minus-convexity bars → the break is traveling through short gamma. Continuation candidate. The dealer on the mirror is long gamma and fades, so expect a grind, not a spike.
+
+A plus-convexity fear tape → the break can travel, but two-sided. Expect empty stretches where few resting orders sit.
+
+Rising vol flips the customer channel. Tag it with H12 before you name wall or fuel on the far side of the range.
+
+Falsifier: price reclaims the range *and* the convexity sequence flips.
+
+Misread: naming the break at 09:35 from one spike, before H3 has a sequence.
+
+## S4 — Gap context: open interest first, leftover second (*inferred*)
+
+When the cash open sits away from last night’s close, that empty stretch has not yet been traded in regular hours. This book calls it a **gap**. The path back toward last night’s close is the **fill**.
+
+<TermFirst id="gap" />
+<TermFirst id="s4" />
+
+At 09:30 only Classic can speak. Last night’s open-interest pile, and Classic’s latest zero gamma, may sit between price and the fill. Use them as *location* only. Owner unknown. Pressure unknown.
+
+As State builds, leftover appears on that path. Fresh customer-short leftover between price and the fill → fuel toward the fill. Customer-long leftover → a stall candidate before the fill. Rewrite the read every fifteen minutes. The so-far map keeps changing.
+
+Falsifier: State leftover between price and the fill flips sign.
+
+Misread: calling the overnight gap a State wall at 09:31.
+
+## S5 — Reversion target by transition zone (*inferred*, uses H7)
+
+A futures chart often draws the average price of the session, weighted by how much traded at each price. This book calls that **VWAP**. The edge of yesterday’s range, or the midpoint of a range you can see on the tape, can play the same role: a candidate place price might travel back to.
+
+<TermFirst id="vwap" />
+<TermFirst id="s5" />
+
+Those are tape locations. They are not automatic targets. Confirm the candidate only if a DEX or convexity sign change — the **transition zone** H7 named — sits at or *before* it.
+
+If the transition zone comes first, the structural target is probably too far. Pressure ends earlier. Customer incentive changes sign there; dealer mandate flips from chase to fade, or the reverse.
+
+Chapter 9’s target rule still applies. For a pin cell, the node *is* the target. Do not aim past it at VWAP.
+
+Falsifier: the transition zone is taken and leftover on the far side does not change sign — the structural target was a hope, not a pressure end.
+
+Misread: aiming at VWAP because it is on the chart, while a sign change sits in front of it.
+
+## S6 — Failed break of structure with a GEX-orderflow pivot (*folklore* on SPX; *inferred* combination)
+
+Price prints beyond a swing high and immediately returns inside. This book calls that a **failed break** of structure. The down-side mirror is a failed break of a swing low.
+
+<TermFirst id="failed-break" />
+<TermFirst id="s6" />
+
+On SPX, pair that tape fact with H1. A standout plus GEX-orderflow bar into a call-heavy node, at the same time, with convexity minus (short calls, not long calls), is a local-top *candidate*. The failed break strengthens it. The combination is inferred. The H1 sentence remains folklore.
+
+Rename the claim on NQ. The transfer rule from Chapter 6 still holds. Do not copy the SPX sentence onto NQ_NDX unrenamed.
+
+Falsifier: acceptance above the swing *and* GEX orderflow staying plus *and* convexity showing long calls. That is expansion demand, not a local top.
+
+Misread: treating every failed break as H1, or treating H1 as a failed break, when only one of the two objects is present.
+
+## S7 — Trend-day recognition (*inferred*, uses H6, H8, H3)
+
+Higher highs and higher lows, with pullbacks that stay shallow and do not reach VWAP. The down-day mirror is lower lows and lower highs that do not reach VWAP from below. This book calls that a **trend day**. It is a day-type name, not an entry.
+
+<TermFirst id="trend-day" />
+<TermFirst id="s7" />
+
+Gexbot must agree before you keep the name. Crowded short convexity just taken (H6), or net GEX rising with roughly equal bars (H8’s squeeze form), or a persistent one-sided convexity sequence (H3) — any of those can sit under the tape shape.
+
+Pressure: dealer **mandate**, short gamma, chasing. This is the one case where the hedge is *with* the move.
+
+Read: do not fade nodes. Use them as places the move must still clear — continuation checkpoints, not stall calls.
+
+Falsifier: a dominant single bar appears above price (H8’s reversion form), or the convexity sequence flips and moves the net.
+
+Misread: fading the first confluence node on a named trend day.
+
+## S8 — Range-day recognition (*inferred*)
+
+Price stays inside yesterday’s range, rotates around VWAP, and fails to hold breaks both ways. This book calls that a **range day**. Again a day-type name, not an entry.
+
+<TermFirst id="range-day" />
+<TermFirst id="s8" />
+
+Gexbot’s agreeing shape is H6’s other picture: well-distributed minus-convexity, flat nets, a balanced GEX profile.
+
+Pressure: dealer long gamma, fading — mandate. Customer shorts are incentivized to hold.
+
+Read: extremes that land on leftover nodes are stall candidates. Targets are the nodes, not beyond them.
+
+Falsifier: a crowded node forms and is taken, or net convexity starts a one-sided run. Either can rename the day toward S7.
+
+Misread: fading a break that has already taken a crowded short-convexity node.
+
+## S9 — Last-hour pin versus unwind (*folklore*, *beta*, uses H5, H15)
+
+The afternoon range, and the direction of the last leg, are tape facts. After 15:00 they sit in a different clock family. Nothing from S1–S8 carries into this window.
+
+<TermFirst id="s9" />
+
+H5’s object is a 0DTE minus-convexity node with net minus-vanna extreme by the docs’ discretionary note. H15 adds a **local zero** on the minus-vanna or charm ladder between price and that node.
+
+If price is still inside the afternoon range, displaced from that node, the pin candidate is toward the node.
+
+If price is trending away, and charm is accelerating in the direction of the move, that is the docs’ “extreme day” case. The magnet is lost.
+
+Settlement — how the index option turns into dollars at expiry — is **market-general**. It is not a Gexbot screen.
+
+Falsifier: the node goes at-the-money (H5’s own off-switch), or net minus-vanna and charm sit near zero, when the docs say price wanders.
+
+Misread: carrying a morning confluence or an opening-range break into 15:30 without changing families.
+
+## S10 — ES and NQ disagreement (*inferred*, transfer rule)
+
+ES holds a level while NQ breaks the equivalent location, or the reverse. The tapes disagree.
+
+<TermFirst id="s10" />
+
+`ES_SPX` and `NQ_NDX` are different option books. Chapter 6 already said the NDX book is thinner. Weight the ES side for pressure. Treat the NQ read as weaker evidence. Do not copy an SPX folklore sentence onto NQ unrenamed.
+
+This setup is useful mostly as a stand-down. When the two disagree and only one has nameable leftover, name that one. When both have leftover and they still disagree, write unknown.
+
+Falsifier: the lagging tape accepts through its equivalent level, and leftover on that book agrees with the lead. Then the disagreement is over; rewrite the line.
+
+Misread: averaging the two books, or copying H1 onto NQ because ES “looked like it.”
+
+## Guardrails that apply to every combination
+
+Structure is observed on the futures. Gexbot nodes are index strikes on a converted ruler. Map through the basis. Expect a few points of offset.
+
+Overnight structure has no intraday leftover. Only Classic open interest can speak to it, and its pressure word is unknown.
+
+A futures tape can show who is lifting or hitting the ES or NQ book. Some desks call that tape **delta**. It is not the leftover share-equivalent Chapter 4 named DEX. Do not add them. Do not read one as confirming the other. A futures print is never “the dealer.”
+
+<TermFirst id="futures-tape-delta" />
+
+Hedging is in bands. A node gives direction and location of pressure, not timing.
+
+An alert times a touch at a node. Structure tells you whether that touch came with a sweep, a break, or a rotation. Neither the ping nor the tape shape is the read by itself.
+
+Use plain words for structure: swing high, range break, sweep, gap, VWAP. Do not import a methodology’s named levels.
+
+## Rookie mistakes, and the check that catches each one
+
+The guardrails above are the rules. This section is the list of ways newcomers break them without noticing, once a futures tape and a Gexbot ladder sit side by side. Each mistake gets three lines: what the rookie does, why it is wrong, and the check that catches it. Chapter 10 will recap the pairs. This is the first and full treatment.
+
+### Location mistakes
+
+**Tick-level confluence with a five-point bucket.** SPX strikes near the money are five index points apart; NDX strikes are wider (*market-general*). A structural level is a tick. A node is a bucket. The rookie says “the node is *at* yesterday’s high” when the strike is three points away, and then treats a two-point miss as a failure. The check: write “at the node” as *within one strike spacing*, mapped through the basis, and write that width down before the session. Chapter 9 already said the grain is not stated; this is where you choose it.
+
+<TermFirst id="strike-spacing" />
+
+**Finding a node under every level.** Near the money, strikes are dense. There is always a strike within a few points of any level you draw, and usually some leftover on it. The rookie calls that confluence. It is not. This book calls the habit **confluence bias**. The check: the node must be *significant relative to today’s ladder* — a major, or a bar that stands out beside its neighbors — not merely present. If you would not have noticed the bar without the level, it is not a confluence node.
+
+<TermFirst id="confluence-bias" />
+
+**The tallest bar on the screen.** The eye goes to the biggest bar. The biggest bar is often forty points away and not on today’s path. Pressure that matters is what sits *near price and on the path*. The check: name the nearest significant node on each side first; only then look at the extremes.
+
+**Expecting the reaction at the strike price.** Gamma pressure is spread along the path near a strike; the dealer re-hedges as spot *approaches*, in bands. Only the last-hour pin behaves like a point, and even that flow dies when the node goes at-the-money. The rookie waits for a touch of the exact strike and misses a stall that began ten points early. The check: read approach, not touch. An alert is a touch; it is late for gamma and early for nothing.
+
+### Counting mistakes
+
+**Three bars, one print.** DEX orderflow, convexity orderflow, and GEX orderflow are three cuts of the *same* prints. Classic’s volume bar and State’s bars are also drawn from the same trades. The rookie stacks them as three confirmations. They are one piece of evidence seen from three sides. This book calls the error **same-print stacking**. The check: ask “would this bar exist without that bar?” If the answer is no, count it once.
+
+<TermFirst id="same-print-stacking" />
+
+**Many alerts, strong signal.** Alerts fire on touches. A volatile tape touches many nodes and fires many alerts. The rookie reads the count as conviction. The check: an alert says “price arrived.” It never says “price will hold.” Count nodes named, not pings heard.
+
+**Reading the ladder as an order book.** Chapter 4 borrowed the depth-ladder picture for DEX. The picture has a limit. A resting bid in the ES book can be pulled in a millisecond. An option position cannot be pulled; it can only be closed with a new print, which you would see on Orderflow. The rookie either treats a node as a firm bid (too strong) or as spoofable (too weak). The check: a node is a *held position* with an incentive attached, not an order at that price.
+
+### Movement mistakes
+
+**Ladder moved, so someone traded.** State ladders re-mark as spot and the clock move. Each bar is sensitivity times leftover size, and the sensitivity changes when the index moves or time passes. The docs say max-change strikes jump “when a bigger node prints *or when spot moves the gamma surface*.” So a DEX or convexity bar can swell or shrink with no new print. This book calls that **re-marking**. Orderflow bars, by contrast, are prints. The check: if a ladder changed, look at Orderflow for the same minute. No bar there means re-marking, not flow. A ladder and a net can disagree with no new trade (*inferred*).
+
+<TermFirst id="re-marking" />
+
+**Afternoon growth as afternoon buying.** Into the last two hours, gamma of at-the-money 0DTE options grows sharply as time runs out. Ladders near price get taller without anyone trading. The rookie reads a building wall. The check is the same: Orderflow for the same window. Tall and quiet means the clock, not the crowd.
+
+**Structure is also known late.** A swing high is only a swing high after price has left it. A leftover node is only known after it printed. Both objects arrive with a delay, and the rookie writes both as if they had been visible at the touch. The check: the knowability clock from Chapter 7 applies to *both* fields of the journal line. Write the time each became nameable.
+
+### Option-mechanics mistakes
+
+**A spread read as two opinions.** Many index option trades are two or more legs sent together: a bought call at one strike and a sold call at a higher one, a bought put and a sold put, a call bought and a put sold at the same strike. This book calls those **multi-leg structures**. Gexbot signs each leg as its own print. The docs do not state how complex orders are signed (*not stated*). Two bars appear at two strikes. The rookie reads the sold leg as “sellers above.” It is the cap on a capped bet. The check: when two standout bars of opposite sign print in the same minute at nearby strikes, read them as one structure. Their DEX largely adds; their convexity largely cancels.
+
+<TermFirst id="multi-leg" />
+
+**A synthetic future in the 2×2.** A bought call and a sold put at the same strike behave like a long futures position (*market-general*). Gexbot shows plus DEX on both legs and convexity near zero, because the call and the put at one strike carry equal gamma. The rookie tries to name a 2×2 cell and cannot; there is no vol opinion in the trade. The check: near-zero convexity with large DEX is a directional structure, not a cell. Name it as such or write “cannot name.”
+
+**The hedger read as a speculator.** A holder who owns the index and buys a put prints minus DEX, plus convexity: the long-put cell. Their book is net long. Their incentive at that strike is not the folklore “long option dumps on approach”; they may hold the put or sell it for cash while keeping the index. A holder who owns the index and sells a call prints the short-call cell and does want the pin. This book calls the first case a **hedged holder**. The check: the 2×2 names the option, not the account. The incentive word is a *hypothesis about the typical owner*; on a day when hedging dominates, the typical owner is a hedger (*inferred*).
+
+<TermFirst id="hedged-holder" />
+
+**Debit as size.** A far out-of-the-money 0DTE lottery can cost a great deal in total dollars and still carry near-zero delta and gamma. It leaves almost no node. A small at-the-money trade leaves a large one. Chapter 1 named this cousin mistake; here it returns as a structure error: the rookie sees a large premium print at a level and expects a node. The check: look for the bar, not the ticker headline. No bar, no pressure.
+
+**Gamma as direction.** Gamma has no up or down. A plus-convexity node does not mean “market goes up.” It means the owner wants movement away from the strike; the dealer on the mirror chases. Direction comes from DEX. The rookie writes “bullish gamma.” The check: every sentence with the word gamma must also carry a DEX sign, or it is not a direction.
+
+**Puts as bearish, calls as bullish.** Bought puts often protect a long book. Sold calls often sit against one. On SPX in quiet tape, the docs say the call side is often *sold*. The rookie reads color. The check: the 2×2 first, then the instrument’s habit, then the vol regime. Never color alone.
+
+**Zero gamma as a switch.** Classic’s zero gamma is a weighted center of an unsigned ladder. Nothing flips at that line. Pressure changes gradually as the balance of the ladder changes around price. The rookie draws it as a line to trade. The check: it is a location for context. It has no pressure word of its own.
+
+**Reading a Gexbot read into an options position.** This book writes no entries. But a rookie who has learned to read sometimes translates a read into buying an option on it. The read is a statement about *the underlying's* pressure. The option they bought carries its own theta and its own implied-vol exposure, which the read says nothing about. A correct read on direction can still lose in the option because vol fell or time ran. The check: if you ever do this, you have two risks, and Gexbot only spoke to one of them.
+
+### Clock and calendar mistakes
+
+**VIX as today’s regime.** VIX is a thirty-day quote (*market-general*). The docs use it for *which instrument character* SPX is showing, not for whether today’s 0DTE vol is rising or falling. The rookie tags falling vol because VIX is red. The check: H12’s skew dots for intraday regime; VIX only for the SPX-versus-SPY character sentence.
+
+**Falling vol by default.** Most days are falling-vol days, so the rookie stops checking. Scheduled releases — a data print at 10:00, a central-bank statement at 14:00 — flip the regime for a stretch, and the docs describe well-distributed plus-convexity as informed vol expectation, often before an event. This book calls a session with such a release an **event day**. The check: know the calendar before the open; on an event day, re-tag the regime after the release, and expect every ladder to re-mark at once.
+
+<TermFirst id="event-day" />
+
+**Overnight moves under a stale map.** Classic’s open-interest pile is last night’s inventory. If the futures moved a hundred points overnight, that pile’s sensitivities have shifted under the new spot; what was at-the-money is now far from it. The rookie reads the pre-open Classic ladder as if the moneyness were unchanged. The check: after a large overnight move, treat Classic open interest as location with a re-marked shape; wait for State to speak.
+
+**Monthly and quarterly expiries.** Standard monthly SPX options settle in the morning, on the opening prints, not at the close (*market-general*). On those days the latest group behaves differently from an ordinary 0DTE session, and the docs do not describe it (*not stated*). The check: on a monthly or quarterly expiry, write the expiry-group sentence (H11) first and treat every last-hour read as unverified.
+
+### The partial-picture mistake
+
+**Assuming Gexbot sees the whole hedge complex.** The ES tape you watch carries hedging from books Gexbot does not merge into `ES_SPX`: options on the ES future itself at CME, SPY and other ETF options, single stocks, and VIX products. Gexbot’s residual is one measured slice — the classified index-option leftover for today. This book calls that the **partial picture**. It is partial by construction, not by defect. The rookie treats a Gexbot node as the only pressure at a level, and is surprised when a level with no node holds, or a node with a clear read breaks. The check: a node names *a* pressure. Absence of a node is not absence of pressure. Write “no Gexbot object here” rather than “nothing here.”
+
+<TermFirst id="partial-picture" />
+
+**Size relative to the tape.** The docs do not state leftover as a share of open interest or of futures volume (*not stated*). A large bar is large relative to today’s ladder, not necessarily relative to the ES book. On a rebalance day or a heavy macro session, the hedge Gexbot implies may be small beside everything else trading. The check: on days you know are unusual, weight every S-read down and say why in the journal line.
+
+## The journal line grows one field
+
+Chapter 9’s journal line named the Gexbot objects. A combined read adds one field: what price did at the node.
+
+```
+Clock family:
+Plan / screen:
+2×2 cell (or “cannot name”):
+Structure:
+Node:
+Vol regime:
+Forced-flow sentence:
+  actor · pressure · trigger · direction · venue
+  or UNKNOWN
+What the screen does not show:
+Falsifier:
+  price — acceptance through / failure to take
+  leftover — leftover flips or vanishes
+```
+
+<TermFirst id="structure-field" />
+
+`Structure:` is a tape sentence. “Sweep of yesterday’s high.” “Failed break of the opening-range high.” “Gap still open; price halfway to the fill.” It is not a Gexbot screen name.
+
+The falsifier field now holds two sentences. Chapter 9 still owns the words acceptance through and failure to take. This chapter requires the leftover sentence beside them.
+
+If you cannot fill Structure, or you cannot write both falsifier sentences, stand down. The H-read may still be nameable. The S-read is not.
+
+## Order to write
+
+1. **H3 / H8 / H9** — day-type, before any location.
+2. **S7 or S8** — if the tape is already a trend or a range, say so. That choice governs whether you fade a node.
+3. **S1, S2, S3, S4** — location plus leftover: confluence, sweep, opening-range break, gap.
+4. **S5, S6** — where pressure ends, and a failed break paired with H1.
+5. **S10** — if ES and NQ disagree, stand down or name the book that has leftover.
+6. **S9** — after 15:00 only. Different family.
+
+H12 and H13 still run before you name wall or fuel. They did not get an S-number. They are still prerequisites.
+
+## Summary
+
+Structure answers where price is and what it just did. Gexbot answers who is positioned there and which pressure exists. An S-read needs both, plus clock, vol regime, and a falsifier in two languages. Day-type first. Overnight structure has no leftover at the open. The journal line’s new field is `Structure:`. None of this is an entry.
+
+The rookie mistakes share one root: treating a Gexbot object as more precise, more complete, or more directional than it is. A node is a bucket, not a tick. Three bars from one print are one fact. A ladder can move with no trade. A spread is one structure, not two opinions. Gamma is not a direction. Gexbot sees one slice of the hedge complex. Absence of a node is not absence of pressure.
+
+## Terms introduced
+
+<ChapterTerms docId="practice/09b-structure-and-gexbot" />
+
+## Newcomer questions
+
+1. **Is an S-number an entry?** No. It is a combined naming drill. Same rule as H1–H15.
+2. **The overnight high is at a Classic open-interest pile. Wall?** Location only. Pressure unknown until leftover builds.
+3. **An alert fired during a sweep. Is that S2?** The ping is the touch. S2 still needs the stack beyond the swing, the pressure word, and both falsifier sentences.
+4. **Can I keep S1 into the last hour?** No. S9 is a different clock family. Nothing from S1–S8 carries in.
+5. **ES and NQ disagree. Which one do I trust?** Weight ES for pressure. If only one book has nameable leftover, name that one. If both do and they still disagree, write unknown.
+6. **The DEX ladder grew at my level but Orderflow is quiet. Did someone buy?** No. That is re-marking: the sensitivity moved with spot or the clock. Flow is on Orderflow. Tall and quiet is the clock.
+7. **DEX, convexity, and GEX orderflow all agree. Three confirmations?** One. They are three cuts of the same prints.
+8. **Two big bars printed at once, plus at one strike and minus at the next. Buyers and sellers fighting?** More likely one multi-leg structure. Read them together. Their convexity largely cancels.
+9. **There is no Gexbot node at the level that just held. Was Gexbot wrong?** No. Gexbot sees one slice. Absence of a node is not absence of pressure. Write “no Gexbot object here.”
+
+<CheckYourself
+  items={[
+    {
+      q: 'Yesterday’s high is 3 points from the nearest strike, which carries a modest bar like its neighbors. Confluence node?',
+      a: 'No. The strike is within spacing, but the bar is not significant relative to today’s ladder. That is confluence bias. Only a standout bar or a major counts.',
+    },
+    {
+      q: 'The convexity ladder at the money doubled between 14:30 and 15:30. Convexity orderflow shows small alternating bars. What happened?',
+      a: 'Re-marking. At-the-money 0DTE gamma grows as time runs out. No sequence on Orderflow means no new leftover. The clock built the bar, not the crowd.',
+    },
+    {
+      q: 'Large plus DEX at one strike with convexity near zero. Which 2×2 cell?',
+      a: 'Cannot name. A bought call and a sold put at the same strike carry equal gamma; convexity cancels. That is a synthetic directional structure, not a cell.',
+    },
+    {
+      q: 'A minus-DEX, plus-convexity bar prints. The rookie says “bearish bet.” What else could it be?',
+      a: 'A hedged holder: someone long the index buying protection. Same long-put cell, different incentive at the strike. The 2×2 names the option, not the account.',
+    },
+    {
+      q: 'VIX fell all morning. Falling-vol regime for H4?',
+      a: 'Not from VIX. VIX is a thirty-day quote. Tag intraday regime from the skew dots (H12). VIX only serves the SPX-versus-SPY character sentence.',
+    },
+    {
+      q: 'Monthly SPX expiry, 15:20, a large 0DTE minus-convexity node below. Run S9?',
+      a: 'Write the expiry-group sentence first. Standard monthlies settle in the morning; the docs do not describe this day. Treat the last-hour read as unverified.',
+    },
+    {
+      q: 'Overnight high at 09:31, Classic open-interest pile there, State empty. What can you write?',
+      a: 'Location only. Pressure unknown. Overnight structure has no State leftover at the open. Do not name wall or fuel until leftover builds.',
+    },
+    {
+      q: 'Price sweeps yesterday’s high into customer-short leftover, falling vol. Reversal or continuation?',
+      a: 'S2: continuation candidate. Sweep into fuel. A wall thesis would have needed customer-long leftover. H14: you may name the dealer hedge direction, not the customer’s intent.',
+    },
+    {
+      q: 'What kills a wall thesis versus a fuel thesis?',
+      a: 'Wall dies on acceptance through the level and the node. Fuel dies on failure to take. Write the leftover sentence too: leftover flips or vanishes.',
+    },
+    {
+      q: 'VWAP sits above; a DEX sign change sits between price and VWAP. Where does pressure end?',
+      a: 'S5: at the transition zone. The structural target is probably too far. For a pin cell, Chapter 9 still says the node is the target.',
+    },
+    {
+      q: 'Opening-range break, falling vol, persistent minus-convexity drip. Spike or grind?',
+      a: 'S3: grind. The break is traveling through short gamma; the dealer on the mirror is long gamma and fades. Tag H12 first. Falsifier is a reclaim plus a sequence flip.',
+    },
+    {
+      q: 'Failed break above a swing high on NQ, plus GEX-orderflow bar, convexity minus. Do you write H1?',
+      a: 'Only if you rename the claim. H1 is SPX folklore. S6 plus the transfer rule: do not copy the SPX sentence onto NQ unrenamed.',
+    },
+    {
+      q: 'Named trend day, first confluence node ahead. Fade it?',
+      a: 'S7: no. Short-gamma mandate is chasing. Nodes are continuation checkpoints. Falsifier is H8’s single dominant bar, or the sequence flipping the net.',
+    },
+    {
+      q: 'The futures tape is lifting ES as a State DEX bar prints plus. Confirmation?',
+      a: 'No. Futures-tape delta and Gexbot DEX are different objects. Do not add them. A futures print is never the dealer.',
+    },
+  ]}
+/>
+
+## Gate
+
+Next: [Misreads and mastery](/docs/practice/10-misreads-and-mastery). The capstone asks for annotated ES and NQ sessions. Fill `Structure:` on those annotations. Still no entry.
