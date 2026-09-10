@@ -1,0 +1,130 @@
+---
+title: "7. Clocks and late greeks"
+---
+
+import NeededForThisScreen from '@site/src/components/textbook/NeededForThisScreen';
+import GexbotConcept from '@site/src/components/textbook/GexbotConcept';
+import WhoMustAct from '@site/src/components/textbook/WhoMustAct';
+import ScreenOrientation from '@site/src/components/textbook/ScreenOrientation';
+import DistinguishingNote from '@site/src/components/textbook/DistinguishingNote';
+import TermFirst from '@site/src/components/textbook/TermFirst';
+import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
+import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import OfficialFigure from '@site/src/components/textbook/OfficialFigure';
+import ClockFamilies from '@site/src/components/charts/ClockFamilies';
+import DealerHedgeSim from '@site/src/components/charts/DealerHedgeSim';
+
+# Clocks and late greeks
+
+**Which Gexbot capability this is.** Clock families, and residual-only −vanna / charm (beta).
+
+**What you will be able to do.** Pick a legal claim for a window, and read last-hour ladders as clock-forced re-hedge with spot unchanged.
+
+**What you already need.** Hedge-chain links 5–6. Do not start here for a morning tape.
+
+<ScreenOrientation
+  screen="−vanna / charm ladders (beta)"
+  axis="Strike × dollar delta impact"
+  right="Customers gain deltas into expiry → dealers get shorter → dealers buy (supportive passive flow)"
+  left="The opposite → passive selling"
+  color="Polarity flips as spot crosses the level and zeros when spot sits on it"
+  unit="−vanna: $ of a vol collapse. Charm: $MM / hour. Today’s residual only."
+  expiry="Latest 0DTE is the live object"
+  clock="Relevance grows into the last 30–120 minutes of RTH"
+/>
+
+<NeededForThisScreen
+  title="Needed to read clock-forced re-hedge"
+  ids={['vega', 'vanna', 'charm', 'settlement']}
+/>
+
+<ClockFamilies />
+
+Quant WebSocket publishes **09:30–16:00 ET**. Explicit-expiry groups are live-only and not in REST history (*docs*).
+
+## −vanna and charm (beta)
+
+<GexbotConcept id="minus-vanna-ladder" />
+<WhoMustAct screenId="vanna-charm" />
+
+<GexbotConcept id="charm-ladder" />
+<WhoMustAct id="charm-ladder" />
+
+<OfficialFigure
+  src="/img/gexbot/vanna-ladder.png"
+  alt="Gexbot −vanna ladder"
+  source="gexbot.com/docs"
+  teaching="Dollar delta of a vol collapse on today’s leftover, not the whole vault."
+  whoMustAct="dealer · mandate · time / vol collapse"
+/>
+
+<OfficialFigure
+  src="/img/gexbot/charm-ladder.png"
+  alt="Gexbot charm ladder"
+  source="gexbot.com/docs"
+  teaching="Dollar delta per hour, residual-only. Last hour is a different instrument."
+  whoMustAct="dealer · mandate · clock"
+/>
+
+<OfficialFigure
+  src="/img/gexbot/net-vanna.png"
+  alt="Gexbot net −vanna"
+  source="gexbot.com/docs"
+  teaching="Docs folklore: notice SPX when |net −vanna| ≳ $800MM last hour, sooner if ≳ $1000MM. Discretionary. Beta."
+  whoMustAct="dealer clock-forced re-hedge"
+/>
+
+<DistinguishingNote
+  cousin="Full-book vanna/charm pinning literature"
+  cut="Gexbot applies −vanna/charm to today’s classified residual only."
+  doNotImport="A morning −vanna stack as a 09:45 directional signal."
+/>
+
+<DealerHedgeSim showTime={true} />
+
+Use the hours-left slider with spot fixed: that is clock re-hedge (link 5), not gamma re-hedge (link 4).
+
+## Settlement (*market-general*)
+
+SPX options are European and cash-settled; daily expiries settle PM. SPY options are American and physically settled. Do not transfer SPX 0DTE resolution onto SPY without saying so. Gexbot shows none of the resolution link directly.
+
+## Running example at 15:30
+
+Spot has drifted away. The 500 calls are OTM. Charm drains their delta.
+
+**Bought branch.** Customer is getting shorter (OTM long call dies). Dealer’s long-ES hedge is now too big → dealer **sells** (bar left, passive selling).
+
+**Sold branch.** Mirror: dealer **buys** (bar right).
+
+Flow **dies** if spot walks back to the strike and the calls go ATM (*docs*).
+
+## Summary
+
+Do not pool clock families. Last hour is not the open with a magnet pasted on. −vanna/charm are beta and residual-only.
+
+## Terms introduced
+
+<ChapterTerms docId="layer/07-clocks-and-late-greeks" />
+
+## Newcomer questions
+
+1. **Is last-hour pinning the same as a morning wall?** No. Different family, different greek, different pressure trigger (clock vs spot path).
+2. **Must dealers buy if net −vanna is $800MM?** Folklore. Discretionary. Residual-only. Beta.
+3. **Does Gexbot show expiry settlement hedges?** Not directly. Link 6 is not on a screen.
+
+<CheckYourself
+  items={[
+    {
+      q: 'Right on a charm ladder means what for dealers?',
+      a: 'Customers gain deltas → dealers get shorter → inferred dealer buy (passive). Docs sign convention.',
+    },
+    {
+      q: 'Why is a 09:45 −vanna trade a leak?',
+      a: 'Docs: relevance grows into expiry. The morning bar is not the last-hour object.',
+    },
+  ]}
+/>
+
+## Gate
+
+Next: [Heuristics as reading](/docs/practice/08-heuristics-as-reading) — naming drills on the plans, not a system.

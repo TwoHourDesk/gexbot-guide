@@ -1,0 +1,85 @@
+---
+title: "10. Misreads and mastery"
+---
+
+import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
+
+# Misreads and mastery
+
+**Which Gexbot capability this is.** The catalog of imported mistakes, plus a capstone that writes no entry.
+
+**What you will be able to do.** Pair each guardrail with its misread, and annotate a session with forced-flow sentences only.
+
+**What you already need.** The whole book.
+
+## Imported-tool misreads
+
+| What people bring in | Gexbot cut |
+|---|---|
+| Unsigned call wall = fade | Classic owner is **unknown** |
+| Futures-native “the level” | `ES_SPX` / `NQ_NDX` is converted residual |
+| Premium sweep = huge DEX | Greek-weighted leftover; cheap 0DTE can dominate |
+| Open/close tag | Gexbot does not split |
+| Full-book charm pin at 10:00 | Residual-only, last-hour family |
+| Green = bullish | Call-sided leftover; on SPX often sold (*folklore*) |
+
+## Guardrail pairs
+
+| Misread | Guardrail |
+|---|---|
+| DEX bar = buying still to come | Already hedged vs pending |
+| “Dealers must…” from Classic | Unknown; “must” is mandate only |
+| Customer “forced” to dump | Incentive, never forced |
+| Quiet ladder = nothing traded | Pressure: none (cancelled two-way) |
+| One desk will do X | Dealer is a population |
+| Self-hedged customer ignored | Two hedgers ≈ no net forced flow (*inferred*) |
+| Tick-by-tick chase | Hedge in bands (*market-general*) |
+| Wall as a fact | Walls are hypotheses |
+| Falling-vol map on a rising-vol tape | Vol regime governs the customer channel |
+| ES print = the hedge | You cannot identify it |
+| SPX 0DTE resolution on SPY | Settlement styles differ |
+| 15:50 net on a 09:35 fill | Labeling leak |
+
+## Mastery rubric
+
+You can:
+
+1. Name the **2×2** or say you cannot.
+2. Name the **clock family**.
+3. Name the **conversion limit** (`ES_SPX` / `NQ_NDX`).
+4. Write a **forced-flow sentence** or **unknown**.
+5. Name **one falsifier** for the read.
+
+## Capstone
+
+Annotate one full RTH session on **ES** and one on **NQ**. No entry. Every annotated node carries:
+
+```
+actor · pressure · trigger · direction · venue
+```
+
+or `UNKNOWN`.
+
+If you write an entry, you left the course.
+
+## Terms introduced
+
+<ChapterTerms docId="practice/10-misreads-and-mastery" />
+
+<CheckYourself
+  items={[
+    {
+      q: 'List the four pressure words.',
+      a: 'Mandate, incentive, none, unknown.',
+    },
+    {
+      q: 'What three verbs does this book use?',
+      a: 'Observed, inferred, assumed.',
+    },
+  ]}
+/>
+
+## After the book
+
+Keep the [forced-flow ledger](/docs/reference/forced-flow-ledger) and [guardrails](/docs/reference/guardrails) open while you sit the product. The SoT file in the repo is the concept lock. This wiki is the teaching order.

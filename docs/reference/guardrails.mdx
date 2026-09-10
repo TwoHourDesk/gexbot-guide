@@ -1,0 +1,33 @@
+---
+title: Guardrails
+---
+
+# Professional guardrails
+
+Do not oversimplify. Every chapter applies the rows that touch its screen. Facts marked **market-general** are not Gexbot claims.
+
+1. **Hedge in bands.** Dealers hedge at their own thresholds, not tick by tick (*market-general*; standard market-maker risk practice). A ladder gives direction and location of pressure, not timing or size.
+
+2. **Dealer is a population.** Shorthand for delta-neutral market makers, not one desk. Populations disagree and net internally.
+
+3. **Self-hedged customers.** The counterparty may be another customer (cancels) or a customer who hedges their own delta (a vol fund buys calls and sells futures). Two hedgers ≈ no net forced flow. Gexbot cannot see this. DEX implicitly assumes an unhedged directional customer. *Inferred*.
+
+4. **Residual is today so far.** Classic OI inventory already has its hedge on; only the re-hedge on movement is pending. State ladders start empty at 09:30.
+
+5. **Open vs close is unknown.** A +DEX bar can be a new long or a short covering. Hedge inference can survive; intent inference cannot.
+
+6. **Walls are hypotheses.** Tested by acceptance through the node. A concentrated −convexity node is a magnet or a trapdoor depending on vol regime and clock.
+
+7. **Gamma re-hedge is path-dependent.** Forced flow ahead depends on where spot goes. The screen cannot know that.
+
+8. **Vol regime governs the customer channel.** Do not apply the falling-vol wall/fuel map on a rising-vol tape.
+
+9. **Converted ES/NQ.** The hedge lands in ES/NQ; the option print did not happen there. NDX is thinner than SPX; treat NQ reads as weaker evidence. *Inferred*.
+
+10. **Toy numbers.** Order-of-magnitude only. The only numeric thresholds in the book are Gexbot’s $800MM / $1000MM −vanna notes, labeled folklore.
+
+11. **Never name a futures print “the dealer hedge.”** You cannot identify it on the tape.
+
+12. **Settlement.** SPX options are cash-settled European; SPY options are physically settled American (*market-general*; Cboe contract specifications). Do not transfer SPX 0DTE resolution to SPY without saying so.
+
+Sources for market-general rows: Cboe SPX/SPY contract specs; CME ES ($50/pt) and NQ ($20/pt) contract units; standard options market-making (delta-neutral books, discrete hedge bands) as in Natenberg, *Option Volatility and Pricing*.

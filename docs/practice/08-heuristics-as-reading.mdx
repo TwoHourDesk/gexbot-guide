@@ -1,0 +1,82 @@
+---
+title: "8. Heuristics as reading"
+---
+
+import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
+import CheckYourself from '@site/src/components/textbook/CheckYourself';
+
+# Heuristics as reading
+
+**Which Gexbot capability this is.** None new. These are naming drills on Classic, State, Orderflow, and clocks.
+
+**What you will be able to do.** Walk H1–H5 as *reads*, each with a pressure word and a hedge-chain link. Not a system. No hit rate.
+
+**What you already need.** Chapters 1–7. If a stop or target is not in the docs, it is **inferred**.
+
+**Default clocks.** Residual: 09:30–16:00 ET. Early RTH map to ES/NQ: 09:29–11:00. Last-hour family: 15:00–16:00. Do not pool them.
+
+**Stand down** when OF is two-sided noise, residual is too thin to name a major, you are using the falling-vol map on a rising-vol tape, you used full-book zero gamma for a 0DTE scalp, or you treated converted walls as exchange volume.
+
+## H1 — SPX GEX-orderflow pivot (*folklore*)
+
+- **Plan / link.** Orderflow GEX OF. Hedge-chain link 1 (print) plus link 4 if you add convexity.
+- **Pressure.** Mandate on absorb. Owner still needs the 2×2. Classic cannot supply it.
+- **Read.** Standout +GEX OF into a call-heavy node → local-top *candidate* on SPX. Mirror for −GEX OF. Off when docs’ “SPX trading like SPY” (VIX > 20) *folklore* applies, or when convexity shows the bar was **long calls**.
+- **Forced-flow sentence.** Dealer absorbed call-sided leftover · mandate · print · *unknown direction until 2×2* · ES.
+
+## H2 — Name the +DEX (expansion vs pin)
+
+- **Plan / link.** DEX OF × convexity OF. Link 1, then link 4 sign.
+- **Pressure.** Mandate on the dealer mirror; customer incentive differs by cell.
+- **Read.** +DEX +convexity → long call (expansion). +DEX −convexity → short put (pin). Mirror for −DEX.
+- **Forced-flow sentence.** Name the 2×2 cell or do not name the trade.
+
+## H3 — Fear tape vs grind tape
+
+- **Plan / link.** Convexity OF sequence + nets. Not an entry. Day-type filter.
+- **Pressure.** Aggregate pending gamma lean (mandate) plus customer vol bid/offer (incentive).
+- **Read.** Many small +cvroflow bars → fear / vol-bid. Many small −cvroflow → grind / premium-sale (*folklore*). Do not name the day at 09:35.
+
+## H4 — Walk into a stack
+
+- **Plan / link.** State OP + DEX + convexity. Link 4 and customer incentive.
+- **Pressure.** Customer **incentive** (vol regime). Dealer **mandate** on the mirror. Apply the vol flip.
+- **Read.** Falling vol: approach a customer-long node → stall *candidate*; approach a customer-short → continuation *candidate*. Do not use a stack that printed *after* the touch (`LABELING_LEAK`).
+- **Walls are hypotheses**, tested by acceptance through the node.
+
+## H5 — Last-hour 0DTE short-convexity magnet (*beta*)
+
+- **Plan / link.** Clocks. Hedge-chain link 5.
+- **Pressure.** Dealer **mandate**, clock/vol, residual-only. Off if net −vanna is not “extreme” by their discretionary $800MM / $1000MM SPX note (*folklore*).
+- **Read.** Pin / attract toward 0DTE −convexity. Different family from H1–H4. Flow dies if the node goes ATM.
+
+## Summary
+
+Each heuristic is a naming drill. Each states which pressure it relies on. None is locked doctrine.
+
+## Terms introduced
+
+<ChapterTerms docId="practice/08-heuristics-as-reading" />
+
+## Newcomer questions
+
+1. **Which heuristic is an entry?** None, as a system. H3 has no entry at all.
+2. **Can I use H5 at the open?** No. Different clock family.
+3. **Does H1 work on NQ?** Only if you rename the claim. It is SPX folklore.
+
+<CheckYourself
+  items={[
+    {
+      q: 'H4 on a rising-vol tape using the falling-vol map. What do you do?',
+      a: 'Stand down or invert the OP rules. The customer channel flipped.',
+    },
+    {
+      q: 'Which hedge-chain link is H5?',
+      a: 'Link 5 — clock re-hedge. Not link 4.',
+    },
+  ]}
+/>
+
+## Gate
+
+Next: [Grammar and journal](/docs/practice/09-grammar-and-journal).

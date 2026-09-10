@@ -1,0 +1,97 @@
+---
+title: "1. What Gexbot is"
+---
+
+import TermFirst from '@site/src/components/textbook/TermFirst';
+import DistinguishingNote from '@site/src/components/textbook/DistinguishingNote';
+import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
+import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import OfficialFigure from '@site/src/components/textbook/OfficialFigure';
+import NotTheSame from '@site/src/components/charts/NotTheSame';
+
+# What Gexbot is
+
+**Which Gexbot plan this is.** The map of all plans.
+
+**What you will be able to do.** Name Classic, State, Orderflow, Quant, and Research, and say what pressure each can name.
+
+**What you already need.** [How to use this book](/docs/intro).
+
+## Plans and capabilities
+
+<TermFirst id="classic" />
+<TermFirst id="state" />
+<TermFirst id="orderflow-plan" />
+<TermFirst id="quant" />
+<TermFirst id="research" />
+
+| Plan | What it can see | Pressure it can name |
+|---|---|---|
+| **Classic** | Unsigned GEX from OI and from volume | **Unknown.** Location is real; owner is not. |
+| **State** | Classified residual ladders (OP, GEX profile, DEX, convexity) | Customer **incentive** and dealer **mandate** on the leftover |
+| **Orderflow** | Time series of that leftover (`dexoflow`, `gexoflow`, `cvroflow`) | Mandate at the **print** (increment); day’s lean in the nets |
+| **Quant** | API / WebSocket, cash RTH 09:30–16:00 ET | Same objects as State/OF, live. Explicit-expiry groups are live-only. Not a trading chapter. |
+| **Research (gbR)** | Any-ticker surfaces | Sibling product. Not the classified engine. Not this course. |
+
+The **classification engine** is the capability that turns Classic into State and Orderflow. Chapter 3 teaches it, and teaches the hedge chain once.
+
+NQ/ES on Gexbot is a **multiplier conversion** (`ES_SPX`, `NQ_NDX`), not CME volume. One paragraph here; [Chapter 6](/docs/layer/06-nq-es-layer) is the full claim.
+
+<OfficialFigure
+  src="/img/gexbot/gexbot-charts.png"
+  alt="Gexbot product charts collage"
+  source="gexbot.com"
+  teaching="The product is a set of plans — unsigned Classic, classified State, and Orderflow time series — not one “GEX line.”"
+/>
+
+## Cousin families
+
+Name a well-known tool once so you can place the family. Never import that tool’s named levels as objects to trade.
+
+<TermFirst id="cousin-dealer-gamma" />
+<TermFirst id="cousin-unsigned-gex" />
+<TermFirst id="cousin-futures-native" />
+<TermFirst id="cousin-premium-flow" />
+
+<NotTheSame />
+
+<DistinguishingNote
+  cousin="Unsigned GEX maps and futures-native level products"
+  cut="Gexbot’s backbone is residual classification plus three meters. Classic is the unsigned cousin; State/OF reject unsigned ownership. ES/NQ is converted index options."
+  doNotImport="HVL, call-resistance lines, or premium-flow open/close tags as if they were Gexbot objects."
+/>
+
+## What no plan shows
+
+The hedge itself. How much is already hedged. Overnight inventory beyond Classic OI. Whether the customer hedged their own delta. Open vs close. A futures print you can point at and call “the dealer.”
+
+## Summary
+
+Sit Classic first (unsigned map). Then the engine that upgrades it. Then State and Orderflow. Then where the hedge lands (ES/NQ) and when the clock family changes.
+
+## Terms introduced
+
+<ChapterTerms docId="plans/01-what-gexbot-is" />
+
+## Newcomer questions
+
+1. **Is Classic “the GEX map” people tweet?** It is the closest Gexbot cousin. Ownership is still unknown.
+2. **Does State tell me who will buy ES next?** It names leftover paper. The initial delta hedge is mostly already done. Pending flow lives on gamma and on the clock.
+3. **Can I skip to Orderflow?** Not if you cannot say why Classic ≠ State.
+
+<CheckYourself
+  items={[
+    {
+      q: 'Which plan can honestly fill WhoMustAct with “unknown”?',
+      a: 'Classic. State and Orderflow report a customer sign on the leftover.',
+    },
+    {
+      q: 'What capability do State and Orderflow share that Classic does not?',
+      a: 'The classification engine (customer long vs customer short on residual).',
+    },
+  ]}
+/>
+
+## Gate
+
+Next: [Classic](/docs/plans/02-classic) — the unsigned map, and the schoolbook words that map needs.

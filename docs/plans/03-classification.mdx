@@ -1,0 +1,138 @@
+---
+title: "3. Classification and the hedge chain"
+---
+
+import NeededForThisScreen from '@site/src/components/textbook/NeededForThisScreen';
+import TermFirst from '@site/src/components/textbook/TermFirst';
+import GexbotConcept from '@site/src/components/textbook/GexbotConcept';
+import WhoMustAct from '@site/src/components/textbook/WhoMustAct';
+import DistinguishingNote from '@site/src/components/textbook/DistinguishingNote';
+import DefinedTerm from '@site/src/components/textbook/DefinedTerm';
+import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
+import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import HedgeChain from '@site/src/components/charts/HedgeChain';
+import DealerHedgeSim from '@site/src/components/charts/DealerHedgeSim';
+import ResidualScale from '@site/src/components/charts/ResidualScale';
+
+# Classification and the hedge chain
+
+**Which Gexbot capability this is.** The classification engine — the upgrade from Classic to State and Orderflow.
+
+**What you will be able to do.** Sign a print as customer long or short, name residual, walk the hedge chain, and write a forced-flow sentence for both branches of the running example.
+
+**What you already need.** Classic’s unsigned map and long vs short gamma from [Chapter 2](/docs/plans/02-classic).
+
+## Needed to read a signed print
+
+<NeededForThisScreen
+  title="Needed to read classification"
+  ids={['bid', 'ask', 'long-option', 'short-option', 'delta-neutral', 'hedge-in-bands']}
+/>
+
+<TermFirst id="mandate" />
+<TermFirst id="incentive" />
+<TermFirst id="none-pressure" />
+
+## The engine
+
+<GexbotConcept id="classification-engine" />
+<WhoMustAct id="classification-engine" />
+
+<GexbotConcept id="aggressor" />
+<WhoMustAct id="aggressor" />
+
+<GexbotConcept id="customer-long" />
+<WhoMustAct id="customer-long" />
+
+<GexbotConcept id="customer-short" />
+<WhoMustAct id="customer-short" />
+
+Metaphor: who walked over to the other stall and took the price. Not who already owned the inventory overnight.
+
+<GexbotConcept id="residual" />
+<WhoMustAct id="residual" />
+
+<ResidualScale />
+
+<GexbotConcept id="open-vs-close" />
+<WhoMustAct id="open-vs-close" />
+
+The hedge inference can survive (a buy still changes the dealer’s delta the same way). The intent inference does not.
+
+<GexbotConcept id="two-books" />
+<WhoMustAct id="two-books" />
+
+If two customers cross, Gexbot’s imbalance **cancels**. Link 3 of the chain does not happen. Pressure: **none**.
+
+<DistinguishingNote
+  cousin="Premium / sweep flow tools"
+  cut="Gexbot is greek-weighted residual with no open/close split."
+  doNotImport="A large debit as a large DEX print."
+/>
+
+## The hedge chain
+
+<GexbotConcept id="hedge-chain" />
+<WhoMustAct id="hedge-chain" />
+
+<HedgeChain />
+
+Liquidity roles (*inferred*, never observed on the futures tape):
+
+- Dealer **long** gamma hedges against the move → supplies liquidity → pin / calm.
+- Dealer **short** gamma hedges with the move → takes liquidity → amplify / trend.
+- Do not invert that polarity.
+
+Dealers hedge in **bands** (*market-general*). A later ladder gives direction and location, not the size or the second of the hedge.
+
+A customer may **self-hedge** (buy calls and sell futures). Two hedgers ≈ no net forced flow in the underlying. Gexbot cannot see this. DEX implicitly assumes an unhedged directional customer (*inferred*).
+
+<DealerHedgeSim />
+
+## Running example — both branches
+
+10:05 ET. 500 SPX 0DTE ATM calls, Δ 0.50. Share-equivalent: 500 × 0.50 × $100 = $25,000 per point ≈ **500 ES** ($50/pt). *Market-general* multipliers.
+
+**Bought branch.** Dealer is short 500 calls, short gamma. Initial hedge: buys ≈ 500 ES now — **done** by the time a DEX bar exists. Spot +15, Δ → ~0.80 (SoT toy) → dealer buys ≈ 300 more ES **into strength** (gamma re-hedge, pending, path-conditional).
+
+**Sold branch.** Dealer is long those calls, long gamma. Sells ≈ 500 ES now. Into the same rip, sells ≈ 300 more (fades).
+
+**Same Classic bar, opposite forced re-hedge.** That sentence is why Classic ≠ State.
+
+## Forced-flow sentence (gate)
+
+> Actor · pressure · trigger · direction · venue — or “unknown.”
+
+Classic wall: **unknown**.  
+Bought-branch State long-call leftover: **dealer · mandate · spot up · buy ES (chase) · ES** (pending gamma) and **customer · incentive · approach · may dump (*folklore*)**.
+
+## Summary
+
+Classification signs leftover paper. The hedge chain maps each link to a screen and to what that screen cannot show. “Forced” is only mandate.
+
+## Terms introduced
+
+<ChapterTerms docId="plans/03-classification" />
+
+## Newcomer questions
+
+1. **Did they just put on longs?** Not stated. Buy to close looks the same.
+2. **Is the dealer about to buy because DEX printed?** The initial hedge is mostly already done. Pending force lives on gamma and on the clock.
+3. **Quiet ladder means a dead day?** Residual can be tiny while two-way volume is huge. Pressure: none.
+
+<CheckYourself
+  items={[
+    {
+      q: 'Write the forced-flow sentence for Classic on the running example.',
+      a: 'Unknown. Same call-side bar whether bought or sold.',
+    },
+    {
+      q: 'Two customers cross 500 calls. What happens at link 3?',
+      a: 'It does not happen. Residual cancels. Pressure: none.',
+    },
+  ]}
+/>
+
+## Gate
+
+Next: [State](/docs/plans/04-state). Same leftover, now by strike, with DEX as a record and convexity as pending.

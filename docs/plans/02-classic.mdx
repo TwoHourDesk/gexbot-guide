@@ -1,0 +1,163 @@
+---
+title: "2. Classic"
+---
+
+import NeededForThisScreen from '@site/src/components/textbook/NeededForThisScreen';
+import GexbotConcept from '@site/src/components/textbook/GexbotConcept';
+import WhoMustAct from '@site/src/components/textbook/WhoMustAct';
+import ScreenOrientation from '@site/src/components/textbook/ScreenOrientation';
+import DistinguishingNote from '@site/src/components/textbook/DistinguishingNote';
+import DefinedTerm from '@site/src/components/textbook/DefinedTerm';
+import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
+import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import OfficialFigure from '@site/src/components/textbook/OfficialFigure';
+import PayoffSketch from '@site/src/components/charts/PayoffSketch';
+import GreeksSurface from '@site/src/components/charts/GreeksSurface';
+
+# Classic
+
+**Which Gexbot plan this is.** Classic — unsigned GEX from open interest and from volume.
+
+**What you will be able to do.** Read the histogram (right call / left put), name zero gamma and majors, and write WhoMustAct as **unknown**.
+
+**What you already need.** [What Gexbot is](/docs/plans/01-what-gexbot-is).
+
+<ScreenOrientation
+  screen="Classic GEX"
+  axis="Strike (vertical) × signed GEX (horizontal)"
+  right="Call GEX"
+  left="Put GEX"
+  color="Docs language: bars right = call, bars left = put. Do not read green as bullish."
+  unit="Gamma × OI or gamma × volume, call netted against put"
+  expiry="full / zero (latest) / one (next)"
+  clock="OI is an overnight snapshot. Volume GEX rewrites during RTH."
+/>
+
+## Needed to read this screen
+
+Classic plots **call GEX** against **put GEX** at each **strike**. Those words are why the next box exists. After it, we return to the histogram.
+
+<NeededForThisScreen
+  title="Needed to read Classic"
+  ids={['call', 'put', 'strike', 'expiry', 'zero-dte', 'premium', 'atm', 'itm', 'otm', 'gamma', 'open-interest', 'volume']}
+/>
+
+A cheap 0DTE can still carry huge <DefinedTerm id="gamma" />. Gexbot weights by greeks, not by debit. That is why this book will not treat a large premium as a large print.
+
+<PayoffSketch />
+
+<GreeksSurface defaultMetric="gamma" />
+
+<OfficialFigure
+  src="/img/gexbot/classic.png"
+  alt="Gexbot Classic GEX histogram"
+  source="gexbot.com/docs"
+  teaching="Right = call GEX; left = put GEX."
+  whoMustAct="owner unknown; pressure unknown"
+/>
+
+<DistinguishingNote id="gex-by-volume" />
+
+## GEX by OI
+
+<GexbotConcept id="gex-by-oi" />
+<WhoMustAct screenId="classic-oi" />
+
+Metaphor (one picture): a topographic map printed last night. Hills are still there even if nobody walked them today.
+
+<OfficialFigure
+  src="/img/gexbot/gex-oi.webp"
+  alt="Classic GEX by open interest"
+  source="gexbot.com/docs"
+  teaching="Overnight inventory location. Not today’s aggressor."
+  whoMustAct="unknown"
+/>
+
+## GEX by volume
+
+<GexbotConcept id="gex-by-volume" />
+<WhoMustAct screenId="classic-volume" />
+
+Metaphor: today’s footprints on last night’s map. Classic uses this series for zero gamma, majors, and max-change.
+
+<OfficialFigure
+  src="/img/gexbot/gex-vol.webp"
+  alt="Classic GEX by volume"
+  source="gexbot.com/docs"
+  teaching="Where curvature changed hands today — still unsigned."
+  whoMustAct="unknown"
+/>
+
+## Call vs put netting
+
+<GexbotConcept id="call-put-netting" />
+<WhoMustAct id="call-put-netting" />
+
+Equal call and put gamma at the same strike nets toward zero even if both are huge. That is a balanced node, not an empty one.
+
+## Zero gamma
+
+<GexbotConcept id="zero-gamma" />
+<WhoMustAct id="zero-gamma" />
+
+The usual “below zero gamma = air pocket” read **assumes** the dealer-short-calls shortcut. Classic cannot prove it. If you use that shortcut, write *if*.
+
+## Major positive / major negative
+
+<GexbotConcept id="major-pos-neg" />
+<WhoMustAct id="major-pos-neg" />
+
+A short-gamma hole can be an acceleration lane, not a fade. You do not know the owner.
+
+<OfficialFigure
+  src="/img/gexbot/classic-majors.png"
+  alt="Classic historical majors"
+  source="gexbot.com/docs"
+  teaching="Majors and lookbacks are locations on an unsigned map."
+  whoMustAct="unknown"
+/>
+
+## Max-change and lookbacks
+
+<GexbotConcept id="max-change" />
+<WhoMustAct id="max-change" />
+<GexbotConcept id="lookbacks" />
+
+A wall that **built** into you is different from a wall you inherited at 09:31. Lookbacks show which. They are not a forecast.
+
+## Running example (10:05 ET)
+
+A customer trades **500 SPX 0DTE ATM calls**. Classic’s volume-GEX bar at that strike grows **to the right** (call side).
+
+Now the mirror: the customer **sold** the same 500 calls. Classic’s bar still grows **to the right**. **The bar is identical in the sold branch.** Owner unknown. Pressure unknown.
+
+That is why Classic is not State. Chapter 3 splits the branches.
+
+## Newcomer question
+
+**Is a big green bar bullish?** It is call-sided gamma. On SPX it is often sold calls (*folklore*). Whether it stalls or fuels depends on owner and vol regime, and Classic cannot show the owner.
+
+## Summary
+
+Classic is the unsigned cousin of public GEX maps. Every WhoMustAct row on this page says **unknown**. Location can be real while sign is not.
+
+## Terms introduced
+
+<ChapterTerms docId="plans/02-classic" />
+
+<CheckYourself
+  items={[
+    {
+      q: 'Bought 500 calls vs sold 500 calls: what does Classic show?',
+      a: 'The same call-side volume-GEX growth. Owner unknown.',
+    },
+    {
+      q: 'May you write “dealers must buy” under a Classic put wall?',
+      a: 'No. Write “if the usual ownership shortcut holds, dealers would…” — assumed, not mandate.',
+    },
+  ]}
+/>
+
+## Gate
+
+Next: [Classification and the hedge chain](/docs/plans/03-classification). The capability that splits the two branches Classic cannot split.

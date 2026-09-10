@@ -1,0 +1,101 @@
+---
+title: "6. NQ and ES as an information layer"
+---
+
+import NeededForThisScreen from '@site/src/components/textbook/NeededForThisScreen';
+import GexbotConcept from '@site/src/components/textbook/GexbotConcept';
+import WhoMustAct from '@site/src/components/textbook/WhoMustAct';
+import DistinguishingNote from '@site/src/components/textbook/DistinguishingNote';
+import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
+import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import ConversionMap from '@site/src/components/charts/ConversionMap';
+
+# NQ and ES as an information layer
+
+**Which Gexbot capability this is.** Conversion: `ES_SPX` and `NQ_NDX` sit on top of the plans you already read.
+
+**What you will be able to do.** Say where the option print happened, where the inferred hedge lands, and what you may claim next to a futures tape.
+
+**What you already need.** The three meters and the hedge chain.
+
+<NeededForThisScreen
+  title="Needed to convert a print"
+  ids={['spx-multiplier', 'ndx-multiplier']}
+/>
+
+<GexbotConcept id="es-spx" />
+<WhoMustAct id="es-spx" />
+
+<GexbotConcept id="nq-ndx" />
+<WhoMustAct id="nq-ndx" />
+
+<ConversionMap />
+
+<DistinguishingNote
+  cousin="Futures-native gamma products"
+  cut="Gexbot converts index options. It does not compute gamma on CME ES/NQ lots."
+  doNotImport="Pre-drawn futures levels, or treating converted walls as exchange volume."
+/>
+
+## Latest / next / full
+
+<GexbotConcept id="latest" />
+<WhoMustAct id="latest" />
+<GexbotConcept id="next" />
+<WhoMustAct id="next" />
+<GexbotConcept id="full" />
+<WhoMustAct id="full" />
+
+Intraday walls that matter for the open are usually **latest**. Full is overnight context. Mixing full-book zero gamma with a 0DTE scalp is a misread.
+
+## What you may claim next to a futures tape
+
+**Observed:** a Gexbot residual node at a converted strike.  
+**Inferred:** a dealer hedge *may* land in ES or NQ in that share-equivalent.  
+**Never:** “that ES print *is* the dealer hedge.”
+
+NDX options are a thinner book than SPX. Treat NQ reads as weaker evidence (*inferred*).
+
+## Transfer rules
+
+- SPX docs folklore (+GEX OF as local top in a quiet short-gamma tape) does **not** automatically apply to NQ. Rename the claim if you use it.
+- SPY is described as more directional than SPX. ES is converted SPX, not SPY.
+- When VIX > 20, docs say SPX starts trading like SPY (*folklore*). That sentence is still an SPX sentence.
+
+## Running example
+
+Same 500 ATM contracts, Δ 0.50, $25,000/pt.
+
+- If they are **SPX** calls: ≈ **500 ES**. Print is SPX; hedge venue is ES.
+- If they are **NDX** calls: $25,000 / $20 ≈ **1,250 NQ**. Print is NDX; hedge venue is NQ. **1 ATM NDX ≈ 2.5 NQ.**
+
+## Summary
+
+The information layer sits *beside* NQ and ES. The option residual is not the futures tape. Conversion is a multiplier, not aggressor truth.
+
+## Terms introduced
+
+<ChapterTerms docId="layer/06-nq-es-layer" />
+
+## Newcomer questions
+
+1. **Does Gexbot show ES volume?** No. `ES_SPX` is converted SPX options.
+2. **Is 1 SPX option 1 ES?** ATM, as a toy: 1 ATM SPX ≈ 1 ES of delta (*market-general*).
+3. **Can I copy an SPX local-top read onto NQ?** Only if you rename the claim. NDX is thinner (*inferred*).
+
+<CheckYourself
+  items={[
+    {
+      q: 'Where did the print happen vs where the hedge lands for NQ_NDX?',
+      a: 'Print: NDX options. Inferred hedge venue: NQ. Not CME aggressor truth.',
+    },
+    {
+      q: 'Full-book zero gamma as an NQ open scalp?',
+      a: 'Misread. Full is 90-day context. Use latest, and still unknown on Classic.',
+    },
+  ]}
+/>
+
+## Gate
+
+Next: [Clocks and late greeks](/docs/layer/07-clocks-and-late-greeks) — a different family after 15:00.
