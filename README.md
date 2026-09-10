@@ -30,6 +30,6 @@ npm run serve
 
 ## Deploy
 
-Vercel: import the repo and use the default Docusaurus preset (`npm run build`, output `build/`).
+GitHub Pages is built by `.github/workflows/deploy-pages.yml` on every push to `main`.
 
-GitHub Pages: set `url` / `baseUrl` / `organizationName` / `projectName` in `docusaurus.config.ts`, then `npm run deploy`.
+Site: https://twohourdesk.github.io/gexbot-guide/

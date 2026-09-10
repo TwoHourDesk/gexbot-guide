@@ -1,3 +1,5 @@
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 export default function OfficialFigure({
   src,
   alt,
@@ -11,9 +13,10 @@ export default function OfficialFigure({
   teaching: string;
   whoMustAct?: string;
 }): JSX.Element {
+  const href = useBaseUrl(src);
   return (
     <figure className="gb-figure">
-      <img src={src} alt={alt} />
+      <img src={href} alt={alt} />
       <figcaption>
         <strong>Official Gexbot UI</strong> (source: {source}). {teaching}
         {whoMustAct ? ` Who must act: ${whoMustAct}` : ''}

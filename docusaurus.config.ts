@@ -11,11 +11,12 @@ const config: Config = {
     v4: true,
   },
 
-  url: 'https://gexbot-study.example.com',
-  baseUrl: '/',
+  url: 'https://twohourdesk.github.io',
+  baseUrl: '/gexbot-guide/',
 
-  organizationName: 'gexbot-study',
-  projectName: 'gexbot-study-wiki',
+  organizationName: 'TwoHourDesk',
+  projectName: 'gexbot-guide',
+  trailingSlash: false,
 
   onBrokenLinks: 'throw',
 
