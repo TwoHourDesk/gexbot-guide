@@ -198,11 +198,20 @@ You already have SPX from Classic and SPY from Orderflow. The S&P cousin of NQ i
 <GexbotConcept id="es-spx" />
 <WhoMustAct screenId="es-spx" />
 
-This table only **repeats** names this book has already taught.
+This table only **repeats** names this book has already taught. Two extra rows make the stretch visible.
+
+Where the number usually sits is the **price range** — this book also says **quoted scale**. SPX and ES print in the thousands. NDX and NQ print around 20,000: the pictures in this chapter used that neighborhood. SPY and QQQ are the same baskets at a much smaller share price, usually a few hundred dollars.
+
+The dollars one contract pays for a one-point move is the **point value**. An SPX option and an NDX option are both $100. ES is $50. NQ is $20. That is why the toy stretch is 1 ATM SPX ≈ 1 ES and 1 ATM NDX ≈ 2.5 NQ.
+
+<TermFirst id="quoted-scale" />
+<TermFirst id="point-value" />
 
 | What it is | S&P 500 | Nasdaq-100 |
 |---|---|---|
 | Cash index (a number) | SPX | NDX |
+| Price range | SPX / ES: thousands. SPY: a few hundred. | NDX / NQ: around 20,000. QQQ: a few hundred. |
+| Point value | SPX option $100. ES $50. | NDX option $100. NQ $20. |
 | Fund you can buy | SPY | QQQ |
 | Futures you chart | ES | NQ |
 | Gexbot leftover source | SPX options | NDX options |
@@ -219,7 +228,7 @@ State and Orderflow can draw leftover from three **expiry groups**. This chapter
 
 **Next** (also called **one**) is the following expiry. Use it when latest is dead, or when you are studying the **roll** — the handoff from this expiry to the next.
 
-**Full** is classified or Classic leftover across expiries within about ninety days. That is overnight context, not a 0DTE scalp line. Mixing full-book zero gamma with a morning scalp is a misread.
+**Full** is classified or Classic leftover across expiries within about ninety days. That is overnight context, not the picture you sit beside an NQ open.
 
 <GexbotConcept id="latest" />
 <WhoMustAct id="latest" />
@@ -274,10 +283,6 @@ You sit NQ. NDX is the cash index, QQQ is the fund, NQ is the future. An index C
     {
       q: 'What leftover does NQ_NDX draw?',
       a: 'Leftover NDX option trades so far today, after matched buys and sells of the same contract cancel. Not NQ volume. Not leftover QQQ options.',
-    },
-    {
-      q: 'Full-book zero gamma as an NQ open scalp?',
-      a: 'Misread. Full is ninety-day context. Use latest, and still unknown on Classic.',
     },
   ]}
 />

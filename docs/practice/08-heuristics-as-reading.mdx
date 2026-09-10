@@ -8,9 +8,9 @@ import CheckYourself from '@site/src/components/textbook/CheckYourself';
 
 # Heuristics as reading
 
-**Which Gexbot capability this is.** None new. These are naming drills on Classic, State, Orderflow, and clocks.
+**Which Gexbot capability this is.** None new as numbered drills. Classic already marked the strikes whose gamma map just redrew — **max-change**. Gexbot can also ping you when the index arrives at a named node. That ping is timing. It is not a sixteenth heuristic.
 
-**What you will be able to do.** Walk five reads — this book numbers them H1 through H5 — each with a pressure word and a hedge-chain link. Not a system. No hit rate.
+**What you will be able to do.** Walk fifteen reads — this book numbers them H1 through H15 — each with a pressure word and a hedge-chain link. The first five are the core. The next ten sit on Gexbot screens the first five leave unused, and two of them (H12, H13) are prerequisites the first five quietly assume. Two product features sit under those drills and do not get a number: the ping, and max-change. Not a system. No hit rate.
 
 **What you already need.** Chapters 1–7. If a stop or target is not in the docs, it is **inferred**.
 
@@ -80,9 +80,163 @@ The read: pin or attract toward 0DTE minus-convexity. Different family from H1�
 
 <TermFirst id="h5" />
 
+## More reads on the same screens
+
+H1 through H5 leave several Gexbot capabilities untouched: the two implied-vol dots on the options profile, the lookback slider, the switch between expiry groups, net GEX, the call-versus-put split of aggregate DEX, the *shape* of the convexity ladder, and the points where the minus-vanna and charm ladders cross zero. The ten drills below sit on those. Every one keeps the same discipline: a pressure word, a hedge-chain link, a label, and a misread.
+
+Two of them come first in practice. H12 tells you how to tag the vol regime on the screen, which H4, H6, and H7 need. H13 tells you when a Classic pile has no leftover behind it, which every State read needs.
+
+## H6 — Crowded short-convexity shove (*folklore*)
+
+This drill sits the **shape** of the convexity ladder, not one node. Link 4 for the dealer; customer incentive for the fuel.
+
+Customer-short gamma can be spread across many strikes, or bunched at one or two strikes just under or over the index. This book calls the first **well-distributed** and the second **crowded**. The docs describe well-distributed minus-convexity as a liquid, premium-selling tape, and crowded minus-convexity near the index as their favorite SPY pattern: “one shove” through it.
+
+Pressure: the customers who wrote that gamma are **incentivized** to defend the strike, and then to cover if the index takes it. The dealer on the mirror is long gamma there and fades, so the fuel comes from the customer channel, not from the dealer. That is Gexbot’s distinctive claim, and the reason a dealer-only map does not show this pattern.
+
+Distinct from H4: H4 reads the *approach* to a node; H6 reads how *concentrated* the short gamma is. The vol flip still applies. In rising vol, shorts defend and the crowd can hold.
+
+Misread: every minus-convexity node is a magnet. Concentration plus vol regime decides whether it is a magnet or a trapdoor.
+
+<TermFirst id="h6" />
+<TermFirst id="crowded-short-convexity" />
+
+## H7 — Transition zone as target (*folklore*)
+
+This drill sits the DEX ladder and the convexity ladder where the **sign changes**. Link 4; the sign of the pending re-hedge flips there.
+
+Where heavy customer-short bars give way to fresh customer-long bars, or where minus-convexity gives way to plus-convexity, this book calls a **transition zone**. The docs call the DEX version a target or reversion zone, and the convexity version a pivot where incentives reshuffle.
+
+This is the missing half of H4. H4 names the node you approach; H7 names where the move is likely to lose its pressure. Pressure: customer **incentive** changes sign at the transition; dealer **mandate** flips from chase to fade or the reverse.
+
+Misread: aiming at the tallest bar instead of the sign change. The tallest bar is where pressure is greatest, not where it ends.
+
+<TermFirst id="h7" />
+<TermFirst id="transition-zone" />
+
+## H8 — Net GEX: squeeze versus single-bar reversion (*folklore*)
+
+This drill sits **net GEX** read together with the distribution of the GEX profile and with **net convexity**. It is the running-integral read of GEX, the way H3 is the sequence read of convexity.
+
+A **squeeze** is a move that feeds itself because the people short gamma on that side must chase it. The docs’ read: when upside convexity is high and rising and the bars above the index are roughly **equal**, look for a squeeze. When one bar above the index **predominates**, look for reversion at that bar. Mirror both for the downside.
+
+Read net GEX with net convexity before naming either. Net GEX says the gamma is call-sided or put-sided; net convexity says whether it was bought or sold. Same sign, different owner, different pressure.
+
+Pressure: the net is the day’s aggregate lean of link 4, the pending gamma re-hedge. Distinct from H1, which is one bar, and H3, which is a convexity sequence.
+
+Misread: high net GEX is bullish. It says where the curvature is, not which way price goes.
+
+<TermFirst id="h8" />
+<TermFirst id="squeeze" />
+<TermFirst id="reversion" />
+
+## H9 — Aggregate DEX: the SPX baseline and the SPY divergence (*folklore*)
+
+This drill sits the call-versus-put split of **aggregate DEX**. It is a record of leans (link 3, already hedged), so it names day character, not pending flow.
+
+The docs describe a normal state for SPX in low vol: during an uptrend, put aggregate DEX is plus, call aggregate DEX is minus, and the net is mildly minus. That is the hedge-and-overwrite machine at work: customers buying puts and selling calls. Negative call aggregate DEX with positive put aggregate DEX marks a broad short-vol day. This book calls that normal state the **SPX baseline**. The drill is to know the baseline and name the deviation from it.
+
+On SPY the docs call a **divergence** between price and its own aggregate DEX “particularly powerful”: price makes a new high while aggregate DEX does not, or the reverse. The docs add that when VIX is above 20, SPX starts trading like SPY.
+
+Misread: a minus net aggregate DEX on SPX read as bearish. In quiet tape it is the normal state.
+
+<TermFirst id="h9" />
+<TermFirst id="spx-baseline" />
+
+## H10 — Wall built versus wall inherited (docs feature; read *inferred*)
+
+This drill sits the **lookback dots** and **history slider** on Classic and State, plus Classic’s **max-change** strikes — the shelves whose gamma map changed the most over the last 1, 5, 15, or 30 minutes. On Classic the pressure word is **unknown**. On State the direction the leftover grew tells you whether customers added or covered.
+
+A node that built into price through the morning is a different object from one already there at 09:31. The slider also shows you what was knowable at the moment of a touch, which is the labeling-leak rule made visible on the screen.
+
+Max-change marks where the map just redrew. Attention, location only, unsigned. Pair it with State to name the owner. Alone it is not a read. It does not get its own H-number.
+
+Misread: a lookback dot as a future target. A max-change strike as a reversal.
+
+<TermFirst id="h10" />
+
+## H11 — Which expiry group is live (docs)
+
+This drill sits the switch between **latest**, **next**, and **full**. Every other drill in this chapter assumes latest. This one makes the choice explicit.
+
+Sit latest by default. Switch to next when latest is dead or too thin to name a major, or when you are studying the roll. Use full only as overnight context. The stand-down for “full-book zero gamma on a 0DTE scalp” lives here.
+
+Misread: mixing expiry groups inside one sentence. A latest DEX node and a full zero gamma are not the same object.
+
+<TermFirst id="h11" />
+
+## H12 — Tag the vol regime from the skew dots (docs feature; rules *inferred*)
+
+This drill sits the two implied-vol dots on the **options profile**. H4, H6, and H7 all tell you to apply the vol flip. This is where the screen tells you which regime you are in.
+
+The options profile draws, on a second axis, the implied vol of the put and the implied vol of the call at each strike for the nearest expiry. This book calls those the **skew dots**. Watch them across lookbacks. If they drift lower through the morning, implied vol is crushing: falling vol. If they lift, rising vol. If the put dots and the call dots disagree, or the drift is flat, stand down on any wall-versus-fuel name.
+
+Two cautions, both *inferred*. Near expiry, 0DTE implied vol is noisy and a late-day drop is mostly the clock, not a regime change. And the dots are a state, not a forecast; a regime can flip after you tag it.
+
+Misread: inferring vol regime from price direction. Price can rise with vol rising.
+
+<TermFirst id="h12" />
+<TermFirst id="skew-dots" />
+
+## H13 — Classic versus State disagreement (*inferred*)
+
+This drill sits two plans against each other. Classic shows where gamma traded; State shows what is left over after buys and sells cancel. When they disagree, the disagreement is the read.
+
+A large Classic volume pile with a thin State leftover at the same strike means the trading was two-sided and cancelled. Pressure: **none**. Stand down on that strike. A large Classic pile with a customer-short leftover on State is a fuel candidate in falling vol, not support. A large Classic pile with a customer-long leftover is a wall candidate in falling vol. The Classic bar looked the same in all three cases.
+
+This is the practical form of the Chapter 3 gate: a Classic wall is not a State long. It is the only drill that needs two plans.
+
+Misread: a quiet State ladder as “nothing traded.” Also the balanced node from Chapter 2: two huge opposite piles that net toward zero.
+
+<TermFirst id="h13" />
+
+## H14 — Flush or bid at a low: what you cannot name (*folklore*, plus the documented open-versus-close limit)
+
+This drill sits **DEX orderflow** and is a deliberate negative. It is the limit case of H2.
+
+A holder forced out of a position is a **flush**. The docs say a local bottom can be an aggressive plus-DEX buyer or a minus-DEX flush as a long is forced out. Now add the open-versus-close limit from Chapter 3: closing a long call and opening a short call both print minus DEX and minus convexity. The screen cannot separate them.
+
+Pressure: the dealer’s **mandate** is the same either way, because their delta moved the same way. So the hedge inference survives. The customer’s **incentive** is unknowable, so the intent inference does not. Write the forced-flow sentence with the hedge and leave the intent blank.
+
+Misread: reading every minus-DEX spike into a low as a fresh bearish bet.
+
+<TermFirst id="h14" />
+<TermFirst id="flush" />
+
+## H15 — Local zero on the minus-vanna and charm ladders (*folklore*, *beta*)
+
+This drill sits the **minus-vanna** and **charm** ladders from Chapter 7. Hedge-chain link 5. Same clock family as H5, same beta caveat, same residual-only limit.
+
+The docs say the sign on these ladders flips as the index crosses a level and is zero when the index sits on it. Where the ladder crosses zero, this book calls a **local zero**. The docs call local zeros sharp pivots. H5 reads the net as a magnet toward a node; H15 reads a level on the ladder where passive buying turns into passive selling or the reverse.
+
+Pressure: dealer **mandate**, driven by clock and vol, not by the index moving. Off before the last hour. Off if net minus-vanna and charm are near zero, when the docs say price wanders.
+
+Misread: using a local zero at 10:00 as a level. It is a late-day object.
+
+<TermFirst id="h15" />
+<TermFirst id="local-zero" />
+
+## An alert is a touch
+
+Gexbot can ping you when the index arrives at a named node. This book calls that an **alert**. Classic pings on major positive and major negative. State pings on major call and major put, and on major long and major short. Orderflow pings when a bar passes a size you set.
+
+An alert is a **touch**, not a signal. It is the timing for H4, H6, and H7: the index has arrived at the node whose owner, pressure, and regime you must already have named. If you have not named them, the ping is noise with a sound.
+
+<TermFirst id="alert" />
+<TermFirst id="touch" />
+
+## Order to learn
+
+1. **H12, H13** — prerequisites. Tag the regime; check the leftover behind the pile.
+2. **H2, H4, H7** — name the print, name the node, name where pressure ends.
+3. **H3, H8, H9** — day character: convexity sequence, GEX integral, DEX baseline.
+4. **H1, H6** — the distinctive SPX and SPY folklore. Labels in the heading.
+5. **H10, H11, H14** — hygiene: built versus inherited, expiry group, what you cannot name.
+6. **H5, H15** — the last-hour family. Different clock. Beta.
+
 ## Summary
 
-Each heuristic is a naming drill. Each states which pressure it relies on. None is locked doctrine. Stand down when the clock family, the vol regime, or the leftover thickness does not support a name.
+Each heuristic is a naming drill. Each states which pressure it relies on and which hedge-chain link it reads. None is locked doctrine. Stand down when the clock family, the vol regime, the expiry group, or the leftover thickness does not support a name. Alerts time a touch; they do not name it.
 
 ## Terms introduced
 
@@ -93,6 +247,9 @@ Each heuristic is a naming drill. Each states which pressure it relies on. None 
 1. **Which heuristic is an entry?** None, as a system. H3 has no entry at all.
 2. **Can I use H5 at the open?** No. Different clock family.
 3. **Does H1 work on NQ?** Only if you rename the claim. It is SPX folklore.
+4. **How do I know which vol regime I am in?** H12: watch the skew dots across lookbacks. Not from price direction.
+5. **Classic shows a huge wall. Why is State empty there?** H13: the trading was two-sided and cancelled. Pressure none. Stand down on that strike.
+6. **An alert just fired. Is that my entry?** No. It is a touch. You should already have named the owner, pressure, and regime.
 
 <CheckYourself
   items={[
@@ -103,6 +260,30 @@ Each heuristic is a naming drill. Each states which pressure it relies on. None 
     {
       q: 'Which hedge-chain link is H5?',
       a: 'Link 5 — clock re-hedge. Not link 4.',
+    },
+    {
+      q: 'Minus-convexity is crowded two strikes below the index, falling vol. Magnet or trapdoor?',
+      a: 'H6: a shove candidate. Customer shorts defend, then cover if the strike is taken; the fuel is the customer channel. In rising vol the same crowd can hold.',
+    },
+    {
+      q: 'Net GEX is high and rising with one bar far above the index dominating. Squeeze or reversion?',
+      a: 'H8: reversion candidate at that bar. Equal bars would argue squeeze. Check net convexity first to know whether the call gamma was bought or sold.',
+    },
+    {
+      q: 'SPX, low vol, uptrend, net aggregate DEX mildly minus. Bearish?',
+      a: 'H9: no. That is the SPX baseline — puts bought, calls sold. Name the deviation from it, not the state itself.',
+    },
+    {
+      q: 'A minus-DEX, minus-convexity spike prints into a low. Fresh short call or long call dumping?',
+      a: 'H14: the screen cannot tell. The dealer hedge inference survives; the intent inference does not. Leave intent blank in the sentence.',
+    },
+    {
+      q: 'Which two drills do you run before H4?',
+      a: 'H12 to tag the vol regime from the skew dots. H13 to confirm State has leftover behind the Classic pile.',
+    },
+    {
+      q: 'Classic max-change lights a strike on the 5-minute window. What do you know?',
+      a: 'H10: the map just redrew there. Location only, unsigned. Pair with State to name the owner. Alone it is not a read.',
     },
   ]}
 />

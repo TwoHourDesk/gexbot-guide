@@ -64,7 +64,7 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'atm',
     headword: 'ATM',
-    aliases: ['at the money'],
+    aliases: ['at the money', 'at-the-money'],
     shortDef: 'A strike near spot. Gamma and the 0DTE delta cliff live here.',
     firstDefinedIn: 'plans/02-classic',
     seeAlso: ['itm', 'otm', 'gamma'],
@@ -393,7 +393,7 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'open-vs-close',
     headword: 'open vs close (Gexbot limit)',
-    aliases: ['open vs close'],
+    aliases: ['open vs close', 'open-versus-close', 'open-versus-close limit'],
     shortDef:
       'Opening a long and closing a short are both buys. Gexbot does not distinguish. Documented limit.',
     firstDefinedIn: 'plans/03-classification',
@@ -407,9 +407,11 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'two-books',
     headword: 'two books',
+    aliases: ['customer channel'],
     shortDef:
       'Customer book: I just bought or sold paper. Dealer book: I absorbed that paper and may hedge. Gexbot reports the customer sign.',
     firstDefinedIn: 'plans/03-classification',
+    alsoAppears: ['practice/08-heuristics-as-reading'],
     unit: 'Customer-signed residual',
     notCounted: 'A plotted dealer inventory file',
     nearestCousin: 'Textbook dealer-only gamma maps',
@@ -487,10 +489,11 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'major-pos-neg',
     headword: 'major positive / major negative',
-    aliases: ['major pos', 'major neg'],
+    aliases: ['major pos', 'major neg', 'major positive', 'major negative'],
     shortDef:
       'The strike where Classic volume-GEX (or OI-GEX) has the largest positive or largest negative bar.',
     firstDefinedIn: 'plans/02-classic',
+    alsoAppears: ['practice/08-heuristics-as-reading'],
     unit: 'Argmax / argmin of unsigned GEX',
     notCounted: 'Owner; whether the node pins or breaks',
     nearestCousin: 'Magnet / wall candidates on public GEX maps',
@@ -502,10 +505,12 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'max-change',
     headword: 'max-change strikes',
-    aliases: ['max change'],
+    aliases: ['max change', 'max-change'],
     shortDef:
-      'The strikes whose Classic GEX changed the most over 1 / 5 / 15 / 30 minutes. Location of fresh curvature, not a direction.',
+      'The strikes whose Classic GEX changed the most over 1 / 5 / 15 / 30 minutes. Location of fresh curvature, not a direction. H10 pairs it with State to name the owner; alone it is not a read.',
     firstDefinedIn: 'plans/02-classic',
+    alsoAppears: ['practice/08-heuristics-as-reading', 'practice/09-grammar-and-journal'],
+    seeAlso: ['h10', 'lookbacks', 'unsigned'],
     unit: 'ΔGEX over the lookback',
     notCounted: 'Direction; owner',
     nearestCousin: '“Hot strike” heatmaps',
@@ -517,10 +522,11 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'lookbacks',
     headword: 'lookbacks and history slider',
-    aliases: ['lookback dots'],
+    aliases: ['lookback dots', 'lookback slider', 'history slider'],
     shortDef:
       'Dots show GEX at earlier times today. The slider replays the day. Useful to see whether a wall built or bled.',
     firstDefinedIn: 'plans/02-classic',
+    alsoAppears: ['practice/08-heuristics-as-reading'],
     unit: 'Earlier snapshot of the same ladder',
     notCounted: 'A forecast',
     nearestCousin: 'Session replay on other GEX products',
@@ -608,25 +614,29 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'major-call-put',
     headword: 'major call / major put',
+    aliases: ['major call', 'major put'],
     shortDef:
       'State alerts: the classified call-sided or put-sided node of greatest magnitude. Not Classic major pos/neg.',
     firstDefinedIn: 'plans/04-state',
+    alsoAppears: ['practice/08-heuristics-as-reading'],
     kind: 'gexbot',
-    seeAlso: ['gex-profile', 'major-pos-neg'],
+    seeAlso: ['gex-profile', 'major-pos-neg', 'alert'],
   },
   {
     id: 'major-long-short',
     headword: 'major long / major short',
+    aliases: ['major long', 'major short'],
     shortDef:
       'State alerts: the largest customer-long or customer-short gamma node on the convexity ladder.',
     firstDefinedIn: 'plans/04-state',
+    alsoAppears: ['practice/08-heuristics-as-reading'],
     kind: 'gexbot',
-    seeAlso: ['convexity-ladder'],
+    seeAlso: ['convexity-ladder', 'alert'],
   },
   {
     id: 'dex-orderflow',
     headword: 'DEX orderflow',
-    aliases: ['dexoflow', 'DEX OF'],
+    aliases: ['dexoflow', 'DEX OF', 'plus-DEX', 'minus-DEX', 'DEX-orderflow'],
     shortDef:
       'Increment of residual delta. +DEX: customers just got longer (share-equivalent). −DEX: just got shorter.',
     firstDefinedIn: 'plans/05-orderflow',
@@ -645,7 +655,7 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'gex-orderflow',
     headword: 'GEX orderflow',
-    aliases: ['gexoflow', 'GEX OF'],
+    aliases: ['gexoflow', 'GEX OF', 'GEX-orderflow'],
     shortDef:
       'Increment of call-GEX imbalance minus put-GEX imbalance. Bar up = more call-sided leftover, not a buy signal.',
     firstDefinedIn: 'plans/05-orderflow',
@@ -705,36 +715,54 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'spike-sequence-noise',
     headword: 'spike vs sequence vs noise',
+    aliases: ['two-sided noise', 'sequence'],
     shortDef:
       'One large bar = event. Many small same-sign bars = regime. Alternating tiny bars = two-way cancel, ignore.',
     firstDefinedIn: 'plans/05-orderflow',
+    alsoAppears: ['practice/08-heuristics-as-reading'],
     kind: 'gexbot',
     pressure: 'none',
   },
   {
     id: 'latest',
     headword: 'latest / zero',
-    aliases: ['gex_zero', 'latest expiry'],
+    aliases: ['gex_zero', 'latest expiry', 'zero', 'latest'],
     shortDef: 'Nearest expiry. Intraday ES/NQ “GEX walls” that matter for the open are usually latest.',
     firstDefinedIn: 'layer/06-nq-es-layer',
+    alsoAppears: ['practice/08-heuristics-as-reading'],
     kind: 'gexbot',
-    seeAlso: ['next', 'full', 'zero-dte'],
+    seeAlso: ['next', 'full', 'zero-dte', 'expiry-group'],
   },
   {
     id: 'next',
     headword: 'next / one',
-    aliases: ['gex_one', 'one_dexoflow'],
+    aliases: ['gex_one', 'one_dexoflow', 'one', 'next expiry', 'next'],
     shortDef: 'The following expiry. Use when latest is dead or you are studying the roll.',
     firstDefinedIn: 'layer/06-nq-es-layer',
+    alsoAppears: ['practice/08-heuristics-as-reading'],
     kind: 'gexbot',
+    seeAlso: ['latest', 'full', 'roll', 'expiry-group'],
   },
   {
     id: 'full',
     headword: 'full (90d)',
-    aliases: ['gex_full'],
+    aliases: ['gex_full', 'full-book', 'full book', 'full'],
     shortDef:
-      'Classified or Classic across expiries within 90 days. Overnight context, not a 0DTE scalp line.',
+      'Classified or Classic leftover across expiries within about ninety days. Overnight context, not the picture you sit beside an NQ open.',
     firstDefinedIn: 'layer/06-nq-es-layer',
+    alsoAppears: ['practice/08-heuristics-as-reading'],
+    kind: 'gexbot',
+    seeAlso: ['latest', 'next', 'expiry-group'],
+  },
+  {
+    id: 'expiry-group',
+    headword: 'expiry group',
+    aliases: ['expiry groups'],
+    shortDef:
+      'Which leftover pile you are sitting: latest (nearest expiry), next (the following expiry), or full (about ninety days). H11 makes the choice explicit. Mixing groups inside one sentence names two objects.',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    alsoAppears: ['practice/08-heuristics-as-reading'],
+    seeAlso: ['latest', 'next', 'full', 'roll', 'h11'],
     kind: 'gexbot',
   },
   {
@@ -780,10 +808,11 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'minus-vanna-ladder',
     headword: '−vanna ladder',
-    aliases: ['minus vanna', 'zvanna', 'ovanna'],
+    aliases: ['minus vanna', 'minus-vanna', 'zvanna', 'ovanna'],
     shortDef:
       'Dollar delta impact of a vol collapse until expiry, from today’s classified residual only. Beta.',
     firstDefinedIn: 'layer/07-clocks-and-late-greeks',
+    alsoAppears: ['practice/08-heuristics-as-reading'],
     unit: 'Dollar delta of a total vol collapse',
     notCounted: 'The full dealer OI vault',
     nearestCousin: 'Full-book vanna/charm pinning literature',
@@ -803,6 +832,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Dollar delta impact per hour of time, from today’s residual. Beta. Last 30–60 minutes are a different market.',
     firstDefinedIn: 'layer/07-clocks-and-late-greeks',
+    alsoAppears: ['practice/08-heuristics-as-reading'],
     unit: '$MM / hour',
     notCounted: 'A morning setup',
     nearestCousin: 'Full-book charm pinning',
@@ -827,6 +857,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'A reading taken from Gexbot’s docs (or common practice) and not independently scored here. Not measured. Not promote-ready.',
     firstDefinedIn: 'intro',
+    alsoAppears: ['practice/08-heuristics-as-reading'],
     kind: 'hygiene',
   },
   {
@@ -835,6 +866,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'A hedge, liquidity role, or stop/target you did not see on the screen. Structural logic only.',
     firstDefinedIn: 'intro',
+    alsoAppears: ['practice/08-heuristics-as-reading'],
     kind: 'hygiene',
   },
   {
@@ -875,6 +907,17 @@ export const glossary: GlossaryEntry[] = [
     kind: 'hygiene',
   },
   {
+    id: 'pressure-word',
+    headword: 'pressure word',
+    aliases: ['pressure words'],
+    shortDef:
+      'The four labels this book allows for who must act: mandate, incentive, none, or unknown. A naming drill states one. If you cannot pick one, stand down.',
+    firstDefinedIn: 'intro',
+    alsoAppears: ['practice/08-heuristics-as-reading', 'practice/09-grammar-and-journal'],
+    seeAlso: ['mandate', 'incentive', 'none-pressure', 'unknown-pressure', 'stand-down'],
+    kind: 'hygiene',
+  },
+  {
     id: 'mandate',
     headword: 'mandate',
     shortDef:
@@ -886,9 +929,11 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'incentive',
     headword: 'incentive',
+    aliases: ['incentivized'],
     shortDef:
       'The customer is not obliged to act, but theta, vol crush, margin and P&L push them. Write incentivized, never forced.',
     firstDefinedIn: 'plans/03-classification',
+    alsoAppears: ['practice/08-heuristics-as-reading'],
     kind: 'hygiene',
   },
   {
@@ -913,9 +958,11 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'already-hedged-vs-pending',
     headword: 'already hedged vs pending',
+    aliases: ['already hedged', 'pending flow'],
     shortDef:
       'DEX is a record — the initial delta hedge is mostly done. Convexity, GEX profile, and vanna/charm are pending forced flow, path- or clock-conditional.',
     firstDefinedIn: 'plans/04-state',
+    alsoAppears: ['practice/08-heuristics-as-reading'],
     kind: 'hygiene',
     seeAlso: ['dex-ladder', 'convexity-ladder'],
   },
@@ -931,14 +978,17 @@ export const glossary: GlossaryEntry[] = [
     distinguishingCut:
       'Each link is mapped to a Gexbot screen — and to what that screen cannot show.',
     importMistake: 'Skipping to “dealers will chase” from a Classic bar.',
+    alsoAppears: ['practice/08-heuristics-as-reading'],
     kind: 'gexbot',
   },
   {
     id: 'cousin-dealer-gamma',
     headword: 'textbook dealer gamma',
+    aliases: ['dealer-only map'],
     shortDef:
       'Dealers short gamma chase; dealers long gamma fade. Gexbot keeps this polarity and adds the customer book.',
     firstDefinedIn: 'plans/01-what-gexbot-is',
+    alsoAppears: ['practice/08-heuristics-as-reading'],
     kind: 'cousin',
   },
   {
@@ -979,6 +1029,26 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'One NDX option is $100 per index point. 1 ATM NDX option ≈ 2.5 NQ (NQ is $20/pt). Market-general.',
     firstDefinedIn: 'layer/06-nq-es-layer',
+    kind: 'market-general',
+  },
+  {
+    id: 'quoted-scale',
+    headword: 'quoted scale',
+    aliases: ['price range'],
+    shortDef:
+      'Where the number usually sits. This book’s NDX / NQ pictures sit around 20,000. SPX / ES print in the thousands. SPY and QQQ are the same baskets at a few hundred dollars a share.',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    seeAlso: ['ndx', 'spx', 'qqq', 'spy', 'nq-future', 'es-future'],
+    kind: 'market-general',
+  },
+  {
+    id: 'point-value',
+    headword: 'point value',
+    aliases: ['dollars per point'],
+    shortDef:
+      'The dollars one contract pays for a one-point move. SPX and NDX options are $100. ES is $50. NQ is $20. That is why 1 ATM SPX ≈ 1 ES and 1 ATM NDX ≈ 2.5 NQ.',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    seeAlso: ['spx-multiplier', 'ndx-multiplier', 'es-future', 'nq-future'],
     kind: 'market-general',
   },
   {
@@ -1246,11 +1316,12 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'vol-regime',
     headword: 'vol regime',
-    aliases: ['falling vol', 'rising vol'],
+    aliases: ['falling vol', 'rising vol', 'falling-vol', 'rising-vol', 'vol flip'],
     shortDef:
-      'Whether implied vol is generally crushing or lifting through the session. Gexbot’s options-profile wall/fuel story flips with the regime. Folklore. If you cannot tell, stand down.',
+      'Whether implied vol is generally crushing or lifting through the session. Gexbot’s options-profile wall/fuel story flips with the regime. This book calls that flip the vol flip. Folklore. If you cannot tell, stand down.',
     firstDefinedIn: 'plans/04-state',
-    seeAlso: ['options-profile', 'implied-vol'],
+    alsoAppears: ['practice/08-heuristics-as-reading'],
+    seeAlso: ['options-profile', 'implied-vol', 'h12'],
     kind: 'hygiene',
   },
   {
@@ -1288,6 +1359,8 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Running total of call-sided leftover gamma minus put-sided leftover gamma so far today. Integral of GEX orderflow. Not knowable before it was built.',
     firstDefinedIn: 'plans/05-orderflow',
+    alsoAppears: ['practice/08-heuristics-as-reading'],
+    seeAlso: ['h8', 'net-convexity'],
     kind: 'gexbot',
   },
   {
@@ -1306,11 +1379,14 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Running total of DEX orderflow: share-equivalents leftover so far today. Can be split call versus put.',
     firstDefinedIn: 'plans/05-orderflow',
+    alsoAppears: ['practice/08-heuristics-as-reading'],
+    seeAlso: ['h9', 'spx-baseline'],
     kind: 'gexbot',
   },
   {
     id: 'long-call',
     headword: 'long call',
+    aliases: ['long calls'],
     shortDef:
       '2×2 cell: +DEX and +convexity. Paid for upside expansion. Same +DEX as a short put; opposite story.',
     firstDefinedIn: 'plans/05-orderflow',
@@ -1369,9 +1445,11 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'clock-family',
     headword: 'clock family',
+    aliases: ['last-hour family', 'clock families'],
     shortDef:
       'A window with its own legal claim: early regular hours, midday residual, last-hour magnet, or knowability. Do not pool families.',
     firstDefinedIn: 'layer/07-clocks-and-late-greeks',
+    alsoAppears: ['practice/08-heuristics-as-reading'],
     kind: 'hygiene',
   },
   {
@@ -1390,6 +1468,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Gexbot’s own warning on −vanna and charm: applied to today’s leftover only, still being practiced, not the full inventory vault.',
     firstDefinedIn: 'layer/07-clocks-and-late-greeks',
+    alsoAppears: ['practice/08-heuristics-as-reading'],
     kind: 'gexbot',
   },
   {
@@ -1424,8 +1503,9 @@ export const glossary: GlossaryEntry[] = [
     headword: 'H4',
     aliases: ['walk into a stack'],
     shortDef:
-      'Naming drill: spot approaches an options-profile node; wall vs fuel depends on vol regime. Hypothesis. Folklore.',
+      'Naming drill: spot approaches an options-profile node; wall vs fuel depends on vol regime. An alert times the touch; it does not name the node. Hypothesis. Folklore.',
     firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['alert', 'h6', 'h7', 'h12'],
     kind: 'hygiene',
   },
   {
@@ -1438,19 +1518,256 @@ export const glossary: GlossaryEntry[] = [
     kind: 'hygiene',
   },
   {
+    id: 'h6',
+    headword: 'H6',
+    aliases: ['crowded short-convexity shove'],
+    shortDef:
+      'Naming drill: reads the shape of the convexity ladder. Crowded customer-short gamma just under or over the index is a shove candidate; well-distributed is a premium-selling tape. Folklore (docs’ favorite SPY pattern).',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['crowded-short-convexity', 'convexity-ladder', 'h4', 'alert'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'crowded-short-convexity',
+    headword: 'crowded versus well-distributed convexity',
+    aliases: ['crowded', 'well-distributed', 'one shove', 'shove', 'trapdoor'],
+    shortDef:
+      'Shape words for the convexity ladder. Well-distributed minus-convexity: short gamma spread across strikes, a liquid premium-selling tape. Crowded: bunched at one or two strikes near the index; the docs’ “one shove” pattern. Folklore.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['convexity-ladder', 'h6'],
+    kind: 'gexbot',
+    unit: 'Distribution of customer-short gamma across strikes',
+    notCounted: 'Direction; whether the crowd holds (depends on vol regime)',
+    nearestCousin: 'Concentrated “put wall” on unsigned maps',
+    distinguishingCut: 'Classified customer-short residual, not unsigned OI.',
+    importMistake: 'Calling every minus-convexity node a magnet.',
+    pressure: 'incentive',
+  },
+  {
+    id: 'h7',
+    headword: 'H7',
+    aliases: ['transition zone as target'],
+    shortDef:
+      'Naming drill: where a DEX or convexity ladder changes sign, pressure ends or reverses. The docs’ reversion zone / pivot. Target side of H4. Folklore.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['transition-zone', 'h4', 'alert'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'transition-zone',
+    headword: 'transition zone',
+    aliases: ['transition', 'reversion zone'],
+    shortDef:
+      'Where a State ladder changes sign: heavy customer-short bars give way to fresh customer-long bars, or minus-convexity gives way to plus. Docs: DEX transition is a target / reversion zone; convexity flip is a pivot where incentives reshuffle. Folklore.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['dex-ladder', 'convexity-ladder', 'h7'],
+    kind: 'gexbot',
+    unit: 'Sign change along the strike axis',
+    notCounted: 'Size of the move; timing',
+    nearestCousin: 'Zero-gamma line on unsigned maps',
+    distinguishingCut: 'A sign change in classified customer residual, not the center of an unsigned complex.',
+    importMistake: 'Targeting the tallest bar instead of the sign change.',
+    pressure: 'incentive',
+  },
+  {
+    id: 'h8',
+    headword: 'H8',
+    aliases: ['squeeze vs single-bar reversion', 'net GEX read'],
+    shortDef:
+      'Naming drill: net GEX read with GEX-profile distribution and net convexity. Equal bars above the index and rising upside convexity → squeeze candidate; one dominant bar → reversion at that bar. Folklore.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['net-gex', 'net-convexity', 'squeeze', 'reversion', 'h1', 'h3'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'squeeze',
+    headword: 'squeeze',
+    shortDef:
+      'A move that feeds itself because the participants short gamma on that side must chase it. In this book, a candidate name from H8, not a forecast.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['chase', 'gamma-rehedge', 'h8', 'reversion'],
+    kind: 'market-general',
+  },
+  {
+    id: 'reversion',
+    headword: 'reversion',
+    aliases: ['single-bar reversion'],
+    shortDef:
+      'H8’s counterpart to a squeeze: when one bar above (or below) the index predominates, look for the move to stall or turn at that bar. Folklore. A candidate name, not a forecast.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['squeeze', 'h8', 'net-gex'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'h9',
+    headword: 'H9',
+    aliases: ['SPX baseline and SPY divergence', 'aggregate DEX read'],
+    shortDef:
+      'Naming drill: know the SPX aggregate-DEX baseline in low vol and name the deviation; on SPY, price versus its own aggregate DEX divergence. A record of leans, not pending flow. Folklore.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['agg-dex', 'spx-baseline', 'spx', 'spy'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'spx-baseline',
+    headword: 'SPX baseline',
+    aliases: ['divergence', 'hedge-and-overwrite machine'],
+    shortDef:
+      'Docs’ normal low-vol SPX state: put aggregate DEX plus, call aggregate DEX minus, net mildly minus during uptrends (puts bought, calls sold). Not bearish. A divergence is price making a new high or low while aggregate DEX does not; the docs call the SPY version particularly powerful. Folklore.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['agg-dex', 'h9', 'vix'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'h10',
+    headword: 'H10',
+    aliases: ['wall built vs inherited'],
+    shortDef:
+      'Naming drill: use lookback dots and the history slider to tell a node that built into price from one inherited at 09:31; the slider shows what was knowable at the touch. Max-change (1 / 5 / 15 / 30 min) is folded in: attention, location only, unsigned — not its own H-number. Docs feature; read inferred.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['lookbacks', 'max-change', 'labeling-leak'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'h11',
+    headword: 'H11',
+    aliases: ['which expiry group is live'],
+    shortDef:
+      'Naming drill: say which expiry group you are sitting. Latest by default; next when latest is dead or into the roll; full only as overnight context. Docs.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['latest', 'next', 'full', 'roll', 'expiry-group'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'h12',
+    headword: 'H12',
+    aliases: ['tag the vol regime'],
+    shortDef:
+      'Naming drill: read the skew dots on the options profile across lookbacks to tag falling or rising vol before any wall-versus-fuel name. Prerequisite for H4, H6, H7. Docs feature; rules inferred.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['skew-dots', 'vol-regime', 'implied-vol', 'h4'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'skew-dots',
+    headword: 'skew dots',
+    aliases: ['IV skew overlay', '0DTE IV skew', 'put IV vs call IV', 'implied-vol dots'],
+    shortDef:
+      'On the options profile: the implied vol of the put and of the call at each strike for the nearest expiry, drawn as dots on a second axis. Drifting lower across lookbacks → falling vol; lifting → rising vol. Docs feature; reading rules inferred.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['options-profile', 'implied-vol', 'vol-regime', 'h12'],
+    kind: 'gexbot',
+    unit: 'Implied volatility per strike, per right',
+    notCounted: 'Direction of price; a forecast of vol',
+    nearestCousin: 'Skew charts on vol-surface products',
+    distinguishingCut: 'Nearest-expiry only, drawn on the same strike axis as the classified residual.',
+    importMistake: 'Inferring vol regime from price direction instead of from the dots.',
+    pressure: 'none',
+  },
+  {
+    id: 'h13',
+    headword: 'H13',
+    aliases: ['Classic vs State disagreement'],
+    shortDef:
+      'Naming drill: a large Classic pile with a thin State leftover means two-sided trading that cancelled (pressure none — stand down). Classic pile plus customer-short leftover is fuel in falling vol; plus customer-long is a wall candidate. Inferred from the residual definition.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['residual', 'gex-by-volume', 'options-profile', 'balanced-node', 'none-pressure'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'h14',
+    headword: 'H14',
+    aliases: ['flush or bid at a low'],
+    shortDef:
+      'Naming drill and deliberate negative: a local bottom can be an aggressive plus-DEX buyer or a minus-DEX flush; closing a long call and opening a short call print the same. Hedge inference survives; intent inference does not. Folklore plus the documented open-versus-close limit.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['flush', 'dex-orderflow', 'open-vs-close', 'h2'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'flush',
+    headword: 'flush',
+    aliases: ['forced out', 'liquidation'],
+    shortDef:
+      'A holder forced out of a position. On DEX orderflow a flush of longs prints minus DEX, indistinguishable from a fresh short. Gexbot does not split open from close.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['open-vs-close', 'h14'],
+    kind: 'market-general',
+  },
+  {
+    id: 'h15',
+    headword: 'H15',
+    aliases: ['local zero pivot'],
+    shortDef:
+      'Naming drill: where the minus-vanna or charm ladder crosses zero, passive buying turns into passive selling or the reverse; the docs call these sharp pivots. Last-hour family only. Folklore. Beta.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['local-zero', 'minus-vanna-ladder', 'charm-ladder', 'h5'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'local-zero',
+    headword: 'local zero',
+    aliases: ['local zeros', 'polarity flip'],
+    shortDef:
+      'A level where the minus-vanna or charm ladder crosses zero. The sign flips as the index crosses it and is zero when the index sits on it. Docs: sharp pivots. Residual-only. Beta. Folklore.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['minus-vanna-ladder', 'charm-ladder', 'h15'],
+    kind: 'gexbot',
+    unit: 'Index level where signed dollar-delta impact crosses zero',
+    notCounted: 'Full OI book; daytime relevance',
+    nearestCousin: 'Full-book vanna/charm pin levels',
+    distinguishingCut: 'Computed on today’s classified residual, not total dealer inventory.',
+    importMistake: 'Using a local zero as a 10:00 level.',
+    pressure: 'mandate',
+    actor: 'Dealer',
+    trigger: 'Clock; vol collapse',
+    hedgeVenue: 'ES',
+    liquidityRole: 'Passive buying or selling, flipping at the zero',
+    notShown: 'Overnight inventory; how much is already hedged',
+  },
+  {
+    id: 'alert',
+    headword: 'alert',
+    aliases: ['alerts', 'touch alert', 'ping'],
+    shortDef:
+      'A Gexbot notification that the index touched a named node: Classic major positive / negative; State major call / put and major long / short; Orderflow bars past a size you set. A touch, not a signal. Timing for H4, H6, H7. Docs.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    alsoAppears: ['practice/09-grammar-and-journal'],
+    seeAlso: ['major-pos-neg', 'major-call-put', 'major-long-short', 'h4', 'h6', 'h7', 'touch', 'journal-line'],
+    kind: 'gexbot',
+    unit: 'A touch event on a named node or a bar size threshold',
+    notCounted: 'Owner; pressure; vol regime',
+    nearestCousin: 'Price alerts on a charting platform',
+    distinguishingCut: 'Fires on a Gexbot object (major, bar), not a user-drawn line.',
+    importMistake: 'Treating the alert as the entry.',
+    pressure: 'unknown',
+  },
+  {
+    id: 'touch',
+    headword: 'touch',
+    shortDef:
+      'The index arriving at a named node. An alert is this event with a sound. H4, H6, and H7 read the node; the touch is only the clock. Not a signal.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    alsoAppears: ['practice/09-grammar-and-journal'],
+    seeAlso: ['alert', 'h4', 'node'],
+    kind: 'hygiene',
+  },
+  {
     id: 'acceptance-through',
     headword: 'acceptance through',
     shortDef:
       'Price trades through a named node and stays, rather than wicking. Inferred stop grammar for a wall or pin thesis. Grain not stated in the docs.',
     firstDefinedIn: 'practice/09-grammar-and-journal',
+    alsoAppears: ['practice/08-heuristics-as-reading'],
     kind: 'hygiene',
   },
   {
     id: 'journal-line',
     headword: 'journal line',
     shortDef:
-      'A written read: clock family, screen, 2×2 cell, node, vol regime, forced-flow sentence, what the screen does not show, falsifier. No entry required.',
+      'A written read: clock family, screen, 2×2 cell, node, vol regime, forced-flow sentence, what the screen does not show, falsifier. An alert times the line; it does not fill it. No entry required.',
     firstDefinedIn: 'practice/09-grammar-and-journal',
+    seeAlso: ['alert', 'forced-flow-sentence', 'falsifier'],
     kind: 'hygiene',
   },
   {
@@ -1465,6 +1782,7 @@ export const glossary: GlossaryEntry[] = [
       'plans/04-state',
       'plans/05-orderflow',
       'layer/06-nq-es-layer',
+      'practice/08-heuristics-as-reading',
     ],
     seeAlso: ['residual', 'classification-engine'],
     kind: 'gexbot',
@@ -1533,7 +1851,7 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'day-type',
     headword: 'day-type',
-    aliases: ['fear tape', 'grind tape', 'vol-bid', 'premium-sale'],
+    aliases: ['fear tape', 'grind tape', 'vol-bid', 'premium-sale', 'day character'],
     shortDef:
       'A session character named from a sequence of convexity bars, not from one spike. Fear / vol-bid versus grind / premium-sale. Folklore. Not an entry.',
     firstDefinedIn: 'plans/05-orderflow',
@@ -1586,7 +1904,8 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'The handoff from the nearest expiry to the following expiry. Sit “next” when latest is dead or you are studying that handoff.',
     firstDefinedIn: 'layer/06-nq-es-layer',
-    seeAlso: ['latest', 'next'],
+    alsoAppears: ['practice/08-heuristics-as-reading'],
+    seeAlso: ['latest', 'next', 'expiry-group'],
     kind: 'options',
   },
   {
@@ -1653,6 +1972,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Applied to today’s classified leftover, not to last night’s whole inventory vault. Minus-vanna and charm on Gexbot are residual-only.',
     firstDefinedIn: 'layer/07-clocks-and-late-greeks',
+    alsoAppears: ['practice/08-heuristics-as-reading'],
     seeAlso: ['minus-vanna-ladder', 'charm-ladder', 'beta-feature'],
     kind: 'hygiene',
   },

@@ -12,7 +12,7 @@ import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
 
 **What you will be able to do.** Write one journal line that includes a forced-flow sentence, or write “unknown” and stand down.
 
-**What you already need.** Chapters 1–8. You already have the 2×2, clock families, vol regime, and the four pressure words.
+**What you already need.** Chapters 1–8. You already have the 2×2, clock families, vol regime, the four pressure words, and the rule that a Gexbot ping is a touch, not a name.
 
 ## Picking a window
 
@@ -33,7 +33,7 @@ You need all of these, or you stand down:
 - The **2×2 cell** (DEX sign times convexity sign), or do not name the print.
 - **Where the index is** versus the relevant node (options profile, DEX, convexity, or latest zero-gamma).
 - The **vol regime** before you call a node a wall or fuel.
-- Prefer a **sequence** (H3) for day-type, then an **event** (H2) or a **touch** (H4). A single meter is not an entry.
+- Prefer a **sequence** (H3) for day-type, then an **event** (H2) or a **touch** (H4). A single meter is not an entry. The ping Chapter 8 called an **alert** is that touch arriving. It does not name the node.
 - A **pressure** word: mandate, incentive, none, or unknown.
 
 ## Stop logic (*inferred* grammar)
@@ -83,9 +83,13 @@ Falsifier:
 
 If you cannot name the 2×2, write “cannot name” and stand down. If the screen cannot show the owner, write **unknown**.
 
+If an alert fired and you cannot fill the cell, the node, the vol regime, or the pressure word, write “cannot name” or **unknown** and stand down. The ping was the clock. It was not the read.
+
+A max-change strike (H10) is the same kind of object: a location until State names the owner. Do not put the ping or the redraw in the **Node** field as if either were the thesis.
+
 ## Summary
 
-Grammar is agreement before a name: clock family, cell, node, vol regime, pressure word, falsifier. The journal line is the read. It is not an order ticket.
+Grammar is agreement before a name: clock family, cell, node, vol regime, pressure word, falsifier. The journal line is the read. It is not an order ticket. An alert times a touch; it does not write the line.
 
 ## Terms introduced
 
@@ -100,6 +104,10 @@ Grammar is agreement before a name: clock family, cell, node, vol regime, pressu
     {
       q: 'Classic major positive as a stop. What is the pressure word?',
       a: 'Unknown. You may still attach a structural stop as inferred grammar, but you may not write “dealers must.”',
+    },
+    {
+      q: 'State major-long alert fires. Is that the journal line?',
+      a: 'No. The alert is the touch. Fill the line from the 2×2, node, vol regime, and pressure you already had, or write unknown.',
     },
   ]}
 />
