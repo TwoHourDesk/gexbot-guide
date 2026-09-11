@@ -9,11 +9,14 @@ import WhoMustAct from '@site/src/components/textbook/WhoMustAct';
 import DistinguishingNote from '@site/src/components/textbook/DistinguishingNote';
 import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
 import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import AdjacentConcepts from '@site/src/components/textbook/AdjacentConcepts';
 import HedgeChain from '@site/src/components/charts/HedgeChain';
 import DealerHedgeSim from '@site/src/components/charts/DealerHedgeSim';
 import ResidualScale from '@site/src/components/charts/ResidualScale';
 
 # Classification and the hedge chain
+
+When a customer lifts 500 calls, someone on the other side now owes the market about 500 ES of buying they did not choose, and possibly 300 more if price keeps rising. That obligation is on no tape. This chapter is how it becomes inferable.
 
 **Which Gexbot capability this is.** The leftover-and-label machinery that Classic does not use. After this chapter you can sit State and Orderflow honestly.
 
@@ -84,7 +87,7 @@ A buy still changes the professional’s exposure the same way whether it opened
 
 Chapter 1 already named the idea: after matched buys and sells of the *same* contract cancel, a **leftover** remains. Two-way trading can be huge while the leftover is tiny.
 
-Gexbot’s name for that leftover is **residual imbalance**, or just residual. State, Orderflow, and Quant all draw *this* leftover, not yesterday’s open interest and not raw volume.
+Gexbot’s name for that leftover is **residual imbalance**, or residual for short. State, Orderflow, and Quant all draw *this* leftover, not yesterday’s open interest and not raw volume.
 
 If two customers cross — one buys, one sells, same contract — the leftover **cancels**. Nobody is left holding the bag. This book’s pressure word is **none**. A quiet later picture can mean “everything matched,” not “nothing traded.”
 
@@ -123,7 +126,7 @@ Size times delta times multiplier is the **share-equivalent**: how many “share
 
 The intro previewed four pressure words. Here they become working tools.
 
-A professional options book is usually run so that a move in the index does not leave them accidentally long or short. The schoolbook name is **delta-neutral**. When that policy makes them trade the index, this book may say **forced**. The pressure word is **mandate**. “Must” is legal only here.
+A professional options book is usually run so that a move in the index does not leave them accidentally long or short. Their policy and their risk limits require it (*market-general*). The schoolbook name is **delta-neutral**. When that policy makes them trade the index, this book may say **forced**, and the pressure word is **mandate**. “Must” is legal only here, because this is the one pressure that does not depend on anyone changing their mind.
 
 The customer who still holds the leftover is **not** obliged to do anything. Time decay (theta), a falling or rising options market, margin, and profit-and-loss can push them. Write **incentivized**. The pressure word is **incentive**. Never write “the customer must dump.”
 
@@ -164,11 +167,13 @@ One leftover print can start a chain. This book uses six links. Every later scre
 <TermFirst id="gamma-rehedge" />
 <TermFirst id="clock-rehedge" />
 
+You now have the chain. Chapter 4 will show which link each State drawing is. What is left for this chapter is which way each link pushes.
+
 Liquidity roles (*inferred*, never a labeled futures print):
 
 - A book that is **long** gamma hedges *against* the move: sell rips, buy dips. This book says **fade**. That supplies liquidity. The usual calm / **pin** story lives here — a hypothesis, not a fact.
 - A book that is **short** gamma hedges *with* the move: buy rips, sell dips. This book says **chase**. That takes liquidity. Moves can get larger.
-- Do not invert that polarity.
+- Do not invert that polarity. Your futures reflex says buying is bullish. The short-gamma book that buys into the rip is not expressing a view; it is being pulled up by its own position, and it would rather not be. That is what **chase** means here.
 
 <TermFirst id="fade" />
 <TermFirst id="chase" />
@@ -221,7 +226,9 @@ Classification signs leftover paper as customer bought versus customer sold. Aft
 
 1. **Did they just put on longs?** Not stated. Buy to close looks the same as buy to open.
 2. **Is the dealer about to buy because leftover delta printed?** The initial hedge is mostly already done. Pending force lives on gamma (Chapter 4) and on the clock (Chapter 7).
-3. **Quiet ladder means a dead day?** Residual can be tiny while two-way volume is huge. Pressure: none.
+3. **State is nearly empty but my tape says volume is heavy. Which one is wrong?** Neither. Residual can be tiny while two-way volume is huge. Pressure: none.
+
+<AdjacentConcepts docId="plans/03-classification" />
 
 <CheckYourself
   items={[
@@ -237,5 +244,7 @@ Classification signs leftover paper as customer bought versus customer sold. Aft
 />
 
 ## Gate
+
+On-ramp: [Your counterparty](/docs/on-ramp/03-classification) — this chapter’s object from the customer seat.
 
 Next: [State](/docs/plans/04-state). Same leftover, now by strike. You will learn which drawing is a *record* of a hedge already done, and which is *pending* if the index walks.

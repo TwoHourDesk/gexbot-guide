@@ -6,6 +6,7 @@ import TermFirst from '@site/src/components/textbook/TermFirst';
 import DistinguishingNote from '@site/src/components/textbook/DistinguishingNote';
 import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
 import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import AdjacentConcepts from '@site/src/components/textbook/AdjacentConcepts';
 
 # Structure and Gexbot together
 
@@ -65,7 +66,7 @@ Overnight structure has a clock limit. At 09:30 there is no State leftover behin
 
 Falsifier: price accepts through both the tape level and the node, or the leftover flips sign as price arrives.
 
-Misread: treating the overnight high as a State wall at the open.
+The misread: treating the overnight high as a State wall at 09:31. The reader who does that fades a level no leftover has spoken to; when it breaks, the failure has nothing to do with Gexbot, because Gexbot had said nothing.
 
 ## S2 — Sweep into a stack (*inferred*, uses H4 and H14)
 
@@ -84,7 +85,7 @@ Pressure: customer incentive at the stack beyond the swing; dealer mandate on th
 
 Falsifier: a wall thesis dies on acceptance beyond the node. A fuel thesis dies on failure to take it.
 
-Misread: calling every sweep a reversal, before you have named what sits beyond it.
+The misread: calling every sweep a reversal before naming what sits beyond it. A sweep into customer-short leftover is fuel; the reader who fades it is short into continuation.
 
 ## S3 — Opening-range break in a named tape (*inferred*, uses H3, H12)
 
@@ -104,7 +105,7 @@ Rising vol flips the customer channel. Tag it with H12 before you name wall or f
 
 Falsifier: price reclaims the range *and* the convexity sequence flips.
 
-Misread: naming the break at 09:35 from one spike, before H3 has a sequence.
+The misread: naming the break at 09:35 from one spike, before H3 has a sequence. The reader then reads the whole morning through a day-type one bar chose.
 
 ## S4 — Gap context: open interest first, leftover second (*inferred*)
 
@@ -118,7 +119,7 @@ As State builds, leftover appears on that path. Fresh customer-short leftover be
 
 Falsifier: State leftover between price and the fill flips sign.
 
-Misread: calling the overnight gap a State wall at 09:31.
+The misread: calling the overnight gap a State wall at 09:31. State is empty; the reader has given Classic’s unknown owner a pressure word it cannot carry.
 
 ## S5 — Reversion target by transition zone (*inferred*, uses H7)
 
@@ -135,7 +136,7 @@ Chapter 9’s target rule still applies. For a pin cell, the node *is* the targe
 
 Falsifier: the transition zone is taken and leftover on the far side does not change sign — the structural target was a hope, not a pressure end.
 
-Misread: aiming at VWAP because it is on the chart, while a sign change sits in front of it.
+The misread: aiming at VWAP because it is on the chart while a sign change sits in front of it. Pressure ends at the transition zone; the reader holds through the place the move was likely to stall, waiting for a target the ladder never supported.
 
 ## S6 — Failed break of structure with a GEX-orderflow pivot (*folklore* on SPX; *inferred* combination)
 
@@ -149,7 +150,7 @@ Rename the claim on NQ. The transfer rule from Chapter 6 still holds. Do not cop
 
 Falsifier: acceptance above the swing *and* GEX orderflow staying plus *and* convexity showing long calls. That is expansion demand, not a local top.
 
-Misread: treating every failed break as H1, or treating H1 as a failed break, when only one of the two objects is present.
+The misread: treating every failed break as H1, or every H1 bar as a failed break, when only one object is present. One object is a tape shape with no owner or a bar with no location; the reader has written a combination from half of it.
 
 ## S7 — Trend-day recognition (*inferred*, uses H6, H8, H3)
 
@@ -166,7 +167,7 @@ Read: do not fade nodes. Use them as places the move must still clear — contin
 
 Falsifier: a dominant single bar appears above price (H8’s reversion form), or the convexity sequence flips and moves the net.
 
-Misread: fading the first confluence node on a named trend day.
+The misread: fading the first confluence node on a named trend day. The short-gamma mandate is chasing; the reader is selling into the one flow that is with the move.
 
 ## S8 — Range-day recognition (*inferred*)
 
@@ -183,7 +184,7 @@ Read: extremes that land on leftover nodes are stall candidates. Targets are the
 
 Falsifier: a crowded node forms and is taken, or net convexity starts a one-sided run. Either can rename the day toward S7.
 
-Misread: fading a break that has already taken a crowded short-convexity node.
+The misread: fading a break that has already taken a crowded short-convexity node. That is the shove H6 named, and the day may already be renaming itself toward S7; the reader is fading a range that has stopped being one.
 
 ## S9 — Last-hour pin versus unwind (*folklore*, *beta*, uses H5, H15)
 
@@ -201,7 +202,7 @@ Settlement — how the index option turns into dollars at expiry — is **market
 
 Falsifier: the node goes at-the-money (H5’s own off-switch), or net minus-vanna and charm sit near zero, when the docs say price wanders.
 
-Misread: carrying a morning confluence or an opening-range break into 15:30 without changing families.
+The misread: carrying a morning confluence or an opening-range break into 15:30 without changing families. The pressure in the last hour comes from the clock, not the path; the reader is holding a thesis whose trigger no longer exists.
 
 ## S10 — ES and NQ disagreement (*inferred*, transfer rule)
 
@@ -215,7 +216,7 @@ This setup is useful mostly as a stand-down. When the two disagree and only one 
 
 Falsifier: the lagging tape accepts through its equivalent level, and leftover on that book agrees with the lead. Then the disagreement is over; rewrite the line.
 
-Misread: averaging the two books, or copying H1 onto NQ because ES “looked like it.”
+The misread: averaging the two books, or copying H1 onto NQ because ES “looked like it.” The books have different owners; the reader has built one pressure word from two that disagree.
 
 ## Guardrails that apply to every combination
 
@@ -235,7 +236,7 @@ Use plain words for structure: swing high, range break, sweep, gap, VWAP. Do not
 
 ## Rookie mistakes, and the check that catches each one
 
-The guardrails above are the rules. This section is the list of ways newcomers break them without noticing, once a futures tape and a Gexbot ladder sit side by side. Each mistake gets three lines: what the rookie does, why it is wrong, and the check that catches it. Chapter 10 will recap the pairs. This is the first and full treatment.
+Each guardrail above names a way the two pictures can be made to agree when they do not. This section is the list of ways newcomers do that without noticing, once a futures tape and a Gexbot ladder sit side by side. Each mistake gets three lines: what the rookie does, why it is wrong, and the check that catches it. Chapter 10 will recap the pairs. This is the first and full treatment.
 
 ### Location mistakes
 
@@ -243,7 +244,7 @@ The guardrails above are the rules. This section is the list of ways newcomers b
 
 <TermFirst id="strike-spacing" />
 
-**Finding a node under every level.** Near the money, strikes are dense. There is always a strike within a few points of any level you draw, and usually some leftover on it. The rookie calls that confluence. It is not. This book calls the habit **confluence bias**. The check: the node must be *significant relative to today’s ladder* — a major, or a bar that stands out beside its neighbors — not merely present. If you would not have noticed the bar without the level, it is not a confluence node.
+**Finding a node under every level.** Near the money, strikes are dense. There is always a strike within a few points of any level you draw, and usually some leftover on it. The rookie calls that confluence. It is not. The habit has a name: **confluence bias**. The check: the node must be *significant relative to today’s ladder* — a major, or a bar that stands out beside its neighbors — not merely present. If you would not have noticed the bar without the level, it is not a confluence node.
 
 <TermFirst id="confluence-bias" />
 
@@ -253,7 +254,7 @@ The guardrails above are the rules. This section is the list of ways newcomers b
 
 ### Counting mistakes
 
-**Three bars, one print.** DEX orderflow, convexity orderflow, and GEX orderflow are three cuts of the *same* prints. Classic’s volume bar and State’s bars are also drawn from the same trades. The rookie stacks them as three confirmations. They are one piece of evidence seen from three sides. This book calls the error **same-print stacking**. The check: ask “would this bar exist without that bar?” If the answer is no, count it once.
+**Three bars, one print.** DEX orderflow, convexity orderflow, and GEX orderflow are three cuts of the *same* prints. Classic’s volume bar and State’s bars are also drawn from the same trades. The rookie stacks them as three confirmations. They are one piece of evidence seen from three sides. The error has a name: **same-print stacking**. The check: ask “would this bar exist without that bar?” If the answer is no, count it once.
 
 <TermFirst id="same-print-stacking" />
 
@@ -295,7 +296,7 @@ The guardrails above are the rules. This section is the list of ways newcomers b
 
 **VIX as today’s regime.** VIX is a thirty-day quote (*market-general*). The docs use it for *which instrument character* SPX is showing, not for whether today’s 0DTE vol is rising or falling. The rookie tags falling vol because VIX is red. The check: H12’s skew dots for intraday regime; VIX only for the SPX-versus-SPY character sentence.
 
-**Falling vol by default.** Most days are falling-vol days, so the rookie stops checking. Scheduled releases — a data print at 10:00, a central-bank statement at 14:00 — flip the regime for a stretch, and the docs describe well-distributed plus-convexity as informed vol expectation, often before an event. This book calls a session with such a release an **event day**. The check: know the calendar before the open; on an event day, re-tag the regime after the release, and expect every ladder to re-mark at once.
+**Falling vol by default.** Most days are falling-vol days, so the rookie stops checking. Scheduled releases — a data print at 10:00, a central-bank statement at 14:00 — flip the regime for a stretch, and the docs describe well-distributed plus-convexity as informed vol expectation, often before an event. A session with such a release is an **event day**. The check: know the calendar before the open; on an event day, re-tag the regime after the release, and expect every ladder to re-mark at once.
 
 <TermFirst id="event-day" />
 
@@ -372,6 +373,8 @@ The rookie mistakes share one root: treating a Gexbot object as more precise, mo
 8. **Two big bars printed at once, plus at one strike and minus at the next. Buyers and sellers fighting?** More likely one multi-leg structure. Read them together. Their convexity largely cancels.
 9. **There is no Gexbot node at the level that just held. Was Gexbot wrong?** No. Gexbot sees one slice. Absence of a node is not absence of pressure. Write “no Gexbot object here.”
 
+<AdjacentConcepts docId="practice/09b-structure-and-gexbot" />
+
 <CheckYourself
   items={[
     {
@@ -434,5 +437,7 @@ The rookie mistakes share one root: treating a Gexbot object as more precise, mo
 />
 
 ## Gate
+
+On-ramp: [Choosing your strike from structure](/docs/on-ramp/09b-structure-and-gexbot) — this chapter’s object from the customer seat.
 
 Next: [Misreads and mastery](/docs/practice/10-misreads-and-mastery). The capstone asks for annotated ES and NQ sessions. Fill `Structure:` on those annotations. Still no entry.

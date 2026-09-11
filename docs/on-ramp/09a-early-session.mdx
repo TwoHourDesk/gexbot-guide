@@ -1,0 +1,73 @@
+---
+title: "9a · Options on-ramp: the opening price of vol"
+---
+
+import TermFirst from '@site/src/components/textbook/TermFirst';
+import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
+import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import AdjacentConcepts from '@site/src/components/textbook/AdjacentConcepts';
+
+# The opening price of vol
+
+At 09:31 the ticket you would sign carries a vol that nobody has tested. Chapter 9a said a level can be observed at any minute and can carry a pressure word only once leftover exists; the same is true of the price of your option.
+
+**What this page assumes.** [Chapter 9a](/docs/practice/09a-early-session): the early window, the phase table, level grades A/B/C, and the rule that structure is observed before leftover exists. [The vol you paid](/docs/on-ramp/04-state) and [the third falsifier](/docs/on-ramp/09-grammar-and-journal). **What you will be able to do.** Say why an option price in the first minutes is less knowable than one at 10:30, and place the level grades in the holder’s seat.
+
+## Opening vol
+
+In the first minutes of the session the options market quotes an implied vol for every strike, as it does all day. But at 09:31 no leftover exists to say what today’s holders paid, and the quote is built from the overnight and from yesterday, not from today. The implied vol quoted before any leftover exists to test it is the **opening vol**.
+
+<TermFirst id="opening-vol" />
+
+Sign the 500-call ticket at 09:31 and your vol paid is the opening vol. By 10:30 the market has repriced that guess against a real morning, and the mark has moved for that reason alone, before any level held or broke. Chapter 9a told the reader not to write a pressure word at 09:31; this page tells the holder that the price they would pay at 09:31 has the same standing — observed, untested.
+
+## Level grades from your seat
+
+Chapter 9a graded levels by how much the screen can say about them. From your seat the grades say how much is known about your own strike.
+
+- **Grade A** — a structural level with a Classic pile at the converted strike. Your strike has a location and an old, unsigned crowd. Owner unknown; pressure unknown; your ticket would be the first signed thing there today.
+- **Grade B** — Classic max-change lights up there in the first minutes. Fresh curvature at your strike, still unsigned.
+- **Grade C** — State shows leftover at that strike. The first minute your strike has an owner sign, and if you traded early, some of that sign may be you.
+
+A holder who buys at Grade A and reads the pile as agreement has made the E6 misread from the inside.
+
+## The early phases as costs
+
+The phase table said the early window is when leftover is thinnest and readings are least stable. For a holder the same minutes are when the price of the ticket is least knowable: the opening vol is untested, the options market’s spreads are widest, and the leftover that would let you judge either does not exist. Chapter 12’s Gap 7 is the account of what an option fill costs and when; here the fact is that the early window is expensive in a currency your futures fill never charged.
+
+## The one thing that changes
+
+A futures fill at 09:31 costs a tick or two of spread and nothing else. An option fill at 09:31 costs its spread plus a vol you cannot yet judge, and the second cost does not show until the market has repriced it.
+
+## Summary
+
+Opening vol is the implied vol quoted before leftover exists to test it; a ticket signed then has a vol paid with the same standing as an ungraded level. Grade A and B strikes have location and no owner; Grade C is the first minute your strike has a sign. The early window charges a holder in a currency the futures tape does not have.
+
+## Terms introduced
+
+<ChapterTerms docId="on-ramp/09a-early-session" />
+
+## Newcomer questions
+
+1. **Is the 09:31 option price wrong?** Not wrong. Untested, in the same sense that a 09:31 level has no pressure word yet.
+2. **If I buy at Grade A, is the Classic pile on my side?** The pile is unsigned. It does not know you exist and does not have a side.
+3. **When does my strike become Grade C?** When State shows leftover there. Some of it may be your own footprint.
+
+<AdjacentConcepts docId="on-ramp/09a-early-session" />
+
+<CheckYourself
+  items={[
+    {
+      q: 'Define opening vol and say what it has in common with a Grade A level.',
+      a: 'The implied vol quoted before leftover exists to test it. Like a Grade A level it is observed and carries no tested standing yet.',
+    },
+    {
+      q: 'What does an option fill at 09:31 cost that a futures fill at 09:31 does not?',
+      a: 'A vol paid that cannot yet be judged, on top of the spread.',
+    },
+  ]}
+/>
+
+## Gate
+
+Next: [Structure and Gexbot together](/docs/practice/09b-structure-and-gexbot). Its on-ramp page uses structure to say which strike would be yours, and shows how Gexbot sees your legs.

@@ -6,10 +6,11 @@ title: How to use this book
 import TermFirst from '@site/src/components/textbook/TermFirst';
 import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
 import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import AdjacentConcepts from '@site/src/components/textbook/AdjacentConcepts';
 
 # How to use this book
 
-You already know how to follow an ES or NQ chart. You do **not** need to have traded an option. This page is the contract with you as a reader. It is not a Gexbot screen.
+You can see every print on the ES or NQ tape. You cannot see which of those prints were forced by option positions on the same index, or who was forced to make them. This book is about that second layer. You do **not** need to have traded an option to read it. This page is the contract with you as a reader, not a Gexbot screen.
 
 **What you will be able to do after this page.** Open Chapter 1 knowing what kind of book this is, what it will not try to do, and how this book marks a fact versus a guess.
 
@@ -23,7 +24,7 @@ There is no options pre-course. When a screen needs a schoolbook word (call, put
 
 ## How this book marks claims
 
-Gexbot’s own help pages say things this book has not measured. Other sentences are ordinary market facts, not Gexbot inventions. We keep those kinds of sentence from looking the same.
+Some sentences here come from Gexbot’s help pages, which this book has not measured. Some are stories traders repeat about what a picture means. Some are ordinary market facts nobody at Gexbot invented. If those three looked alike on the page you would end up treating a story as a mechanism, so each carries a label.
 
 <TermFirst id="docs-label" />
 <TermFirst id="folklore" />
@@ -49,7 +50,7 @@ Later chapters ask, for each picture: *who has to do something?* They will use f
 - **None** — buys and sells cancelled. Nobody is left holding the bag. A quiet picture can mean “everything matched,” not “nothing traded.”
 - **Unknown** — you can see *where* a pile sits and still not know *who* owns it. Classic, in the next chapter, lives here.
 
-Never write “dealers must buy” from a picture that cannot show the owner. Write “if the usual shortcut about ownership holds, dealers would buy.”
+The book is strict about “must” because mandate is the only pressure that does not depend on anyone changing their mind; it is the one you can lean on when the tape moves. Never write “dealers must buy” from a picture that cannot show the owner. Write “if the usual shortcut about ownership holds, dealers would buy.”
 
 ## How to read a chapter
 
@@ -67,9 +68,11 @@ Start at Chapter 1. Learn the product as a set of screens, not as a list of acro
 
 ## Newcomer questions
 
-1. **Is this a trading system?** No. It is a reading course.
+1. **Is this going to tell me when to buy or sell?** No. It teaches you to read a second picture next to your chart. When to act stays with the tape and with you.
 2. **Do I need to know options first?** You need an ES or NQ chart. Options words are defined when a screen first needs them.
-3. **Why so many labels?** So a sentence from Gexbot’s docs, a common story, and a guess do not look like the same kind of fact.
+3. **Why does every other sentence carry a label?** So a sentence from Gexbot’s docs, a common story, and a guess do not look like the same kind of fact.
+
+<AdjacentConcepts docId="intro" />
 
 <CheckYourself
   items={[
@@ -85,5 +88,7 @@ Start at Chapter 1. Learn the product as a set of screens, not as a list of acro
 />
 
 ## Gate
+
+On-ramp: [The two seats](/docs/on-ramp/00-intro) — this page’s contract from the customer seat.
 
 Next: [What Gexbot is](/docs/plans/01-what-gexbot-is). You will learn the names of the screens and what each one is allowed to claim — in ordinary language first.

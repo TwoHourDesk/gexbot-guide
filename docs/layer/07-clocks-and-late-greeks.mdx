@@ -10,11 +10,14 @@ import DistinguishingNote from '@site/src/components/textbook/DistinguishingNote
 import TermFirst from '@site/src/components/textbook/TermFirst';
 import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
 import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import AdjacentConcepts from '@site/src/components/textbook/AdjacentConcepts';
 import OfficialFigure from '@site/src/components/textbook/OfficialFigure';
 import ClockFamilies from '@site/src/components/charts/ClockFamilies';
 import DealerHedgeSim from '@site/src/components/charts/DealerHedgeSim';
 
 # Clocks and late greeks
+
+Into the last hour, a delta-neutral book can owe a hedge with the index unmoved, because the clock is changing its delta. That flow has no trigger on your chart.
 
 **Which Gexbot capability this is.** Windows that are not allowed to borrow each other’s claims, and two late pictures that move even if the index sits still.
 
@@ -42,11 +45,13 @@ Quant’s live feed publishes about **09:30–16:00 Eastern**. Some expiry group
 
 ## Three schoolbook words the late pictures need
 
-**Vega** is how much the option’s value moves if implied volatility moves one point. Gexbot has no standalone vega tape on the retail docs. You need the word because the next two sensitivities are “delta changed because vol changed” and “delta changed because the clock ran.”
+Up to now every hedge in this book was triggered by the index moving. This chapter’s pictures move when it does not, and that is the part of options most futures traders give up on. You need one sentence from each of three words.
 
-**Vanna** is how delta changes when implied volatility changes.
+**Vega** is how much the option’s value moves if implied volatility moves one point. Gexbot has no standalone vega tape on the retail docs; you need the word because the next two are “delta changed because vol changed” and “delta changed because the clock ran.”
 
-**Charm** is how delta changes as calendar time passes, with the index held still.
+**Vanna** is how delta changes when implied volatility changes — the hedge ratio slipping because the fear quote changed, even though spot did not.
+
+**Charm** is how delta changes as calendar time passes with the index held still — the ice cube melting while the room temperature stays the same.
 
 Those are schoolbook names. Gexbot then applies them only to **today’s leftover**, not to last night’s whole inventory vault. This book calls that limit **residual-only**.
 
@@ -68,7 +73,7 @@ Gexbot plots **minus-vanna** as the dollar-delta impact of a *total* implied-vol
 
 It plots **charm** as the dollar-delta impact *per hour* of time, from the same leftover.
 
-Gexbot marks both as **beta**: applied to today’s leftover only, still being practiced, not the full inventory vault. Treat a morning minus-vanna bar as a last-hour object and you have leaked families.
+Gexbot marks both as **beta**: applied to today’s leftover only, still being practiced, not the full inventory vault. Residual-only matters for size: the full vault is off-screen, so a bar that looks large may be a small slice of what re-hedges into the close. Treat a morning minus-vanna bar as a last-hour object and you have leaked families.
 
 <TermFirst id="beta-feature" />
 
@@ -140,7 +145,7 @@ Do not copy an SPX 0DTE resolution story onto SPY — or an NDX story onto QQQ �
 
 The index has drifted away. The 500 calls are out of the money. Charm drains their delta.
 
-**Bought branch.** The customer is getting shorter (an OTM long call dies). The dealer’s long-ES hedge is now too big, so the dealer **sells** (bar left, passive selling). Mandate, clock trigger, ES.
+**Bought branch.** The customer is getting shorter (an OTM long call dies). The dealer’s long-ES hedge — the about-500 ES bought at 10:05 — is now too big, so the dealer **sells** (bar left, passive selling). Mandate, clock trigger, ES.
 
 **Sold branch.** Mirror: the dealer **buys** (bar right).
 
@@ -160,6 +165,8 @@ Do not pool clock families. Last hour is not the open. Minus-vanna and charm are
 2. **Must dealers buy if net minus-vanna is $800 million?** Folklore. Discretionary. Residual-only. Beta.
 3. **Does Gexbot show expiry settlement hedges?** Not directly. Link 6 is not on a screen.
 
+<AdjacentConcepts docId="layer/07-clocks-and-late-greeks" />
+
 <CheckYourself
   items={[
     {
@@ -174,5 +181,7 @@ Do not pool clock families. Last hour is not the open. Minus-vanna and charm are
 />
 
 ## Gate
+
+On-ramp: [The clock on your ticket](/docs/on-ramp/07-clocks-and-late-greeks) — this chapter’s object from the customer seat.
 
 Next: [Heuristics as reading](/docs/practice/08-heuristics-as-reading) — naming drills on the plans you already sit, not a system.

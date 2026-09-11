@@ -11,6 +11,7 @@ const kinds: ('all' | Kind)[] = [
   'plan',
   'cousin',
   'market-general',
+  'adjacent',
 ];
 
 const pressures: ('all' | Pressure)[] = [
@@ -103,8 +104,18 @@ export default function GlossaryView(): JSX.Element {
                 <dd>{e.importMistake ?? '—'}</dd>
               </dl>
             ) : null}
+            {e.kind === 'adjacent' ? (
+              <dl className="gb-dl">
+                <dt>Bears on</dt>
+                <dd>{e.bearsOn ?? '—'}</dd>
+                <dt>Evidence</dt>
+                <dd>{e.evidence ?? '—'}</dd>
+                <dt>Read</dt>
+                <dd>{e.reading ?? '—'}</dd>
+              </dl>
+            ) : null}
             <p>
-              First defined in{' '}
+              {e.kind === 'adjacent' ? 'Named, not taught, in ' : 'First defined in '}
               <Link to={`/docs/${e.firstDefinedIn}`}>{e.firstDefinedIn}</Link>
               {e.neededForPlan ? ` · needed for ${e.neededForPlan}` : ''}
             </p>

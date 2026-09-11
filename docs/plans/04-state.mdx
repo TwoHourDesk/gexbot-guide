@@ -10,6 +10,7 @@ import ScreenOrientation from '@site/src/components/textbook/ScreenOrientation';
 import DistinguishingNote from '@site/src/components/textbook/DistinguishingNote';
 import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
 import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import AdjacentConcepts from '@site/src/components/textbook/AdjacentConcepts';
 import OfficialFigure from '@site/src/components/textbook/OfficialFigure';
 import GreeksSurface from '@site/src/components/charts/GreeksSurface';
 import DealerHedgeSim from '@site/src/components/charts/DealerHedgeSim';
@@ -215,6 +216,8 @@ State shows leftover paper by strike. Read the orientation of *this* drawing bef
 2. **A plus-DEX bar printed. Are they about to buy ES?** The inferred initial hedge is mostly done. Pending force is on gamma.
 3. **Is GEX profile the same as convexity?** No. Wing (call versus put) versus ownership (paid versus collected).
 
+<AdjacentConcepts docId="plans/04-state" />
+
 <CheckYourself
   items={[
     {
@@ -229,5 +232,7 @@ State shows leftover paper by strike. Read the orientation of *this* drawing bef
 />
 
 ## Gate
+
+On-ramp: [The vol you paid](/docs/on-ramp/04-state) — this chapter’s object from the customer seat.
 
 Next: [Orderflow](/docs/plans/05-orderflow). The same leftover as a tape over time, and the two signs you need to *name* a print.

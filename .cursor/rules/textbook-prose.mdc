@@ -6,7 +6,7 @@ alwaysApply: true
 
 # Textbook prose (uninitiated reader)
 
-The reader can follow an ES/NQ chart and has **not** traded options. Every `docs/**/*.mdx` page is a book chapter, not a reference card.
+The reader can follow an ES/NQ chart and has **not** traded options (see `audience.mdc` for the full audience statement and the two tracks). Every `docs/**/*.mdx` page — main chapter or `docs/on-ramp/**` sub-chapter — is a book chapter, not a reference card, and every rule below applies to both.
 
 ## Before you use a word
 
@@ -30,11 +30,31 @@ Every named term a chapter teaches or uses as a term — headword, acronym, or G
 - Point `alsoAppears` at later chapters that treat the term again. Point `seeAlso` only at ids that exist.
 - After the edit, every `<TermFirst>`, `<GexbotConcept>`, and `NeededForThisScreen` id must resolve. Chapter 10 (and every other chapter) must not render “No lexicon headwords list this page.”
 
+## Adjacent concepts (named, not taught)
+
+- Each chapter may end with one `<AdjacentConcepts docId="…" />` block, placed immediately before `<CheckYourself>`: ideas the chapter leans on that **no** chapter teaches and that a reader needs for the screen or for a later move into index options.
+- Every item is a `glossary.ts` row with `kind: 'adjacent'`, `firstDefinedIn` = that chapter, `bearsOn`, `evidence` (market-general / docs / folklore / not stated), and one `reading` citation in Chapter 11’s style. The index lists them; `ChapterTerms` does not.
+- Each item says what it is, then what it bears on here: two to four sentences, at most 110 words, five items per block. Full sentences over clipped ones; if the item needs a worked example or a number, the idea belongs in a chapter, not here.
+- Before adding one, search `docs/` and `glossary.ts` for the headword and its aliases. If it is taught or listed anywhere (Chapters 11 and 12 included), it does not qualify.
+- Track split: on a **main chapter** the item bears on the futures tape or on reading Gexbot (basis, auctions, expiration-day flows, market-structure facts that decide what a screen can see). On an **on-ramp page** the item bears on holding or trading the option (chain, marks, settlement value, routing, greeks beyond the chapter, practitioner tools). An options-side item that a reader needs only to read a screen stays on the main chapter; otherwise it belongs to the on-ramp.
+- Naming an adjacent concept may not add a mechanism claim about Gexbot or soften a label, pressure word, or guardrail.
+
 ## Voice
 
 - One idea per paragraph. Plain English first, then the Gexbot name, then a tiny picture.
 - Prefer “leftover trades so far today” over “classified residual” until residual is taught.
 - Prefer “we can see the pile, not who owns it” over “unsigned” until unsigned is taught.
+- Open each chapter with the stake: the force the reader cannot see on the ES/NQ tape, in one or two sentences, before any definition.
+- Every rule carries its reason within two sentences. A rule with no “because” is a rewrite candidate.
+- Order inside a section: what goes wrong without the idea → the idea → the Gexbot name → the tiny number.
+- Second person, to a capable colleague new to one domain. Assume intelligence; do not assume vocabulary. Name what is hard once, plainly, then give the handle.
+- Short sentence for the rule; longer sentence for the reason and the picture. Not three imperatives in a row.
+- One metaphor per concept, taken from the SoT where it has one.
+- A misread is a cause-and-effect sentence naming who is hurt and how, not a “Misread:” fragment.
+- Signpost at transitions: what the reader now has, what the next section adds. Newcomer questions read as a person would ask them.
+- No “we”, no exclamation, no praise, no “just / simply / easy / don’t worry / let’s”, no rhetorical-question chains, no hedging filler.
+- Never soften a label (docs / folklore / inferred / not stated / market-general), a pressure word, a verb (observed / inferred / assumed), a stand-down, or a guardrail to gain warmth.
+- Test: would a senior desk colleague say it to a sharp junior in their first week — direct, unhurried, no performance? If it sounds like a coach, a salesperson, or a rulebook, rewrite.
 
 ```mdx
 <!-- BAD: Chapter 1 table -->

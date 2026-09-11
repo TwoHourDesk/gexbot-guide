@@ -4,7 +4,8 @@ export type Kind =
   | 'hygiene'
   | 'cousin'
   | 'plan'
-  | 'market-general';
+  | 'market-general'
+  | 'adjacent';
 
 export type Pressure = 'mandate' | 'incentive' | 'none' | 'unknown';
 
@@ -30,6 +31,10 @@ export interface GlossaryEntry {
   hedgeVenue?: string;
   liquidityRole?: string;
   notShown?: string;
+  /** kind 'adjacent' only: named in a chapter, taught nowhere in the book. */
+  bearsOn?: string;
+  evidence?: string;
+  reading?: string;
 }
 
 export interface LedgerRow {

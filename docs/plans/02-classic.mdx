@@ -10,6 +10,7 @@ import ScreenOrientation from '@site/src/components/textbook/ScreenOrientation';
 import DistinguishingNote from '@site/src/components/textbook/DistinguishingNote';
 import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
 import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import AdjacentConcepts from '@site/src/components/textbook/AdjacentConcepts';
 import OfficialFigure from '@site/src/components/textbook/OfficialFigure';
 import PayoffSketch from '@site/src/components/charts/PayoffSketch';
 import GreeksSurface from '@site/src/components/charts/GreeksSurface';
@@ -26,6 +27,8 @@ import GreeksSurface from '@site/src/components/charts/GreeksSurface';
 
 ## Words the histogram is made of
 
+Classic’s bars are built from a handful of contract words. A reader without them sees a shape where there is a count.
+
 Classic is a **histogram**: a stack of bars, one bar per **strike**. A strike is the price level written on the option contract — the shelf in the warehouse photo.
 
 There are two kinds of option. A **call** is the right to *buy* the index at that strike. A **put** is the right to *sell* the index at that strike. The buyer of either contract pays a **premium** (the ticket price). The seller collects it.
@@ -34,7 +37,7 @@ The contract dies at **expiry**. If that expiry is *today*, this book says **0DT
 
 Where the strike sits versus the index is **moneyness**. Near the index: **at the money (ATM)**. A call with strike below the index, or a put with strike above it: **in the money (ITM)**. The other way: **out of the money (OTM)**.
 
-**Gamma** is how much the option’s “stock-ness” changes when the index ticks one point. Long calls and long puts are long gamma. Short calls and short puts are short gamma. Gamma has no up or down. It peaks ATM and explodes as expiry approaches. A cheap 0DTE can still be a huge gamma pile. How expensive the ticket was is the **debit** — what the buyer paid. Gexbot weights by these sensitivities, not by debit.
+Chapter 1 said the firms in the middle of the options market buy and sell the index as it moves. How much index they need to hold against an option is not fixed; it changes as the index moves, and **gamma** is how fast it changes per point. Think of it not as the car’s speed but as how sharply the accelerator itself gets more or less sensitive as you press it. Long calls and long puts are long gamma; short calls and short puts are short gamma. Gamma has no up or down. It peaks ATM and grows sharply into expiry, which is why a cheap 0DTE can be a huge gamma pile while an expensive far-dated ticket is not. The ticket price is the **debit** — what the buyer paid. Gexbot weights by gamma, not by debit.
 
 As the clock runs, an option’s value tends to leak even if the index does not move. The schoolbook name is **theta**, or time decay. Classic does not plot theta. You will need the word in Chapter 4 when customer incentive appears.
 
@@ -128,14 +131,14 @@ At each shelf, Classic subtracts put GEX from call GEX. One bar. Right means the
 
 **Zero gamma** is the weighted center of today’s volume-GEX complex. It is not necessarily a traded strike. Spot can sit on it without anyone having that strike as a wall.
 
-A common story says: below this fulcrum the book is more short-gamma (moves get larger); above it, more long-gamma (moves get pinned). That story **assumes** a usual ownership shortcut. Classic cannot prove the owner. If you use the shortcut, write *if*.
+A common story says: below this fulcrum the book is more short-gamma (moves get larger); above it, more long-gamma (moves get pinned). That story **assumes** a usual ownership shortcut — the same one most public GEX commentary assumes. Classic cannot check it, and if the owner is the other way round the story runs backwards. If you use the shortcut, write *if*.
 
 <GexbotConcept id="zero-gamma" />
 <WhoMustAct id="zero-gamma" />
 
 ## Tallest hill, deepest hole
 
-**Major positive** and **major negative** are simply the largest right bar and the largest left bar on that unsigned map. They jump when a bigger node prints or when the index moves the gamma surface. They are candidates people call magnets or walls. Whether a hole is a fade or an acceleration lane depends on ownership — unknown here.
+**Major positive** and **major negative** are the largest right bar and the largest left bar on that unsigned map. They jump when a bigger node prints or when the index moves the gamma surface. They are candidates people call magnets or walls. Whether a hole is a fade or an acceleration lane depends on ownership — unknown here.
 
 <GexbotConcept id="major-pos-neg" />
 <WhoMustAct id="major-pos-neg" />
@@ -164,7 +167,7 @@ A customer trades **500 SPX 0DTE ATM calls**. Classic’s volume-GEX bar at that
 
 Now the mirror: the customer **sold** the same 500 calls. Classic’s bar still grows **to the right**. **The bar is identical.** Owner unknown. Pressure unknown.
 
-That is why Classic is not State. Chapter 3 splits the branches.
+That is why Classic is not State. You now have a location. Chapter 3 adds the sign — who bought and who sold — and with it the direction of the hedge.
 
 ## Newcomer question
 
@@ -177,6 +180,8 @@ Classic is the unsigned cousin of public GEX maps. Every Who-must-act row on thi
 ## Terms introduced
 
 <ChapterTerms docId="plans/02-classic" />
+
+<AdjacentConcepts docId="plans/02-classic" />
 
 <CheckYourself
   items={[
@@ -192,5 +197,7 @@ Classic is the unsigned cousin of public GEX maps. Every Who-must-act row on thi
 />
 
 ## Gate
+
+On-ramp: [Reading your own ticket](/docs/on-ramp/02-classic) — this chapter’s object from the customer seat.
 
 Next: [Classification and the hedge chain](/docs/plans/03-classification). The leftover-and-label machinery that splits the two branches Classic cannot split.

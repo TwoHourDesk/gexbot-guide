@@ -5,6 +5,7 @@ title: "8. Heuristics as reading"
 import TermFirst from '@site/src/components/textbook/TermFirst';
 import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
 import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import AdjacentConcepts from '@site/src/components/textbook/AdjacentConcepts';
 
 # Heuristics as reading
 
@@ -21,7 +22,7 @@ A **heuristic** in this book is a **naming drill**: practice saying what you are
 
 **Default clocks.** Residual: 09:30–16:00 Eastern. Early regular-hours map to ES or NQ: 09:29–11:00. Last-hour family: 15:00–16:00. Do not pool them.
 
-**Stand down** when Orderflow is two-sided noise, leftover is too thin to name a major, you are using the falling-vol map on a rising-vol tape, you used full-book zero gamma for a 0DTE scalp, or you treated converted walls as exchange volume.
+**Stand down** when Orderflow is two-sided noise, leftover is too thin to name a major, you are using the falling-vol map on a rising-vol tape, you used full-book zero gamma for a 0DTE scalp, or you treated converted walls as exchange volume. Those five look different. Each is a case where the screen cannot supply the owner, the regime, or the object the read needs, and a read without them is a guess with a heuristic number on it.
 
 <TermFirst id="stand-down" />
 
@@ -34,6 +35,8 @@ Pressure is **mandate** on absorb. Owner still needs the 2×2. Classic cannot su
 The read: a standout plus GEX-orderflow bar into a call-heavy node is a **local-top** *candidate* on SPX. The mirror minus bar is a local-bottom candidate. The read is off when the docs’ “SPX trading like SPY” (VIX above 20) *folklore* applies, or when convexity shows the bar was **long calls**.
 
 Forced-flow sentence: dealer absorbed call-sided leftover · mandate · print · *unknown direction until the 2×2* · ES.
+
+The misread: fading a standout plus bar without checking convexity. If the bar was long calls, the owner wants expansion and the dealer on the mirror chases; the reader is short into the one case the folklore does not cover.
 
 <TermFirst id="h1" />
 <TermFirst id="local-top" />
@@ -96,7 +99,7 @@ Pressure: the customers who wrote that gamma are **incentivized** to defend the 
 
 Distinct from H4: H4 reads the *approach* to a node; H6 reads how *concentrated* the short gamma is. The vol flip still applies. In rising vol, shorts defend and the crowd can hold.
 
-Misread: every minus-convexity node is a magnet. Concentration plus vol regime decides whether it is a magnet or a trapdoor.
+The misread: treating every minus-convexity node as a magnet. A reader who does that expects a pin at a crowded node in falling vol and is on the wrong side when the shorts cover through it. Concentration and vol regime decide whether the node is a magnet or a trapdoor; the convexity ladder shows only the first, and H12 supplies the second.
 
 <TermFirst id="h6" />
 <TermFirst id="crowded-short-convexity" />
@@ -109,7 +112,7 @@ Where heavy customer-short bars give way to fresh customer-long bars, or where m
 
 This is the missing half of H4. H4 names the node you approach; H7 names where the move is likely to lose its pressure. Pressure: customer **incentive** changes sign at the transition; dealer **mandate** flips from chase to fade or the reverse.
 
-Misread: aiming at the tallest bar instead of the sign change. The tallest bar is where pressure is greatest, not where it ends.
+The misread: aiming at the tallest bar instead of the sign change. A reader who does that holds for a target pressure never promised; the tallest bar is where pressure is greatest, not where it ends.
 
 <TermFirst id="h7" />
 <TermFirst id="transition-zone" />
@@ -124,7 +127,7 @@ Read net GEX with net convexity before naming either. Net GEX says the gamma is 
 
 Pressure: the net is the day’s aggregate lean of link 4, the pending gamma re-hedge. Distinct from H1, which is one bar, and H3, which is a convexity sequence.
 
-Misread: high net GEX is bullish. It says where the curvature is, not which way price goes.
+The misread: reading high net GEX as bullish. A reader who does that buys a call-heavy day that may be sold calls; the net says where the curvature is, not which way price goes, and net convexity says who owns it.
 
 <TermFirst id="h8" />
 <TermFirst id="squeeze" />
@@ -138,7 +141,7 @@ The docs describe a normal state for SPX in low vol: during an uptrend, put aggr
 
 On SPY the docs call a **divergence** between price and its own aggregate DEX “particularly powerful”: price makes a new high while aggregate DEX does not, or the reverse. The docs add that when VIX is above 20, SPX starts trading like SPY.
 
-Misread: a minus net aggregate DEX on SPX read as bearish. In quiet tape it is the normal state.
+The misread: reading a minus net aggregate DEX on SPX as bearish. A reader who does that shorts the baseline; in quiet tape that sign is the normal state, and the deviation from it is the read.
 
 <TermFirst id="h9" />
 <TermFirst id="spx-baseline" />
@@ -151,7 +154,7 @@ A node that built into price through the morning is a different object from one 
 
 Max-change marks where the map just redrew. Attention, location only, unsigned. Pair it with State to name the owner. Alone it is not a read. It does not get its own H-number.
 
-Misread: a lookback dot as a future target. A max-change strike as a reversal.
+The misread: reading a lookback dot as a future target, or a max-change strike as a reversal. Both are where the map was or where it moved; a reader who trades them has attached a direction to a location that carries none.
 
 <TermFirst id="h10" />
 
@@ -161,7 +164,7 @@ This drill sits the switch between **latest**, **next**, and **full**. Every oth
 
 Sit latest by default. Switch to next when latest is dead or too thin to name a major, or when you are studying the roll. Use full only as overnight context. The stand-down for “full-book zero gamma on a 0DTE scalp” lives here.
 
-Misread: mixing expiry groups inside one sentence. A latest DEX node and a full zero gamma are not the same object.
+The misread: mixing expiry groups inside one sentence. A latest DEX node and a full zero gamma are not the same object, and a reader who pairs them has built a level out of two clocks.
 
 <TermFirst id="h11" />
 
@@ -173,7 +176,7 @@ The options profile draws, on a second axis, the implied vol of the put and the 
 
 Two cautions, both *inferred*. Near expiry, 0DTE implied vol is noisy and a late-day drop is mostly the clock, not a regime change. And the dots are a state, not a forecast; a regime can flip after you tag it.
 
-Misread: inferring vol regime from price direction. Price can rise with vol rising.
+The misread: inferring the vol regime from price direction. Price can rise with vol rising, and a reader who assumes otherwise runs the falling-vol map on the tape it is most wrong for.
 
 <TermFirst id="h12" />
 <TermFirst id="skew-dots" />
@@ -186,7 +189,7 @@ A large Classic volume pile with a thin State leftover at the same strike means 
 
 This is the practical form of the Chapter 3 gate: a Classic wall is not a State long. It is the only drill that needs two plans.
 
-Misread: a quiet State ladder as “nothing traded.” Also the balanced node from Chapter 2: two huge opposite piles that net toward zero.
+The misread: reading a quiet State ladder as “nothing traded,” or a balanced Classic node as an empty one. In both, the trading was there and cancelled; a reader who fades the Classic pile is fading a wall nobody is holding.
 
 <TermFirst id="h13" />
 
@@ -198,7 +201,7 @@ A holder forced out of a position is a **flush**. The docs say a local bottom ca
 
 Pressure: the dealer’s **mandate** is the same either way, because their delta moved the same way. So the hedge inference survives. The customer’s **incentive** is unknowable, so the intent inference does not. Write the forced-flow sentence with the hedge and leave the intent blank.
 
-Misread: reading every minus-DEX spike into a low as a fresh bearish bet.
+The misread: reading every minus-DEX spike into a low as a fresh bearish bet. A reader who does that shorts a flush — longs being forced out — and is caught when the forcing stops; the screen cannot separate the two.
 
 <TermFirst id="h14" />
 <TermFirst id="flush" />
@@ -211,7 +214,7 @@ The docs say the sign on these ladders flips as the index crosses a level and is
 
 Pressure: dealer **mandate**, driven by clock and vol, not by the index moving. Off before the last hour. Off if net minus-vanna and charm are near zero, when the docs say price wanders.
 
-Misread: using a local zero at 10:00 as a level. It is a late-day object.
+The misread: using a local zero at 10:00 as a level. It is a late-day object; a reader who trades it in the morning has leaked a clock family and is holding a pivot with no flow behind it.
 
 <TermFirst id="h15" />
 <TermFirst id="local-zero" />
@@ -244,12 +247,14 @@ Each heuristic is a naming drill. Each states which pressure it relies on and wh
 
 ## Newcomer questions
 
-1. **Which heuristic is an entry?** None, as a system. H3 has no entry at all.
+1. **Which of these is the one I trade?** None, as a system. H3 has no entry at all.
 2. **Can I use H5 at the open?** No. Different clock family.
 3. **Does H1 work on NQ?** Only if you rename the claim. It is SPX folklore.
 4. **How do I know which vol regime I am in?** H12: watch the skew dots across lookbacks. Not from price direction.
 5. **Classic shows a huge wall. Why is State empty there?** H13: the trading was two-sided and cancelled. Pressure none. Stand down on that strike.
 6. **An alert just fired. Is that my entry?** No. It is a touch. You should already have named the owner, pressure, and regime.
+
+<AdjacentConcepts docId="practice/08-heuristics-as-reading" />
 
 <CheckYourself
   items={[
@@ -289,5 +294,7 @@ Each heuristic is a naming drill. Each states which pressure it relies on and wh
 />
 
 ## Gate
+
+On-ramp: [When you are the level](/docs/on-ramp/08-heuristics-as-reading) — this chapter’s object from the customer seat.
 
 Next: [Grammar and journal](/docs/practice/09-grammar-and-journal).

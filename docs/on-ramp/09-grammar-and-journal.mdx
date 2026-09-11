@@ -1,0 +1,65 @@
+---
+title: "9 · Options on-ramp: the third falsifier"
+---
+
+import TermFirst from '@site/src/components/textbook/TermFirst';
+import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
+import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import AdjacentConcepts from '@site/src/components/textbook/AdjacentConcepts';
+
+# The third falsifier
+
+A futures thesis dies at a price. A holder’s thesis can die with price untouched, and a journal line with two falsifiers will not notice.
+
+**What this page assumes.** [Chapter 9](/docs/practice/09-grammar-and-journal): the forced-flow sentence, the journal line, acceptance through, failure to take, and the falsifier written before the read. [The vol you paid](/docs/on-ramp/04-state) and [the clock on your ticket](/docs/on-ramp/07-clocks-and-late-greeks). **What you will be able to do.** Write the journal line for your own position with three falsifiers, and say why a stop on the underlying covers only one of them.
+
+## Your journal line
+
+Chapter 9’s forced-flow sentence has five fields: actor, pressure, trigger, direction, venue. Written for your 500 calls it reads: *actor* — you, the customer; *pressure* — incentive; *trigger* — the thesis you bought on; *direction* — up; *venue* — SPX options, with the counterparty’s hedge in ES. Nothing in the grammar changes. The actor is closer.
+
+The falsifier changes. Chapter 9 gave the read two ways to be wrong: price accepts through the level, or the leftover that carried the read is removed or flips sign. Both are still yours. But the mark on your ticket also moves on implied vol and on the clock, so a thesis can be dead — the mark below any level you would tolerate — with price and leftover both intact. The implied-vol condition under which your thesis is dead regardless of price is the **vol falsifier**.
+
+<TermFirst id="vol-falsifier" />
+
+Written before the trade, it reads like the other two: a condition, a time, and what you will observe. *If implied vol at 6000 falls below the level at which the mark is worth less than the rent to expiry, the thesis is dead whatever price does.* The number in that sentence is yours to find; the book’s rule is only that it be written first.
+
+## Why a price stop is not enough
+
+A stop on the underlying protects against one of three ways the mark can fall. Rent and vol are the other two, and neither one prints on your chart. A holder who protects a position with a price stop alone has protected a third of it and named the whole. Chapter 12 gives this habit a name and a chapter; here it is enough to know that a journal line with two falsifiers is one short.
+
+## The one thing that changes
+
+A futures trader writes one falsifier, in price. A reader of this book writes two, in price and in leftover. A holder writes three. Chapter 12 calls the complete form the position sentence — what you own, what must happen for it to pay, what kills it in each language, and by when — and Chapter 9’s journal line is its first draft.
+
+## Summary
+
+The journal line for your own position keeps Chapter 9’s five fields with you as actor and incentive as pressure. It needs a third falsifier: the implied-vol condition under which the thesis is dead with price untouched. A price stop covers one of three ways the mark can fall. Chapter 12’s position sentence is the finished form.
+
+## Terms introduced
+
+<ChapterTerms docId="on-ramp/09-grammar-and-journal" />
+
+## Newcomer questions
+
+1. **Can my thesis be wrong if price never touched my stop?** Yes. Vol fell or the clock ran, and the mark went where the stop was supposed to prevent.
+2. **How do I pick the vol number for the falsifier?** This page does not say; it says the number is written before the trade. Chapter 12’s Gaps 1 and 2 give you the tools.
+3. **Does the leftover falsifier still apply to a holder?** Yes. If the bar that carried your read is gone, your thesis lost its Gexbot leg, whatever your ticket says.
+
+<AdjacentConcepts docId="on-ramp/09-grammar-and-journal" />
+
+<CheckYourself
+  items={[
+    {
+      q: 'Name the three falsifiers for a holder’s thesis.',
+      a: 'Price (acceptance through), leftover (bar removed or sign flipped), and vol (the implied-vol condition under which the mark is dead regardless of price).',
+    },
+    {
+      q: 'A price stop protects against which of the three ways your mark can fall?',
+      a: 'One: price. Rent (theta) and vol (vega) are not covered.',
+    },
+  ]}
+/>
+
+## Gate
+
+Next: [Early session: levels before leftover](/docs/practice/09a-early-session). Its on-ramp page prices the ticket you would sign at 09:31 and finds a number nobody has tested.

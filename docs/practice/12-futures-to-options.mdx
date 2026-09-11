@@ -6,6 +6,7 @@ import TermFirst from '@site/src/components/textbook/TermFirst';
 import DistinguishingNote from '@site/src/components/textbook/DistinguishingNote';
 import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
 import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import AdjacentConcepts from '@site/src/components/textbook/AdjacentConcepts';
 
 # From futures to options: a roadmap
 
@@ -281,11 +282,11 @@ Chapter 9b listed the reading errors. These are the holding errors, and most of 
 
 **A stop on the index.** The fallacy above. Check: the position sentence has three kill conditions, not one.
 
-**Ignoring vol crush after a release.** Implied vol collapses when the event passes; a long option can lose on a move in its favor. Chapter 9b's event day, now with your money in it. This book calls the collapse **IV crush**. Check: the regime-paid line in the position sentence, and the vega row in attribution.
+**Ignoring vol crush after a release.** Implied vol collapses when the event passes; a long option can lose on a move in its favor. Chapter 9b's event day, now with your money in it. The collapse is **IV crush**. Check: the regime-paid line in the position sentence, and the vega row in attribution.
 
 <TermFirst id="iv-crush" />
 
-**Legging into a spread.** Entering one leg and hoping to get the other at a good price leaves you briefly holding a structure you did not choose. This book calls it **leg-in risk**. Check: complex orders for spreads until you can explain why you are legging.
+**Legging into a spread.** Entering one leg and hoping to get the other at a good price leaves you briefly holding a structure you did not choose. The name is **leg-in risk**. Check: complex orders for spreads until you can explain why you are legging.
 
 <TermFirst id="leg-in-risk" />
 
@@ -327,6 +328,8 @@ Trading options after futures adds two dimensions, curves the P&L, changes what 
 4. **Why no undefined-risk in the whole ramp?** Gap 3: the average is positive and the tail ends accounts. You have not yet measured your own tail.
 5. **Will my own trades show on Gexbot?** If they are SPX or SPY prints large enough to leave leftover, yes, signed by aggressor, open-or-close unknown — exactly as the book described everyone else's.
 
+<AdjacentConcepts docId="practice/12-futures-to-options" />
+
 <CheckYourself
   items={[
     {
@@ -361,5 +364,7 @@ Trading options after futures adds two dimensions, curves the P&L, changes what 
 />
 
 ## After this chapter
+
+On-ramp: [The first week of Stage 1](/docs/on-ramp/12-futures-to-options) — the ramp’s first gate, day by day.
 
 This is the end of the book. Chapter 11 is the syllabus for the tape. Chapter 12 is the syllabus for the other side of it. Both end the same way: the position sentence written before the trade, the falsifier in every language you have, and no number recorded that you would be tempted to believe from forty sessions.

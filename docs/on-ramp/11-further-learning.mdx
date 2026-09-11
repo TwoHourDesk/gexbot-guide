@@ -1,0 +1,69 @@
+---
+title: "11 · Options on-ramp: the paper position"
+---
+
+import TermFirst from '@site/src/components/textbook/TermFirst';
+import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
+import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import AdjacentConcepts from '@site/src/components/textbook/AdjacentConcepts';
+
+# The paper position
+
+Chapter 11’s arithmetic — the straddle rule, expected move, the gamma–theta ledger — is already the holder’s arithmetic. The on-ramp is to run it every day on a position you do not hold, until the ledger’s sign at the close is obvious before you look.
+
+**What this page assumes.** [Chapter 11](/docs/practice/11-further-learning): square root of time, the straddle rule and expected move, the gamma–theta tradeoff, realized versus implied vol, dollar gamma, and the morning card. [The mark](/docs/on-ramp/02-classic), [the clock on your ticket](/docs/on-ramp/07-clocks-and-late-greeks), and [the third falsifier](/docs/on-ramp/09-grammar-and-journal). **What you will be able to do.** Keep a paper position through a session and attribute its day with the ledger.
+
+## A position on paper
+
+A position you write down at the open but do not hold, tracked at the market’s marks and attributed at the close, is a **paper position**. It costs nothing and it teaches the one thing a reader cannot learn from the outside: what the mark does between two moments when the index is in the same place.
+
+<TermFirst id="paper-position" />
+
+## The drill
+
+Each morning, at the time the morning card is written, add one line: one ATM call, or one ATM straddle, at the strike nearest the index. Price it from Chapter 11’s straddle rule — about 0.8 of the expected move for the straddle, about 0.4 for the call — and write that number as the debit. Write the vol paid beside it.
+
+At the close, write the mark. Then split the day into the ledger’s two sides. On one side, what the index’s movement was worth to the position: delta times the move, plus the gamma term Chapter 11 gave you. On the other, what waiting cost: theta for the hours held, and the vol bill if implied vol moved. The sum should be close to mark minus debit. The residual is the part you cannot yet name, and it shrinks with practice.
+
+Twenty sessions. No money. Chapter 12 makes this its Stage 1 and Stage 3 and adds the full attribution table; here it is enough to see the two sides move against each other on a day when the index closed where it opened.
+
+## What the paper position teaches
+
+Chapter 11 named the horizon mismatch: a scalper’s clock against an object measured over sessions. On paper the mismatch has a rate. Theta per hour on the ATM call is a number you can write, and a scalper who has never seen it written tends to imagine it is small. It is not small on a 0DTE. The paper position puts the rate next to the moves you are used to and lets the comparison happen without a loss.
+
+## The one thing that changes
+
+A futures trader’s P&L on a flat day is zero. A holder’s is not, in either direction, and the size of the not-zero is the thing Chapter 11 called the premium and Chapter 12 calls a gap to close. The paper position is where you see it before it is yours.
+
+## Summary
+
+A paper position is a written, unheld position tracked at marks and attributed at the close. Price it from the straddle rule, record the vol paid, and split each day into movement earned against waiting paid. Twenty sessions with no money show what a flat day costs a holder. Chapter 12 makes the drill its first two stages.
+
+## Terms introduced
+
+<ChapterTerms docId="on-ramp/11-further-learning" />
+
+## Newcomer questions
+
+1. **Why paper and not a small real trade?** Because the point is the ledger, not the fill, and a fill adds spread, slippage, and a reason to stop writing. Chapter 12 puts real size at Stage 5, after four gates.
+2. **The ledger does not sum to mark minus debit. What did I miss?** Vol, usually, or a cross-term. Write the residual and name it tomorrow.
+3. **Is theta really that large?** On a 0DTE ATM option, write it per hour for one week and decide for yourself.
+
+<AdjacentConcepts docId="on-ramp/11-further-learning" />
+
+<CheckYourself
+  items={[
+    {
+      q: 'Define a paper position and name the two sides of the ledger you split its day into.',
+      a: 'A written, unheld position tracked at marks and attributed at the close. Movement earned (delta and gamma) against waiting paid (theta and the vol bill).',
+    },
+    {
+      q: 'From the straddle rule, roughly what fraction of the expected move does the ATM call cost?',
+      a: 'About 0.4 of the expected move; the straddle about 0.8.',
+    },
+  ]}
+/>
+
+## Gate
+
+Next: [From futures to options](/docs/practice/12-futures-to-options). Its on-ramp page is the first week of its Stage 1.

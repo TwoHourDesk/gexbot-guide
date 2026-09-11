@@ -1,0 +1,39 @@
+---
+description: Who this book is for, what every chapter is geared to, and the options on-ramp sub-chapter each chapter carries
+alwaysApply: true
+---
+
+# Audience and the two tracks
+
+## Who the reader is
+
+An **index futures trader** — someone who follows the ES or NQ tape, thinks in points and ticks, and knows that a level is a hypothesis until price accepts through it — who is **considering or preparing to trade the corresponding index options** (SPX/NDX, their ETF cousins, or options on the futures). They have not traded an option. They are intelligent and impatient with vocabulary they cannot yet use.
+
+Two things follow for every page:
+
+- **Current interest first.** The reader opens Gexbot to understand a force on the futures tape they cannot see from the tape alone: who holds option risk, what pressures them, when they must act, and which screen makes it inferable. Every main chapter is written for that interest, from the outside of the ticket, and stays useful to a reader who never trades an option.
+- **Future interest second, and separately.** The same reader may later sit on the other side of the ticket. Each main chapter therefore carries a supporting **options on-ramp sub-chapter** that retells the chapter's object from the customer's seat.
+
+## The two tracks
+
+**Main chapters** (`docs/intro.mdx`, `docs/plans/**`, `docs/layer/**`, `docs/practice/**`) read other people's trades. Voice is the outside observer inferring the dealer. They never depend on an on-ramp page; a reader who skips every on-ramp loses nothing of the reading course.
+
+**On-ramp pages** (`docs/on-ramp/NN-<slug>.mdx`, one per main chapter, same number and slug) put the reader in the customer seat. Each page:
+
+- Is a full chapter page under the same rules as any other (`textbook-prose.mdc`): stake first, what it may assume, teach before naming, `TermFirst` and a `glossary.ts` row for every term it teaches (`firstDefinedIn: 'on-ramp/NN-slug'`), Summary, Terms introduced, Newcomer questions, `CheckYourself`, Gate.
+- May assume its parent chapter, every earlier chapter, and every earlier on-ramp page. May not assume a later chapter's terms; where Chapter 12 owns the word, describe the experience in plain words and forward-link Chapter 12.
+- Follows a fixed shape: the seat change for this chapter's object · the running example (500 SPX 0DTE ATM calls) retold from the customer's seat · what the chapter's screen tells the holder about their own position and what it cannot · the one thing that changes for a holder and never changes for a futures trader · a Chapter 12 forward link.
+- Describes; it does not advise. No imperative to the reader about entering, exiting, sizing, or choosing a structure. No strategy names before Chapter 12 teaches them. No P&L claims beyond the toy numbers the running example already uses.
+- Keeps every label, pressure word, verb, stand-down, and guardrail at full strength. The customer's pressure is **incentive**; the dealer's is **mandate**; "must" and "forced" are never about the reader.
+
+## Navigation
+
+- `sidebars.ts`: each main chapter is a category whose link is the chapter doc and whose single item is its on-ramp page, so pagination runs chapter → on-ramp → next chapter.
+- Each main chapter's Gate (or "After …" section) carries one line: `On-ramp: [title](/docs/on-ramp/NN-slug) — this chapter's object from the customer seat.`
+- Chapter 12 is the destination of the on-ramp track; its own on-ramp page is the first week of its Stage 1, not a summary.
+
+## When adding or editing
+
+- A new main chapter requires a new on-ramp page in the same edit, or an explicit note in the chapter's Gate that its on-ramp is pending.
+- A term the on-ramp track needs earlier than a main chapter teaches it is a **proposed move**, not a silent addition: state term, from, to, why, and wait for approval. Moving a term changes glossary ids, `TermFirst` placements, and Chapter 12's structure.
+- Adjacent-concept blocks follow the track: on main chapters they name futures-market and screen-reading concepts (what moves the ES/NQ tape, what a feed can and cannot see); on on-ramp pages they name options-trading concepts (the chain, marks, settlement value, routing, greeks the chapter did not teach, practitioner tools). See the track-split bullet in `textbook-prose.mdc`.

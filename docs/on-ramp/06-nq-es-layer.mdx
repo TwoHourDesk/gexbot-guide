@@ -1,0 +1,72 @@
+---
+title: "6 · Options on-ramp: which contract you would hold"
+---
+
+import TermFirst from '@site/src/components/textbook/TermFirst';
+import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
+import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import AdjacentConcepts from '@site/src/components/textbook/AdjacentConcepts';
+
+# Which contract you would hold
+
+Your NQ size means nothing on an options ticket until it is translated. The translation is Chapter 6’s multipliers, and the same chapter’s account of how each contract settles decides what you would hold on Monday morning.
+
+**What this page assumes.** [Chapter 6](/docs/layer/06-nq-es-layer): the SPX and NDX multipliers, point values for ES and NQ, conversion and basis, expiry groups, European versus American style, cash versus physical settlement. [The four positions](/docs/on-ramp/05-orderflow). **What you will be able to do.** Translate a futures size into an options size and back, put your break-even on your own chart, and state how each contract you might hold settles.
+
+## Notional
+
+Chapter 6 gave the multipliers: SPX and NDX options are $100 per index point; ES is $50 and NQ is $20. The dollar value one contract controls — multiplier times index level — is its **notional**.
+
+<TermFirst id="notional" />
+
+At an index of 6000, one SPX option controls $600,000 and one ES controls $300,000. An ATM option has delta about 0.50, so one ATM SPX option carries about 0.50 × $600,000 = $300,000 of index exposure: one ES. That is the bridge Chapter 6 already stated and Chapter 12 uses for sizing. Run it for the Nasdaq: NDX option $100 per point, NQ $20 per point, so one ATM NDX option is about 2.5 NQ of delta, and the running example’s 500 NDX calls are about 1,250 NQ. Your futures size, in contracts, becomes delta times notional, in dollars.
+
+## Your strike on your chart
+
+Your break-even from the [ticket page](/docs/on-ramp/02-classic) is in index points. Your chart is in futures points. The gap between them is the basis, and Chapter 6 said it moves through the day and jumps at the roll. So the futures price that corresponds to your break-even is a moving target, and the converted strikes on `ES_SPX` are the same approximation applied to everyone’s strikes, not yours in particular.
+
+## Settlement from your seat
+
+Chapter 6 taught how each contract settles as a reason last-hour flows differ. From your seat they decide what you own after the close.
+
+- **SPX and NDX options** are European and cash-settled. At expiry you receive or pay a cash amount and hold nothing. No one can exercise against you early.
+- **SPY and QQQ options** are American and physically settled. A short option can be exercised against you, including overnight, and you can arrive Monday holding shares you did not buy.
+
+Chapter 12’s Gap 5 is the full treatment, including a third venue this book cannot see. Here the fact is enough: two contracts with the same strike and the same delta can leave you in different places on Monday.
+
+## The one thing that changes
+
+A futures contract expires into cash or rolls into the next contract at a price you can read. An option expires into a decision made by how it settles, and for one family of contracts that decision can be made by someone else, against you. Chapter 12 calls this the gap that costs money fastest.
+
+## Summary
+
+Notional is multiplier times index; delta times notional is your exposure in dollars, and one ATM SPX option is about one ES. Your break-even is in index points and reaches your chart through a moving basis. SPX and NDX options settle in cash and cannot be exercised before expiry; SPY and QQQ options can be exercised against you and deliver shares.
+
+## Terms introduced
+
+<ChapterTerms docId="on-ramp/06-nq-es-layer" />
+
+## Newcomer questions
+
+1. **I trade two NQ. What is that in NDX options?** About 0.8 of one ATM NDX option in delta. Size in options is delta times notional, not contracts.
+2. **My break-even is 6013. Where is that on ES?** 6013 plus today’s basis, which moves. Not a fixed line.
+3. **Can someone exercise my SPX short early?** No; European style. On SPY, yes.
+
+<AdjacentConcepts docId="on-ramp/06-nq-es-layer" />
+
+<CheckYourself
+  items={[
+    {
+      q: 'Index at 6000. State the notional of one SPX option and of one ES, and the delta exposure of one ATM SPX option.',
+      a: '$600,000 and $300,000. One ATM SPX option ≈ 0.50 × $600,000 = $300,000, about one ES.',
+    },
+    {
+      q: 'Which of SPX, NDX, SPY, QQQ options can be exercised against you before expiry?',
+      a: 'SPY and QQQ (American, physical). SPX and NDX are European and cash-settled.',
+    },
+  ]}
+/>
+
+## Gate
+
+Next: [Clocks and late greeks](/docs/layer/07-clocks-and-late-greeks). Its on-ramp page puts the clock on your ticket and shows what you lose when nothing happens.

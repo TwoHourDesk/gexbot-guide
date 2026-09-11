@@ -1,0 +1,69 @@
+---
+title: "7 · Options on-ramp: the clock on your ticket"
+---
+
+import TermFirst from '@site/src/components/textbook/TermFirst';
+import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
+import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import AdjacentConcepts from '@site/src/components/textbook/AdjacentConcepts';
+
+# The clock on your ticket
+
+Hold the 500 calls from 10:05 to 15:00 with the index back where it started and you have lost money and lost delta. Nothing happened on your chart. Chapter 7 taught the forces that did it as pressures on other people; on your ticket they are line items.
+
+**What this page assumes.** [Chapter 7](/docs/layer/07-clocks-and-late-greeks): vega, vanna, charm, the minus-vanna and charm ladders, clock families, residual-only and beta. [The mark](/docs/on-ramp/02-classic) and [the vol you paid](/docs/on-ramp/04-state). **What you will be able to do.** Say how your position changes when only the clock or only vol moves, and read the last-hour ladders as a statement about holders like you.
+
+## Delta drift
+
+Chapter 7 said charm is how delta changes as time passes with the index still, and vanna is how delta changes when implied vol changes. Both were reasons a dealer re-hedges without a price move. From your seat they are the reasons your position is not the position you bought.
+
+Say the index drifted to 6010 by 14:00 and sits there. Your call is slightly in the money. As the clock runs, its delta climbs toward 1.00 — charm — because an option that is in the money with little time left behaves more and more like the index itself. Say instead the index sits at 5990 and implied vol falls; your slightly out-of-the-money call’s delta shrinks toward zero — vanna. In neither case did you trade. A change in your position’s delta caused by the clock or by vol rather than by price is **delta drift**.
+
+<TermFirst id="delta-drift" />
+
+Your counterparty re-hedges your drift. When your delta climbs, they buy ES; when it shrinks, they sell. That is futures flow you did not cause by moving, and it is the last-hour force Chapter 7 drew on the charm and minus-vanna ladders.
+
+## Theta and vega as your ledger
+
+Theta is the rent: with the index still, the mark falls each hour, faster as expiry nears. Vega is the vol bill: with the index still, the mark falls one amount per point of implied vol lost. Chapter 7 gave you both words as sensitivities other people manage. Chapter 11 writes them into a ledger against gamma, and Chapter 12 splits a day’s P&L into exactly these pieces. Here the point is the seat: what was a pressure on the dealer is a charge on you.
+
+## What the ladders tell you, and cannot
+
+The minus-vanna and charm ladders show where the crowd’s clock hedge sits, drawn from today’s leftover only and marked beta. They tell you which strikes carry holders in your situation into the close. They cannot show your drift, your rent, or your vol bill; the chapter’s residual-only limit means they do not even show the full crowd.
+
+## The one thing that changes
+
+One ES at 15:00 is worth what one ES was worth at 10:00 if the price is the same. Your call is not, and its delta is not, and the difference has a clock on it that your chart does not draw. Chapter 12 calls this “clock families become your own P&L drivers.”
+
+## Summary
+
+Delta drift is your delta changing from the clock (charm) or from vol (vanna), not from price; your counterparty hedges it, in ES, without you moving. Theta is your rent, vega your vol bill. The last-hour ladders show holders like you as a crowd; they show nothing about your ticket. A futures position has none of this.
+
+## Terms introduced
+
+<ChapterTerms docId="on-ramp/07-clocks-and-late-greeks" />
+
+## Newcomer questions
+
+1. **The index is unchanged since I bought. Why is my delta different?** Charm if the clock ran, vanna if vol moved. Both are delta drift.
+2. **Is the minus-vanna ladder about me?** About holders like you, in aggregate, for today’s leftover only. Not about your ticket.
+3. **Why does my call decay faster at 15:00 than at 10:00?** Theta grows as time runs out; Chapter 2’s time decay is not a straight line.
+
+<AdjacentConcepts docId="on-ramp/07-clocks-and-late-greeks" />
+
+<CheckYourself
+  items={[
+    {
+      q: 'Define delta drift and name its two causes.',
+      a: 'A change in your position’s delta not caused by price. Charm (clock) and vanna (implied vol).',
+    },
+    {
+      q: 'Your ITM call’s delta climbs into the close with the index still. What does your counterparty do?',
+      a: 'Buys ES to re-hedge the drift. Futures flow you did not cause by moving.',
+    },
+  ]}
+/>
+
+## Gate
+
+Next: [Heuristics as reading](/docs/practice/08-heuristics-as-reading). Its on-ramp page asks what each of Chapter 8’s reads says when the strike it describes is yours.

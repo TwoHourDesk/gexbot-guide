@@ -6,6 +6,7 @@ import TermFirst from '@site/src/components/textbook/TermFirst';
 import DistinguishingNote from '@site/src/components/textbook/DistinguishingNote';
 import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
 import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import AdjacentConcepts from '@site/src/components/textbook/AdjacentConcepts';
 
 # Early session: levels before leftover
 
@@ -94,6 +95,8 @@ Gexbot’s contribution to a compound zone comes in three grades. Only the third
 
 <TermFirst id="level-grade" />
 
+A grade is how much the screen can say about the level, not how strong the level is.
+
 - **Grade A** — a full-group Classic open-interest major sits at the zone. Location confirmed. Owner unknown. Pressure unknown.
 - **Grade B** — Classic max-change lights up at that strike in the first minutes. Fresh 0DTE curvature was just placed there. Attention marker; sign unknown. Do not read it as a reversal (H10).
 - **Grade C** — State leftover appears at that strike and stands out beside its neighbors on today’s ladder. Now the Chapter 4 map applies: customer-long in falling vol → wall candidate; customer-short → fuel candidate; thin → pressure **none**, stand down. This is where H4 begins.
@@ -129,7 +132,7 @@ The read: a fifteen-minute-range extreme is a stall candidate **only** where it 
 
 Falsifier — price: acceptance through the range edge and the node. Falsifier — leftover: a crowded minus-convexity node forms and is taken, or net convexity begins a one-sided run.
 
-Misread: fading both edges of the fifteen-minute range because the overnight was quiet.
+The misread: fading both edges of the fifteen-minute range because the overnight was quiet. A reader who does that is trading the lean as if it were a read; only an edge with Grade-C customer-long leftover in falling vol carries a stall candidate.
 
 ## E2 — Continuation lean through the fifteen-minute range (*inferred*, uses H3, H12, H13)
 
@@ -143,7 +146,7 @@ The read: yesterday’s extreme, now behind price, is a **checkpoint**, not a fa
 
 Falsifier — price: price reclaims the fifteen-minute range. Falsifier — leftover: the convexity sequence flips, or H8’s single dominant bar appears ahead.
 
-Misread: fading yesterday’s high because it is yesterday’s high, on a morning that opened above it with fuel ahead.
+The misread: fading yesterday’s high because it is yesterday’s high, on a morning that opened above it with fuel ahead. The level is behind price and the pressure is in front of it; the reader is short into a checkpoint.
 
 ## E3 — The gap-fill path (*inferred*, uses H10, H13)
 
@@ -157,7 +160,7 @@ The read, once leftover builds: customer-short leftover between price and the cl
 
 Falsifier — price: acceptance through the node in the wrong direction for the thesis. Falsifier — leftover: the leftover on the path flips sign.
 
-Misread: calling the gap “filled or not filled by 09:40” from Classic alone.
+The misread: calling the gap “filled or not filled by 09:40” from Classic alone. Classic can mark what sits on the path; it cannot say who owns it, so the reader has named a pressure the screen had not.
 
 ## E4 — Open drive into a compound zone, failed break (*folklore* on SPX; *inferred* combination, uses H1)
 
@@ -173,7 +176,7 @@ Pressure: dealer absorbs the sold calls, long gamma, fades — mandate. Customer
 
 Falsifier — price: acceptance above the zone. Falsifier — leftover: GEX orderflow stays plus *and* convexity turns plus, which is long calls and expansion demand, not a top.
 
-Misread: writing H1 from the failed break alone, or from the bar alone, when only one of the two objects is present.
+The misread: writing H1 from the failed break alone, or from the bar alone. With one object the reader has either a tape shape with no owner or a bar with no location, and the local-top candidate needs both.
 
 ## E5 — Overnight extreme taken before the open (*inferred*)
 
@@ -187,7 +190,7 @@ Pressure: unknown, then whatever Grade C shows.
 
 Falsifier — price: acceptance back below the overnight high. Falsifier — leftover: the leftover that formed under price flips or vanishes.
 
-Misread: attaching a wall thesis to a level that no Gexbot screen has spoken to.
+The misread: attaching a wall thesis to a level that no Gexbot screen has spoken to. When it breaks, nothing was falsified, because nothing had been claimed.
 
 ## E6 — Fifteen-minute range edge on an open-interest mountain (*inferred*, uses H10, H11, H13)
 
@@ -201,7 +204,7 @@ Pressure: unknown, then Grade C or none.
 
 Falsifier — price: acceptance through the edge. Falsifier — leftover: none needed until Grade C exists; before that there is no thesis to falsify.
 
-Misread: “the range high is a GEX wall.”
+The misread: “the range high is a GEX wall.” The reader has fused a fifteen-minute-old edge with a pile whose owner is unknown, and fades a level that neither object supports.
 
 ## Early-window warnings
 
@@ -209,9 +212,9 @@ Misread: “the range high is a GEX wall.”
 
 **Re-marking is violent at the open.** Ladders re-mark as much as they fill in Phase 1. Orderflow for the same minute, every time.
 
-**Basis moved overnight.** Yesterday’s futures levels map onto index strikes through today’s basis.
+**Basis moved overnight.** Yesterday’s futures levels map onto index strikes through today’s basis. Use yesterday’s and the node lands on the wrong strike.
 
-**Two clocks for “yesterday’s high.”** Cash-hours versus overnight-inclusive. Choose cash-hours to match Gexbot’s residual clock. Write which.
+**Two clocks for “yesterday’s high.”** Cash-hours versus overnight-inclusive. Choose cash-hours to match Gexbot’s residual clock, and write which; two readers with two clocks are arguing about different prices.
 
 **Full versus latest.** The daily level is a full-group sentence; behavior at it this morning is a latest-group sentence. Two sentences.
 
@@ -255,6 +258,8 @@ State is empty at 09:30 and every level you drew is a location until leftover re
 4. **The DEX ladder changed shape before the open. Who traded?** Nobody. Re-marking: the sensitivities moved with the overnight spot change.
 5. **A daily level has a huge full-group pile. Does that decide this morning?** No. The pile is context across days. This morning is decided by latest leftover as it builds.
 
+<AdjacentConcepts docId="practice/09a-early-session" />
+
 <CheckYourself
   items={[
     {
@@ -285,5 +290,7 @@ State is empty at 09:30 and every level you drew is a location until leftover re
 />
 
 ## Gate
+
+On-ramp: [The opening price of vol](/docs/on-ramp/09a-early-session) — this chapter’s object from the customer seat.
 
 Next: [Structure and Gexbot together](/docs/practice/09b-structure-and-gexbot). It generalizes these levels into structure the tape draws all day, and gives the journal line a field for it.

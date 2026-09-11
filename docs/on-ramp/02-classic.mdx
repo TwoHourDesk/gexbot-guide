@@ -1,0 +1,77 @@
+---
+title: "2 · Options on-ramp: reading your own ticket"
+---
+
+import TermFirst from '@site/src/components/textbook/TermFirst';
+import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
+import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import AdjacentConcepts from '@site/src/components/textbook/AdjacentConcepts';
+
+# Reading your own ticket
+
+The words Chapter 2 used to build a histogram are the words on the ticket you would sign. Each one is a number you pay, own, or lose, and one of them charges you rent for standing still.
+
+**What this page assumes.** [Chapter 2](/docs/plans/02-classic): call, put, strike, expiry, 0DTE, premium and debit, ATM, gamma, theta, and Classic’s two unsigned maps. **What you will be able to do.** Read a ticket for one bought call — what you paid, where you are flat, what it is worth now — and say what Classic shows about your strike and what it cannot.
+
+## The ticket
+
+The index is at 6000. You buy one call, strike 6000, expiring today: the ATM 0DTE of the running example. Say it costs about 13 index points, $1,330 for the contract. (Chapter 11 shows where a number like 13 comes from; here it is a toy, given.)
+
+That 13 points is your **debit**. On a bought option it is also the most you can lose, whatever the index does, because the contract gives you a right and no obligation. If the index closes at 5990 you lose 13 points. If it closes at 5000 you lose 13 points.
+
+At expiry the call is worth the index minus 6000 if that is positive, and nothing otherwise. So you have your money back only if the index closes at 6013, and you are ahead only above it. The strike plus the debit is your **break-even**. It is a point on your payoff. It is not a level on anyone’s chart, and nothing on Gexbot knows it exists.
+
+<TermFirst id="break-even" />
+
+## The mark
+
+Before expiry the ticket has a price the market would pay for it now. That price is the **mark**, and your profit or loss on an open position is the mark minus the debit.
+
+<TermFirst id="mark" />
+
+Two of Chapter 2’s words say how the mark moves.
+
+**Gamma, from your seat.** The index rises 15 points to 6015. At the start your call moved about half a point for each index point; by the end it moves about 0.8 of a point, so the mark rose about 7.5 points from the move and a little more because the option was behaving more and more like the index while the move happened. Gamma, which Chapter 2 gave you as how fast that sensitivity changes, is on your side of the ticket the reason a bought option gains faster the further the index goes your way. Chapter 3 gives the sensitivity itself a name.
+
+**Theta, from your seat.** Hold the index still at 6000 and let two hours pass. The mark falls. Chapter 2 called this time decay and gave it the name theta. From your seat it is rent: what you pay per hour for the right to be there. Chapter 12 puts numbers on each piece of the mark’s move, and shows how a right call can still lose.
+
+## What Classic shows about your strike
+
+Classic shows how much gamma sits at 6000 in last night’s open interest and in today’s volume. It tells you whether your strike is crowded or lonely. It does not show your debit, your mark, or your break-even, and it does not know you are long rather than short; the pile is unsigned, and pressure on Classic is **unknown**. Your strike is a shelf on the map. What you paid to stand on it is not on the map.
+
+## The one thing that changes
+
+A futures position has no rent. Hold one ES unchanged for two hours and you hold what you held. Hold the call unchanged for two hours and the mark has fallen. Nothing on your chart shows this; it shows on the ticket.
+
+## Summary
+
+A bought call costs its debit and can lose no more than that. Break-even is strike plus debit, a point on the payoff and not a chart level. The mark is what the position is worth now; gamma helps the mark as the index goes your way, and theta charges rent while it does not. Classic shows how crowded your strike is and nothing about your ticket.
+
+## Terms introduced
+
+<ChapterTerms docId="on-ramp/02-classic" />
+
+## Newcomer questions
+
+1. **Can I lose more than I paid?** On a bought call or put, no. On a sold one, yes, and by more than you collected. Chapter 3 gives the words for sold options; Chapter 12 gives the risk.
+2. **Is the break-even a level I should watch on the chart?** It is where you are flat at expiry, nothing more. This book does not give levels to act at, and the break-even is not one.
+3. **The index went up and my call is worth less. How?** Two hours of rent, or a fall in the number Chapter 4 teaches. Both move the mark with price standing still.
+
+<AdjacentConcepts docId="on-ramp/02-classic" />
+
+<CheckYourself
+  items={[
+    {
+      q: 'Debit 13, strike 6000. Where is the break-even, and what is the most you can lose?',
+      a: 'Break-even 6013. Maximum loss 13 points, $1,330, whatever the index does.',
+    },
+    {
+      q: 'What does Classic show about your strike, and what does it not show?',
+      a: 'Shows the gamma pile at 6000 in OI and in volume, unsigned. Does not show your debit, mark, break-even, or that you are long.',
+    },
+  ]}
+/>
+
+## Gate
+
+Next: [Chapter 3](/docs/plans/03-classification). Its on-ramp page names the other side of your ticket and what they now have to do.

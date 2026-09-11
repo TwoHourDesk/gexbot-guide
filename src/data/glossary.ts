@@ -2995,6 +2995,2289 @@ export const glossary: GlossaryEntry[] = [
     seeAlso: ['level-grade', 'gex-by-oi', 'opening-range', 'h10', 'h11', 'h13'],
     kind: 'hygiene',
   },
+
+  // ---------------------------------------------------------------------------
+  // Options on-ramp sub-chapters (docs/on-ramp/**): holder-seat terms.
+  // Main chapters never depend on these. See .cursor/rules/audience.mdc.
+  // ---------------------------------------------------------------------------
+  {
+    id: 'seat',
+    headword: 'seat',
+    aliases: ['customer seat', 'dealer seat', 'the other seat'],
+    shortDef:
+      'Which side of an options ticket a sentence is written from. The customer seat carries incentive; the dealer seat carries mandate. Main chapters infer the dealer seat from outside; on-ramp pages sit the reader in the customer seat.',
+    firstDefinedIn: 'on-ramp/00-intro',
+    seeAlso: ['pressure-word', 'incentive', 'mandate', 'customer', 'dealer'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'footprint',
+    headword: 'footprint',
+    shortDef:
+      'The set of traces one option trade leaves across the Gexbot screens: in today’s volume at once, in leftover if it was the aggressive side and was not cancelled, in open interest tonight if still held. None of the traces carries the trader’s name.',
+    firstDefinedIn: 'on-ramp/01-what-gexbot-is',
+    alsoAppears: ['practice/12-futures-to-options'],
+    seeAlso: ['volume', 'open-interest', 'leftover', 'unsigned'],
+    kind: 'options',
+  },
+  {
+    id: 'break-even',
+    headword: 'break-even',
+    aliases: ['breakeven'],
+    shortDef:
+      'For a bought call, the strike plus the debit paid; for a bought put, the strike minus it. The index level at which the position is flat at expiry. A point on the payoff, not a level on the chart.',
+    firstDefinedIn: 'on-ramp/02-classic',
+    seeAlso: ['strike', 'debit', 'expiry'],
+    kind: 'options',
+  },
+  {
+    id: 'mark',
+    headword: 'mark',
+    aliases: ['mark-to-market', 'marked value'],
+    shortDef:
+      'The price the market would pay for a position right now, before expiry. P&L on an open option is mark minus debit (or credit minus mark). The mark moves with price, with implied vol, and with the clock.',
+    firstDefinedIn: 'on-ramp/02-classic',
+    alsoAppears: ['on-ramp/04-state', 'on-ramp/07-clocks-and-late-greeks'],
+    seeAlso: ['premium', 'debit', 'theta', 'implied-vol'],
+    kind: 'options',
+  },
+  {
+    id: 'counterparty',
+    headword: 'counterparty',
+    shortDef:
+      'The other side of your ticket: the dealer who absorbed your print and now carries the mirror position under mandate. Chapter 3’s hedge chain, with you as link 1, is a description of what your counterparty does next.',
+    firstDefinedIn: 'on-ramp/03-classification',
+    alsoAppears: ['practice/12-futures-to-options'],
+    seeAlso: ['dealer', 'absorb', 'hedge-chain', 'mandate'],
+    kind: 'options',
+  },
+  {
+    id: 'vol-paid',
+    headword: 'vol paid',
+    aliases: ['implied vol at entry', 'regime paid'],
+    shortDef:
+      'The implied volatility at which a position was opened. Part of the debit was a guess about movement; if the guess falls afterwards the mark falls with price unchanged. The vol regime, seen from the holder’s seat, is the price paid.',
+    firstDefinedIn: 'on-ramp/04-state',
+    alsoAppears: ['on-ramp/09-grammar-and-journal', 'practice/12-futures-to-options'],
+    seeAlso: ['implied-vol', 'vol-regime', 'mark', 'h12'],
+    kind: 'options',
+  },
+  {
+    id: 'single-leg',
+    headword: 'single-leg position',
+    aliases: ['single leg', 'one-leg position'],
+    shortDef:
+      'A position in one contract at one strike: long call, long put, short call, or short put. The four cells of the 2×2 are the four single-leg positions a holder can own, and what a cell wants is what its holder wants.',
+    firstDefinedIn: 'on-ramp/05-orderflow',
+    seeAlso: ['two-by-two', 'long-call', 'long-put', 'short-call', 'short-put', 'multi-leg'],
+    kind: 'options',
+  },
+  {
+    id: 'notional',
+    headword: 'notional',
+    aliases: ['notional value', 'dollars controlled'],
+    shortDef:
+      'The dollar value one contract controls: multiplier times index level. SPX at 6000 is $600,000 per contract; ES at 6000 is $300,000. Delta times notional is the position’s exposure in dollars, which is how a futures size translates into an options size.',
+    firstDefinedIn: 'on-ramp/06-nq-es-layer',
+    seeAlso: ['spx-multiplier', 'ndx-multiplier', 'point-value', 'share-equivalent'],
+    kind: 'options',
+  },
+  {
+    id: 'delta-drift',
+    headword: 'delta drift',
+    shortDef:
+      'A change in a position’s delta caused by the clock (charm) or by implied vol (vanna), not by price. The dealer’s re-hedge of your drift is futures flow you did not cause by moving. A futures position has no delta drift.',
+    firstDefinedIn: 'on-ramp/07-clocks-and-late-greeks',
+    alsoAppears: ['practice/12-futures-to-options'],
+    seeAlso: ['charm', 'vanna', 'delta', 'clock-rehedge'],
+    kind: 'options',
+  },
+  {
+    id: 'own-strike',
+    headword: 'own strike',
+    shortDef:
+      'The strike a holder has a position at. At the own strike every Chapter 8 heuristic stops describing a crowd and starts describing the holder; a wall read there is a read about the holder’s own incentive.',
+    firstDefinedIn: 'on-ramp/08-heuristics-as-reading',
+    seeAlso: ['strike', 'h4', 'h6', 'heuristic'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'vol-falsifier',
+    headword: 'vol falsifier',
+    aliases: ['third falsifier'],
+    shortDef:
+      'The implied-vol condition under which a holder’s thesis is dead regardless of price — written in the journal line beside the price falsifier and the leftover falsifier. A curved position can be falsified with price untouched.',
+    firstDefinedIn: 'on-ramp/09-grammar-and-journal',
+    seeAlso: ['falsifier', 'dual-falsifier', 'vol-paid', 'journal-line'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'opening-vol',
+    headword: 'opening vol',
+    shortDef:
+      'The implied volatility quoted in the first minutes of the session, before any leftover exists to test it. Priced from the overnight, not from today. A ticket signed at 09:31 carries a vol paid that no screen can yet judge.',
+    firstDefinedIn: 'on-ramp/09a-early-session',
+    seeAlso: ['implied-vol', 'vol-paid', 'early-phase', 'level-grade'],
+    kind: 'options',
+  },
+  {
+    id: 'strike-selection',
+    headword: 'strike selection',
+    shortDef:
+      'Choosing which strike a position sits at from where structure and leftover sit. A strike inside customer-long leftover at a swing high puts the holder in the wall; a strike at a crowded short-convexity node puts them where the shove lands. Described here, not recommended.',
+    firstDefinedIn: 'on-ramp/09b-structure-and-gexbot',
+    seeAlso: ['structural-location', 's2', 'h6', 'multi-leg'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'holders-misread',
+    headword: 'holder’s misread',
+    shortDef:
+      'The holder-seat form of a Chapter 10 reading misread. The same error that costs a reader a thesis costs a holder premium: “DEX bar = pending buying” becomes “buying calls makes the market go up.”',
+    firstDefinedIn: 'on-ramp/10-misreads-and-mastery',
+    seeAlso: ['imported-tool-misread', 'guardrail', 'already-hedged-vs-pending'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'paper-position',
+    headword: 'paper position',
+    aliases: ['hypothetical position'],
+    shortDef:
+      'A position written down at the open but not held, tracked at market marks and attributed at the close with Chapter 11’s ledger. The on-ramp’s way of running a holder’s arithmetic with no money at risk.',
+    firstDefinedIn: 'on-ramp/11-further-learning',
+    alsoAppears: ['practice/12-futures-to-options'],
+    seeAlso: ['gamma-theta-tradeoff', 'straddle', 'mark', 'journal-line'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'hand-price',
+    headword: 'hand price',
+    shortDef:
+      'The price of the at-the-money option worked out in the head from index level, time to expiry, and implied vol, before looking at the chain. Chapter 12’s Stage 1 gate is a hand price inside the bid–ask most days.',
+    firstDefinedIn: 'on-ramp/12-futures-to-options',
+    seeAlso: ['straddle', 'expected-move', 'atm', 'bid-ask-spread'],
+    kind: 'hygiene',
+  },
+
+  // ---------------------------------------------------------------------------
+  // Adjacent concepts: named at the end of a chapter, taught nowhere in the book.
+  // Two sentences each. firstDefinedIn = the chapter whose block lists it.
+  // ---------------------------------------------------------------------------
+  {
+    id: 'option-chain',
+    headword: 'option chain',
+    aliases: ['chain'],
+    shortDef:
+      'The table a broker shows for one underlying: every listed strike and expiry, with bid, ask, volume, and open interest per contract.',
+    bearsOn:
+      'It is the screen you would sign a ticket from: the bid and ask that set your debit, the mark, and the open interest at your strike are all read off it, and every Gexbot picture is computed from the same table.',
+    evidence: 'market-general',
+    reading: 'Hull, Options, Futures, and Other Derivatives, the chapter on the mechanics of options markets.',
+    firstDefinedIn: 'on-ramp/02-classic',
+    seeAlso: ['strike', 'expiry', 'open-interest'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'otc-index-options',
+    headword: 'OTC index options and variance swaps',
+    aliases: ['over-the-counter options', 'variance swap'],
+    shortDef:
+      'Index option and volatility contracts negotiated privately between a bank and a client, not listed on an exchange.',
+    bearsOn:
+      'Their hedges land in ES and in listed SPX options too, and no listed feed — Gexbot included — sees the original trade; part of the hedge complex is off-screen by construction.',
+    evidence: 'market-general',
+    reading: 'Gatheral, The Volatility Surface (2006), the chapter on volatility derivatives.',
+    firstDefinedIn: 'plans/01-what-gexbot-is',
+    seeAlso: ['partial-picture', 'index-options'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'daily-expirations',
+    headword: 'daily expirations',
+    aliases: ['SPXW', 'weeklys', 'Monday / Wednesday / Friday expiries'],
+    shortDef:
+      'Cboe lists SPX options expiring every trading day (ticker SPXW) alongside the standard monthly (SPX) that settles on the third Friday morning.',
+    bearsOn:
+      'It is why a 0DTE ticket exists every session and why the latest group carries most of the gamma; a holder choosing an expiry is choosing among these, and the monthly settles on a different clock.',
+    evidence: 'market-general',
+    reading: 'Cboe, SPX Weeklys and End-of-Month options contract specifications.',
+    firstDefinedIn: 'on-ramp/02-classic',
+    seeAlso: ['zero-dte', 'latest', 'expiry'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'occ-open-interest',
+    headword: 'OCC and the open-interest count',
+    aliases: ['Options Clearing Corporation', 'OCC'],
+    shortDef:
+      'The Options Clearing Corporation clears every listed U.S. option and publishes open interest once a day, after the close.',
+    bearsOn:
+      'That is why Classic’s OI map is “last night’s snapshot”: the count cannot include today until tomorrow, so a reader waiting for OI to move intraday is watching the wrong series.',
+    evidence: 'market-general',
+    reading: 'OCC, Characteristics and Risks of Standardized Options, the chapter on the clearing process.',
+    firstDefinedIn: 'plans/02-classic',
+    seeAlso: ['open-interest', 'gex-by-oi'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'trade-classification-algorithms',
+    headword: 'trade classification algorithms',
+    aliases: ['Lee–Ready', 'quote rule', 'tick rule'],
+    shortDef:
+      'Published methods that infer whether the buyer or the seller was the aggressor from where a print sits relative to the bid and the ask at that moment. Tested against data where the true side is known, they misclassify a measurable share of trades, and more of them on midpoint fills and when the quote is moving.',
+    bearsOn:
+      'Gexbot’s customer-long and customer-short signing is the same kind of inference, and its method and error rate are not stated. Treat the sign as inferred, not observed, and expect it to be weakest on fast prints and midpoint fills.',
+    evidence: 'market-general; Gexbot method not stated',
+    reading: 'Lee and Ready, “Inferring trade direction from intraday data” (1991, Journal of Finance).',
+    firstDefinedIn: 'plans/03-classification',
+    seeAlso: ['aggressor', 'classification-engine', 'not-stated'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'floor-and-negotiated-prints',
+    headword: 'floor and negotiated prints',
+    aliases: ['RFQ', 'block trade', 'crossed order'],
+    shortDef:
+      'Large SPX orders are often arranged away from the electronic book — negotiated on the Cboe trading floor or through a request-for-quote to a set of market makers — and then printed to the tape as a single trade once the terms are agreed.',
+    bearsOn:
+      'For such a print there may have been no spread to cross in the ordinary sense, so “who was the aggressor” is ambiguous. The sign on one very large bar is weaker evidence than the same sign on a run of small ones.',
+    evidence: 'market-general',
+    reading: 'Harris, Trading and Exchanges (2003), the chapter on block trading.',
+    firstDefinedIn: 'plans/03-classification',
+    seeAlso: ['aggressor', 'customer-long', 'customer-short'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'box-spread',
+    headword: 'box spread',
+    aliases: ['box'],
+    shortDef:
+      'A call vertical and the mirror put vertical at the same two strikes, which together pay a fixed amount at expiry no matter where the index closes. Because the payoff is certain, large SPX boxes are traded as a way to lend or borrow cash at an implied interest rate.',
+    bearsOn:
+      'Four legs that only make sense as one position: heavy volume, almost no net risk, and a Classic pile that is financing rather than an opinion. The clearest case of why Gexbot’s legs are not your position.',
+    evidence: 'market-general',
+    reading: 'Natenberg, Option Volatility and Pricing (2015), the chapter on synthetics and arbitrage relationships.',
+    firstDefinedIn: 'on-ramp/09b-structure-and-gexbot',
+    seeAlso: ['multi-leg', 'gex-by-volume', 'none-pressure'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'correlation-dispersion',
+    headword: 'correlation and dispersion',
+    aliases: ['implied correlation', 'dispersion trading'],
+    shortDef:
+      'Index implied volatility is roughly the average single-stock volatility times how correlated the stocks are expected to be; trading one against the other is dispersion.',
+    bearsOn:
+      'Index IV — and so the mark on your ticket against the vol you paid — can move because expected correlation moved, with no news about the index itself.',
+    evidence: 'market-general',
+    reading: 'Bennett, Trading Volatility (2014), the chapter on correlation and dispersion.',
+    firstDefinedIn: 'on-ramp/04-state',
+    seeAlso: ['implied-vol', 'vol-regime', 'h12'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'put-call-parity',
+    headword: 'put–call parity',
+    aliases: ['synthetic forward', 'conversion', 'reversal'],
+    shortDef:
+      'For the same strike and expiry, a long call plus a short put equals a long forward on the index; arbitrage keeps the three prices tied.',
+    bearsOn:
+      'It is why the four single-leg positions are not four independent bets: a bought call and a sold put at one strike together behave like a long future, and the prices of the three are tied.',
+    evidence: 'market-general',
+    reading: 'Hull, Options, Futures, and Other Derivatives, the chapter on properties of stock options.',
+    firstDefinedIn: 'on-ramp/05-orderflow',
+    seeAlso: ['two-by-two', 'multi-leg'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'put-call-ratio',
+    headword: 'put/call ratio',
+    aliases: ['P/C ratio'],
+    shortDef: 'Put volume divided by call volume, a widely quoted sentiment number.',
+    bearsOn:
+      'It counts contracts with no sign, no gamma weight, and no cancellation; aggregate DEX split by call and put is the residual cousin, and the two can disagree all day.',
+    evidence: 'market-general',
+    reading:
+      'Pan and Poteshman, “The information in option volume for future stock prices” (2006, Review of Financial Studies).',
+    firstDefinedIn: 'plans/05-orderflow',
+    seeAlso: ['agg-dex', 'volume'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'futures-fair-value',
+    headword: 'futures fair value and carry',
+    aliases: ['cost of carry', 'forward price', 'fair value'],
+    shortDef:
+      'A futures price is not the cash index. It sits above or below it by the cost of carrying the basket until the future expires — the interest that could be earned on the cash, minus the dividends the stocks will pay — and that gap, the future’s fair value, shrinks toward zero as expiry approaches.',
+    bearsOn:
+      'It is why the basis exists at all, why it drifts through the session as rate and dividend expectations move, and why it jumps when the front contract rolls. A converted strike is therefore a moving target, never exactly a futures price.',
+    evidence: 'market-general',
+    reading: 'Hull, Options, Futures, and Other Derivatives, the chapter on forward and futures prices.',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    seeAlso: ['basis', 'conversion', 'roll'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'index-arbitrage',
+    headword: 'index arbitrage',
+    aliases: ['cash–futures arbitrage', 'basis trade'],
+    shortDef:
+      'Desks that buy the basket of index stocks and sell the future, or the reverse, whenever the basis strays far enough from fair value to pay for the trade, then hold the two legs against each other until the gap closes.',
+    bearsOn:
+      'That activity is the link that carries an options hedge done in ES into cash-index prices, and back, within seconds. Without it a dealer buying ES would move the future and not SPX, and “the hedge lands in ES” would be a fact about one contract rather than about the index.',
+    evidence: 'market-general',
+    reading: 'Harris, Trading and Exchanges (2003), the chapter on arbitrageurs.',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    seeAlso: ['basis', 'hedge', 'es-future'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'structured-products',
+    headword: 'structured-product hedging',
+    aliases: ['autocallables', 'buffered notes'],
+    shortDef:
+      'Banks sell retail investors notes whose payoff is built from index options — autocallables, buffered and capped notes — and hedge the mirror of every option they have embedded. That inventory is long-dated, very large, and reported in no residual feed.',
+    bearsOn:
+      'Much of what sits in the full expiry group and in Classic open interest beyond today is this book. A reader who treats full-book gamma as today’s crowd has confused a multi-year hedging program with a session’s leftover, and will expect it to act on today’s clock.',
+    evidence: 'market-general',
+    reading: 'Bouzoubaa and Osseiran, Exotic Options and Hybrids (2010), the chapter on autocallables.',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    seeAlso: ['full', 'gex-by-oi', 'h11'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'max-pain',
+    headword: 'max pain',
+    aliases: ['maximum pain'],
+    shortDef:
+      'Cousin folklore: the strike at which the total value of all options still open at expiry would be smallest, computed from open interest across the whole book with no sign for who owns what. The story attached is that price is drawn there because option holders lose the most.',
+    bearsOn:
+      'It is a whole-book, unsigned, expiry-day number. Gexbot’s last-hour magnet is residual-only and signed, so the two can point at different strikes on the same afternoon, and a reader who conflates them has imported an owner shortcut this book rejects.',
+    evidence: 'folklore',
+    reading:
+      'Ni, Pearson, and Poteshman, “Stock price clustering on option expiration dates” (2005, Journal of Financial Economics), for what pinning evidence actually shows.',
+    firstDefinedIn: 'layer/07-clocks-and-late-greeks',
+    seeAlso: ['h5', 'minus-vanna-ladder', 'cousin-unsigned-gex'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'closing-auction',
+    headword: 'closing auction and MOC imbalance',
+    aliases: ['closing cross', 'market-on-close', 'MOC'],
+    shortDef:
+      'Cash equities do not close on the last trade. They close in a single-price auction at 16:00, and in the minutes before it the exchanges publish how much buy or sell interest is still unmatched — the market-on-close imbalance.',
+    bearsOn:
+      'PM-settled SPX options settle on those closing prints, so the last-hour re-hedge and the auction imbalance meet at one price. A futures trader can see the imbalance; the option hedge behind part of it is invisible, and neither one explains the other.',
+    evidence: 'market-general',
+    reading:
+      'Bogousslavsky and Muravyev, “Who trades at the close? Implications for price discovery and liquidity” (2023, Journal of Financial Markets).',
+    firstDefinedIn: 'layer/07-clocks-and-late-greeks',
+    seeAlso: ['pm-settlement', 'settlement', 'opening-auction'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'vomma',
+    headword: 'vomma',
+    aliases: ['volga', 'vol of vol'],
+    shortDef:
+      'How vega itself changes when implied volatility changes — the second-order sensitivity to vol, in the way gamma is the second-order sensitivity to spot. Out-of-the-money options carry most of it, so their vega grows as vol rises and shrinks as vol falls.',
+    bearsOn:
+      'The minus-vanna ladder prices a total collapse of implied vol; whether that number allows for the sensitivities themselves changing on the way down is not stated. Read the ladder as direction and location, not size.',
+    evidence: 'market-general; Gexbot method not stated',
+    reading: 'Taleb, Dynamic Hedging (1997), the chapters on vega and its derivatives.',
+    firstDefinedIn: 'on-ramp/07-clocks-and-late-greeks',
+    seeAlso: ['vega', 'vanna', 'minus-vanna-ladder'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'gamma-scalping',
+    headword: 'gamma scalping',
+    aliases: ['scalping gamma'],
+    shortDef:
+      'A long-gamma holder sells the underlying into rips and buys dips against the option, collecting realized movement to pay for theta.',
+    bearsOn:
+      'It is what a holder of your 500 calls can do with them: sell ES into rips and buy dips against the option, supplying liquidity at their own strike without ever selling the option — H4’s incentive acted on without the sale.',
+    evidence: 'market-general',
+    reading: 'Sinclair, Volatility Trading (2013), the chapter on hedging.',
+    firstDefinedIn: 'on-ramp/08-heuristics-as-reading',
+    seeAlso: ['h4', 'self-hedge', 'fade', 'gamma-theta-tradeoff'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'time-stop',
+    headword: 'time stop',
+    aliases: ['clock stop'],
+    shortDef:
+      'A rule that withdraws a read when a set amount of time passes without the expected behavior, independent of price.',
+    bearsOn:
+      'Clock families already say a thesis expires; a time stop is the journal-line form of that, and it is the natural falsifier for a pin thesis, which has no price to be wrong at until expiry.',
+    evidence: 'market-general',
+    reading: 'Sinclair, Positional Option Trading (2020), the chapter on trade management.',
+    firstDefinedIn: 'practice/09-grammar-and-journal',
+    seeAlso: ['falsifier', 'clock-family', 'acceptance-through'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'vix-settlement',
+    headword: 'VIX settlement',
+    aliases: ['SOQ', 'special opening quotation', 'VIX expiration'],
+    shortDef:
+      'VIX futures and options settle on a Wednesday-morning auction of SPX options, the special opening quotation.',
+    bearsOn:
+      'That morning’s SPX opening prints include settlement orders, so Phase 1 bars and Classic volume can be large for reasons that have nothing to do with the day; know the date before you read the open.',
+    evidence: 'market-general',
+    reading:
+      'Cboe, VIX Index settlement methodology; Griffin and Shams, “Manipulation in the VIX?” (2018, Review of Financial Studies).',
+    firstDefinedIn: 'practice/09a-early-session',
+    seeAlso: ['vix', 'early-phase', 'opening-auction'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'opening-imbalance',
+    headword: 'opening imbalance',
+    aliases: ['opening cross imbalance', 'auction imbalance feed'],
+    shortDef:
+      'Before 09:30 the exchanges publish how much buy or sell interest is unmatched in the opening auction.',
+    bearsOn:
+      'It is a Phase 0 tape fact a futures trader can see; it is not an options object, and a large imbalance says nothing about who holds the Classic OI pile.',
+    evidence: 'market-general',
+    reading: 'Harris, Trading and Exchanges (2003), the chapter on call markets.',
+    firstDefinedIn: 'practice/09a-early-session',
+    seeAlso: ['opening-auction', 'early-phase'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'quad-witching',
+    headword: 'quadruple witching and index rebalance',
+    aliases: ['quad witching', 'triple witching', 'rebalance day'],
+    shortDef:
+      'The third Friday of March, June, September, and December, when index futures, index options, and stock options expire together and the S&P and Nasdaq indexes rebalance at the close.',
+    bearsOn:
+      'Closing volume on those days is dominated by flows Gexbot does not draw, so a leftover node is a smaller share of the tape than on any other day; weight every S-read down.',
+    evidence: 'market-general',
+    reading:
+      'Stoll and Whaley, “Program trading and expiration-day effects” (1987, Financial Analysts Journal).',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['partial-picture', 'event-day', 'roll'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'nq-es-beta',
+    headword: 'NQ–ES beta',
+    aliases: ['relative beta', 'Nasdaq beta to the S&P'],
+    shortDef: 'NQ typically moves more than ES for the same shock, by a ratio that drifts over weeks.',
+    bearsOn:
+      'S10 asks whether the two tapes disagree; a move that is only NQ’s usual beta to ES is agreement, not disagreement.',
+    evidence: 'market-general',
+    reading: 'Hull, Options, Futures, and Other Derivatives, the chapter on hedging with index futures.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['s10', 'nq-future', 'es-future'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'inventory-models',
+    headword: 'market-maker inventory models',
+    aliases: ['Ho–Stoll', 'Avellaneda–Stoikov'],
+    shortDef:
+      'Models in which a dealer skews quotes and hedges in steps to keep inventory inside a risk band.',
+    bearsOn:
+      'They are the formal version of “hedge in bands” and of the dealer as a population that nets internally; read them after Whalley–Wilmott.',
+    evidence: 'market-general',
+    reading:
+      'Ho and Stoll, “Optimal dealer pricing under transactions and return uncertainty” (1981, Journal of Financial Economics); Avellaneda and Stoikov, “High-frequency trading in a limit order book” (2008, Quantitative Finance).',
+    firstDefinedIn: 'practice/11-further-learning',
+    seeAlso: ['hedge-in-bands', 'dealer'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'exercise-by-exception',
+    headword: 'exercise by exception',
+    aliases: ['automatic exercise', 'ex-by-ex'],
+    shortDef:
+      'OCC automatically exercises any option in the money by at least $0.01 at expiry unless the holder instructs otherwise.',
+    bearsOn:
+      'A short option one cent in the money at the close becomes a position Monday morning — shares on SPY, cash on SPX; Gap 5’s surprise has a mechanism.',
+    evidence: 'market-general',
+    reading: 'OCC, Characteristics and Risks of Standardized Options, the chapter on exercise and assignment.',
+    firstDefinedIn: 'practice/12-futures-to-options',
+    seeAlso: ['assignment', 'pin-risk', 'physically-settled'],
+    kind: 'adjacent',
+  },
+  // Futures-side backfills for primary chapters.
+  {
+    id: 'spot-vol-correlation',
+    headword: 'spot–vol correlation',
+    aliases: ['negative spot-vol correlation', 'vol rises when the index falls'],
+    shortDef:
+      'Index implied volatility usually rises when the index falls and falls when it rises, strongly and persistently. The relationship is a tendency, not a law, and it breaks on some of the most important days.',
+    bearsOn:
+      'It is why falling-vol regimes coincide with rallies often enough that a reader is tempted to tag the regime from price direction. H12 forbids that shortcut because the days the tendency fails are exactly the days the wall-and-fuel map inverts.',
+    evidence: 'market-general',
+    reading:
+      'Derman, “Regimes of Volatility” (1999); Bennett, Trading Volatility (2014), the chapter on the spot–vol relationship.',
+    firstDefinedIn: 'plans/04-state',
+    seeAlso: ['vol-regime', 'implied-vol', 'h12'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'high-volume-node',
+    headword: 'high-volume node',
+    aliases: ['volume at price', 'volume profile node'],
+    shortDef:
+      'A futures price at which an unusually large share of the session’s or the week’s contracts traded, drawn by volume-at-price tools that many futures traders keep beside the chart.',
+    bearsOn:
+      'It is the futures-native object most often confused with a Gexbot node. Both are “a lot at one level,” but one counts traded futures at a price and the other counts option gamma at a strike; the first has no owner, no hedge, and no pressure word. A wall read that leans on the futures node has changed subject.',
+    evidence: 'market-general',
+    reading:
+      'Dalton, Jones, and Dalton, Mind over Markets (1990), for the vocabulary; Harris, Trading and Exchanges (2003), on price clustering.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['node', 'cousin-futures-native', 'h4', 'confluence-bias'],
+    kind: 'adjacent',
+  },
+
+  // Options-side items for on-ramp pages.
+  {
+    id: 'origin-codes',
+    headword: 'origin codes',
+    aliases: ['customer / firm / market-maker origin', 'account type codes'],
+    shortDef:
+      'Every listed option order carries an exchange tag saying whose account it is for: a public customer, a broker-dealer firm, or a registered market maker. Exchanges use the tag for fees, priority, and reporting.',
+    bearsOn:
+      'Gexbot’s “customer” is an aggressor label inferred from the print; the exchange’s “customer” is a declared account type. The two overlap but are not the same word, and the declared one is not on any public tape Gexbot reads.',
+    evidence: 'market-general',
+    reading: 'Cboe Rules, the definitions of origin codes and priority customer orders.',
+    firstDefinedIn: 'on-ramp/00-intro',
+    seeAlso: ['seat', 'customer', 'aggressor'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'approval-levels',
+    headword: 'options approval levels',
+    aliases: ['trading permissions', 'account approval tiers'],
+    shortDef:
+      'Brokers grant options permission in tiers — bought options first, spreads next, sold uncovered options last — based on a disclosed financial profile and experience, under regulatory rules for options accounts.',
+    bearsOn:
+      'The seat you can sit in is decided before the first ticket. The tier also enforces, from outside, the order Chapter 12’s ramp asks you to keep from inside: defined risk before undefined.',
+    evidence: 'market-general (U.S. brokerage practice)',
+    reading: 'FINRA Rule 2360, the account approval provisions; your broker’s options agreement.',
+    firstDefinedIn: 'on-ramp/00-intro',
+    seeAlso: ['seat', 'defined-risk'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'open-close-indicator',
+    headword: 'open/close indicator',
+    aliases: ['buy-to-open / sell-to-close', 'position effect flag'],
+    shortDef:
+      'Every option order is entered as opening or closing a position. The broker and the clearing house see the flag; it is how open interest is computed. It is not part of the public trade report.',
+    bearsOn:
+      'This is the mechanism behind Chapter 3’s “open versus close is not stated”: the fact exists, someone records it, and no tape Gexbot reads carries it. Your footprint is signed by aggressor, never by intent.',
+    evidence: 'market-general',
+    reading: 'OCC, the description of open interest computation in its data products documentation.',
+    firstDefinedIn: 'on-ramp/01-what-gexbot-is',
+    seeAlso: ['footprint', 'open-vs-close', 'open-interest'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'opra-feed',
+    headword: 'OPRA',
+    aliases: ['Options Price Reporting Authority', 'consolidated options tape'],
+    shortDef:
+      'The single consolidated feed of quotes and trades from every U.S. options exchange. Every options data vendor, Gexbot included, reads it or a derivative of it.',
+    bearsOn:
+      'It is the boundary of what any options screen can see: prints, quotes, size, exchange, time. Not account, not intent, not the other legs of a complex order once it prints. Your footprint is exactly what OPRA carries about you.',
+    evidence: 'market-general',
+    reading: 'OPRA, Participant data specifications, the trade and quote message descriptions.',
+    firstDefinedIn: 'on-ramp/01-what-gexbot-is',
+    seeAlso: ['footprint', 'information-layer', 'partial-picture'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'intrinsic-extrinsic',
+    headword: 'intrinsic and extrinsic value',
+    aliases: ['time value', 'moneyness value'],
+    shortDef:
+      'The mark of an option splits into the part it would be worth if exercised now — index minus strike for a call, if positive — and the rest, which is paid for the time and movement still possible.',
+    bearsOn:
+      'Theta eats only the extrinsic part, and the ATM 0DTE call of the running example is all extrinsic; that is why its rent is the whole ticket. A deep in-the-money option is mostly intrinsic and pays almost no rent.',
+    evidence: 'market-general',
+    reading: 'Natenberg, Option Volatility and Pricing (2015), the chapter on option value.',
+    firstDefinedIn: 'on-ramp/02-classic',
+    seeAlso: ['mark', 'theta', 'itm', 'otm', 'atm'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'wholesalers-routing',
+    headword: 'wholesalers and order routing',
+    aliases: ['payment for order flow', 'PFOF', 'retail routing'],
+    shortDef:
+      'Most retail option orders are routed by the broker to a designated liquidity provider or to an exchange auction where one is guaranteed a share, in exchange for fees or price improvement, rather than to the open book.',
+    bearsOn:
+      'Your counterparty is often decided before your order reaches a screen. The dealer who absorbs you may have paid for the right to, and that dealer still carries mandate; routing changes who, not whether.',
+    evidence: 'market-general (U.S. market structure)',
+    reading:
+      'SEC, Staff Report on Equity and Options Market Structure Conditions in Early 2021, the section on order routing and wholesalers.',
+    firstDefinedIn: 'on-ramp/03-classification',
+    seeAlso: ['counterparty', 'dealer', 'absorb'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'iv-rank',
+    headword: 'IV rank and IV percentile',
+    aliases: ['IVR', 'IV percentile'],
+    shortDef:
+      'Two ways of placing today’s implied vol inside its own recent history: where it sits between the year’s low and high, or what share of days were lower.',
+    bearsOn:
+      'They are the practitioner’s answer to “was the vol I paid high or low,” which the vol regime alone does not say; a falling-vol day can still be a high-vol-paid day. Chapter 12’s morning card asks for this line without naming the tool.',
+    evidence: 'market-general',
+    reading: 'Sinclair, Volatility Trading (2013), the chapter on measuring and forecasting volatility.',
+    firstDefinedIn: 'on-ramp/04-state',
+    seeAlso: ['vol-paid', 'implied-vol', 'vol-regime'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'delta-as-probability',
+    headword: 'delta as a probability proxy',
+    aliases: ['probability of finishing in the money'],
+    shortDef:
+      'An option’s delta is close to, but not equal to, the market-implied chance that it finishes in the money; the ATM 0.50 call is roughly a coin flip on the index closing above the strike.',
+    bearsOn:
+      'It is the quickest translation between a single-leg position and what its holder is betting on, and it is why the four cells are not four coin flips: a 0.20-delta sold put is a bet that wins about four times in five and owes a great deal the fifth time.',
+    evidence: 'market-general (approximation)',
+    reading: 'Natenberg, Option Volatility and Pricing (2015), the discussion of delta as a probability.',
+    firstDefinedIn: 'on-ramp/05-orderflow',
+    seeAlso: ['single-leg', 'delta', 'short-put'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'settlement-value',
+    headword: 'settlement value',
+    aliases: ['SET', 'exercise settlement value', 'SPX closing value for settlement'],
+    shortDef:
+      'The official index value an expiring cash-settled option is settled against. For PM-settled SPX it is the index computed from the closing prints of every component; for AM-settled monthlies it is computed from each component’s opening print.',
+    bearsOn:
+      'A holder’s ticket does not settle at the last ES tick or at the 16:00 index print on the screen; it settles at a value published later, which can differ by several points from either. Where you hold through the close, this number — not your chart — decides what you own.',
+    evidence: 'market-general',
+    reading: 'Cboe, SPX contract specifications, the section on exercise settlement value.',
+    firstDefinedIn: 'on-ramp/06-nq-es-layer',
+    seeAlso: ['cash-settled', 'pm-settlement', 'settlement'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'weekend-theta',
+    headword: 'weekend theta',
+    aliases: ['calendar-day versus trading-day decay'],
+    shortDef:
+      'Theta is quoted per calendar day, but no trading happens over a weekend, so market makers price some of Friday-to-Monday decay into Friday afternoon’s marks rather than letting it fall on Monday morning.',
+    bearsOn:
+      'A holder who reads Friday’s afternoon marks as “the index did nothing, why did I lose so much” has met the weekend priced early. It is the clearest case of the clock on your ticket running on a different calendar from your chart.',
+    evidence: 'market-general',
+    reading: 'Natenberg, Option Volatility and Pricing (2015), the chapter on theta; Sinclair, Volatility Trading (2013), on trading-day versus calendar-day conventions.',
+    firstDefinedIn: 'on-ramp/07-clocks-and-late-greeks',
+    seeAlso: ['theta', 'delta-drift', 'mark'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'mark-based-stop',
+    headword: 'mark-based stop',
+    aliases: ['P&L stop', 'premium stop'],
+    shortDef:
+      'A stop written on the mark of the position — “out if the ticket is worth less than X” — rather than on the underlying’s price. It fires on price, vol, or clock alike, because the mark carries all three.',
+    bearsOn:
+      'It is the mechanical alternative to the price-line stop that covers one of three falsifiers. It has its own cost: a mark can gap with the spread at the open, and it does not say which of the three killed you, so the journal still needs the vol falsifier written separately.',
+    evidence: 'market-general',
+    reading: 'Sinclair, Positional Option Trading (2020), the chapter on trade management.',
+    firstDefinedIn: 'on-ramp/09-grammar-and-journal',
+    seeAlso: ['vol-falsifier', 'mark', 'falsifier'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'global-trading-hours',
+    headword: 'global trading hours',
+    aliases: ['GTH', 'overnight SPX options session'],
+    shortDef:
+      'SPX and VIX options trade in an overnight session on Cboe, thinner and wider than the day session, with its own quotes and prints.',
+    bearsOn:
+      'The opening vol at 09:31 is not the first vol of the day; it inherits an overnight session’s marks, and a holder who carried a position through the night was marked, and could have been stopped on the mark, while the futures trader watched only ES.',
+    evidence: 'market-general',
+    reading: 'Cboe, Global Trading Hours specifications for SPX and VIX options.',
+    firstDefinedIn: 'on-ramp/09a-early-session',
+    seeAlso: ['opening-vol', 'mark', 'overnight-structure'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'opening-rotation',
+    headword: 'opening rotation',
+    aliases: ['options opening process', 'series opening'],
+    shortDef:
+      'Options exchanges open each strike through an auction after the underlying has opened, so quotes appear in a sequence over the first minute or two and are wide or absent until each series has rotated.',
+    bearsOn:
+      'A ticket in the first minutes is priced against a quote that may not exist yet or may be several times its normal width. Phase 0 and Phase 1 are expensive for a holder in a way that has nothing to do with the read.',
+    evidence: 'market-general',
+    reading: 'Cboe Rules, the section on the opening auction process for options series.',
+    firstDefinedIn: 'on-ramp/09a-early-session',
+    seeAlso: ['opening-vol', 'opening-auction', 'early-phase', 'bid-ask-spread'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'debit-anchoring',
+    headword: 'debit anchoring',
+    aliases: ['anchoring on the entry price', 'disposition effect'],
+    shortDef:
+      'The documented tendency to judge a position against the price paid rather than against its current prospects, and to hold losers longer than winners because of it.',
+    bearsOn:
+      'Every holder’s misread on this page arrives more easily when the mark is below the debit, because the misread offers a reason not to realize the loss. The guardrail is applied to the position, not to the debit.',
+    evidence: 'market-general',
+    reading:
+      'Odean, “Are investors reluctant to realize their losses?” (1998, Journal of Finance); Kahneman, Thinking, Fast and Slow (2011), the chapter on anchors.',
+    firstDefinedIn: 'on-ramp/10-misreads-and-mastery',
+    seeAlso: ['holders-misread', 'mark', 'debit'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'mark-to-mid',
+    headword: 'mark-to-mid',
+    aliases: ['marking convention', 'mid versus last'],
+    shortDef:
+      'Brokers and vendors value an open option at the midpoint of the current bid and ask, not at the last trade, because many strikes trade rarely and the last print can be hours old.',
+    bearsOn:
+      'A paper position’s daily P&L is only as honest as its marks. Mid is the convention; it is also a price you could not have traded at, so the ledger’s residual includes the spread you would have paid. Write which convention you used.',
+    evidence: 'market-general',
+    reading: 'Harris, Trading and Exchanges (2003), the chapter on quoted and effective spreads.',
+    firstDefinedIn: 'on-ramp/11-further-learning',
+    seeAlso: ['paper-position', 'mark', 'mid-price', 'bid-ask-spread'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'simulated-account',
+    headword: 'simulated account',
+    aliases: ['paper-trading account', 'demo account'],
+    shortDef:
+      'A broker-provided account that accepts orders and reports fills and marks against live quotes without money. Fill logic varies: some fill at mid instantly, some require the quote to trade through.',
+    bearsOn:
+      'It is the tool for the first week’s loop, and its fills are its weakness: a simulator that fills at mid teaches the hand price and the ledger while teaching nothing true about execution. Stage 1 needs the marks; Stage 5 needs real fills.',
+    evidence: 'market-general',
+    reading: 'Your broker’s paper-trading documentation, read for how fills and marks are simulated.',
+    firstDefinedIn: 'on-ramp/12-futures-to-options',
+    seeAlso: ['hand-price', 'paper-position', 'mark-to-mid'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'section-1256',
+    headword: 'Section 1256 treatment',
+    aliases: ['60/40 tax treatment'],
+    shortDef:
+      'Under U.S. tax law, broad-based index options such as SPX and XSP, and futures, are taxed 60 percent long-term and 40 percent short-term regardless of holding period; SPY and QQQ options are not.',
+    bearsOn:
+      'It changes the after-tax comparison between the Stage 5 instruments; not a reason to choose a structure, but a reason to know which contract you are in. U.S. only.',
+    evidence: 'market-general (U.S. only)',
+    reading: 'IRS Publication 550, the section on Section 1256 contracts.',
+    firstDefinedIn: 'practice/12-futures-to-options',
+    seeAlso: ['xsp', 'spy', 'es-options'],
+    kind: 'adjacent',
+  },
+
+  // --- Adjacent, main chapters (futures / screen-reading side) ---------------
+  {
+    id: 'hedging-vs-speculation',
+    headword: 'hedging and speculative demand',
+    aliases: ['hedger', 'speculator'],
+    shortDef:
+      'Every trade comes from one of two reasons. A hedger holds a position elsewhere and trades to reduce its risk; a speculator trades to take on risk for expected profit.',
+    bearsOn:
+      'This book’s premise is that hedging demand is the part of options-market activity that can be inferred, because a hedger’s reason is written in what they already hold. The tape does not carry the reason; the labels in this introduction exist to keep inferred reasons from being read as observed ones.',
+    evidence: 'market-general',
+    reading: 'Hull, Options, Futures, and Other Derivatives, chapter 1, on hedgers, speculators, and arbitrageurs.',
+    firstDefinedIn: 'intro',
+    seeAlso: ['inferred', 'observed', 'labeling-leak'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'reflexivity',
+    headword: 'reflexivity',
+    aliases: ['feedback loop'],
+    shortDef:
+      'The situation in which a reading of the market changes the market being read, because enough participants act on the same reading.',
+    bearsOn:
+      'Options hedging is reflexive by construction: a hedge is a trade in the index the option is written on. It is also why a public map of hedging can lose force once it is widely watched, and why every claim here carries a label rather than a promise.',
+    evidence: 'market-general',
+    reading: 'Soros, The Alchemy of Finance (1987), the chapter on the theory of reflexivity.',
+    firstDefinedIn: 'intro',
+    seeAlso: ['folklore', 'knowability'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'base-rate',
+    headword: 'base rate',
+    aliases: ['prior probability'],
+    shortDef:
+      'How often something happens on its own, before any signal is considered. A price that holds seven times in ten has a base rate of seven in ten whether or not a screen pointed at it.',
+    bearsOn:
+      'Folklore sentences almost never state one. When the book marks a claim folklore, the missing base rate is usually what is missing; the label tells you to go and find it before the claim is worth a position.',
+    evidence: 'market-general',
+    reading: 'Kahneman, Thinking, Fast and Slow (2011), the chapters on base rates and representativeness.',
+    firstDefinedIn: 'intro',
+    seeAlso: ['folklore', 'market-general'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'confirmation-bias',
+    headword: 'confirmation bias',
+    aliases: [],
+    shortDef:
+      'The tendency to notice evidence that agrees with a belief already held and to discount evidence that does not.',
+    bearsOn:
+      'A reader who has decided a price will hold will find the print that agrees. The verbs observed, inferred, and assumed, and the sentence the book attaches to each claim naming what would prove it wrong, are the working defence; they fix in advance what counts as being wrong.',
+    evidence: 'market-general',
+    reading: 'Nickerson, “Confirmation bias: a ubiquitous phenomenon in many guises” (1998, Review of General Psychology).',
+    firstDefinedIn: 'intro',
+    seeAlso: ['observed', 'inferred', 'assumed'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'random-walk-baseline',
+    headword: 'random-walk baseline',
+    aliases: ['null model', 'no-information baseline'],
+    shortDef:
+      'The default assumption that the next move in the index is unpredictable from what is public, so any claim to read direction has to beat “no information” before it means anything.',
+    bearsOn:
+      'It is the standard every read in this book is measured against and the reason a read is a candidate rather than a prediction. A screen that adds nothing over the baseline is decoration, however precise it looks.',
+    evidence: 'market-general',
+    reading: 'Malkiel, A Random Walk Down Wall Street (1973).',
+    firstDefinedIn: 'intro',
+    seeAlso: ['knowability', 'inferred'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'delta-one-desks',
+    headword: 'delta-one desks and equity swaps',
+    aliases: ['total return swap', 'delta one'],
+    shortDef:
+      'Bank desks that give clients index exposure through swaps and other products with no optionality, and hedge that exposure in futures and cash baskets.',
+    bearsOn:
+      'They are a large, steady source of ES volume with no option behind it. On a day their flow dominates, the tape is moving for reasons no options screen can show; the partial-picture caveat is partly about them.',
+    evidence: 'market-general',
+    reading: 'Hull, Options, Futures, and Other Derivatives, the chapter on swaps, the section on equity swaps.',
+    firstDefinedIn: 'plans/01-what-gexbot-is',
+    seeAlso: ['partial-picture', 'es-future'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'cta-trend-following',
+    headword: 'trend-following futures funds',
+    aliases: ['CTA', 'managed futures', 'momentum funds'],
+    shortDef:
+      'Systematic funds that buy index futures after sustained rises and sell after sustained falls, on rules keyed to moving averages and lookback returns.',
+    bearsOn:
+      'Their orders arrive as ES flow with no option anywhere near them, and they cluster at the same moments an options hedge would fire — after a move. A rival explanation for the same tape, and the reason the book labels an inferred hedge inferred.',
+    evidence: 'market-general',
+    reading: 'Moskowitz, Ooi, and Pedersen, “Time series momentum” (2012, Journal of Financial Economics).',
+    firstDefinedIn: 'plans/01-what-gexbot-is',
+    seeAlso: ['inferred', 'partial-picture'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'vol-targeting',
+    headword: 'volatility-targeting and risk-parity rebalancing',
+    aliases: ['vol control', 'risk parity'],
+    shortDef:
+      'Portfolios that hold a fixed level of risk rather than a fixed dollar size, so they sell index exposure when the market’s recent swings grow and buy it when they shrink.',
+    bearsOn:
+      'Their futures selling into a volatile down day looks like the hedging this book teaches and comes from a different source with a slower clock. Two forces can push the same way at once; the tape shows the sum.',
+    evidence: 'market-general',
+    reading: 'Moreira and Muir, “Volatility-managed portfolios” (2017, Journal of Finance).',
+    firstDefinedIn: 'plans/01-what-gexbot-is',
+    seeAlso: ['partial-picture', 'vol-regime'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'leveraged-etf-rebalancing',
+    headword: 'leveraged ETF rebalancing',
+    aliases: ['leveraged and inverse ETFs', 'end-of-day rebalancing'],
+    shortDef:
+      'Funds promising two or three times the daily index return, or its inverse, have to trade in the direction of the day’s move near the close to reset their exposure for tomorrow.',
+    bearsOn:
+      'A predictable late-day futures flow that grows with the size of the move and owes nothing to options. On large-range days it is a second candidate for a last-hour push, alongside anything an options screen suggests.',
+    evidence: 'market-general',
+    reading: 'Cheng and Madhavan, “The dynamics of leveraged and inverse exchange-traded funds” (2009, Journal of Investment Management).',
+    firstDefinedIn: 'plans/01-what-gexbot-is',
+    seeAlso: ['etf', 'partial-picture'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'hedge-complex-scale',
+    headword: 'size of the listed hedge complex',
+    aliases: ['SPX volume versus ES volume'],
+    shortDef:
+      'How much index exposure the listed option market controls relative to the futures market it hedges in. SPX options trade millions of contracts a day; ES trades over a million, on a smaller contract.',
+    bearsOn:
+      'The pile Classic draws is large enough that its hedges are a real share of ES volume, which is the only reason the question in this book is worth asking. Whether one strike’s pile is large enough on a given day is a separate question the histogram’s height begins to answer.',
+    evidence: 'market-general',
+    reading: 'Cboe Global Markets and CME Group, published daily volume statistics.',
+    firstDefinedIn: 'plans/02-classic',
+    seeAlso: ['histogram', 'gex-by-oi'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'monthly-opex',
+    headword: 'monthly expiration (OPEX)',
+    aliases: ['OPEX', 'third Friday', 'monthly expiry'],
+    shortDef:
+      'The third Friday of each month, when the standard monthly SPX contract and most single-stock and ETF options expire together. It carries the largest open-interest piles of the month, built over weeks.',
+    bearsOn:
+      'Classic’s OI map is tallest into that Friday and thinnest the Monday after, when the expired pile is gone. A reader comparing histogram heights across that boundary is comparing two different inventories.',
+    evidence: 'market-general',
+    reading: 'Cboe, SPX contract specifications, the expiration section.',
+    firstDefinedIn: 'plans/02-classic',
+    seeAlso: ['open-interest', 'expiry', 'gex-by-oi'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'oi-roll-off',
+    headword: 'expiry roll-off of open interest',
+    aliases: ['OI drop at expiration'],
+    shortDef:
+      'When a contract expires, every open position in it closes at once and its open interest goes to zero in the next count.',
+    bearsOn:
+      'The 0DTE pile you read this morning will not exist tomorrow, and yesterday’s is not in today’s map. Classic by OI is a view of surviving inventory, and a strike that looked heavy on Friday can be empty on Monday without anyone trading.',
+    evidence: 'market-general',
+    reading: 'OCC, Characteristics and Risks of Standardized Options, the chapter on expiration.',
+    firstDefinedIn: 'plans/02-classic',
+    seeAlso: ['open-interest', 'zero-dte', 'occ-open-interest'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'greek-source',
+    headword: 'the greek source (not stated)',
+    aliases: ['which volatility feeds the gamma'],
+    shortDef:
+      'Every gamma number depends on the volatility input and the pricing model that produced it. Vendors differ in which quote they use — bid, ask, or mid — and in how they handle wide or stale quotes.',
+    bearsOn:
+      'Gexbot’s choice is not stated in the source-of-truth file. Two vendors drawing “the same” gamma from the same open interest can disagree on a strike’s height, so a Classic bar is a picture from one shop’s greeks, compared only with itself.',
+    evidence: 'not stated',
+    reading: 'Hull, Options, Futures, and Other Derivatives, the chapter on volatility smiles, on how a volatility is backed out of a quote.',
+    firstDefinedIn: 'plans/02-classic',
+    seeAlso: ['gamma', 'not-stated', 'gex-by-oi'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'bulk-volume-classification',
+    headword: 'bulk volume classification',
+    aliases: ['BVC'],
+    shortDef:
+      'A method that signs volume in bulk from the price change over a bar rather than trade by trade against the quote, built for markets where individual prints are too fast or too fragmented to sign.',
+    bearsOn:
+      'It is one of the two families a signing engine can come from; the other is the print-against-quote family. Which family Gexbot’s engine belongs to is not stated, and the two make different errors: one on midpoint fills, the other on bars where price moved for other reasons.',
+    evidence: 'market-general; Gexbot method not stated',
+    reading: 'Easley, López de Prado, and O’Hara, “Flow toxicity and liquidity in a high-frequency world” (2012, Review of Financial Studies).',
+    firstDefinedIn: 'plans/03-classification',
+    seeAlso: ['classification-engine', 'trade-classification-algorithms', 'not-stated'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'quote-driven-vs-order-driven',
+    headword: 'quote-driven and order-driven markets',
+    aliases: ['dealer market', 'central limit order book', 'CLOB'],
+    shortDef:
+      'In an order-driven market like ES, anyone’s resting order can be the other side of a trade. In a quote-driven market like listed options, designated market makers post the quotes, and most customer trades are against them.',
+    bearsOn:
+      'This is why a “dealer” exists to infer in options and not in futures. The inventory Chapter 3 reads accrues to a small set of quoting firms because the market’s structure routes it to them, not because they choose it trade by trade.',
+    evidence: 'market-general',
+    reading: 'Harris, Trading and Exchanges (2003), the chapter on market structures.',
+    firstDefinedIn: 'plans/03-classification',
+    seeAlso: ['dealer', 'customer', 'mandate'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'nbbo',
+    headword: 'national best bid and offer',
+    aliases: ['NBBO', 'trade-through rule'],
+    shortDef:
+      'The best bid and best offer across all options exchanges at a moment, which every exchange is required to honour: a print may not execute at a price worse than the best quote elsewhere.',
+    bearsOn:
+      'A signing engine compares each print to some quote. With sixteen exchanges, that quote is either the NBBO or one venue’s own, and the two differ often enough to flip a sign on a fast print. Which one Gexbot uses is not stated.',
+    evidence: 'market-general; Gexbot method not stated',
+    reading: 'SEC, Options Order Protection and Locked/Crossed Market Plan.',
+    firstDefinedIn: 'plans/03-classification',
+    seeAlso: ['aggressor', 'bid', 'ask', 'not-stated'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'vix-futures-curve',
+    headword: 'VIX futures curve',
+    aliases: ['contango', 'backwardation', 'VIX term structure'],
+    shortDef:
+      'Futures on the VIX trade for several months out. Usually the later months price above the front (contango); in stress the front rises above them (backwardation).',
+    bearsOn:
+      'The curve’s shape is a slow-clock reading of the same vol regime this chapter’s dots read fast. A backwardated curve at the open is a day on which the falling-vol pin story starts with less credit; the curve is not on a Gexbot screen and is not a Gexbot object.',
+    evidence: 'market-general',
+    reading: 'Whaley, “Understanding the VIX” (2009, Journal of Portfolio Management).',
+    firstDefinedIn: 'plans/04-state',
+    seeAlso: ['vix', 'vol-regime', 'term-structure'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'zero-dte-share',
+    headword: '0DTE share of volume',
+    aliases: ['same-day options volume share'],
+    shortDef:
+      'Since an SPX expiry was listed for every trading day, contracts expiring the same day have grown to roughly half of all SPX option volume on an ordinary session.',
+    bearsOn:
+      'It is why State’s leftover is dominated by the latest group and why its map can be rebuilt from nothing each morning. It also means the population being inferred is mostly people who will be flat by the close, whatever their reason for the trade.',
+    evidence: 'market-general',
+    reading: 'Cboe Global Markets, “The rise of SPX 0DTE options” research note (2023).',
+    firstDefinedIn: 'plans/04-state',
+    seeAlso: ['zero-dte', 'latest', 'state'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'cftc-cot',
+    headword: 'Commitments of Traders report',
+    aliases: ['COT', 'CFTC positioning data'],
+    shortDef:
+      'A weekly CFTC report of open futures positions by category — dealers, asset managers, leveraged funds — as of Tuesday’s close, published Friday.',
+    bearsOn:
+      'It is the closest public answer to “who owns the pile” for ES itself: signed, but three days late and net of everything. State’s residual is faster and narrower. The two are not the same object, and a reader who lines them up is comparing a week to a morning.',
+    evidence: 'market-general',
+    reading: 'CFTC, Explanatory Notes to the Commitments of Traders reports.',
+    firstDefinedIn: 'plans/04-state',
+    seeAlso: ['residual', 'unsigned', 'es-future'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'depth-and-vol',
+    headword: 'order-book depth and volatility',
+    aliases: ['thin book', 'ES depth'],
+    shortDef:
+      'The size resting at each price in the ES book shrinks as volatility rises and rebuilds as it falls, so the same number of contracts moves price further on a volatile day.',
+    bearsOn:
+      'A hedge of a given size is not a fixed push. The same minus-DEX stack pushes harder into a thin book, which is one reason a wall that held last week can fail this week with the same height on the ladder.',
+    evidence: 'market-general',
+    reading: 'Harris, Trading and Exchanges (2003), the chapters on liquidity and depth.',
+    firstDefinedIn: 'plans/04-state',
+    seeAlso: ['dex-ladder', 'wall', 'thinner-book'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'update-cadence',
+    headword: 'display cadence (not stated)',
+    aliases: ['refresh interval', 'snapshot timing'],
+    shortDef:
+      'Every live screen redraws on some schedule — per print, per second, per minute — and the choice decides whether two trades a few seconds apart appear as one bar or two.',
+    bearsOn:
+      'Gexbot’s cadence for the Orderflow bars is not stated. A bar is an increment over an unknown window, which is why the book reads bars as a sequence and not as events with a timestamp you can match to the ES tape.',
+    evidence: 'not stated',
+    reading: 'Harris, Trading and Exchanges (2003), on the difference between a trade record and a bar.',
+    firstDefinedIn: 'plans/05-orderflow',
+    seeAlso: ['dex-orderflow', 'spike-sequence-noise', 'not-stated'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'intermarket-sweep',
+    headword: 'intermarket sweep orders',
+    aliases: ['ISO', 'sweep across exchanges'],
+    shortDef:
+      'A single order routed simultaneously to several exchanges, printing as a burst of small trades at slightly different prices within the same second.',
+    bearsOn:
+      'One customer’s decision arrives on the tape looking like a sequence, which is the pattern Chapter 5 asks you to weigh more than a single spike. Sweeps are a reason a burst is stronger evidence of one large intent than of many small ones.',
+    evidence: 'market-general',
+    reading: 'Harris, Trading and Exchanges (2003), the chapter on order routing; SEC Regulation NMS, on intermarket sweep orders.',
+    firstDefinedIn: 'plans/05-orderflow',
+    seeAlso: ['spike-sequence-noise', 'aggressor'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'rolling-a-position',
+    headword: 'rolling an option position',
+    aliases: ['roll (options)', 'roll up / roll out'],
+    shortDef:
+      'Closing an option at one strike or expiry and opening the same kind at another in one decision, usually as a single order in two legs.',
+    bearsOn:
+      'On the Orderflow bars a roll prints as two opposite-signed bars at neighbouring strikes at the same moment. Neither is a new bet; the customer’s exposure moved. Read as two independent events, it doubles a conviction that is not there.',
+    evidence: 'market-general',
+    reading: 'Natenberg, Option Volatility and Pricing (1994), the chapter on position adjustment.',
+    firstDefinedIn: 'plans/05-orderflow',
+    seeAlso: ['dex-orderflow', 'open-vs-close'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'trade-reporting-lag',
+    headword: 'trade reporting lag',
+    aliases: ['print timestamp', 'late prints'],
+    shortDef:
+      'An option trade is reported to the consolidated tape within seconds of execution, and negotiated trades can be reported later still, so the time a print appears is not always the time it happened.',
+    bearsOn:
+      'Lining an Orderflow bar up against the ES tape to the second assumes the print and the hedge are stamped on the same clock. They are not. A hedge that appears to lead its option by a few seconds may be the reporting order, not the causal one.',
+    evidence: 'market-general',
+    reading: 'OPRA, Participant reporting requirements, on trade reporting timeliness.',
+    firstDefinedIn: 'plans/05-orderflow',
+    seeAlso: ['hedge-chain', 'floor-and-negotiated-prints'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'price-discovery',
+    headword: 'price discovery',
+    aliases: ['futures lead cash', 'lead–lag'],
+    shortDef:
+      'The question of which market moves first when new information arrives. For U.S. indexes the futures usually lead: ES moves, and the cash index and the options follow within seconds.',
+    bearsOn:
+      'Gexbot’s options screens are quoted off a market that follows the one you trade. When the conversion line moves before the strike map does, the map is catching up, not predicting; and a hedge inferred from options is a hedge in the leading market.',
+    evidence: 'market-general',
+    reading: 'Hasbrouck, “One security, many markets: determining the contributions to price discovery” (1995, Journal of Finance).',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    seeAlso: ['conversion', 'basis', 'es-future'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'etf-creation-redemption',
+    headword: 'ETF creation and redemption',
+    aliases: ['authorized participant', 'in-kind basket'],
+    shortDef:
+      'Designated firms can exchange a basket of the index’s stocks for new ETF shares, or the reverse, at the end of the day. That mechanism keeps SPY and QQQ glued to the index the way index arbitrage glues the future.',
+    bearsOn:
+      'It is the plumbing behind the third of the three doors. A dealer hedging in SPY relies on it, and its end-of-day settlement adds one more closing flow to the ones Chapter 7 will meet.',
+    evidence: 'market-general',
+    reading: 'Ben-David, Franzoni, and Moussawi, “Do ETFs increase volatility?” (2018, Journal of Finance), the section on the arbitrage mechanism.',
+    firstDefinedIn: 'layer/06-nq-es-layer',
+    seeAlso: ['spy', 'qqq', 'index-arbitrage', 'etf'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'post-close-options-window',
+    headword: 'the 16:00–16:15 options window',
+    aliases: ['post-close options trading', 'options close at 16:15'],
+    shortDef:
+      'SPX and NDX options keep trading until 16:15 ET, fifteen minutes after the cash close, priced off the still-open futures.',
+    bearsOn:
+      'The last hour’s re-hedge does not end when your cash chart stops. Positions opened or closed in that window print to tomorrow’s open interest and hedge in ES at 16:05, when the cash line is frozen and the basis alone is moving.',
+    evidence: 'market-general',
+    reading: 'Cboe, SPX contract specifications, trading hours.',
+    firstDefinedIn: 'layer/07-clocks-and-late-greeks',
+    seeAlso: ['cash-rth', 'closing-auction', 'basis'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'opex-week-flows',
+    headword: 'OPEX-week vanna and charm folklore',
+    aliases: ['“vanna and charm flows”', 'monthly expiration flows'],
+    shortDef:
+      'A popular account holds that in the week before monthly expiration, the decay of hedges against large put piles obliges dealers to buy back futures, lifting the index into the Friday.',
+    bearsOn:
+      'It is the full-inventory version of the late-hour pressures this chapter teaches, applied to a week and to open interest rather than to today’s leftover. The book carries it as folklore: the mechanism is Chapter 7’s, the size and sign claims are not measured here.',
+    evidence: 'folklore',
+    reading: 'Ni, Pearson, and Poteshman, “Stock price clustering on option expiration dates” (2005, Journal of Financial Economics), for the evidence that does exist.',
+    firstDefinedIn: 'layer/07-clocks-and-late-greeks',
+    seeAlso: ['minus-vanna-ladder', 'charm-ladder', 'folklore', 'monthly-opex'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'es-daily-settlement',
+    headword: 'ES daily settlement price',
+    aliases: ['futures settlement', 'settlement window'],
+    shortDef:
+      'CME sets each day’s official ES price from trades in a short window ending at 16:00 ET. Margin calls, and every futures P&L statement, are computed against it.',
+    bearsOn:
+      'It is a third clock inside the last hour, next to the cash close and the options close: a price some participants work to influence and that a hedger’s mark depends on. A burst at 15:59 can be about this number and nothing on any options screen.',
+    evidence: 'market-general',
+    reading: 'CME Group, E-mini S&P 500 daily settlement procedure.',
+    firstDefinedIn: 'layer/07-clocks-and-late-greeks',
+    seeAlso: ['settlement', 'closing-auction', 'es-future'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'liquidity-hole',
+    headword: 'liquidity hole',
+    aliases: ['air pocket', 'vacuum'],
+    shortDef:
+      'A price zone where almost nothing rests in the book, so a small order moves price a long way until it reaches size again.',
+    bearsOn:
+      'A fuel read expects a push; a hole decides how far the push travels. Two identical short-convexity nodes can produce a ten-point run and a two-point one, and the difference is in the ES book, which Gexbot does not show.',
+    evidence: 'market-general',
+    reading: 'Taleb, Dynamic Hedging (1997), the chapter on liquidity holes.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['fuel', 'squeeze', 'thinner-book'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'self-fulfilling-levels',
+    headword: 'self-fulfilling technical levels',
+    aliases: ['order clustering at chart levels'],
+    shortDef:
+      'Prices where many traders place stops and limit orders because they can all see the same chart, so the level holds or breaks partly because they expect it to.',
+    bearsOn:
+      'A rival explanation for a wall that holds. When a strike sits on a round number and on a level from the daily chart, the hold is over-determined, and crediting the options pile alone is a guess, not an inference.',
+    evidence: 'market-general',
+    reading: 'Osler, “Currency orders and exchange rate dynamics: an explanation for the predictive success of technical analysis” (2003, Journal of Finance).',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['wall', 'h1', 'daily-level'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'book-resiliency',
+    headword: 'order-book resiliency',
+    aliases: ['replenishment', 'book refill'],
+    shortDef:
+      'How quickly size returns to the book after a sweep clears it. A resilient book refills within seconds; a fragile one stays thin and lets the next order travel.',
+    bearsOn:
+      'It separates the two outcomes at a wall. Absorption is a book that refills faster than the hedges arrive; a break is one that does not. The read names the pressure; the tape’s refill speed tells you which side is winning.',
+    evidence: 'market-general',
+    reading: 'Bouchaud, Bonart, Donier, and Gould, Trades, Quotes and Prices (2018), the chapters on order-book dynamics.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['absorb', 'wall', 'h1'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'hedge-size-vs-volume',
+    headword: 'hedge size against ES volume',
+    aliases: ['participation rate'],
+    shortDef:
+      'A hedge matters in proportion to the volume it arrives into. A few hundred contracts is a large order in a quiet minute and invisible in a busy one; ES trades over a million contracts on an ordinary day.',
+    bearsOn:
+      'The heuristics compare heights on a ladder; the tape prices them in contracts per minute. A tall node on a heavy-volume day can produce less than a modest one at lunch, which is why the read is a candidate and the tape decides.',
+    evidence: 'market-general',
+    reading: 'CME Group, ES volume statistics; Bouchaud et al., Trades, Quotes and Prices (2018), on participation and impact.',
+    firstDefinedIn: 'practice/08-heuristics-as-reading',
+    seeAlso: ['fuel', 'wall', 'heuristic'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'r-multiple',
+    headword: 'R-multiple',
+    aliases: ['R', 'risk unit'],
+    shortDef:
+      'A trade’s result expressed as a multiple of the amount risked at entry: a trade that risks 4 points and makes 8 is +2R.',
+    bearsOn:
+      'It is the futures trader’s usual scorekeeping, and the journal line here deliberately does not use it. The line grades the read — were the cell, the clock, and the falsifier right — not the result; R belongs in a separate column so the two are not confused.',
+    evidence: 'market-general',
+    reading: 'Tharp, Trade Your Way to Financial Freedom (1999), on R-multiples.',
+    firstDefinedIn: 'practice/09-grammar-and-journal',
+    seeAlso: ['journal-line', 'falsifier'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'pre-registration',
+    headword: 'pre-registration',
+    aliases: ['write the hypothesis first'],
+    shortDef:
+      'Stating in advance what is being tested and what result would count against it, before looking at the outcome.',
+    bearsOn:
+      'The falsifier field is a pre-registration for one trade, and Chapter 11’s rule to write the hypothesis before the plot is the same idea for a study. Without it, the journal turns into a record of things that happened, all of which look explicable afterwards.',
+    evidence: 'market-general',
+    reading: 'Nosek, Ebersole, DeHaven, and Mellor, “The preregistration revolution” (2018, Proceedings of the National Academy of Sciences).',
+    firstDefinedIn: 'practice/09-grammar-and-journal',
+    seeAlso: ['falsifier', 'journal-line', 'backtest-overfitting'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'calibration',
+    headword: 'calibration',
+    aliases: ['Brier score', 'probability scoring'],
+    shortDef:
+      'Whether events you call seventy percent likely happen about seventy percent of the time. A scoring rule such as the Brier score turns a run of forecasts and outcomes into one number.',
+    bearsOn:
+      'A read is a candidate with a confidence attached. Over forty journal lines, the reads that carried the same confidence can be scored against what happened; a chapter’s heuristic can be well calibrated for one reader and not for another.',
+    evidence: 'market-general',
+    reading: 'Tetlock and Gardner, Superforecasting (2015), the chapters on scoring forecasts.',
+    firstDefinedIn: 'practice/09-grammar-and-journal',
+    seeAlso: ['journal-line', 'heuristic', 'h1'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'maximum-adverse-excursion',
+    headword: 'maximum adverse excursion',
+    aliases: ['MAE', 'MFE'],
+    shortDef:
+      'The furthest a trade went against you before it closed, and its mirror, the furthest it went in your favour. Logged per trade, their distribution shows where stops were too tight or too loose.',
+    bearsOn:
+      'The falsifier here is an object on the screen, not a distance, but the distance the tape traveled before the object was crossed or held is measurable and worth a column: it is how a time stop and a price stop are compared after the fact.',
+    evidence: 'market-general',
+    reading: 'Sweeney, Maximum Adverse Excursion (1996).',
+    firstDefinedIn: 'practice/09-grammar-and-journal',
+    seeAlso: ['falsifier', 'time-stop', 'journal-line'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'stale-index-prints',
+    headword: 'stale index prints at the open',
+    aliases: ['first-print staleness', 'opening index dissemination'],
+    shortDef:
+      'The cash index is computed from the last trade in each component. Until every stock has opened, the published SPX and NDX include yesterday’s closes for the ones that have not, so the first minutes of the index line are partly stale.',
+    bearsOn:
+      'ES has traded all night and is not stale. The basis at 09:31 is wrong by construction, and converting a strike to a futures price in the first minutes inherits that error; the early-window rules are partly about this.',
+    evidence: 'market-general',
+    reading: 'S&P Dow Jones Indices, index calculation methodology, the section on real-time dissemination.',
+    firstDefinedIn: 'practice/09a-early-session',
+    seeAlso: ['basis', 'conversion', 'early-window', 'opening-auction'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'european-session-lead',
+    headword: 'European session lead',
+    aliases: ['Euro Stoxx correlation', 'pre-open cross-market flow'],
+    shortDef:
+      'Between 03:00 and 09:30 ET, ES trades alongside open European index futures and the two move together closely; European desks squaring positions into their own close is a recognisable pre-open flow.',
+    bearsOn:
+      'The overnight structure you carry into the open was built in a market with a different lead. A high set at 04:00 on a European move has no options pile behind it, and the first test of it after 09:30 is where Gexbot’s picture begins, not where the level’s meaning does.',
+    evidence: 'market-general',
+    reading: 'Dimpfl and Jung, “Financial market spillovers around the globe” (2012, Applied Financial Economics).',
+    firstDefinedIn: 'practice/09a-early-session',
+    seeAlso: ['overnight-structure', 'early-window', 'prior-day-extreme'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'premarket-etf-trading',
+    headword: 'pre-market ETF trading',
+    aliases: ['SPY pre-market', '04:00 session'],
+    shortDef:
+      'SPY and QQQ trade from 04:00 ET, thinly, while SPX and NDX options do not open until 09:30, apart from a separate overnight session on a few products.',
+    bearsOn:
+      'It is a cash-side price before the cash index exists for the day, and it shows where the ETF-hedging door is already trading. The options map is silent until the open; the first Orderflow bars land on a tape that has been active for hours.',
+    evidence: 'market-general',
+    reading: 'NYSE Arca, early trading session rules.',
+    firstDefinedIn: 'practice/09a-early-session',
+    seeAlso: ['spy', 'qqq', 'early-window', 'etf'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'iceberg-orders',
+    headword: 'iceberg orders',
+    aliases: ['hidden size', 'reserve orders'],
+    shortDef:
+      'A resting order that shows only a slice of its size and refills the slice each time it is hit, so the visible book understates what is there.',
+    bearsOn:
+      'Absorption at a level is often an iceberg working. It looks like a wall holding, and it has nothing to do with options; a structure reader who sees repeated refills at the same price is watching one participant, not a dealer population.',
+    evidence: 'market-general',
+    reading: 'Harris, Trading and Exchanges (2003), on hidden and reserve orders.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['absorb', 'wall', 's6'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'spoofing',
+    headword: 'spoofing and layering',
+    aliases: ['fake walls in the DOM'],
+    shortDef:
+      'Placing large visible orders with no intention of letting them fill, to move other traders, then cancelling them. It is illegal in U.S. futures and is still observed.',
+    bearsOn:
+      'The depth-ladder picture Chapter 4 borrowed has this weakness in its original: displayed size in ES can vanish. A synthetic offer inferred from minus-DEX cannot be cancelled that way, which is the one respect in which the options picture is steadier than the DOM.',
+    evidence: 'market-general',
+    reading: 'CFTC, Interpretive guidance and policy statement on disruptive practices (2013).',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['dex-ladder', 's1', 'wall'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'index-concentration',
+    headword: 'index concentration',
+    aliases: ['mega-cap weight', 'top-heavy index'],
+    shortDef:
+      'A handful of the largest companies carry a large share of the Nasdaq-100’s weight and a smaller but still large share of the S&P 500’s, so a move in a few names moves one index more than the other.',
+    bearsOn:
+      'It is the mechanical reason NQ and ES disagree on some sessions, and it is not a hedging story. When S10’s disagreement is a single-name event, the NDX strike map is describing the wrong cause.',
+    evidence: 'market-general',
+    reading: 'Nasdaq, Nasdaq-100 index methodology, the section on weighting and rebalancing.',
+    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    seeAlso: ['s10', 'nq-es-beta', 'ndx'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'outcome-bias',
+    headword: 'outcome bias',
+    aliases: [],
+    shortDef:
+      'Judging a decision by how it turned out rather than by what was known when it was made.',
+    bearsOn:
+      'The whole misread catalogue is defeated by it in one move: a wall read that broke was wrong, a wall read that held was right. The rubric here grades the naming — cell, clock, pressure sentence, falsifier — because a correctly named read that lost is a better day than a lucky one.',
+    evidence: 'market-general',
+    reading: 'Baron and Hershey, “Outcome bias in decision evaluation” (1988, Journal of Personality and Social Psychology).',
+    firstDefinedIn: 'practice/10-misreads-and-mastery',
+    seeAlso: ['mastery-rubric', 'falsifier', 'journal-line'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'hindsight-bias',
+    headword: 'hindsight bias',
+    aliases: ['“knew it all along”'],
+    shortDef:
+      'After the outcome is known, remembering one’s earlier view as more certain and more correct than it was.',
+    bearsOn:
+      'It is why a journal line written after the close is worth little and one written at entry is worth a lot. The imported-tool misreads persist partly because, in hindsight, the chart always showed the level that mattered.',
+    evidence: 'market-general',
+    reading: 'Fischhoff, “Hindsight ≠ foresight: the effect of outcome knowledge on judgment under uncertainty” (1975, Journal of Experimental Psychology: Human Perception and Performance).',
+    firstDefinedIn: 'practice/10-misreads-and-mastery',
+    seeAlso: ['journal-line', 'imported-tool-misread'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'non-stationarity',
+    headword: 'non-stationarity',
+    aliases: ['regime change', 'the edge that stopped working'],
+    shortDef:
+      'A market whose statistical behaviour changes over time, so a pattern measured in one period does not hold in the next.',
+    bearsOn:
+      'Every heuristic in Chapter 8 carries a label rather than a rate because of this. A read that has worked for forty sessions is evidence about those sessions; the guardrails exist so that the day it stops, the loss is a position and not an account.',
+    evidence: 'market-general',
+    reading: 'Lo, Adaptive Markets (2017).',
+    firstDefinedIn: 'practice/10-misreads-and-mastery',
+    seeAlso: ['guardrail', 'heuristic', 'backtest-overfitting'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'narrative-fallacy',
+    headword: 'narrative fallacy',
+    aliases: ['story bias'],
+    shortDef:
+      'The pull toward a cause-and-effect story that fits the facts, and the confidence the story adds to facts that would not have supported it alone.',
+    bearsOn:
+      'The cousins in this chapter are stories: “dealers defended the strike” is a sentence the tape never printed. The forced-flow sentence with its verbs — observed, inferred, assumed — is the book’s device for keeping the story labelled as one.',
+    evidence: 'market-general',
+    reading: 'Taleb, The Black Swan (2007), the chapter on the narrative fallacy.',
+    firstDefinedIn: 'practice/10-misreads-and-mastery',
+    seeAlso: ['forced-flow-sentence', 'cousin-dealer-gamma', 'folklore'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'pre-mortem',
+    headword: 'pre-mortem',
+    aliases: ['prospective hindsight'],
+    shortDef:
+      'Before acting, assuming the plan has already failed and writing down the most likely reason why.',
+    bearsOn:
+      'The capstone asks for a falsifier in two languages; a pre-mortem is the same exercise for a whole session. It is the cheapest way to find the misread you were about to make, because it borrows hindsight before there is anything to be biased about.',
+    evidence: 'market-general',
+    reading: 'Klein, “Performing a project premortem” (2007, Harvard Business Review).',
+    firstDefinedIn: 'practice/10-misreads-and-mastery',
+    seeAlso: ['capstone', 'dual-falsifier', 'stand-down'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'adverse-selection',
+    headword: 'adverse selection',
+    aliases: ['informed trading', 'Glosten–Milgrom'],
+    shortDef:
+      'The market maker’s problem that some of the orders arriving know more than the quote does. The bid–ask spread is partly a charge for the losses to those orders.',
+    bearsOn:
+      'It is the other half of the microstructure the dealer’s inventory models leave out, and it is why a quoting firm widens or steps back in the first minutes: not a mandate, an information problem. Kyle and Glosten–Milgrom on the reading list are its two founding models.',
+    evidence: 'market-general',
+    reading: 'Glosten and Milgrom, “Bid, ask and transaction prices in a specialist market with heterogeneously informed traders” (1985, Journal of Financial Economics).',
+    firstDefinedIn: 'practice/11-further-learning',
+    seeAlso: ['inventory-models', 'bid-ask-spread', 'dealer'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'flow-toxicity',
+    headword: 'flow toxicity and VPIN',
+    aliases: ['VPIN', 'probability of informed trading'],
+    shortDef:
+      'A measure of how one-sided and informed recent volume looks, built from signed volume in volume-clock buckets; high readings are said to precede market makers withdrawing.',
+    bearsOn:
+      'It is a signed-flow object from the same family as futures tape delta and Gexbot’s residual, with a published construction and a contested record. Reading it is practice in what a “flow” number can and cannot carry.',
+    evidence: 'market-general',
+    reading: 'Easley, López de Prado, and O’Hara, “Flow toxicity and liquidity in a high-frequency world” (2012, Review of Financial Studies).',
+    firstDefinedIn: 'practice/11-further-learning',
+    seeAlso: ['futures-tape-delta', 'residual', 'bulk-volume-classification'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'range-based-vol-estimators',
+    headword: 'range-based volatility estimators',
+    aliases: ['Parkinson', 'Garman–Klass', 'high–low estimator'],
+    shortDef:
+      'Ways to estimate realized volatility from a bar’s high and low rather than from close-to-close changes. They use more of each bar’s information and are more precise over short windows.',
+    bearsOn:
+      'The morning card’s realized-vol line from five-minute ranges is a rough version of one. Knowing the proper estimators tells you how much to trust a realized number computed from a handful of bars against an implied one.',
+    evidence: 'market-general',
+    reading: 'Parkinson, “The extreme value method for estimating the variance of the rate of return” (1980, Journal of Business).',
+    firstDefinedIn: 'practice/11-further-learning',
+    seeAlso: ['realized-vol', 'morning-card', 'expected-move'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'volatility-clustering',
+    headword: 'volatility clustering',
+    aliases: ['GARCH', 'vol persistence'],
+    shortDef:
+      'Large moves tend to be followed by large moves and quiet by quiet. Models of the GARCH family formalise that persistence: today’s variance depends on yesterday’s shock and yesterday’s variance.',
+    bearsOn:
+      'It is the statistical fact behind the vol regime as a slow object, and behind reading the morning card’s realized number as a forecast of the next hour rather than a description of the last one. Rising or falling vol is a persistent state, not a coin flip.',
+    evidence: 'market-general',
+    reading: 'Engle, “GARCH 101: the use of ARCH/GARCH models in applied econometrics” (2001, Journal of Economic Perspectives).',
+    firstDefinedIn: 'practice/11-further-learning',
+    seeAlso: ['vol-regime', 'realized-vol', 'h12'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'wash-sale-rule',
+    headword: 'wash-sale rule',
+    aliases: ['30-day rule'],
+    shortDef:
+      'U.S. tax rule that disallows a loss on a security sold and repurchased within thirty days. It applies to SPY and QQQ options and their shares, and not to Section 1256 contracts, which are marked to market instead.',
+    bearsOn:
+      'A Stage 5 trader working the same SPY strike daily accumulates disallowed losses without noticing until the tax statement. It is a reason the instrument table in Gap 5 has a tax column, not a reason to pick a structure. U.S. only.',
+    evidence: 'market-general (U.S. only)',
+    reading: 'IRS Publication 550, the section on wash sales.',
+    firstDefinedIn: 'practice/12-futures-to-options',
+    seeAlso: ['section-1256', 'spy', 'qqq'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'pattern-day-trader-rule',
+    headword: 'pattern day trader rule',
+    aliases: ['PDT', '$25,000 minimum'],
+    shortDef:
+      'A FINRA rule for U.S. margin securities accounts: four or more day trades in five business days classifies the account as a pattern day trader, which requires $25,000 of equity to continue. Futures accounts are outside it.',
+    bearsOn:
+      'A futures trader moving to SPX or SPY options moves from an exempt account to a covered one. The Stage 5 loop of small daily trades meets this rule in its first week; it is a sizing constraint set by regulation, not by risk.',
+    evidence: 'market-general (U.S. only)',
+    reading: 'FINRA Rule 4210, the pattern day trader provisions.',
+    firstDefinedIn: 'practice/12-futures-to-options',
+    seeAlso: ['margin', 'xsp'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'account-segregation',
+    headword: 'securities and futures account segregation',
+    aliases: ['SEC versus CFTC account', 'two regulators'],
+    shortDef:
+      'Futures and options on futures sit in an account regulated by the CFTC; listed index options and ETF options sit in a securities account regulated by the SEC. Many brokers hold them as two accounts with separate cash and margin.',
+    bearsOn:
+      'An SPX position and the ES you hedge it with can be in different accounts that do not offset each other for margin. ES options stay in the futures account. The instrument choice in Gap 5 is also an account choice.',
+    evidence: 'market-general (U.S. only)',
+    reading: 'Your broker’s account agreement, the sections on futures and securities accounts; CFTC and SEC customer-protection rules.',
+    firstDefinedIn: 'practice/12-futures-to-options',
+    seeAlso: ['margin', 'es-options', 'spx'],
+    kind: 'adjacent',
+  },
+
+  // --- Adjacent, on-ramp pages (options / customer-seat side) ----------------
+  {
+    id: 'holder-and-writer',
+    headword: 'holder and writer',
+    aliases: ['writer', 'option seller', 'holder'],
+    shortDef:
+      'The person who bought an option holds it; the person who sold it wrote it. The holder can exercise; the writer is obliged if the holder does.',
+    bearsOn:
+      'Every broker screen, disclosure document, and rule uses these two words where this book uses its own labels for who is long and who is short an option. The asymmetry — a right on one side, an obligation on the other — is the seat change this on-ramp is about.',
+    evidence: 'market-general',
+    reading: 'OCC, Characteristics and Risks of Standardized Options, chapter 1.',
+    firstDefinedIn: 'on-ramp/00-intro',
+    seeAlso: ['seat', 'long-option', 'short-option'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'closing-by-trade-or-exercise',
+    headword: 'closing by trade or by exercise',
+    aliases: ['sell to close', 'exercise'],
+    shortDef:
+      'A holder can end a position two ways: sell the option back into the market, or exercise it and take what the contract delivers. Most listed options are sold, not exercised; index options that settle in cash do so automatically at expiry.',
+    bearsOn:
+      'The choice is the holder’s, and it is invisible to any options screen until the trade prints or the count changes. It is the first place the seat change bites: a futures position ends one way, an option ends three.',
+    evidence: 'market-general',
+    reading: 'OCC, Characteristics and Risks of Standardized Options, the chapter on exercise and settlement.',
+    firstDefinedIn: 'on-ramp/00-intro',
+    seeAlso: ['seat', 'exercise-by-exception'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'cash-vs-margin-account',
+    headword: 'cash and margin accounts',
+    aliases: ['cash account', 'margin account (options)'],
+    shortDef:
+      'A cash account pays for every position in full and cannot sell options it does not cover. A margin account may borrow against positions and, with approval, write options against collateral.',
+    bearsOn:
+      'Approval levels sit on top of the account type. The two together decide which side of an option you are permitted to be on, before any read is made.',
+    evidence: 'market-general',
+    reading: 'FINRA, margin account rules; your broker’s account-types page.',
+    firstDefinedIn: 'on-ramp/00-intro',
+    seeAlso: ['approval-levels', 'margin'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'cancelled-and-corrected-prints',
+    headword: 'cancelled and corrected prints',
+    aliases: ['busted trade', 'trade correction'],
+    shortDef:
+      'An options trade can be cancelled by the exchange as erroneous, or its price or size corrected, minutes after it printed. The tape carries a cancel or correction message; the original print stays in some records.',
+    bearsOn:
+      'Your footprint can be rewritten after the fact. A trace that vanished is not proof the screen missed you, and a screen that keeps a cancelled print is over-counting; how a feed handles corrections is that feed’s business, and Gexbot’s handling is not stated.',
+    evidence: 'market-general; Gexbot handling not stated',
+    reading: 'OPRA, Participant reporting requirements, on trade cancellations and corrections.',
+    firstDefinedIn: 'on-ramp/01-what-gexbot-is',
+    seeAlso: ['footprint', 'opra-feed', 'not-stated'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'large-options-position-report',
+    headword: 'large options position reporting',
+    aliases: ['LOPR'],
+    shortDef:
+      'Brokers report to regulators, daily, every account holding 200 or more contracts on the same side of the market in one underlying. The report is not public.',
+    bearsOn:
+      'Someone does know who owns the pile; it is not the tape and not any vendor. The ownership question this book keeps calling unanswerable is unanswerable from public data, which is a narrower statement than it sounds.',
+    evidence: 'market-general',
+    reading: 'FINRA Rule 2360(b)(5) and the exchanges’ large options position reporting rules.',
+    firstDefinedIn: 'on-ramp/01-what-gexbot-is',
+    seeAlso: ['footprint', 'unsigned'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'occ-option-symbol',
+    headword: 'OCC option symbol',
+    aliases: ['OSI symbol', '21-character option ticker'],
+    shortDef:
+      'The standard identifier for one listed contract: root, expiry date, call or put, and strike packed into one string, such as SPX 240315C05000000.',
+    bearsOn:
+      'It is how your broker’s confirmation, the OPRA tape, and any vendor name the same contract. A ticket and the trace it left agree on nothing else for certain; when a bar and your fill disagree, the symbol is the first thing to check.',
+    evidence: 'market-general',
+    reading: 'OCC, Options Symbology Initiative implementation guide.',
+    firstDefinedIn: 'on-ramp/01-what-gexbot-is',
+    seeAlso: ['footprint', 'strike', 'expiry'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'intraday-strike-additions',
+    headword: 'intraday strike additions',
+    aliases: ['new strikes listed during the day'],
+    shortDef:
+      'Exchanges add strikes to a chain during the session when the index moves toward its edge, so the list of strikes is not fixed at the open.',
+    bearsOn:
+      'A ticket at a strike that did not exist at 09:30 is possible by noon. On the map, a bar appearing at the edge of the ladder can be a new listing filling from nothing, not a shift of the crowd.',
+    evidence: 'market-general',
+    reading: 'Cboe, SPX contract specifications, strike price intervals and additions.',
+    firstDefinedIn: 'on-ramp/02-classic',
+    seeAlso: ['strike', 'option-chain', 'strike-spacing'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'last-trading-time',
+    headword: 'last trading time',
+    aliases: ['16:00 cutoff on expiry day'],
+    shortDef:
+      'An expiring SPX or NDX contract stops trading at 16:00 ET on its last day, while the same options on other expiries trade until 16:15.',
+    bearsOn:
+      'A 0DTE ticket has a hard end fifteen minutes before the rest of the chain. After 16:00 there is nothing to sell; the position settles on the closing prints whether or not the holder intended to hold it there.',
+    evidence: 'market-general',
+    reading: 'Cboe, SPX and SPXW contract specifications, trading hours on the last trading day.',
+    firstDefinedIn: 'on-ramp/02-classic',
+    seeAlso: ['zero-dte', 'expiry', 'settlement-value'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'per-contract-fees',
+    headword: 'per-contract fees and commissions',
+    aliases: ['exchange fees', 'commission per contract'],
+    shortDef:
+      'Each option contract carries a broker commission and exchange and regulatory fees, typically a fraction of a dollar to a dollar or so per contract per side.',
+    bearsOn:
+      'On a $50 premium a round trip’s fees are a noticeable share; on a $5 one they can be most of it. The counterparty pays fees too, at different rates, which is part of why the quoting firm is content with a spread you find wide.',
+    evidence: 'market-general',
+    reading: 'Your broker’s commission schedule; Cboe fee schedule.',
+    firstDefinedIn: 'on-ramp/03-classification',
+    seeAlso: ['counterparty', 'bid-ask-spread', 'premium'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'price-improvement-auctions',
+    headword: 'price-improvement auctions',
+    aliases: ['PIM', 'AIM', 'flash auction'],
+    shortDef:
+      'Exchange mechanisms in which a customer order is exposed for a fraction of a second so that market makers can bid to fill it inside the quoted spread.',
+    bearsOn:
+      'Many retail fills happen at prices between the bid and the ask because of these. A fill at the midpoint gives a signing engine nothing to work with, so the trades most likely to be yours are the ones a screen is least able to sign.',
+    evidence: 'market-general',
+    reading: 'Cboe, Automated Improvement Mechanism (AIM) rules.',
+    firstDefinedIn: 'on-ramp/03-classification',
+    seeAlso: ['counterparty', 'aggressor', 'trade-classification-algorithms'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'market-maker-obligations',
+    headword: 'market-maker quoting obligations',
+    aliases: ['continuous quoting', 'designated market maker'],
+    shortDef:
+      'Registered options market makers are required by exchange rules to post two-sided quotes in their assigned classes for most of the day, within maximum width limits, in exchange for fee and margin advantages.',
+    bearsOn:
+      'This is why a counterparty exists for your ticket at 09:31 and at 15:59, and why the counterparty is a firm with a rulebook rather than another customer. Its obligation is to quote, not to hold; the hedge is how it discharges what it did not choose.',
+    evidence: 'market-general',
+    reading: 'Cboe Options Rules, chapter 5, the market-maker obligations sections.',
+    firstDefinedIn: 'on-ramp/03-classification',
+    seeAlso: ['counterparty', 'dealer', 'mandate'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'quote-fading',
+    headword: 'quote fading',
+    aliases: ['size not there', 'disappearing quote'],
+    shortDef:
+      'A displayed quote that is cancelled or repriced in the moment an order arrives to trade against it, so the fill comes at a worse price or not at all.',
+    bearsOn:
+      'The size on the chain is an offer to trade, not a promise. Market makers reprice on every futures tick, and a fast ES move is exactly when the quote you were about to hit moves away; the tape you read and the fill you get are different objects.',
+    evidence: 'market-general',
+    reading: 'Harris, Trading and Exchanges (2003), on quote cancellation and the option value of a standing quote.',
+    firstDefinedIn: 'on-ramp/03-classification',
+    seeAlso: ['counterparty', 'ask', 'bid'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'dollar-vega',
+    headword: 'dollar vega',
+    aliases: ['vega notional', 'vega per vol point'],
+    shortDef:
+      'A position’s vega stated in dollars per one-point change in implied vol, per contract or for the whole position, rather than as a per-share number.',
+    bearsOn:
+      'It is how the vol you paid becomes a number you can lose: a position with $400 of vega loses $800 when the dots fall two points, before price has moved. It is the size of the vol bet inside a ticket that was meant as a direction bet.',
+    evidence: 'market-general',
+    reading: 'Natenberg, Option Volatility and Pricing (1994), the chapter on risk measurement.',
+    firstDefinedIn: 'on-ramp/04-state',
+    seeAlso: ['vega', 'vol-paid', 'implied-vol'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'vix-vs-strike-iv',
+    headword: 'VIX versus the vol at your strike',
+    aliases: ['30-day vol versus 0DTE vol'],
+    shortDef:
+      'The VIX is a 30-day, strike-blended implied vol. The vol you pay on one 0DTE strike is a same-day, single-strike number, and the two routinely differ by many points in either direction.',
+    bearsOn:
+      'A holder who checks the VIX to judge the vol paid on a 0DTE has checked the wrong series. The dots at your strike are the price; the VIX is context for the regime, which is what Chapter 4 used it for.',
+    evidence: 'market-general',
+    reading: 'Cboe, VIX Index methodology white paper.',
+    firstDefinedIn: 'on-ramp/04-state',
+    seeAlso: ['vix', 'vol-paid', 'skew-dots'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'gamma-vs-vega-by-expiry',
+    headword: 'gamma against vega by expiry',
+    aliases: ['short-dated is gamma, long-dated is vega'],
+    shortDef:
+      'Near expiry an option’s value is dominated by gamma and theta and barely moves with implied vol; far from expiry, vega dominates and gamma is small.',
+    bearsOn:
+      'The vol you paid matters most on the expiries this book spends least time on. A 0DTE ticket is mostly a bet on the move; a monthly bought at the same strike is mostly a bet on the vol, and the vol you paid is doing different work on each.',
+    evidence: 'market-general',
+    reading: 'Hull, Options, Futures, and Other Derivatives, the chapter on the Greek letters, on gamma and vega against time to maturity.',
+    firstDefinedIn: 'on-ramp/04-state',
+    seeAlso: ['gamma', 'vega', 'vol-falsifier', 'theta'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'cash-secured-put',
+    headword: 'cash-secured put and covered call',
+    aliases: ['covered write', 'cash-secured'],
+    shortDef:
+      'A short put with the full strike value held in cash, or a short call against shares already owned. Both are the writer’s side of a single leg, with the obligation pre-funded.',
+    bearsOn:
+      'They are the short-put and short-call cells as most retail writers actually hold them. The incentive at the strike is the same as any short’s; the collateral changes what happens to the writer at expiry, not what the screen prints while the option lives.',
+    evidence: 'market-general',
+    reading: 'OCC, Characteristics and Risks of Standardized Options, the chapter on strategies.',
+    firstDefinedIn: 'on-ramp/05-orderflow',
+    seeAlso: ['short-put', 'short-call', 'two-by-two'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'long-and-short-premium',
+    headword: 'long premium and short premium',
+    aliases: ['net buyer of options', 'net seller of options'],
+    shortDef:
+      'Shorthand for whether a position has paid out more premium than it received (long premium) or the reverse (short premium). Long premium gains from movement and loses to time; short premium the reverse.',
+    bearsOn:
+      'It is the trader’s word for the two rows of the 2×2 taken together. Chapter 12 uses it without ceremony; from the customer seat it is the first question about any position, before strike or direction.',
+    evidence: 'market-general',
+    reading: 'Natenberg, Option Volatility and Pricing (1994), the chapter on volatility spreads.',
+    firstDefinedIn: 'on-ramp/05-orderflow',
+    seeAlso: ['two-by-two', 'convexity', 'premium'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'probability-of-touch',
+    headword: 'probability of touch',
+    aliases: ['touch probability', 'roughly twice delta'],
+    shortDef:
+      'The chance the index reaches a strike at some point before expiry, as opposed to finishing beyond it. For an out-of-the-money option it is roughly twice the delta.',
+    bearsOn:
+      'A writer whose strike is at a 15-delta has about a 30 percent chance of seeing price arrive there, which is when the pressure at their strike becomes their problem. It is the number behind the writer’s incentive to act before expiry rather than at it.',
+    evidence: 'market-general',
+    reading: 'Sinclair, Volatility Trading (2013), the chapter on the mathematics of options.',
+    firstDefinedIn: 'on-ramp/05-orderflow',
+    seeAlso: ['delta-as-probability', 'delta', 'short-put'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'random-assignment',
+    headword: 'random assignment at exercise',
+    aliases: ['assignment allocation', 'OCC random selection'],
+    shortDef:
+      'When a holder exercises, OCC selects which clearing firm’s short position is assigned at random, and the firm allocates to its customers by its own approved method.',
+    bearsOn:
+      'A writer of SPY or ES options can be assigned on any day the holder chooses, with no warning and no relation to the writer’s own plan. It is the mechanical side of the writer’s obligation, and it does not exist for cash-settled SPX and NDX.',
+    evidence: 'market-general',
+    reading: 'OCC, Characteristics and Risks of Standardized Options, the chapter on exercise and assignment.',
+    firstDefinedIn: 'on-ramp/06-nq-es-layer',
+    seeAlso: ['assignment', 'american-style', 'es-options'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'exercise-cutoff',
+    headword: 'exercise cutoff time',
+    aliases: ['broker exercise deadline', '17:30 cutoff'],
+    shortDef:
+      'Brokers accept exercise instructions until a set time after the close, at or before OCC’s 17:30 ET deadline, later than the options market itself stops trading.',
+    bearsOn:
+      'For American-style contracts the position can change hands after every screen has gone quiet. A writer of SPY calls who is short at 16:15 may be short shares by the morning, decided in a window no tape records.',
+    evidence: 'market-general',
+    reading: 'Your broker’s exercise and assignment procedures; OCC exercise cutoff rules.',
+    firstDefinedIn: 'on-ramp/06-nq-es-layer',
+    seeAlso: ['assignment', 'american-style', 'exercise-by-exception'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'xnd',
+    headword: 'mini Nasdaq-100 index options (XND)',
+    aliases: ['XND'],
+    shortDef:
+      'A cash-settled, European-style option on one-hundredth of the Nasdaq-100, listed by Nasdaq, in the way XSP is one-tenth of SPX.',
+    bearsOn:
+      'It is the NDX analogue of the small-size route Chapter 12 describes, at about one-fortieth of an NQ future in delta at the money. The screen reads NDX; the ticket, at that size, would be XND.',
+    evidence: 'market-general',
+    reading: 'Nasdaq, XND contract specifications.',
+    firstDefinedIn: 'on-ramp/06-nq-es-layer',
+    seeAlso: ['xsp', 'ndx', 'nq-future'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'assignment-size-in-shares',
+    headword: 'assignment size in shares',
+    aliases: ['100 shares per contract', 'what you hold after assignment'],
+    shortDef:
+      'One ETF option contract delivers 100 shares. Assignment on one SPY contract at 600 is a $60,000 stock position; on one QQQ contract at 500, $50,000.',
+    bearsOn:
+      'A futures trader knows their contract’s notional; a writer of ETF options inherits a share position they did not size. It is the concrete form of the writer’s obligation that Chapter 12’s instrument table asks you to state before choosing.',
+    evidence: 'market-general',
+    reading: 'OCC, Characteristics and Risks of Standardized Options, on physical settlement.',
+    firstDefinedIn: 'on-ramp/06-nq-es-layer',
+    seeAlso: ['assignment', 'physically-settled', 'spy'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'theta-by-moneyness',
+    headword: 'theta curve by moneyness',
+    aliases: ['ATM theta acceleration'],
+    shortDef:
+      'At the money, theta grows as expiry approaches and is largest in the final hours. Out of the money, an option loses most of its time value earlier and has little left to lose late.',
+    bearsOn:
+      'Two 0DTE tickets bought at 09:30 decay on different schedules. The holder’s last-hour clock, which this chapter reads from the outside, is the ATM curve; the OTM holder’s clock ran earlier and quieter.',
+    evidence: 'market-general',
+    reading: 'Hull, Options, Futures, and Other Derivatives, the chapter on the Greek letters, the section on theta.',
+    firstDefinedIn: 'on-ramp/07-clocks-and-late-greeks',
+    seeAlso: ['theta', 'atm', 'otm'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'intraday-time-weighting',
+    headword: 'intraday time weighting',
+    aliases: ['trading-time theta', 'non-uniform decay'],
+    shortDef:
+      'Pricing models count time to expiry in calendar time, but market makers decay their marks faster during trading hours and slower overnight, because variance arrives with trading.',
+    bearsOn:
+      'The mark on a 0DTE ticket falls at a pace the textbook theta does not describe: faster than clock time in the morning, and in a way that varies by shop. A theta computed by hand checks against a mark that has already made this adjustment.',
+    evidence: 'market-general',
+    reading: 'Sinclair, Volatility Trading (2013), on time and variance.',
+    firstDefinedIn: 'on-ramp/07-clocks-and-late-greeks',
+    seeAlso: ['theta', 'mark'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'rho',
+    headword: 'rho',
+    aliases: ['interest-rate sensitivity'],
+    shortDef:
+      'The change in an option’s value for a one-point change in the interest rate. It is negligible on same-day and weekly options and material on long-dated ones.',
+    bearsOn:
+      'It is the greek this book leaves out because its clock is a day. A holder moving to monthlies or longer meets it, and meets it in the mark before meeting it in any explanation.',
+    evidence: 'market-general',
+    reading: 'Hull, Options, Futures, and Other Derivatives, the chapter on the Greek letters, the section on rho.',
+    firstDefinedIn: 'on-ramp/07-clocks-and-late-greeks',
+    seeAlso: ['vega', 'theta', 'greek-attribution'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'adjusting-a-position',
+    headword: 'adjusting a position',
+    aliases: ['roll, hedge, or close', 'position adjustment'],
+    shortDef:
+      'The three things a holder can do at a level besides nothing: close the leg, roll it to another strike or expiry, or hedge its delta with the underlying or with another option.',
+    bearsOn:
+      'Each prints differently. A close is a bar with the opposite sign; a roll is two bars; a futures hedge prints nowhere on an options screen. The chapter’s heuristics see the first two and infer the third.',
+    evidence: 'market-general',
+    reading: 'Natenberg, Option Volatility and Pricing (1994), the chapter on position adjustment.',
+    firstDefinedIn: 'on-ramp/08-heuristics-as-reading',
+    seeAlso: ['self-hedge', 'rolling-a-position', 'open-vs-close'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'managing-winners',
+    headword: 'closing at a fraction of maximum profit',
+    aliases: ['take profit at 50 percent', 'managing winners'],
+    shortDef:
+      'A common short-premium practice of buying back a short option once it has lost about half its value, rather than holding for the last half to expiry.',
+    bearsOn:
+      'It is the incentive behind a short strike seen from the inside: the writer wants out early and cheaply. Seen from the tape, it is buying at a strike that had been sold, and it is a reason a crowded short node can unwind before price ever reaches it.',
+    evidence: 'folklore (practitioner convention; not measured here)',
+    reading: 'Sinclair, Positional Option Trading (2020), the chapter on trade management.',
+    firstDefinedIn: 'on-ramp/08-heuristics-as-reading',
+    seeAlso: ['short-put', 'crowded-short-convexity', 'incentive'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'exit-liquidity-at-strike',
+    headword: 'exit liquidity at your strike',
+    aliases: ['open interest as your exit'],
+    shortDef:
+      'Your ability to close a position at a fair price depends on how actively that strike trades at that moment. Open interest and today’s volume at your strike are the crowd you will sell back into.',
+    bearsOn:
+      'A holder in the tallest node has company on the way out; one at an empty strike may find only the market maker’s widened quote. The pile this chapter reads as pressure is also the pile that decides how your ticket ends.',
+    evidence: 'market-general',
+    reading: 'Harris, Trading and Exchanges (2003), on liquidity and its dimensions.',
+    firstDefinedIn: 'on-ramp/08-heuristics-as-reading',
+    seeAlso: ['open-interest', 'volume', 'bid-ask-spread'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'iron-condor',
+    headword: 'iron condor',
+    aliases: ['condor'],
+    shortDef:
+      'A short put and a short call nearer the index, each protected by a bought option further out, all on one expiry: four legs, a fixed maximum loss, and a maximum profit if the index finishes between the two short strikes.',
+    bearsOn:
+      'It is the most common retail short-premium structure, and its two short strikes are where many crowded short-convexity nodes come from on a 0DTE map. The protecting legs print at the outer strikes with the opposite sign; the 2×2 shows four cells that belong to one incentive.',
+    evidence: 'market-general',
+    reading: 'Natenberg, Option Volatility and Pricing (1994), the chapter on spreads.',
+    firstDefinedIn: 'on-ramp/08-heuristics-as-reading',
+    seeAlso: ['crowded-short-convexity', 'two-by-two', 'vertical-spread'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'greek-limits',
+    headword: 'greek limits',
+    aliases: ['max delta', 'max vega', 'risk limits by greek'],
+    shortDef:
+      'Standing rules that cap a book’s total delta, gamma, vega, or theta at fixed amounts, which a desk checks before every trade and at every mark.',
+    bearsOn:
+      'They are the professional form of the futures trader’s position limit, and the reason a mark-based stop is not the only exit. A journal line for an option position can record a greek limit hit as a falsifier that had nothing to do with price.',
+    evidence: 'market-general',
+    reading: 'Taleb, Dynamic Hedging (1997), the chapters on risk management.',
+    firstDefinedIn: 'on-ramp/09-grammar-and-journal',
+    seeAlso: ['journal-line', 'falsifier', 'mark-based-stop'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'book-level-greeks',
+    headword: 'book-level greeks',
+    aliases: ['portfolio delta', 'net position greeks'],
+    shortDef:
+      'The greeks of all open positions added together, so that a long call here and a short put there are one number for delta and one for vega.',
+    bearsOn:
+      'The journal line here is written per position. A holder with three tickets has a book, and the book’s greeks can be flat while every line looks exposed, or the reverse; the per-line falsifier can fire on a risk the book does not have.',
+    evidence: 'market-general',
+    reading: 'Natenberg, Option Volatility and Pricing (1994), the chapter on position analysis.',
+    firstDefinedIn: 'on-ramp/09-grammar-and-journal',
+    seeAlso: ['journal-line', 'delta', 'vega'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'buying-power-reduction',
+    headword: 'buying power reduction',
+    aliases: ['BPR', 'margin used'],
+    shortDef:
+      'The amount of account margin a broker sets aside for a position, shown on the platform as a reduction in what remains available to trade.',
+    bearsOn:
+      'It is the number that stops a Stage 5 loop before a stop does. A short leg’s reduction can rise as the index moves toward it, so the journal’s sizing field for an option is a range, not a figure, until the position is closed.',
+    evidence: 'market-general',
+    reading: 'Your broker’s margin documentation; Cboe, Margin Manual.',
+    firstDefinedIn: 'on-ramp/09-grammar-and-journal',
+    seeAlso: ['margin', 'journal-line'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'decision-vs-ticket-count',
+    headword: 'decisions against tickets',
+    aliases: ['one decision, several fills'],
+    shortDef:
+      'A roll, an adjustment, or a multi-leg order produces several fills for one decision. A journal that counts fills records more activity than there was and splits one read across several lines.',
+    bearsOn:
+      'The journal line here is one read, one falsifier, one outcome. From the customer seat that unit is the decision, not the ticket; the fills are evidence for the line, not lines of their own.',
+    evidence: 'market-general',
+    reading: 'Sinclair, Positional Option Trading (2020), on record-keeping.',
+    firstDefinedIn: 'on-ramp/09-grammar-and-journal',
+    seeAlso: ['journal-line', 'rolling-a-position'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'intraday-iv-pattern',
+    headword: 'intraday implied-vol pattern',
+    aliases: ['IV decays into midday', 'opening vol premium'],
+    shortDef:
+      'On ordinary days the implied vol of same-day options is highest in the first minutes and falls through the morning as the day’s range becomes known, before flattening into the afternoon.',
+    bearsOn:
+      'A holder who buys a 0DTE at 09:31 pays the opening vol and can be right on direction and down on the mark by 10:30. It is the vol falsifier’s most common trigger, and it is a schedule, not a surprise.',
+    evidence: 'market-general (empirical regularity; not measured here)',
+    reading: 'Sinclair, Volatility Trading (2013), on intraday variance; Cboe Global Markets research on 0DTE intraday pricing.',
+    firstDefinedIn: 'on-ramp/09a-early-session',
+    seeAlso: ['opening-vol', 'vol-falsifier', 'implied-vol'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'overnight-vol-gap',
+    headword: 'overnight vol gap',
+    aliases: ['IV gap at the open'],
+    shortDef:
+      'Implied vol can open far from where it closed, because the overnight session, the pre-market releases, and the futures move all reprice the chain before it trades.',
+    bearsOn:
+      'Yesterday’s closing vol is not a reference for this morning’s opening vol. A holder carrying a weekly through the night finds the mark moved by a vol change they never saw print; the opening-vol line is a fresh number each day.',
+    evidence: 'market-general',
+    reading: 'Cboe, VIX Index methodology, on overnight and pre-open calculation.',
+    firstDefinedIn: 'on-ramp/09a-early-session',
+    seeAlso: ['opening-vol', 'vol-paid', 'global-trading-hours'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'chain-iv-off-stale-underlying',
+    headword: 'chain vol computed off a stale underlying',
+    aliases: ['wrong underlying at the open'],
+    shortDef:
+      'A platform backs implied vol out of each option’s price and the underlying’s price. In the first minutes the cash index it uses can be stale, so the displayed vol is off by the index error.',
+    bearsOn:
+      'A chain showing absurd vols at 09:31 is usually reporting a stale index, not a real price. Market makers quote off the futures; the holder reading the chain’s vol column is reading a different, and worse, input.',
+    evidence: 'market-general',
+    reading: 'S&P Dow Jones Indices, index calculation methodology, on real-time dissemination; Hull, on implied volatility.',
+    firstDefinedIn: 'on-ramp/09a-early-session',
+    seeAlso: ['opening-vol', 'implied-vol', 'stale-index-prints'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'ratio-spread',
+    headword: 'ratio spread',
+    aliases: ['backspread', '1×2'],
+    shortDef:
+      'A spread with unequal legs, such as buying one call and selling two at a higher strike. It has a region of profit, a region of loss, and an unprotected side beyond the extra short leg.',
+    bearsOn:
+      'On the Orderflow bars it prints as unequal bars at two strikes, and the extra leg is the one that carries the writer’s obligation. A multi-leg read that pairs equal bars misses it.',
+    evidence: 'market-general',
+    reading: 'Natenberg, Option Volatility and Pricing (1994), the chapter on ratio spreads.',
+    firstDefinedIn: 'on-ramp/09b-structure-and-gexbot',
+    seeAlso: ['multi-leg', 'short-call', 'long-call'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'spread-width',
+    headword: 'spread width',
+    aliases: ['strike width', 'wide and narrow spreads'],
+    shortDef:
+      'The distance between the two strikes of a two-leg spread on one expiry. Width sets the maximum profit and loss, the cost, and how the spread behaves as price moves between the strikes.',
+    bearsOn:
+      'A structure trader choosing strikes around a level is choosing a width. A narrow spread across the level behaves almost like a bet on the level itself; a wide one behaves like a single leg for most of its range.',
+    evidence: 'market-general',
+    reading: 'Natenberg, Option Volatility and Pricing (1994), the chapter on vertical spreads.',
+    firstDefinedIn: 'on-ramp/09b-structure-and-gexbot',
+    seeAlso: ['multi-leg', 'strike-spacing', 'strike-selection'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'diagonal-spread',
+    headword: 'diagonal spread',
+    aliases: ['diagonal'],
+    shortDef:
+      'A long option at one strike and expiry against a short at a different strike and a nearer expiry: a two-expiry spread with the strikes moved apart.',
+    bearsOn:
+      'It prints on two expiry groups at two strikes, so no one Gexbot screen shows it whole. It is the structure a holder reaches for when the level is right and the clock is not.',
+    evidence: 'market-general',
+    reading: 'Natenberg, Option Volatility and Pricing (1994), the chapter on time spreads.',
+    firstDefinedIn: 'on-ramp/09b-structure-and-gexbot',
+    seeAlso: ['multi-leg', 'expiry-group', 'option-structures'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'delta-strikes',
+    headword: 'delta strikes',
+    aliases: ['25-delta', 'the 10-delta put'],
+    shortDef:
+      'Practitioners name a strike by its delta rather than its price — “the 25-delta put” — because that name means the same distance from the index in probability terms on any day.',
+    bearsOn:
+      'A structure trader names a strike by its distance to a chart level; an options desk names it by delta. Both describe the same strike, and translating between them is how a level on the chart becomes a ticket.',
+    evidence: 'market-general',
+    reading: 'Natenberg, Option Volatility and Pricing (1994), on delta as a measure of moneyness.',
+    firstDefinedIn: 'on-ramp/09b-structure-and-gexbot',
+    seeAlso: ['delta', 'strike-selection', 'delta-as-probability'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'averaging-down',
+    headword: 'averaging down on a losing long option',
+    aliases: ['adding to a loser'],
+    shortDef:
+      'Buying more of an option whose mark has fallen, to lower the average debit.',
+    bearsOn:
+      'On a 0DTE the fall came from theta and vol as much as from price, and both keep working against the larger position. A futures trader’s habit of adding at a better price meets an instrument that is cheaper because it is worth less, which is not the same thing.',
+    evidence: 'market-general',
+    reading: 'Natenberg, Option Volatility and Pricing (1994), on the risks of long premium positions.',
+    firstDefinedIn: 'on-ramp/10-misreads-and-mastery',
+    seeAlso: ['debit-anchoring', 'holders-misread', 'theta'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'riding-to-zero',
+    headword: 'holding a bought option to expiry',
+    aliases: ['riding to zero', 'the full loss'],
+    shortDef:
+      'Keeping a losing long option because it still has time and a reversal would recover it, until it expires worthless and the whole debit is lost.',
+    bearsOn:
+      'It is the option holder’s form of not taking a stop, and it is worse, because the position’s value decays while the holder waits. The mark-based stop from the on-ramp exists for this case.',
+    evidence: 'market-general',
+    reading: 'OCC, Characteristics and Risks of Standardized Options, on the risks of option buyers.',
+    firstDefinedIn: 'on-ramp/10-misreads-and-mastery',
+    seeAlso: ['mark-based-stop', 'holders-misread', 'debit'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'churn',
+    headword: 'churn',
+    aliases: ['overtrading the chain', 'commission drag'],
+    shortDef:
+      'Many small tickets in a session, each carrying a spread and fees, so that costs accumulate faster than any edge.',
+    bearsOn:
+      'A futures trader pays one tick of spread per round trip; an option holder pays a spread that is a share of the premium, on both legs, plus fees per contract. The same activity level costs several times more, and the mark hides it until the day is summed.',
+    evidence: 'market-general',
+    reading: 'Barber and Odean, “Trading is hazardous to your wealth” (2000, Journal of Finance).',
+    firstDefinedIn: 'on-ramp/10-misreads-and-mastery',
+    seeAlso: ['bid-ask-spread', 'per-contract-fees', 'holders-misread'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'hedging-away-the-thesis',
+    headword: 'hedging away the thesis',
+    aliases: ['over-hedging a long option'],
+    shortDef:
+      'Selling futures against a bought call, or the reverse, in enough size that the position’s delta is flat and the direction bet is gone, while the theta and vol exposure remain.',
+    bearsOn:
+      'The holder meant to own direction and now owns a gamma position they did not price. It is the self-hedge Chapter 3 read from the outside, made by accident from the inside; the tape shows the futures leg and nothing about the intent.',
+    evidence: 'market-general',
+    reading: 'Natenberg, Option Volatility and Pricing (1994), on delta-neutral positions.',
+    firstDefinedIn: 'on-ramp/10-misreads-and-mastery',
+    seeAlso: ['self-hedge', 'delta-neutral', 'holders-misread'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'end-of-day-chain-data',
+    headword: 'end-of-day chain data',
+    aliases: ['historical options data', 'EOD chains'],
+    shortDef:
+      'Vendor files of every strike’s closing bid, ask, volume, open interest, and implied vol, one row per contract per day, sold by several data companies and by Cboe.',
+    bearsOn:
+      'A paper position can be rebuilt and re-marked across weeks from these, which is how Chapter 11’s forty sessions become a dataset. The intraday marks the on-ramp uses are not in them; the closing marks are.',
+    evidence: 'market-general',
+    reading: 'Cboe DataShop, product documentation for end-of-day option data.',
+    firstDefinedIn: 'on-ramp/11-further-learning',
+    seeAlso: ['paper-position', 'backtest-overfitting', 'mark'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'liquidation-value',
+    headword: 'liquidation value against the mid',
+    aliases: ['bid-side mark', 'exit value'],
+    shortDef:
+      'What a position would fetch if closed now — long options at the bid, short options bought back at the ask — as opposed to its mark at the middle of the quote.',
+    bearsOn:
+      'The mark-to-mid ledger overstates what you have by half the spread on every leg. A paper position that shows a small gain at mid can be a loss at liquidation, and the difference is largest at the open and at the strikes with the widest quotes.',
+    evidence: 'market-general',
+    reading: 'Harris, Trading and Exchanges (2003), on transaction costs.',
+    firstDefinedIn: 'on-ramp/11-further-learning',
+    seeAlso: ['mark-to-mid', 'bid-ask-spread', 'mark'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'sigma-normalized-moves',
+    headword: 'sigma-normalized moves',
+    aliases: ['moves in expected-move units', 'standardized returns'],
+    shortDef:
+      'Stating an index move as a multiple of the expected move for that window rather than in points, so that a 20-point move on a quiet day and a 40-point move on a wild one can be compared.',
+    bearsOn:
+      'A paper position’s attribution across days of different vol is not comparable in points. In sigma units the same gamma line means the same thing every day, and the residual stands out against a stable scale.',
+    evidence: 'market-general',
+    reading: 'Sinclair, Volatility Trading (2013), on measuring realized against implied.',
+    firstDefinedIn: 'on-ramp/11-further-learning',
+    seeAlso: ['expected-move', 'greek-attribution', 'paper-position'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'pnl-denomination',
+    headword: 'P&L denomination',
+    aliases: ['points, dollars, or percent of debit'],
+    shortDef:
+      'Whether a result is written in index points, in dollars per contract, or as a percentage of the premium paid. The three orderings of the same trades differ.',
+    bearsOn:
+      'A ledger kept in percent of debit makes a $50 option’s 40 percent loss look like a monthly’s; one kept in points hides the multiplier. The paper ledger fixes one denomination so the attribution table adds up in the same units as the mark.',
+    evidence: 'market-general',
+    reading: 'Sinclair, Positional Option Trading (2020), on record-keeping.',
+    firstDefinedIn: 'on-ramp/11-further-learning',
+    seeAlso: ['paper-position', 'debit', 'point-value'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'exchange-market-statistics',
+    headword: 'exchange market statistics',
+    aliases: ['Cboe daily market statistics', 'OCC volume reports'],
+    shortDef:
+      'Free daily and monthly reports from Cboe and OCC: volume by product and by exchange, put and call totals, open interest, and 0DTE share.',
+    bearsOn:
+      'They are the public denominator behind several numbers this book labels market-general, and the first place to check any claim about how large a pile or a flow is. Learning to read them is part of the first week’s practice.',
+    evidence: 'market-general',
+    reading: 'Cboe Global Markets, Market Statistics; OCC, Volume and Open Interest reports.',
+    firstDefinedIn: 'on-ramp/12-futures-to-options',
+    seeAlso: ['market-general', 'hedge-complex-scale', 'zero-dte-share'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'oic-education',
+    headword: 'Options Industry Council',
+    aliases: ['OIC'],
+    shortDef:
+      'The education arm funded by OCC and the U.S. options exchanges, with free courses, webinars, and the current disclosure document, aimed at retail investors.',
+    bearsOn:
+      'It is the plain, non-selling introduction to the mechanics that Chapter 12’s Gap 5 requires, and it is free. It teaches the customer seat; it does not teach the reading this book does.',
+    evidence: 'market-general',
+    reading: 'Options Industry Council, optionseducation.org.',
+    firstDefinedIn: 'on-ramp/12-futures-to-options',
+    seeAlso: ['approval-levels', 'seat'],
+    kind: 'adjacent',
+  },
+  {
+    id: 't-plus-one-settlement',
+    headword: 'T+1 settlement of option trades',
+    aliases: ['next-day settlement', 'premium settlement'],
+    shortDef:
+      'Listed option trades settle on the next business day: the premium leaves or arrives in the account on T+1, though the position and its margin effect are immediate.',
+    bearsOn:
+      'A cash-account holder who sells a position and re-buys the same day can run into unsettled funds. Futures settle daily; the different rhythm shows up in the first week of the loop as a broker message, not a market event.',
+    evidence: 'market-general',
+    reading: 'OCC, settlement procedures; your broker’s cash-account rules on unsettled funds.',
+    firstDefinedIn: 'on-ramp/12-futures-to-options',
+    seeAlso: ['cash-vs-margin-account', 'premium'],
+    kind: 'adjacent',
+  },
+  {
+    id: 'holiday-and-early-close',
+    headword: 'exchange holidays and early closes',
+    aliases: ['half day', '13:00 close'],
+    shortDef:
+      'The options and cash markets close on exchange holidays and at 13:00 ET on several half days; expiries that fall on a holiday move to the prior trading day.',
+    bearsOn:
+      'A first-week loop meets one of these soon. The last-hour clock is 12:00–13:00 on a half day, theta runs to a different end, and a 0DTE listed for a holiday Friday expires on the Thursday.',
+    evidence: 'market-general',
+    reading: 'Cboe, holiday calendar and trading hours.',
+    firstDefinedIn: 'on-ramp/12-futures-to-options',
+    seeAlso: ['clock-family', 'zero-dte', 'last-trading-time'],
+    kind: 'adjacent',
+  },
 ];
 
 export function getEntry(id: string): GlossaryEntry | undefined {

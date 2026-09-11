@@ -10,6 +10,7 @@ import NeededForThisScreen from '@site/src/components/textbook/NeededForThisScre
 import TermFirst from '@site/src/components/textbook/TermFirst';
 import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
 import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import AdjacentConcepts from '@site/src/components/textbook/AdjacentConcepts';
 import OfficialFigure from '@site/src/components/textbook/OfficialFigure';
 import TwoByTwoExplorer from '@site/src/components/charts/TwoByTwoExplorer';
 
@@ -22,6 +23,8 @@ import TwoByTwoExplorer from '@site/src/components/charts/TwoByTwoExplorer';
 **What you already need.** [State](/docs/plans/04-state): DEX as a record, convexity as pending gamma, GEX profile as which wing. You also need Chapter 3’s hedge chain: an Orderflow bar *is* link 1, the print.
 
 ## Three pictures of the same leftover
+
+State told you where the leftover sits. It cannot tell you when it arrived, and the moment it arrived is the moment someone was handed risk. Orderflow is that clock.
 
 State’s ladders are a **stock**: leftover by strike, so far today.
 
@@ -151,7 +154,7 @@ Add GEX orderflow and you get **net GEX**: running call-sided leftover gamma min
 
 Add convexity orderflow and you get **net convexity**: leftover option buying minus leftover option selling so far today.
 
-None of these nets existed at 09:30:01. They are so-far maps.
+None of these nets existed at 09:30:01. They are so-far maps. A reader who explains a 09:35 fill with a 15:50 net has used a number that did not exist at the fill.
 
 <GexbotConcept id="ladder-increment-net" />
 <WhoMustAct screenId="nets" />
@@ -178,9 +181,9 @@ None of these nets existed at 09:30:01. They are so-far maps.
 
 ## Spike, sequence, noise
 
-One large bar is an **event**: something just printed. Many small bars of the same sign are a **sequence**: they name a **day-type** (fear versus grind) only after you have enough of them. Alternating tiny bars are two-way cancel — **noise**. Ignore them. Pressure: **none**.
+One large bar is an **event**: something just printed. Many small bars of the same sign are a **sequence**: they name a **day-type** (fear versus grind) only after you have enough of them. Alternating tiny bars are two-way cancel — **noise**. Pressure: **none**; nobody is left holding anything.
 
-Do not name the day at 09:35 from one spike.
+One large bar at 09:35 is a print, not a day. Name the day from it and you will read every node for the next hour through a lens that one print chose for you.
 
 <GexbotConcept id="spike-sequence-noise" />
 <WhoMustAct id="spike-sequence-noise" />
@@ -207,6 +210,8 @@ Orderflow is the increment of the leftover you already learned to locate. A bar 
 2. **One spike is the day-type?** No. Sequence names the day; a spike marks a moment.
 3. **Can I use the 15:50 net on a 09:35 fill?** Labeling leak.
 
+<AdjacentConcepts docId="plans/05-orderflow" />
+
 <CheckYourself
   items={[
     {
@@ -221,5 +226,7 @@ Orderflow is the increment of the leftover you already learned to locate. A bar 
 />
 
 ## Gate
+
+On-ramp: [The four positions you can hold](/docs/on-ramp/05-orderflow) — this chapter’s object from the customer seat.
 
 Next: [NQ and the Nasdaq family](/docs/layer/06-nq-es-layer) — the three Nasdaq contracts, what leftover NQ_NDX draws, and why the inferred hedge is most likely to land in NQ.

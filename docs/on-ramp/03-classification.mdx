@@ -1,0 +1,78 @@
+---
+title: "3 · Options on-ramp: your counterparty"
+---
+
+import TermFirst from '@site/src/components/textbook/TermFirst';
+import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
+import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import AdjacentConcepts from '@site/src/components/textbook/AdjacentConcepts';
+
+# Your counterparty
+
+When you lift 500 calls, someone you never see buys about 500 ES within seconds because of you. They did not agree with you. They were obliged, and that obligation is the only “must” in this book.
+
+**What this page assumes.** [Chapter 3](/docs/plans/03-classification): aggressor, customer long and short, residual, the dealer, delta-neutral, mandate and incentive, the six-link hedge chain, and open-versus-close. [Your footprint](/docs/on-ramp/01-what-gexbot-is) and [your ticket](/docs/on-ramp/02-classic). **What you will be able to do.** Write the hedge chain with yourself as link 1, say your pressure word and theirs, and state what the classifier will and will not know about you.
+
+## The other side of your ticket
+
+Chapter 3 named the two books: the customer who crossed the spread and the dealer who absorbed the print. When you lift the offer on 500 calls, you are the customer. The dealer who filled you is your **counterparty**: the firm that now holds the mirror of your position and has to manage it.
+
+<TermFirst id="counterparty" />
+
+## The chain, with you as link 1
+
+Go back to 10:05 and sit in the customer seat.
+
+1. You lift 500 SPX 0DTE ATM calls. Classification signs the print **customer long**.
+2. Your counterparty absorbs: short 500 calls, delta about −0.50 each.
+3. They buy about 500 ES within seconds. Pressure: **mandate**. This is the print you never saw on your tape and could not find.
+4. The index rises 15 points. Delta walks toward 0.80. They buy about 300 more ES. Pressure: mandate; the verb Chapter 3 gave it is **chase**.
+5. Time passes and the clock changes their delta; they re-hedge. Chapter 7 owns this link.
+6. Your calls expire or you sell them. They unwind.
+
+Your pressure word at every link is **incentive**. You can hold, sell, or walk away, and nothing obliges you. Theirs is mandate, and “forced” is their word. Do not borrow it; a sentence that says you must do anything with your own option is wrong by construction.
+
+## What buying calls does not do
+
+Link 3 happens once, within seconds, mostly before your bar appears on any screen. It does not repeat. Your buying made one firm buy once; it will buy more only if the index has already risen, and it will sell if the index falls. Buying calls does not make the market go up. It leaves a counterparty who will follow the index either way. Chapter 4 is the whole chapter on the difference between what is done and what is pending.
+
+## What the classifier knows about you
+
+It signs you customer long, correctly. It does not know whether you opened a new position or closed a short you already had; Chapter 3 said buy-to-close looks identical to buy-to-open, and that is now a sentence about your footprint. It does not know whether you sold ES yourself against the calls. If you did, two hedgers face each other and the net forced flow is close to nothing — the self-hedge case Chapter 3 marked *inferred* — and Gexbot draws your bar as if you had not.
+
+## The one thing that changes
+
+In futures your counterparty is another trader with the same instrument and no obligation to you afterwards. Here your counterparty has an obligation, it lands in the market you used to trade, and you can predict it. Chapter 12 calls this “the hedge chain becomes your counterparty’s behavior,” and names it as the one thing most people arrive at options without.
+
+## Summary
+
+Your counterparty is the dealer who absorbed your print. With you as link 1, the hedge chain is a description of what they do next: hedge once under mandate, then follow the index. Your pressure word is incentive throughout. The classifier signs you correctly and knows nothing about open versus close or your own hedge. Buying calls does not push the market; it creates a follower.
+
+## Terms introduced
+
+<ChapterTerms docId="on-ramp/03-classification" />
+
+## Newcomer questions
+
+1. **If I buy 500 calls, do I move ES?** Once, by about 500 contracts, through your counterparty, within seconds. After that they follow the index, not you.
+2. **Can I say I am forced to sell my calls if the index drops?** No. You have incentive, never mandate. Forced is the dealer’s word.
+3. **I bought to close a short. Does Gexbot know?** No. Your bar is customer long, identical to a fresh buy.
+
+<AdjacentConcepts docId="on-ramp/03-classification" />
+
+<CheckYourself
+  items={[
+    {
+      q: 'Write links 1 to 4 of the hedge chain with yourself as link 1, with the pressure word at each.',
+      a: 'You lift 500 calls (incentive) · dealer absorbs · dealer buys ≈500 ES (mandate) · index +15, dealer buys ≈300 more (mandate, chase).',
+    },
+    {
+      q: 'What two things about your trade does classification not know?',
+      a: 'Whether you opened or closed, and whether you hedged your own delta in ES.',
+    },
+  ]}
+/>
+
+## Gate
+
+Next: [State](/docs/plans/04-state). Its on-ramp page finds your bar on the ladders and names the price you paid that no ladder shows.

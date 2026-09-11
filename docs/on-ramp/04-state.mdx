@@ -1,0 +1,69 @@
+---
+title: "4 · Options on-ramp: the vol you paid"
+---
+
+import TermFirst from '@site/src/components/textbook/TermFirst';
+import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
+import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import AdjacentConcepts from '@site/src/components/textbook/AdjacentConcepts';
+
+# The vol you paid
+
+Your call’s mark can fall while the index stands still, because a number you did not choose — the market’s guess about how much the index will move — fell after you bought. Chapter 4 taught that number as a regime other people trade in. This page is the same number from your seat, where it is a price.
+
+**What this page assumes.** [Chapter 4](/docs/plans/04-state): implied vol, the vol regime, walls and fuel as folklore, DEX as a record, convexity as pending and path-conditional. [The mark](/docs/on-ramp/02-classic) and [your counterparty](/docs/on-ramp/03-classification). **What you will be able to do.** Say what regime you paid in and what it does to the mark; find your own position on each State ladder; say what State tells you about it and what it cannot.
+
+## The regime as a price
+
+When you paid 13 points for the 6000 call, part of that price was a guess about movement: the implied vol at that moment. Chapter 4 said implied vol is the market’s standing guess. From your seat it is an ingredient you paid for. This book calls the implied vol at which you opened a position the **vol paid**.
+
+<TermFirst id="vol-paid" />
+
+If implied vol falls after you buy, the mark falls with the index unchanged; you paid for movement the market has since decided is less likely. If it rises, the mark rises the same way. Chapter 4’s falling-vol and rising-vol regimes are, for you, the difference between paying a fair rent and paying a peak one. The implied vol Chapter 4 showed per strike on the options profile is where you read the regime; the vol paid is what you compare it to.
+
+## Your bar on the ladders
+
+Your 500 bought calls sit on State as a customer-long bar at 6000 on the options profile, a plus bar on the DEX ladder, and a plus bar on the convexity ladder. You own the pile Chapter 4 described from outside.
+
+Chapter 4 also carried the folklore about that pile. In falling vol, a holder of leftover longs has an incentive to sell on approach, and the pile reads as a wall; in rising vol the holder has an incentive to sit, and the pile reads as fuel. From your seat the folklore is not a rule. It is a description of an incentive you will feel: a bought call in falling vol loses value every minute the index does not move, and the pull to sell it into a rally is exactly the pull the wall story is built on. The label stays **folklore**. Feeling the incentive does not make it a mechanism.
+
+## What State tells you, and cannot
+
+State tells you whether other holders share your sign at your strike — whether you are crowded or alone — and it tells you, through DEX, that your counterparty’s first hedge is a record: already done. It cannot tell you your debit, your vol paid, or whether you are ahead. Two holders of the same bar can be in opposite P&L because they paid different vol. The ladder is honest about the pile and silent about the tickets.
+
+## The one thing that changes
+
+A futures position never changes value while price is still. Yours does, on a number that moves for its own reasons and that you cannot see on your chart. Chapter 12’s Gap 2 is the full account of that number as a surface; Chapter 7 gives you its clock.
+
+## Summary
+
+Vol paid is the implied vol at which you opened. If vol falls afterwards, the mark falls with price unchanged. Your 500 calls are a customer-long, plus-DEX, plus-convexity bar; the wall and fuel folklore describes an incentive you will feel, and stays folklore. State shows the pile and your counterparty’s finished hedge; it shows nothing about your ticket.
+
+## Terms introduced
+
+<ChapterTerms docId="on-ramp/04-state" />
+
+## Newcomer questions
+
+1. **I bought calls, the index rose, and I am losing. How?** Vol paid was higher than vol now, or rent ran, or both. Chapter 12 splits the pieces.
+2. **If I am part of the wall, is the wall real?** The wall is a hypothesis about people like you in falling vol, labeled folklore. You being one of them does not promote it to fact.
+3. **Does State know I am winning?** No. It knows the pile’s sign and size. It does not know what anyone paid.
+
+<AdjacentConcepts docId="on-ramp/04-state" />
+
+<CheckYourself
+  items={[
+    {
+      q: 'Define vol paid and say what happens to the mark if implied vol falls with price unchanged.',
+      a: 'The implied vol at which you opened. The mark falls; you paid for movement the market now expects less of.',
+    },
+    {
+      q: 'Where do your 500 bought calls appear on the three State ladders?',
+      a: 'Customer-long bar at 6000 on the options profile; plus bar on DEX; plus bar on convexity.',
+    },
+  ]}
+/>
+
+## Gate
+
+Next: [Orderflow](/docs/plans/05-orderflow). Its on-ramp page turns the four cells you learned to read into the four positions you can hold.

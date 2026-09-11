@@ -1,0 +1,72 @@
+---
+title: "5 · Options on-ramp: the four positions"
+---
+
+import TermFirst from '@site/src/components/textbook/TermFirst';
+import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
+import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import AdjacentConcepts from '@site/src/components/textbook/AdjacentConcepts';
+
+# The four positions you can hold
+
+The 2×2 you learned to read on Orderflow is not a classification scheme. It is the list of things you can own, and what each cell wants is what its owner wants.
+
+**What this page assumes.** [Chapter 5](/docs/plans/05-orderflow): bar versus running score, the three Orderflow tapes, the 2×2 of long call / long put / short call / short put, expansion, and the three nets. [The vol you paid](/docs/on-ramp/04-state). **What you will be able to do.** Name your position as a cell, say what it wants, and see what your one print looks like on three tapes at once.
+
+## Cells as positions
+
+A position in one contract at one strike is a **single-leg position**. There are four, and they are the four cells.
+
+<TermFirst id="single-leg" />
+
+- **Long call.** Plus DEX, plus convexity. Wants the index to expand upward, away from the strike. Loses rent while it waits.
+- **Long put.** Minus DEX, plus convexity. Wants expansion downward. Loses rent while it waits.
+- **Short call.** Minus DEX, minus convexity. Wants the index to stay below the strike, or to pin onto it. Collects rent while it waits, and owes more than it collected if the index runs.
+- **Short put.** Plus DEX, minus convexity. Wants the index to stay above the strike or pin. Collects rent; owes on a drop.
+
+Chapter 5 said the convexity sign tells you whether the customer paid for movement or collected for stillness. From your seat: bought convexity means you want movement and pay to wait; sold convexity means you want stillness and are paid to wait. That is the whole difference between two of the four positions and the other two.
+
+## One print, three bars
+
+Your lift of 500 calls at 10:05 is one print. On Orderflow it is three bars: a plus bar on DEX orderflow, a call-sided plus bar on GEX orderflow, and a plus bar on convexity orderflow. Three pictures of one event. A reader who stacks them as three confirmations has counted you three times; Chapter 9b names the error. From your seat the lesson is smaller: your one decision looks, to everyone else, like three facts.
+
+## What Orderflow tells you, and cannot
+
+It tells you when your print landed and with what sign, among the others of the same minute. It tells you whether your side of the ledger is growing or being cancelled through the session — the running score. It cannot tell you your reason, whether you opened or closed, or whether you hedged yourself. Your bar looks like anyone’s.
+
+## The one thing that changes
+
+A futures trader wants direction; there is nothing else to want. Two of the four cells want direction. The other two want nothing to happen, and pay their owner for it. You can own a position that makes money when the index closes where it opened. Chapter 12 calls this “the 2×2 becomes your position’s name,” and Chapter 11 gives the arithmetic of being paid to wait.
+
+## Summary
+
+The four cells are the four single-leg positions. Bought convexity wants movement and pays rent; sold convexity wants stillness and collects it. Your one print is three bars on three tapes. Orderflow shows your bar’s time and sign and nothing about your reason.
+
+## Terms introduced
+
+<ChapterTerms docId="on-ramp/05-orderflow" />
+
+## Newcomer questions
+
+1. **Which cell is “bullish”?** Long call and short put both have plus DEX. One pays to wait and wants a run; the other is paid to wait and wants the index not to fall. Direction alone does not name a cell.
+2. **My one trade shows on three tapes. Is that three signals?** No. One print, three drawings.
+3. **Can I be paid for the index doing nothing?** Yes; that is what the two sold cells are. What they owe when the index does something is Chapter 12’s subject.
+
+<AdjacentConcepts docId="on-ramp/05-orderflow" />
+
+<CheckYourself
+  items={[
+    {
+      q: 'Name the cell that has minus DEX and plus convexity, and say what it wants.',
+      a: 'Long put. Expansion downward, away from the strike. It pays rent while waiting.',
+    },
+    {
+      q: 'Your 500-call lift prints on how many Orderflow tapes, and as what?',
+      a: 'Three: plus DEX orderflow, call-sided plus GEX orderflow, plus convexity orderflow. One print.',
+    },
+  ]}
+/>
+
+## Gate
+
+Next: [NQ and the Nasdaq family](/docs/layer/06-nq-es-layer). Its on-ramp page translates your futures size into an options size and asks what you would hold on Monday.

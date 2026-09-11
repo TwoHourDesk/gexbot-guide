@@ -1,0 +1,70 @@
+---
+title: "9b · Options on-ramp: choosing your strike from structure"
+---
+
+import TermFirst from '@site/src/components/textbook/TermFirst';
+import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
+import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import AdjacentConcepts from '@site/src/components/textbook/AdjacentConcepts';
+
+# Choosing your strike from structure
+
+Structure tells a futures trader where price is and what it did. For a holder it decides which strike is theirs, and that decision is most of what a position is.
+
+**What this page assumes.** [Chapter 9b](/docs/practice/09b-structure-and-gexbot): the structure field, S1–S10, multi-leg structures, the hedged holder, the partial picture, and the rookie list. [When you are the level](/docs/on-ramp/08-heuristics-as-reading). **What you will be able to do.** Say how structure and leftover together describe a strike, and see your own legs the way a Gexbot reader sees them.
+
+This page describes what a strike is once chosen. It does not say which to choose.
+
+## Strike selection
+
+Chapter 9b’s combined setups put a structural location next to a Gexbot object and named the pressure that resulted. A holder makes the same combination in reverse: the strike they hold sits somewhere in the structure field and somewhere on the ladders, and those two facts describe the position before anything else does. Choosing which strike a position sits at, from where structure and leftover sit, is **strike selection**.
+
+<TermFirst id="strike-selection" />
+
+Two descriptions, both from Chapter 9b, both about you if the strike is yours:
+
+- A strike inside customer-long leftover at a swing high is in the wall of S2. Hold a long call there and you are among the holders whose incentive to sell on approach the sweep will test.
+- A strike at a crowded short-convexity node is where the shove of S8 lands. Hold a short call there and the dealers’ chase through the node is a chase through your position.
+
+Neither sentence recommends either strike. Both say what a holder there is.
+
+## Your legs on the screen
+
+Chapter 9b said a multi-leg trade prints two or more bars and that a Gexbot reader may read each leg as a separate opinion. When the legs are yours, you are the one being misread: a bought call and a sold call at two strikes are one position with one thesis, and the ladder shows two bars with two signs. The hedged-holder case is you too: if you sold ES against your calls, your Gexbot bar is drawn as if you had not, and the partial picture means that any position you hold in a venue Gexbot does not see leaves no bar at all.
+
+## The one thing that changes
+
+A futures trader has one leg. A holder may have several, and Gexbot reads each one on its own, so the screen you learned to read will describe your position as a set of parts and never as the whole. Chapter 12’s Gap 4 is where combinations are taught; its gate asks you to say what a Gexbot user would misread about you.
+
+## Summary
+
+Strike selection is choosing where a position sits from structure and leftover together; once chosen, the strike’s place in the structure field and on the ladders describes the holder. Multi-leg positions print as separate bars, a self-hedge is invisible, and positions outside Gexbot’s venues leave nothing. The reader’s S-reads are now descriptions of you.
+
+## Terms introduced
+
+<ChapterTerms docId="on-ramp/09b-structure-and-gexbot" />
+
+## Newcomer questions
+
+1. **Does structure tell me which strike to buy?** No. It tells you what a holder at a given strike is, in the same words Chapter 9b used for the crowd.
+2. **My two-leg position shows as two bars. Is Gexbot wrong?** No. It sees legs. It does not see positions.
+3. **I hedged my calls with ES. Where is that on Gexbot?** Nowhere. Your bar is drawn as an unhedged directional customer; that is the inferred limit Chapter 3 named.
+
+<AdjacentConcepts docId="on-ramp/09b-structure-and-gexbot" />
+
+<CheckYourself
+  items={[
+    {
+      q: 'Define strike selection and give one S-read that describes a holder at the chosen strike.',
+      a: 'Choosing where a position sits from structure and leftover together. Example: a long call inside customer-long leftover at a swing high is in the S2 wall.',
+    },
+    {
+      q: 'How does Gexbot draw a bought call plus a sold call at two strikes?',
+      a: 'As two bars with two signs at two strikes. It reads legs, not positions.',
+    },
+  ]}
+/>
+
+## Gate
+
+Next: [Misreads and mastery](/docs/practice/10-misreads-and-mastery). Its on-ramp page translates each misread into the form that costs a holder premium.

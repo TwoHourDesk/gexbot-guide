@@ -1,0 +1,69 @@
+---
+title: "1 · Options on-ramp: your footprint"
+---
+
+import TermFirst from '@site/src/components/textbook/TermFirst';
+import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
+import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import AdjacentConcepts from '@site/src/components/textbook/AdjacentConcepts';
+
+# Your footprint on the map
+
+If you buy one index option this morning, you leave traces on the screens Chapter 1 mapped. None of them says it was you, and none of them says why.
+
+**What this page assumes.** [Chapter 1](/docs/plans/01-what-gexbot-is): the five screens, open interest, volume, leftover, and the rule that a pile shows what is there and not who owns it. The [two seats](/docs/on-ramp/00-intro). **What you will be able to do.** Say where one trade of yours appears on each screen, when, and what each screen cannot know about it.
+
+## Three traces from one trade
+
+Buy one option contract on the index. Three things happen to the map, on three clocks.
+
+At once, your contract is in today’s **volume** at that strike. Classic will draw it tonight as part of today’s footprints; until then it is one contract among the day’s count.
+
+At once, if you were the aggressive side and no one traded the opposite way at the same strike to cancel you, your contract is in the **leftover** that State, Orderflow, and Quant draw. If someone did cancel you, your trade is in volume and nowhere else.
+
+Tonight, if you still hold the contract, it is in **open interest**, and Classic’s slow map carries it tomorrow morning.
+
+This book calls the set of traces one trade leaves across the screens its **footprint**.
+
+<TermFirst id="footprint" />
+
+## What the map cannot say about you
+
+The map cannot say the trace is yours. It cannot say whether you opened a new position or closed an old one; Chapter 3 gives that limit its name. It cannot say whether you did something else at the same time that cancels the risk your contract carries. So a reader looking at your bar sees exactly what Chapter 1 said every reader sees: a pile, not a person. You are now on the far side of “we can see the pile, not who owns it,” and the sentence is as true of you as of anyone.
+
+## The one thing that changes
+
+When you trade ES, your fill lands on another futures trader with the same instrument and no obligation to you afterwards. When you buy an option, your fill lands on a firm that now has to do something in ES *because of you*, and that something is the force this whole book is about. Chapter 3 names the firm and what it must do. Chapter 12 calls this moment “you become the print.”
+
+## Summary
+
+One option trade leaves a footprint on three clocks: volume now, leftover now if uncancelled, open interest tonight if held. No trace carries your name or your reason. The difference from a futures fill is not the trace; it is that the other side of your ticket now has work to do on the tape you used to trade.
+
+## Terms introduced
+
+<ChapterTerms docId="on-ramp/01-what-gexbot-is" />
+
+## Newcomer questions
+
+1. **Will I see my own trade on Gexbot?** As one contract inside a pile, if it was leftover. Never labeled, never signed as yours.
+2. **Does buying an option move ES?** Chapter 3 answers that. This page only says: your fill obliges someone; a futures fill does not.
+3. **If someone sold the same strike a second later, where am I?** In volume. Not in leftover. The two of you cancelled, and the map is honest about that.
+
+<AdjacentConcepts docId="on-ramp/01-what-gexbot-is" />
+
+<CheckYourself
+  items={[
+    {
+      q: 'Name the three traces one option trade can leave and the clock each one is on.',
+      a: 'Volume — at once. Leftover — at once, only if aggressive and uncancelled. Open interest — tonight, only if still held.',
+    },
+    {
+      q: 'What is the difference between your option fill and your ES fill, as far as the tape is concerned?',
+      a: 'The ES fill obliges nobody. The option fill lands on a firm that now has to act in ES because of you.',
+    },
+  ]}
+/>
+
+## Gate
+
+Next: [Classic](/docs/plans/02-classic). Its on-ramp page reads Chapter 2’s words as the words on your own ticket.

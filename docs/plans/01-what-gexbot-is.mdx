@@ -6,6 +6,7 @@ import TermFirst from '@site/src/components/textbook/TermFirst';
 import DistinguishingNote from '@site/src/components/textbook/DistinguishingNote';
 import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
 import CheckYourself from '@site/src/components/textbook/CheckYourself';
+import AdjacentConcepts from '@site/src/components/textbook/AdjacentConcepts';
 import OfficialFigure from '@site/src/components/textbook/OfficialFigure';
 import NotTheSame from '@site/src/components/charts/NotTheSame';
 
@@ -18,6 +19,8 @@ import NotTheSame from '@site/src/components/charts/NotTheSame';
 **What you already need.** [How to use this book](/docs/intro) — what this course is, and how this book marks a fact versus a guess. You still do not need to have traded an option.
 
 ## Why a futures trader opens Gexbot
+
+Some of the buying and selling in ES and NQ is not a view on the index. It is firms getting rid of risk that option positions handed them, and nothing on your tape marks it. This chapter is the map of the screens that make it inferable.
 
 ES and NQ are futures on large stock indexes. Alongside those futures, people also trade **options** on the same indexes: contracts that are a *right*, not an obligation, to buy or sell at a chosen level by a chosen time. Chapter 2 will teach the contract properly. For this chapter you only need one fact:
 
@@ -52,7 +55,7 @@ Classic, below, draws GEX from **both** piles: a map from last night’s leftove
 
 A GEX map can tell you *where* the exposure sits and still hide *who* is long the options and who is short them. This book calls that **unsigned**.
 
-Think of a warehouse photo: you can see how high the boxes are stacked on each shelf. You cannot see whose name is on the boxes. Many public “GEX maps” on the internet are this kind of photo. They often assume a story about who owns the pile (“dealers are always short”). That story is an **assumption**, not something the picture proved.
+Think of a warehouse photo: you can see how high the boxes are stacked on each shelf. You cannot see whose name is on the boxes. Many public “GEX maps” on the internet are this kind of photo. They often assume a story about who owns the pile (“dealers are always short”). That story is an **assumption**, not something the picture proved. Most public GEX commentary runs on it, and when it is wrong the reader who leaned on it has traded against an owner the picture never showed.
 
 <TermFirst id="unsigned" />
 
@@ -149,6 +152,8 @@ Other tools reuse the English words gamma, GEX, wall, and flow. They are not the
 
 ## What no Gexbot screen shows
 
+Each item on this list is a place where someone will offer you certainty the screen does not have.
+
 The hedge itself on ES or NQ. How much of that hedge is already done. Overnight inventory beyond Classic’s open-interest map. Whether the customer already hedged their own option in the futures. Whether a buy was a new long or a short covering. A futures print you can point at and call “the dealer.”
 
 ## Summary
@@ -167,6 +172,8 @@ Sit Classic next. That is where call, put, strike, and gamma become words you ca
 2. **Does State tell me the next ES buyer?** It names leftover option paper. Who hedges, when, and in which size is a later chapter — and even then, inferred, never a futures print you can circle.
 3. **Can I skip to Orderflow?** Not until you can say, in a sentence, why Classic’s pile and State’s leftover are not the same object.
 
+<AdjacentConcepts docId="plans/01-what-gexbot-is" />
+
 <CheckYourself
   items={[
     {
@@ -181,5 +188,7 @@ Sit Classic next. That is where call, put, strike, and gamma become words you ca
 />
 
 ## Gate
+
+On-ramp: [Your footprint on the map](/docs/on-ramp/01-what-gexbot-is) — this chapter’s object from the customer seat.
 
 Next: [Classic](/docs/plans/02-classic). You will sit the unsigned map, and you will learn call, put, strike, and gamma *because that screen is drawn from them*.
