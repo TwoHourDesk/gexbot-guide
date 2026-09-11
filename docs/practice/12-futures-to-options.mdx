@@ -1,0 +1,365 @@
+---
+title: "12. From futures to options: a roadmap"
+---
+
+import TermFirst from '@site/src/components/textbook/TermFirst';
+import DistinguishingNote from '@site/src/components/textbook/DistinguishingNote';
+import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
+import CheckYourself from '@site/src/components/textbook/CheckYourself';
+
+# From futures to options: a roadmap
+
+**Which Gexbot capability this is.** None new. This chapter uses everything the book taught about *other people's* option positions and turns it toward the day you hold one yourself.
+
+**What you will be able to do.** Name what transfers from trading NQ and ES to trading index options and what does not; say which Gexbot habits carry over directly, which mislead, and which have no counterpart; and follow a staged ramp that closes the theory and tooling gaps in an order that does not hurt you.
+
+**What you already need.** The whole book, including [Chapter 11](/docs/practice/11-further-learning) for the square-root-of-time rule, the straddle as expected move, the gamma-theta ledger, and the statistics hygiene.
+
+The book still writes no entry. This chapter names a curriculum and the tools to buy or build. Where it gives a number, the number is a toy.
+
+## What transfers, and what does not
+
+A futures trader arrives with real assets. You can read a tape. You think in points and ticks. You know that a level is a hypothesis until price accepts through it. You respect the clock. You have been the aggressor and you have been the resting order, and you know the difference in your hands.
+
+You also arrive with habits that will hurt. Every one of them comes from trading a thing whose value is a straight line in price.
+
+**One dimension becomes three.** An ES position has one risk: price. An option position has price, implied volatility, and time, and the three interact. A futures trader who is right on direction and still loses has met the second and third dimensions for the first time. The toy in the next section shows exactly how.
+
+**Linear becomes curved.** A futures P&L is delta times move. An option P&L is delta times move *plus* a curvature term *minus* a clock term *plus* a vol term. The curvature is the gamma this book has spent eleven chapters on, now on your own ledger.
+
+**Size stops meaning contracts.** Ten ES is ten ES. Ten SPX calls can be one ES of delta or nine, depending on strike and clock, and the number changes while you hold them. Size is measured in greeks. Chapter 6 already gave the bridge: one at-the-money SPX option is about one ES of delta.
+
+**A stop is no longer a price.** A futures stop caps loss at a price. An option position can lose on a vol move with price unchanged, can gap through any level at the open, and may not be closable at a fair price when you need it. Risk is defined by the *structure* you bought, not by a line on the chart. This book calls the habit of trusting a price line to cap option loss the **stop-on-underlying fallacy**.
+
+<TermFirst id="stop-on-underlying-fallacy" />
+
+**You become the print.** Every chapter of this book read customer prints from the outside. When you trade an option you are the customer print. A market maker classifies you, absorbs you, and hedges you. Gexbot, if it sees your trade, signs it and draws it. You are now inside the object you learned to read.
+
+## The toy that separates futures from options
+
+Take the running example one more time. Index at 6000, implied vol 16 percent, two hours left in the session. The at-the-money 0DTE call is worth about 0.4 times the expected move, about 13 points, or $1,330 per contract. Its delta is 0.50; its gamma about 0.012 per point. One contract is about one ES of delta.
+
+Thirty minutes pass. The index rises 15 points. Implied vol falls from 16 to 14 percent, a normal falling-vol morning.
+
+A futures trader long one ES made 15 points times $50: **$750**.
+
+The option holder's P&L splits into pieces. This book calls the split **greek attribution**:
+
+<TermFirst id="greek-attribution" />
+
+| Piece | Arithmetic | Points |
+|---|---|---|
+| Delta | 0.50 × 15 | +7.5 |
+| Gamma | ½ × 0.012 × 15² | +1.35 |
+| Theta | value scales with √time: 13.3 × (√90 / √120 − 1) | −1.8 |
+| Vega | value scales roughly with vol at the money: 13.3 × (14/16 − 1) | −1.7 |
+| **Total** | cross-terms ignored | **≈ +5.4 points, about $540** |
+
+Right on direction, about 72 percent of the futures gain, with a maximum loss of $1,330 instead of an open-ended one. That is the trade the option offered.
+
+Now hold price still. Thirty minutes pass, vol falls two points, the index goes nowhere. The futures trader is flat. The option holder is down about 3.4 points, **$340**, with nothing having happened. That is the trade the option *also* offered, and the one futures traders do not see coming.
+
+Everything in the ramp below exists so that both rows of that table are obvious to you before you hold the position, not after.
+
+## What Gexbot literacy buys you
+
+Most people arrive at options with none of what this book taught. You arrive with a working model of the other side. Here is what each piece of that model becomes once you hold a position.
+
+**The 2×2 becomes your position's name.** Long call, short put, long put, short call: the four cells you learned to read on Orderflow are the four single-leg positions you can hold. You already know what each one *wants*: expansion away from the strike, or a pin onto it. Most newcomers learn that by losing.
+
+**The hedge chain becomes your counterparty's behavior.** When you lift an offer on a call, a dealer absorbs you, hedges your delta in ES within seconds, and will re-hedge your gamma as the index moves. You know what they will do. You also know what they will *not* do: push the market for you beyond that first hedge. Chapter 4's already-hedged-versus-pending is now a statement about why buying calls does not make the market go up.
+
+**Residual and open-versus-close become your footprint.** You know that your buy-to-close of a short looks identical to a buy-to-open on every flow tool including Gexbot. You will not read your own footprint as "the crowd agreeing with you."
+
+**The vol regime becomes the price you pay.** The skew dots and the H12 tag tell you whether you are buying options at rising or falling implied vol. For an option holder that is the difference between paying a fair rent and paying a peak one.
+
+**Clock families become your own P&L drivers.** Theta, charm, and vanna were pressures on other people. Held into the last hour, they are the reason your position's delta drifted while you were watching price.
+
+**Expiry groups become which chain you trade.** Latest, next, full: you already know that a 0DTE and a weekly are different instruments, and what the roll is.
+
+**The gamma-theta ledger becomes your thesis.** Chapter 11 said every hedged option position is a bet on realized versus implied variance. An unhedged one is that bet plus a directional one. You will know which of the two you are making, and most people do not.
+
+**The forced-flow sentence becomes the position sentence.** Actor, pressure, trigger, direction, venue — written for yourself. This book calls that the **position sentence**: what I own, its greeks, what must happen for it to pay, what kills it, and by when.
+
+<TermFirst id="position-sentence" />
+
+```
+Position sentence
+  Structure:          (legs, strikes, expiry)
+  Greeks now:         delta-equivalent in ES · gamma · theta per hour · vega
+  2×2 cell(s):        (what each leg prints on Gexbot)
+  Thesis:             direction / realized-vs-implied / pin — pick and name
+  Regime paid:        IV level and skew when opened; H12 tag
+  Kills it:           price — / vol — / clock —
+  Max loss:           defined, in dollars, before entry
+  Exit clock:         the family you will be in when you close
+```
+
+### What Gexbot cannot do for an options trader
+
+Be as precise about the limits as about the gifts.
+
+- It does not price your option or show your greeks. You need a chain and a calculator.
+- It does not show fills, spreads, or depth in the options book. You need your broker's tools and a fill log.
+- It does not draw the implied-vol surface beyond the nearest-expiry skew dots. Term structure is not on any Gexbot screen.
+- It does not see options on the ES future at CME. If you trade those, you trade outside its picture.
+- It does not know whether you are opening or closing, hedged or naked.
+- It does not tell you what to do. It never did.
+
+## Theory gaps to close
+
+Eight gaps, in the order that keeps you safe. Each names why the futures trader lacks it, how Gexbot literacy shortens it, what to read, and the gate that tells you it is closed.
+
+### Gap 1 — Pricing as a language
+
+You need to price an option in your head to within a rough tolerance and know which inputs move it. Black–Scholes is not the truth; it is the vocabulary the market quotes in. Implied vol is the one input you cannot see and must infer, and the market quotes it as a *number* so that everyone speaks the same language.
+
+Gexbot bridge: you already own delta, gamma, theta, vega, vanna, and charm as pressures. Now they are outputs of a formula you can run.
+
+Read: Natenberg, *Option Volatility and Pricing*, the pricing and greek chapters. Hull, *Options, Futures, and Other Derivatives*, the Black–Scholes chapter, for the derivation once. Passarelli, *Trading Options Greeks* (2012), for the practitioner's greek intuition.
+
+Gate: given index, strike, time, and implied vol, you can state the approximate price of an at-the-money option and the sign and rough size of each greek without a calculator; and you can explain why the 0.4 and 0.8 shortcuts from Chapter 11 work.
+
+### Gap 2 — The vol surface
+
+Implied vol is not one number. It differs by strike (the **skew**: puts below the index usually carry higher implied vol than calls above) and by expiry (the **term structure**). How the surface moves when the index moves is a modeling choice with names like sticky-strike and sticky-delta, and the choice decides what your delta really is.
+
+<TermFirst id="skew" />
+<TermFirst id="term-structure" />
+
+Gexbot bridge: the skew dots on the options profile are one horizontal slice of this surface, for the nearest expiry only.
+
+Read: Derman, "Regimes of Volatility" (1999), the short paper that names the regimes. Gatheral, *The Volatility Surface* (2006), the first chapters. Derman and Miller, *The Volatility Smile* (2016), for the full treatment.
+
+Gate: shown a skew, you can say which cell of the 2×2 is expensive and which is cheap, and why a falling market with rising put vol changes your call's delta more than the formula's delta says.
+
+### Gap 3 — Realized versus implied, and the premium for selling
+
+Implied vol on index options has, on average over long samples, exceeded the volatility later realized. The gap is called the **variance risk premium**. It is why selling options is described as "income" and why that description kills accounts: the average is positive and the tail is catastrophic.
+
+<TermFirst id="variance-risk-premium" />
+
+Gexbot bridge: the gamma-theta ledger from Chapter 11 is this premium seen one day at a time. The OP folklore — long options as walls, short options as fuel in falling vol — is the crowd acting on it.
+
+Read: Sinclair, *Volatility Trading*, the chapters on forecasting and on the premium. Carr and Wu, "Variance risk premiums" (2009, *Review of Financial Studies*). Bollerslev, Tauchen, and Zhou, "Expected stock returns and variance risk premia" (2009, *Review of Financial Studies*).
+
+Gate: you can explain, with the ledger, why a short straddle wins most days and how many points a single day must move to erase a month of those wins at your toy size.
+
+### Gap 4 — Structures
+
+A single leg is one bet with two exposures. Combinations shape them. A **vertical spread** (bought and sold same-type options at two strikes, same expiry) caps both gain and loss. A **straddle** or **strangle** buys or sells movement with little direction. A **calendar** trades one expiry against another. A **butterfly** bets on a pin. A **risk reversal** sells one side's vol to buy the other's.
+
+<TermFirst id="vertical-spread" />
+<TermFirst id="option-structures" />
+<TermFirst id="defined-risk" />
+
+Gexbot bridge: Chapter 9b told you a multi-leg trade prints two or more bars and that a Gexbot reader may misread each leg as a separate opinion. Now you are the one printing them. Also: every structure decomposes into 2×2 cells; write which.
+
+Read: Natenberg, the spread chapters. McMillan, *Options as a Strategic Investment*, as the reference to look things up in. Sinclair, *Positional Option Trading* (2020), for which structure fits which forecast.
+
+Gate: for eight structures — the four single legs, a call vertical, a put vertical, a straddle, a calendar — you can draw the payoff at expiry, state the sign of each greek today, name the 2×2 cells the legs print, and say what a Gexbot user would misread about you.
+
+### Gap 5 — Contract mechanics and settlement
+
+This is the gap that costs money fastest, because nothing in futures prepares you for it.
+
+Index options on SPX are European (no early exercise) and cash-settled. Weekly and daily SPX expiries settle on the 16:00 closing prints; standard monthly SPX options settle on the *opening* prints of the third Friday. Options on SPY and QQQ are American (can be exercised early) and physically settled: you can be **assigned** shares, including overnight, including around dividends. This book calls the risk of ending a day with a position you did not intend, because of exercise or settlement, **assignment and pin risk**. Options on the ES future at CME are a third venue: American, deliverable into the future, margined under the futures system, tradable nearly around the clock, and not on any Gexbot screen.
+
+<TermFirst id="assignment" />
+<TermFirst id="pin-risk" />
+<TermFirst id="es-options" />
+
+Gexbot bridge: Chapters 6 and 7 already taught the settlement styles as a reason last-hour flows differ. Now they decide which product you can hold into the close without a surprise.
+
+Read: the OCC's *Characteristics and Risks of Standardized Options*, the disclosure every options account receives, all of it. The contract specifications for SPX, XSP, SPY, and E-mini S&P options from Cboe and CME, once each, with a highlighter.
+
+Gate: for each of SPX, XSP, SPY, and ES options you can state exercise style, settlement style, settlement time, multiplier, and what you would hold Monday morning if you were short an in-the-money option at Friday's close.
+
+### Gap 6 — Risk for curved positions
+
+Futures risk is a stop and a size. Option risk is a scenario grid: P&L across a range of index prices, a range of implied vols, and several clocks. This book calls that grid the **risk graph**. A position whose worst cell is bounded is **defined-risk**; a position with an unbounded cell is **undefined-risk**, and no ramp should include one.
+
+<TermFirst id="risk-graph" />
+
+**Margin** — the capital your broker holds against the position — is part of risk. Equity and index options are margined under Reg T or portfolio-margin rules; futures options under the futures system. The same short put can consume very different capital in each, and a vol spike can raise the requirement while the position is losing.
+
+<TermFirst id="margin" />
+
+Gexbot bridge: the DealerHedgeSim is a risk graph for one leg from the dealer's side. Turn it around.
+
+Read: Taleb, *Dynamic Hedging*, the chapters on pin risk, liquidity holes, and short-dated gamma. Sinclair on position sizing under fat tails. Your broker's margin documentation.
+
+Gate: for every structure in Gap 4 you can write the worst-case dollar loss including an overnight gap of the expected move times three and an implied-vol doubling, and say whether margin would have forced you out before the loss finished.
+
+### Gap 7 — Options execution
+
+The options book is not the ES book. Spreads are wide in ticks and wider in percent. Multi-leg orders trade on a separate complex-order book. The mid-price is a fiction you negotiate toward, not a price you can hit. Liquidity is worst in the first minutes and around releases, exactly when the futures trader is most active. Market makers earn the spread you pay and hedge you in the future you used to trade.
+
+<TermFirst id="mid-price" />
+
+Gexbot bridge: you know what the aggressor is. Every time you cross the spread you are one, and Gexbot signs you as such. Every time you rest at mid and get filled, the other side was.
+
+Read: Harris, *Trading and Exchanges*, again, this time the chapters on dealers and on order types. Your exchange's rules on complex orders and price improvement.
+
+Gate: twenty logged fills with distance from mid, time of day, and whether you crossed or rested. You can state your average cost in ticks and in percent of premium.
+
+### Gap 8 — Expectancy with asymmetric payoffs
+
+Futures P&L is symmetric enough that win rate and average size tell the story. Option P&L is not: a structure can win nine times in ten and lose more than the nine wins. Chapter 11's statistics hygiene applies with more force, and the sample sizes needed are larger.
+
+Gexbot bridge: Chapter 11 module 8 — distributions, not directions. The docs' own +GEX OF sentence was the first example.
+
+Read: Chapter 11's Stage 5 readings. Taleb, *Dynamic Hedging*, on payoff asymmetry.
+
+Gate: you refuse to evaluate any structure by win rate alone, and you can state the tail loss that makes a 90-percent winner a losing strategy at your size.
+
+## Tooling gaps to close
+
+A futures trader's stack is a chart, a DOM, and a broker. An options trader needs six more things. Build or buy them in this order.
+
+1. **A live chain with greeks and implied vol per strike**, and a way to see the skew and the term structure across expiries. Your broker's platform usually has one; learn its conventions (per-share vs per-contract greeks, which vol model).
+2. **A pricing and scenario tool.** A greeks calculator (a standard options library in a scripting language, or the broker's analytics) and a risk graph that takes price, vol, and time as inputs. The DealerHedgeSim in this wiki uses the same formulas; it is a toy, not the tool.
+3. **Vol data.** Historical implied vol for the strikes you trade, a realized-vol calculation from your own futures data, and the term-structure indices (the short-dated, standard, and three-month volatility indices Cboe publishes). Chapter 11's morning card grows two lines: implied-vol level versus its recent range, and the term structure's slope.
+4. **Execution tools.** Complex-order entry, mid-price limit orders, and a fill log with the fields from Gap 7.
+5. **A margin calculator** for your account type, run before every structure, with the vol-shock scenario.
+6. **A calendar.** Expiries by product, settlement times, scheduled releases, dividends for the ETFs, and the monthly AM-settlement days.
+
+Then the journal. The Chapter 9 journal line grows into the position sentence above. Keep the Gexbot fields; add the greeks; add the regime paid; add the exit clock.
+
+Gexbot itself moves from the center to the side. The Quant feed becomes context inside your own tools. The screens are still open. They are no longer what you look at first.
+
+## The ramp
+
+Six stages after the one you are in. Gates, not dates.
+
+### Stage 0 — Where you are
+
+A futures trader who can read Gexbot: 2×2, hedge chain, pressure words, clock families, S-reads, the rookie list, the Chapter 11 mathematics. Nothing here is wasted.
+
+### Stage 1 — Language
+
+Close Gap 1. Each morning, price the at-the-money call and put by hand from the straddle rule, then check against the chain. Each afternoon, run greek attribution on a *hypothetical* one-lot from the open. Gate: your hand price is inside the bid-ask most days, and your attribution accounts for the day's P&L within a small residual you can name.
+
+### Stage 2 — Vol literacy
+
+Close Gaps 2 and 3. Extend the morning card with implied-vol level, skew, and term structure. Keep a realized-versus-implied log. Gate: at the close you can explain the sign of a hedged straddle's day using the ledger, and you can say whether today's implied vol was high or low against its own recent range without looking it up.
+
+### Stage 3 — Structures on paper
+
+Close Gap 4. For twenty sessions hold hypothetical positions in the eight structures, write a position sentence for each at the open, and attribute at the close. Write which Gexbot bars your legs would have printed. Gate: the Gap 4 gate, plus twenty attributed sessions.
+
+### Stage 4 — Mechanics and risk
+
+Close Gaps 5 and 6. Read the disclosure document and the contract specs. Build the risk graph and the margin habit. Restrict the whole ramp to defined-risk structures. Gate: the Gap 5 and Gap 6 gates.
+
+### Stage 5 — Small, defined, liquid
+
+Close Gap 7. Choose an instrument whose size matches your futures size and whose mechanics you passed in Stage 4. Bridges (*market-general*, toy):
+
+- One at-the-money SPX option is about one ES of delta.
+- One at-the-money XSP option (the tenth-size SPX contract, cash-settled, European) is about one MES of delta.
+- One at-the-money SPY option is also about one MES, but American and physically settled.
+- ES options at CME match your margin system and your clock, and Gexbot does not see them.
+
+<TermFirst id="xsp" />
+
+Start at the smallest of those. Log every fill. Gate: the Gap 7 gate, with no undefined-risk structure ever entered.
+
+### Stage 6 — Gexbot as context for your own book
+
+Now the book's reads return, pointed at your positions. The H-reads choose *structure type*, not entries: a named pin cell near a node in falling vol argues for a defined-risk short-premium structure at that node; a named expansion cell argues for a long-premium structure; a last-hour magnet argues for holding nothing into 15:30 you cannot explain with charm. The S-reads supply the location. The position sentence supplies the falsifier in three languages: price, leftover, and vol.
+
+Gate: for twenty sessions, every position you held has a position sentence, a Gexbot read that chose its structure type, and a falsifier written before entry that you can show would have closed it. Win rate is not recorded. Attribution is.
+
+## Rookie mistakes specific to the transition
+
+Chapter 9b listed the reading errors. These are the holding errors, and most of them are the futures habit in options clothing.
+
+**Buying far out-of-the-money 0DTE because it is cheap.** Cheap in dollars, near zero in delta and gamma, all theta. Chapter 1's debit-as-size mistake, now on your own statement. Check: state the delta before the price.
+
+**Selling naked premium for income.** Gap 3's average without Gap 3's tail. Check: no undefined-risk structure in the ramp, ever.
+
+**A stop on the index.** The fallacy above. Check: the position sentence has three kill conditions, not one.
+
+**Ignoring vol crush after a release.** Implied vol collapses when the event passes; a long option can lose on a move in its favor. Chapter 9b's event day, now with your money in it. This book calls the collapse **IV crush**. Check: the regime-paid line in the position sentence, and the vega row in attribution.
+
+<TermFirst id="iv-crush" />
+
+**Legging into a spread.** Entering one leg and hoping to get the other at a good price leaves you briefly holding a structure you did not choose. This book calls it **leg-in risk**. Check: complex orders for spreads until you can explain why you are legging.
+
+<TermFirst id="leg-in-risk" />
+
+**Assignment surprise on the ETF.** Short an in-the-money SPY put over a weekend, own the shares Monday. Gap 5. Check: the settlement line before the structure.
+
+**Sizing by premium.** "I risk $1,000 per trade" buys wildly different deltas at different strikes and clocks. Check: size in ES-equivalents of delta, then in max loss.
+
+**Averaging into gamma.** Adding to a losing short option as the index approaches the strike means adding where gamma is largest. Check: the risk graph before the add, not after.
+
+**Holding into the last hour without a charm sentence.** Chapter 7. Check: the exit clock line.
+
+**Becoming the crowd because Gexbot showed the crowd.** A +DEX print is not a reason to buy calls; it is a reason to know the dealer is now short gamma there. Check: Gexbot chooses structure type after the thesis, never the thesis itself.
+
+**Fading the residual because "everyone is long."** Residual is today's leftover, not the market's position. Check: partial picture, always.
+
+**Confusing per-share greeks with per-contract.** Chains often quote delta per share; the contract is 100. Check: the delta-equivalent-in-ES line forces the conversion.
+
+**Trusting paper fills at mid.** Simulators fill at mid; the market does not. Check: the Stage 5 fill log is the truth; the simulator is language practice.
+
+<DistinguishingNote
+  cousin="Options courses that start from strategies"
+  cut="This ramp starts from the other side of the trade, which you already know, and from mechanics and risk before structures. Structures come fourth, not first."
+  doNotImport="A strategy list as a substitute for the position sentence and the risk graph."
+/>
+
+## Summary
+
+Trading options after futures adds two dimensions, curves the P&L, changes what size and stop mean, and puts you inside the print you learned to read. Gexbot literacy shortens the ramp because you already know what your counterparty does, what your footprint looks like, what regime you are paying, and what your position wants. It does not price, fill, or size anything for you. Close the eight theory gaps in order, build the six tools, walk the six stages by gate, and let the book's reads choose structure type after the thesis, never the thesis itself.
+
+## Terms introduced
+
+<ChapterTerms docId="practice/12-futures-to-options" />
+
+## Newcomer questions
+
+1. **Can I skip to Stage 5 because I already trade size in ES?** No. Size in ES is one dimension. Gaps 1–6 are the other two. The toy table is the reason.
+2. **Which instrument first?** The smallest one whose mechanics you passed: XSP or SPY for most futures traders. ES options if you want your margin system and your clock, knowing Gexbot does not see them.
+3. **Does a Gexbot read tell me which option to buy?** It can argue for a structure *type* after you have a thesis. It never supplies the thesis, the strike, or the time.
+4. **Why no undefined-risk in the whole ramp?** Gap 3: the average is positive and the tail ends accounts. You have not yet measured your own tail.
+5. **Will my own trades show on Gexbot?** If they are SPX or SPY prints large enough to leave leftover, yes, signed by aggressor, open-or-close unknown — exactly as the book described everyone else's.
+
+<CheckYourself
+  items={[
+    {
+      q: 'Index unchanged for thirty minutes, implied vol down two points, you hold an ATM 0DTE call. What happened and why does a futures trader not expect it?',
+      a: 'About −3.4 points: theta (√time) and vega (vol) with no price move. Futures P&L has no such terms.',
+    },
+    {
+      q: 'You bought 10 SPX ATM calls. In ES terms, how big are you now, and will that number hold?',
+      a: 'About 10 ES of delta. No — gamma changes it as the index moves and as the clock runs. Size is a greek, not a contract count.',
+    },
+    {
+      q: 'You are short one in-the-money SPY put at Friday’s close. Monday morning?',
+      a: 'You likely own 100 SPY shares. American, physically settled. On SPX or XSP the same position would have settled in cash.',
+    },
+    {
+      q: 'Name the three kill conditions in a position sentence.',
+      a: 'Price, vol, and clock. A single stop on the index covers only the first.',
+    },
+    {
+      q: 'Gexbot prints a large +DEX bar at a strike above. Do you buy calls there?',
+      a: 'No. The bar says a dealer is now short gamma there and has already hedged the delta. Gexbot chooses structure type after your thesis; it is not the thesis.',
+    },
+    {
+      q: 'A strategy wins 9 of 10 sessions. What else do you need before calling it good?',
+      a: 'The size of the tenth. Gap 8: asymmetric payoffs make win rate insufficient. Attribution, not hit rate.',
+    },
+    {
+      q: 'Which of the six tools do you build before the first live options fill?',
+      a: 'All of them: chain with greeks, pricing and risk graph, vol data, execution tools, margin calculator, calendar. The fill log starts with the first fill.',
+    },
+  ]}
+/>
+
+## After this chapter
+
+This is the end of the book. Chapter 11 is the syllabus for the tape. Chapter 12 is the syllabus for the other side of it. Both end the same way: the position sentence written before the trade, the falsifier in every language you have, and no number recorded that you would be tempted to believe from forty sessions.

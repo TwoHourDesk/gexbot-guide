@@ -35,6 +35,7 @@ const sidebars: SidebarsConfig = {
         'practice/09b-structure-and-gexbot',
         'practice/10-misreads-and-mastery',
         'practice/11-further-learning',
+        'practice/12-futures-to-options',
       ],
     },
     {

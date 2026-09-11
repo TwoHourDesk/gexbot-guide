@@ -2671,6 +2671,184 @@ export const glossary: GlossaryEntry[] = [
     seeAlso: ['point-value', 'strike-spacing', 'scalping', 'es-future', 'nq-future'],
     kind: 'market-general',
   },
+  {
+    id: 'stop-on-underlying-fallacy',
+    headword: 'stop-on-underlying fallacy',
+    shortDef:
+      'Trusting a price line on the index to cap an option position’s loss. Options lose on vol and clock with price unchanged, gap through levels at the open, and may not be closable at a fair price. Risk is defined by the structure, not by a stop.',
+    firstDefinedIn: 'practice/12-futures-to-options',
+    seeAlso: ['defined-risk', 'risk-graph', 'position-sentence'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'greek-attribution',
+    headword: 'greek attribution',
+    aliases: ['P&L attribution', 'delta / gamma / theta / vega P&L'],
+    shortDef:
+      'Splitting an option position’s P&L into delta × move, ½ gamma × move², theta × time, vega × vol change (cross-terms aside). Toy: right on a 15-point move, an ATM 0DTE call kept about 72 percent of the futures gain after theta and vol; with price unchanged it lost about 3.4 points on theta and vol alone.',
+    firstDefinedIn: 'practice/12-futures-to-options',
+    seeAlso: ['delta', 'gamma', 'theta', 'vega', 'gamma-theta-tradeoff'],
+    kind: 'options',
+  },
+  {
+    id: 'position-sentence',
+    headword: 'position sentence',
+    shortDef:
+      'The forced-flow sentence written for your own option position: structure, greeks now (delta in ES-equivalents), 2×2 cells the legs print, thesis (direction / realized-vs-implied / pin), regime paid, three kill conditions (price, vol, clock), max loss defined before entry, exit clock.',
+    firstDefinedIn: 'practice/12-futures-to-options',
+    seeAlso: ['forced-flow-sentence', 'journal-line', 'falsifier', 'two-by-two'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'skew',
+    headword: 'skew',
+    aliases: ['volatility skew', 'smile'],
+    shortDef:
+      'Implied vol differs by strike: index puts below spot usually carry higher implied vol than calls above. Gexbot’s skew dots are one nearest-expiry slice of it. How the skew moves with spot (sticky-strike vs sticky-delta) changes what your delta really is. Market-general.',
+    firstDefinedIn: 'practice/12-futures-to-options',
+    seeAlso: ['skew-dots', 'implied-vol', 'term-structure'],
+    kind: 'market-general',
+  },
+  {
+    id: 'term-structure',
+    headword: 'term structure',
+    aliases: ['vol term structure'],
+    shortDef:
+      'Implied vol differs by expiry. Not on any Gexbot screen. Cboe publishes short-dated, standard, and three-month volatility indices that give its slope for the S&P. Market-general.',
+    firstDefinedIn: 'practice/12-futures-to-options',
+    seeAlso: ['skew', 'implied-vol', 'vix', 'latest', 'next'],
+    kind: 'market-general',
+  },
+  {
+    id: 'variance-risk-premium',
+    headword: 'variance risk premium',
+    aliases: ['VRP', 'selling premium', 'income'],
+    shortDef:
+      'On average over long samples, index implied vol has exceeded the vol later realized. The reason selling options is called income, and the reason that word ends accounts: positive average, catastrophic tail. The gamma-theta ledger seen one day at a time. Market-general.',
+    firstDefinedIn: 'practice/12-futures-to-options',
+    seeAlso: ['gamma-theta-tradeoff', 'realized-vol', 'implied-vol', 'defined-risk'],
+    kind: 'market-general',
+  },
+  {
+    id: 'vertical-spread',
+    headword: 'vertical spread',
+    aliases: ['call vertical', 'put vertical', 'debit spread', 'credit spread'],
+    shortDef:
+      'A bought and a sold option of the same type at two strikes, same expiry. Caps both gain and loss. Prints two opposite-sign bars on Gexbot; a reader may misread the sold leg as a separate opinion.',
+    firstDefinedIn: 'practice/12-futures-to-options',
+    seeAlso: ['multi-leg', 'defined-risk', 'option-structures'],
+    kind: 'options',
+  },
+  {
+    id: 'option-structures',
+    headword: 'option structures',
+    aliases: ['strangle', 'calendar', 'butterfly', 'risk reversal'],
+    shortDef:
+      'Combinations that shape the two exposures of a single leg: straddle and strangle (movement, little direction), calendar (one expiry against another), butterfly (a pin), risk reversal (sell one side’s vol to buy the other’s). Every structure decomposes into 2×2 cells; write which.',
+    firstDefinedIn: 'practice/12-futures-to-options',
+    seeAlso: ['straddle', 'vertical-spread', 'multi-leg', 'two-by-two'],
+    kind: 'options',
+  },
+  {
+    id: 'defined-risk',
+    headword: 'defined-risk',
+    aliases: ['undefined-risk', 'naked'],
+    shortDef:
+      'A position whose worst cell on the risk graph is bounded in dollars. Undefined-risk (naked short options) has an unbounded cell. No stage of the ramp includes an undefined-risk structure.',
+    firstDefinedIn: 'practice/12-futures-to-options',
+    seeAlso: ['risk-graph', 'variance-risk-premium', 'margin'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'assignment',
+    headword: 'assignment',
+    aliases: ['early exercise', 'exercise'],
+    shortDef:
+      'Being delivered the underlying because an option you sold was exercised. American-style, physically settled options (SPY, QQQ, ES options into the future) can assign, including overnight and around dividends. European cash-settled index options (SPX, XSP) cannot. Market-general.',
+    firstDefinedIn: 'practice/12-futures-to-options',
+    seeAlso: ['american-style', 'physically-settled', 'pin-risk', 'settlement'],
+    kind: 'market-general',
+  },
+  {
+    id: 'pin-risk',
+    headword: 'assignment and pin risk',
+    aliases: ['pin risk'],
+    shortDef:
+      'Ending a day with a position you did not intend because the index settled near your strike and exercise or settlement went a way you did not plan. Know exercise style, settlement style, and settlement time for every product before holding it into a close.',
+    firstDefinedIn: 'practice/12-futures-to-options',
+    seeAlso: ['assignment', 'pm-settlement', 'settlement', 'pin'],
+    kind: 'market-general',
+  },
+  {
+    id: 'es-options',
+    headword: 'ES options',
+    aliases: ['options on futures', 'E-mini S&P options'],
+    shortDef:
+      'Options on the ES future at CME: American, deliverable into the future, margined under the futures system, tradable nearly around the clock. Not on any Gexbot screen. A third venue beside SPX and SPY. Market-general.',
+    firstDefinedIn: 'practice/12-futures-to-options',
+    seeAlso: ['cme', 'es-future', 'partial-picture', 'margin'],
+    kind: 'market-general',
+  },
+  {
+    id: 'risk-graph',
+    headword: 'risk graph',
+    aliases: ['scenario grid', 'P&L grid'],
+    shortDef:
+      'P&L of a position across a range of index prices, a range of implied vols, and several clocks. Replaces the futures stop-and-size. Run before every structure with a gap of three expected moves and an implied-vol doubling.',
+    firstDefinedIn: 'practice/12-futures-to-options',
+    seeAlso: ['defined-risk', 'greek-attribution', 'expected-move'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'margin',
+    headword: 'margin',
+    aliases: ['Reg T', 'portfolio margin', 'SPAN'],
+    shortDef:
+      'Capital the broker holds against a position. Equity and index options: Reg T or portfolio-margin rules. Futures options: the futures system. The same short put consumes very different capital in each, and a vol spike raises the requirement while the position is losing. Market-general.',
+    firstDefinedIn: 'practice/12-futures-to-options',
+    seeAlso: ['defined-risk', 'risk-graph', 'es-options'],
+    kind: 'market-general',
+  },
+  {
+    id: 'mid-price',
+    headword: 'mid-price',
+    aliases: ['mid', 'fill quality'],
+    shortDef:
+      'The midpoint of an option’s bid and ask. A price you negotiate toward, not one you can hit. Log every fill’s distance from mid, time of day, and whether you crossed or rested. Simulators fill at mid; markets do not.',
+    firstDefinedIn: 'practice/12-futures-to-options',
+    seeAlso: ['bid-ask-spread', 'aggressor', 'multi-leg'],
+    kind: 'market-general',
+  },
+  {
+    id: 'xsp',
+    headword: 'XSP',
+    aliases: ['Mini-SPX', 'MES'],
+    shortDef:
+      'The tenth-size SPX index option: cash-settled, European, PM-settled. One ATM XSP ≈ one MES (micro E-mini S&P) of delta, as one ATM SPX ≈ one ES and one ATM SPY ≈ one MES. The usual first live instrument for a futures trader. Market-general.',
+    firstDefinedIn: 'practice/12-futures-to-options',
+    seeAlso: ['spx', 'spy', 'es-future', 'point-value', 'cash-settled'],
+    kind: 'market-general',
+  },
+  {
+    id: 'iv-crush',
+    headword: 'IV crush',
+    aliases: ['vol crush'],
+    shortDef:
+      'The collapse of implied vol when a scheduled release passes. A long option can lose on a move in its favor. Shows in the vega row of attribution and the regime-paid line of the position sentence.',
+    firstDefinedIn: 'practice/12-futures-to-options',
+    seeAlso: ['event-day', 'implied-vol', 'vega', 'greek-attribution'],
+    kind: 'options',
+  },
+  {
+    id: 'leg-in-risk',
+    headword: 'leg-in risk',
+    aliases: ['legging'],
+    shortDef:
+      'Entering one leg of a spread and hoping to get the other at a better price, briefly holding a structure you did not choose. Use complex orders until you can explain why you are legging.',
+    firstDefinedIn: 'practice/12-futures-to-options',
+    seeAlso: ['multi-leg', 'vertical-spread', 'mid-price'],
+    kind: 'hygiene',
+  },
 ];
 
 export function getEntry(id: string): GlossaryEntry | undefined {
