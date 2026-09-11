@@ -2246,21 +2246,23 @@ export const glossary: GlossaryEntry[] = [
   },
   {
     id: 'prior-day-extreme',
-    headword: 'prior-day high or low',
-    aliases: ['prior-day high', 'prior-day low', "yesterday's high", "yesterday's low"],
+    headword: 'yesterday’s high, low, and close',
+    aliases: ['prior-day high', 'prior-day low', 'prior-day close', "yesterday's high", "yesterday's low", "yesterday's close"],
     shortDef:
-      'Yesterday’s high or low on the futures tape. A structural location, not a Gexbot node. Pair it with leftover only after H13 confirms a pile.',
-    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+      'The three most watched prices on the chart. Use the cash-hours (09:30–16:00) versions so the level sits on Gexbot’s clock; the overnight-inclusive versions are different levels. A location, not a Gexbot node. Pair with leftover only after H13 confirms a pile.',
+    firstDefinedIn: 'practice/09a-early-session',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
     seeAlso: ['s1', 'overnight-structure', 'structural-location'],
     kind: 'market-general',
   },
   {
     id: 'overnight-structure',
     headword: 'overnight structure',
-    aliases: ['overnight high', 'overnight low'],
+    aliases: ['overnight high', 'overnight low', 'pre-market range', 'pre-market high', 'pre-market low'],
     shortDef:
-      'A high or low printed while cash was closed. At 09:30 there is no State leftover behind it. Only Classic open interest can mark the location; pressure is unknown until leftover builds.',
-    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+      'The high and low printed while cash was closed, and the narrower pre-market range before 09:30. Thinner participation; no cash index existed to hedge against. At 09:30 there is no State leftover behind it. Only Classic open interest can mark the location; pressure is unknown until leftover builds.',
+    firstDefinedIn: 'practice/09a-early-session',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
     seeAlso: ['s1', 's4', 'gex-by-oi', 'unknown-pressure'],
     kind: 'hygiene',
   },
@@ -2307,10 +2309,11 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'opening-range',
     headword: 'opening range',
-    aliases: ['first-hour range', 'opening-range high', 'opening-range low'],
+    aliases: ['OR15', 'fifteen-minute range', 'first-hour range', 'opening-range high', 'opening-range low'],
     shortDef:
-      'The high and low printed in the first thirty to sixty minutes of cash hours. A tape box, not a Gexbot node. A break is price leaving that box and staying out.',
-    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+      'The high and low of the first minutes of cash hours. Fifteen minutes is the finest box this book uses (Chapter 9a); it completes when leftover is barely nameable. Thirty to sixty minutes is the safer box (Chapter 9b). A tape box, not a Gexbot node. A break is price leaving that box and staying out.',
+    firstDefinedIn: 'practice/09a-early-session',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
     seeAlso: ['s3', 'knowability', 'structural-location'],
     kind: 'market-general',
   },
@@ -2330,7 +2333,8 @@ export const glossary: GlossaryEntry[] = [
     aliases: ['overnight gap', 'fill', 'gap fill'],
     shortDef:
       'The empty stretch between last night’s close and the cash open. The path back toward that close is the fill. Overnight structure: no State leftover at 09:30.',
-    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    firstDefinedIn: 'practice/09a-early-session',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
     seeAlso: ['s4', 'overnight-structure', 'structural-location'],
     kind: 'market-general',
   },
@@ -2369,8 +2373,9 @@ export const glossary: GlossaryEntry[] = [
     headword: 'failed break',
     aliases: ['failed break of structure'],
     shortDef:
-      'Price prints beyond a swing high or low and immediately returns inside. Tape structure. Not a Gexbot object until paired with a node and a pressure word.',
-    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+      'Price prints beyond a level and immediately returns inside. In Chapter 9a the level is a compound zone reached by an open drive (E4); in Chapter 9b it is a swing high or low (S6). Tape structure. Not a Gexbot object until paired with a node and a pressure word.',
+    firstDefinedIn: 'practice/09a-early-session',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
     seeAlso: ['s6', 'swing-high', 'acceptance-through'],
     kind: 'market-general',
   },
@@ -2482,7 +2487,8 @@ export const glossary: GlossaryEntry[] = [
     aliases: ['re-mark', 'ladder moved no trade'],
     shortDef:
       'A State ladder bar changing size with no new print, because the sensitivity (delta or gamma) moved with spot or the clock. Docs: max-change strikes jump when a bigger node prints or when spot moves the gamma surface. Orderflow bars are prints; ladders re-mark. Check Orderflow for the same minute. Inferred for ladders generally.',
-    firstDefinedIn: 'practice/09b-structure-and-gexbot',
+    firstDefinedIn: 'practice/09a-early-session',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
     seeAlso: ['dex-ladder', 'convexity-ladder', 'max-change', 'ladder-increment-net', 'knowability'],
     kind: 'gexbot',
     unit: 'Change in sensitivity × unchanged leftover size',
@@ -2638,7 +2644,8 @@ export const glossary: GlossaryEntry[] = [
     aliases: ['cash open', '09:30 auction'],
     shortDef:
       'Cash equities open through a single-price auction at 09:30; index futures, which traded overnight, absorb that information in minutes. Index-option leftover cannot exist before it; Classic open interest is the only Gexbot picture, re-marked to the new spot. Market-general.',
-    firstDefinedIn: 'practice/11-further-learning',
+    firstDefinedIn: 'practice/09a-early-session',
+    alsoAppears: ['practice/11-further-learning'],
     seeAlso: ['cash-rth', 'knowability', 'gex-by-oi', 're-marking'],
     kind: 'market-general',
   },
@@ -2847,6 +2854,145 @@ export const glossary: GlossaryEntry[] = [
       'Entering one leg of a spread and hoping to get the other at a better price, briefly holding a structure you did not choose. Use complex orders until you can explain why you are legging.',
     firstDefinedIn: 'practice/12-futures-to-options',
     seeAlso: ['multi-leg', 'vertical-spread', 'mid-price'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'early-window',
+    headword: 'early window',
+    aliases: ['early claim window', '09:29–11:00'],
+    shortDef:
+      'The source-of-truth claim clock for mapping Gexbot onto ES and NQ early in the session, about 09:29–11:00 Eastern. State starts empty at 09:30; levels carry a pressure word only once leftover reaches their strike. After 11:00, rename the claim.',
+    firstDefinedIn: 'practice/09a-early-session',
+    alsoAppears: ['practice/11-further-learning'],
+    seeAlso: ['cash-rth', 'clock-family', 'knowability', 'early-session'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'daily-level',
+    headword: 'daily level',
+    aliases: ['daily support', 'daily resistance', 'daily-chart level'],
+    shortDef:
+      'A price where the daily chart has turned more than once across days or weeks, usually near a round number. Round numbers are also where monthly and weekly open interest piles up, so a daily level and a Classic open-interest mountain often coincide. That is old inventory whose hedge is already on: a full-group sentence, not this morning’s. Market-general.',
+    firstDefinedIn: 'practice/09a-early-session',
+    seeAlso: ['gex-by-oi', 'full', 'latest', 'h11', 'compound-zone'],
+    kind: 'market-general',
+  },
+  {
+    id: 'early-phase',
+    headword: 'early phases',
+    aliases: ['phase 0', 'phase 1', 'phase 2', 'phase 3', 'phase table'],
+    shortDef:
+      'Chapter 9a’s division of the early window by what Gexbot can say. Phase 0 (pre-open): levels; Classic OI only; pressure unknown. Phase 1 (09:30–09:45): fifteen-minute range forming; Classic volume and max-change; State too thin. Phase 2 (09:45–10:30): leftover nameable; H12, H13, grades. Phase 3 (10:30–11:00): sequence for H3; early window closes. Boundaries approximate; knowability decides each day.',
+    firstDefinedIn: 'practice/09a-early-session',
+    seeAlso: ['knowability', 'early-window', 'level-grade', 'spike-sequence-noise'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'compound-zone',
+    headword: 'compound zone',
+    aliases: ['stacked levels'],
+    shortDef:
+      'Two or more tape levels within a few points of each other — a daily level and yesterday’s high, with the fifteen-minute-range high forming under them. A tape fact. Gexbot’s contribution comes in three grades; only Grade C carries a pressure word.',
+    firstDefinedIn: 'practice/09a-early-session',
+    seeAlso: ['level-grade', 'daily-level', 'prior-day-extreme', 'opening-range', 'confluence-node'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'level-grade',
+    headword: 'level grades (A, B, C)',
+    aliases: ['Grade A', 'Grade B', 'Grade C'],
+    shortDef:
+      'What Gexbot adds to a tape level. Grade A: a full-group Classic open-interest major sits there — location, owner unknown. Grade B: Classic max-change lights up there in the first minutes — attention, sign unknown. Grade C: State leftover at that strike stands out on today’s ladder — now wall or fuel by vol regime, or pressure none if thin. Only Grade C carries a pressure word.',
+    firstDefinedIn: 'practice/09a-early-session',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
+    seeAlso: ['gex-by-oi', 'max-change', 'options-profile', 'h4', 'h10', 'h13', 'confluence-node'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'compression-lean',
+    headword: 'compression lean',
+    shortDef:
+      'The day is starting narrow: overnight range inside yesterday’s, fifteen-minute range inside both. A lean, not a day-type. Chapter 9b’s range day is the full-day form once the tape has shown it.',
+    firstDefinedIn: 'practice/09a-early-session',
+    seeAlso: ['continuation-lean', 'range-day', 'e1', 'overnight-structure'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'continuation-lean',
+    headword: 'continuation lean',
+    shortDef:
+      'The day is starting displaced: overnight range beyond a yesterday extreme, or a gap. A lean, not a day-type. Chapter 9b’s trend day is the full-day form once the tape has shown it. If the overnight move carried spot past a Classic open-interest major, that node is now behind price, re-marked, owner unknown.',
+    firstDefinedIn: 'practice/09a-early-session',
+    seeAlso: ['compression-lean', 'trend-day', 'e2', 'gap', 'h10'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'open-drive',
+    headword: 'open drive',
+    shortDef:
+      'Price runs from the 09:30 open in one direction without a pause. A tape fact. Paired in E4 with a failed break at a compound zone and, on SPX, with H1.',
+    firstDefinedIn: 'practice/09a-early-session',
+    seeAlso: ['failed-break', 'e4', 'h1', 'opening-auction'],
+    kind: 'market-general',
+  },
+  {
+    id: 'e1',
+    headword: 'E1',
+    aliases: ['compression lean into a fade at a wall'],
+    shortDef:
+      'Early read: compression lean, falling vol by the skew dots, well-distributed minus-convexity and flat nets by about 10:15. Fade a fifteen-minute-range edge only where Grade-C customer-long leftover sits. Target the nearest transition zone. Inferred.',
+    firstDefinedIn: 'practice/09a-early-session',
+    seeAlso: ['compression-lean', 'h6', 'h7', 'h12', 's8'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'e2',
+    headword: 'E2',
+    aliases: ['continuation lean through the fifteen-minute range'],
+    shortDef:
+      'Early read: open outside yesterday’s range, fifteen-minute range breaks with the displacement, Grade-C customer-short leftover ahead in falling vol, persistent minus-convexity drip. Yesterday’s extreme behind price is a checkpoint, not a fade. Inferred.',
+    firstDefinedIn: 'practice/09a-early-session',
+    seeAlso: ['continuation-lean', 'h3', 'h12', 'h13', 's3', 's7'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'e3',
+    headword: 'E3',
+    aliases: ['gap-fill path'],
+    shortDef:
+      'Early read: in Phases 0–1 only Classic marks the path to the fill (location, owner unknown). Once leftover builds: customer-short between price and the close → fuel toward the fill; customer-long → stall before it. Rewrite every fifteen minutes. Inferred.',
+    firstDefinedIn: 'practice/09a-early-session',
+    seeAlso: ['gap', 'h10', 'h13', 's4'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'e4',
+    headword: 'E4',
+    aliases: ['open drive into a compound zone'],
+    shortDef:
+      'Early read: an open drive reaches a compound zone, prints beyond, returns inside (failed break). On SPX, pair with H1 — a standout plus GEX-orderflow bar with minus convexity — for a local-top candidate. Rename on NQ. Folklore on the H1 sentence; inferred combination.',
+    firstDefinedIn: 'practice/09a-early-session',
+    seeAlso: ['open-drive', 'failed-break', 'compound-zone', 'h1', 's6', 'transfer-rule'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'e5',
+    headword: 'E5',
+    aliases: ['overnight extreme taken before the open'],
+    shortDef:
+      'Early read: price opens above the overnight high. Location only until Grade-C leftover forms under price (plus-DEX below spot, or customer-long in falling vol). Do not write “support” from the tape alone. Inferred.',
+    firstDefinedIn: 'practice/09a-early-session',
+    seeAlso: ['overnight-structure', 'level-grade', 'dex-ladder'],
+    kind: 'hygiene',
+  },
+  {
+    id: 'e6',
+    headword: 'E6',
+    aliases: ['range edge on an open-interest mountain'],
+    shortDef:
+      'Early read and deliberate negative: the fifteen-minute-range edge forms exactly on a Classic open-interest major. Grade A. Location, owner unknown. The pile is full-group and old; the edge is latest and young (H11). Nothing to falsify until Grade C. The most common early misread. Inferred.',
+    firstDefinedIn: 'practice/09a-early-session',
+    seeAlso: ['level-grade', 'gex-by-oi', 'opening-range', 'h10', 'h11', 'h13'],
     kind: 'hygiene',
   },
 ];

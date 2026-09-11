@@ -1,0 +1,289 @@
+---
+title: "9a. Early session: levels before leftover"
+---
+
+import TermFirst from '@site/src/components/textbook/TermFirst';
+import DistinguishingNote from '@site/src/components/textbook/DistinguishingNote';
+import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
+import CheckYourself from '@site/src/components/textbook/CheckYourself';
+
+# Early session: levels before leftover
+
+**Which Gexbot capability this is.** None new. This chapter is about the *clock*: what each Gexbot screen can and cannot say between 09:30 and 11:00 Eastern, and how the levels every futures trader already draws fit into that clock.
+
+**What you will be able to do.** Draw the levels that matter before the open, know at which minute each Gexbot screen can attach a pressure word to them, and walk six early reads — this book numbers them **E1** through **E6** — without naming anything before it is nameable.
+
+**What you already need.** [Chapter 6](/docs/layer/06-nq-es-layer) for the basis and the converted ruler. [Chapter 7](/docs/layer/07-clocks-and-late-greeks) for the knowability clock. [Chapter 8](/docs/practice/08-heuristics-as-reading) for H1–H15, especially H10, H11, H12, H13. [Chapter 9](/docs/practice/09-grammar-and-journal) for acceptance through, failure to take, the falsifier, and the journal line.
+
+## Why the early session is its own chapter
+
+State and Orderflow start **empty** at 09:30. Leftover builds print by print. For the first several minutes the only Gexbot objects with content are Classic’s open-interest pile — last night’s inventory, owner unknown — and Classic’s volume ladder as it fills. Every level you drew before the open is therefore a tape fact that Gexbot cannot yet speak to.
+
+That gives one rule for the whole chapter. **A level can be observed at any minute. It can carry a pressure word only once State has leftover at that strike.** Before that, write “location; pressure unknown.”
+
+The source-of-truth file gives the early map onto ES and NQ a claim clock of about 09:29–11:00 Eastern. This book calls that the **early window**. After it, rename the claim.
+
+<TermFirst id="early-window" />
+
+## The levels
+
+A futures trader draws these before the open. Each is a tape object, observed. None is a Gexbot node.
+
+**Yesterday’s high, low, and close.** The most widely watched three prices on the chart. Use the cash-hours versions, 09:30–16:00, so the level sits on the same clock as Gexbot’s leftover. The overnight-inclusive versions are different levels; write which you used.
+
+<TermFirst id="prior-day-extreme" />
+
+**Daily-chart support and resistance.** A price where the daily chart has turned more than once across days or weeks. This book calls it a **daily level**. It is usually near a round number. Round numbers are also where monthly and weekly open interest piles up, which is why a daily level and a Classic open-interest mountain so often coincide. That coincidence is real, and it is old: inventory whose hedge is already on.
+
+<TermFirst id="daily-level" />
+
+**Overnight structure.** The high and low printed while cash was closed, and the narrower range of the last hour or so before 09:30, often called the pre-market range. Participation is thinner, and no cash index existed to hedge against while they printed.
+
+<TermFirst id="overnight-structure" />
+
+**The gap.** When the cash open sits away from yesterday’s close, the empty stretch between them has not yet traded in regular hours. The path back toward that close is the **fill**.
+
+<TermFirst id="gap" />
+
+**The opening range.** The high and low of the first minutes of cash hours. How many minutes is a choice. Fifteen is the finest box this book will use; the next chapter uses thirty to sixty. The trade-off is the subject of the phase table below: a fifteen-minute box completes at exactly the minute leftover becomes barely nameable.
+
+<TermFirst id="opening-range" />
+
+**Which ruler.** All of these are futures prices. Gexbot strikes are index prices. Map through the basis from Chapter 6 — and use *today’s* basis, because it moved overnight.
+
+<DistinguishingNote
+  cousin="Named opening-range and session-level methodologies"
+  cut="This chapter uses plain words — yesterday’s high, overnight high, fifteen-minute range — and treats each as a location until State attaches a pressure word."
+  doNotImport="A methodology’s named levels, targets, or setups as if they were Gexbot objects."
+/>
+
+## The opening auction and re-marking
+
+Cash equities open through a single-price auction at 09:30. Index futures have traded all night; at 09:30 they absorb the cash open’s information within minutes. This book calls that window the **opening auction** (*market-general*). For the first minute or two the published cash index is a composite of stocks that have not all opened yet, so the price line on a Gexbot ladder is not yet trustworthy against a strike.
+
+<TermFirst id="opening-auction" />
+
+Meanwhile Classic’s open-interest ladder has changed shape with no trade. Each bar is a sensitivity times a position size, and the sensitivity depends on where spot is. If the futures moved a hundred points overnight, what was at-the-money is now far from it and the bars have swelled or shrunk accordingly. This book calls that **re-marking**. The docs say max-change strikes jump “when a bigger node prints *or when spot moves the gamma surface*.” Re-marking is that second cause. It happens all day; it is most violent at the open.
+
+<TermFirst id="re-marking" />
+
+The check, all day: if a ladder changed, look at Orderflow for the same minute. No bar there means re-marking, not flow.
+
+## The phase table
+
+This book divides the early window into four **phases**, by what Gexbot can say. Phase boundaries are approximate; the knowability clock from Chapter 7 decides the real ones each day.
+
+<TermFirst id="early-phase" />
+
+| Phase | Clock | Tape has | Gexbot has | Pressure word available |
+|---|---|---|---|---|
+| 0 | Before 09:30 | Daily levels, yesterday’s H/L/C, overnight structure, gap | Classic open interest (full and latest), OI zero gamma, OI majors — re-marked to the new spot | **Unknown**, everywhere |
+| 1 | 09:30–09:45 | Fifteen-minute range forming; opening auction settling | Classic volume filling; max-change 1/5-minute strikes; State first prints, too thin to name a major | Unknown (Classic); **stand down** (State too thin) |
+| 2 | 09:45–10:30 | Fifteen-minute range complete; first tests of levels | Leftover nameable at some strikes; H12 and H13 possible; ladders have shape | Incentive / mandate at strikes with significant leftover; none where thin |
+| 3 | 10:30–11:00 | Thirty-to-sixty-minute range complete | Sequence long enough for H3; nets meaningful | Day-type nameable; early window closes at 11:00 |
+
+Two facts about Phase 1 deserve their own sentences. First, any large bar there is an **event**, not a regime — Chapter 5’s spike-versus-sequence rule. Opening prints are often overnight positions being reset and hedges being rebuilt. Second, a scheduled release at 10:00 sits inside Phase 2; on those days the 09:45–10:00 read is provisional and every ladder re-marks at the print.
+
+## Compound zones and the three grades
+
+The strong early objects are **stacks of levels**, not single ones: a daily level and yesterday’s high within a few points of each other, and then the fifteen-minute-range high forms just under them. This book calls such a stack a **compound zone**. It is a tape fact.
+
+<TermFirst id="compound-zone" />
+
+Gexbot’s contribution to a compound zone comes in three grades. Only the third carries a pressure word. This book calls them **level grades**.
+
+<TermFirst id="level-grade" />
+
+- **Grade A** — a full-group Classic open-interest major sits at the zone. Location confirmed. Owner unknown. Pressure unknown.
+- **Grade B** — Classic max-change lights up at that strike in the first minutes. Fresh 0DTE curvature was just placed there. Attention marker; sign unknown. Do not read it as a reversal (H10).
+- **Grade C** — State leftover appears at that strike and stands out beside its neighbors on today’s ladder. Now the Chapter 4 map applies: customer-long in falling vol → wall candidate; customer-short → fuel candidate; thin → pressure **none**, stand down. This is where H4 begins.
+
+Strikes near the money are five index points apart and the first prints land on all of them. Grade C requires a **standout** bar, not a populated one. If you would not have noticed the bar without the level, it is not Grade C.
+
+## The daily level and the full group
+
+A daily level with a full-group open-interest mountain is a real object across days: inventory concentrates there and its slow hedge can matter for a week. The docs call the full group context. Using full-book zero gamma as a 0DTE scalp line is a stand-down (H11).
+
+So the daily level is a **full**-group story and the behavior at it *today* is a **latest**-group story. Write them in separate sentences. Whether the level stalls or breaks this morning is decided by latest leftover as it builds, not by the mountain.
+
+## Two leans
+
+Before any level read, the first tape sentence of the day is where the overnight range sits relative to yesterday’s.
+
+Overnight range **inside** yesterday’s range, and the fifteen-minute range inside both, is a **compression lean**: the day is starting narrow. Overnight range **beyond** a yesterday extreme, or a gap, is a **continuation lean**: the day is starting displaced. These are leans, not day-types. The next chapter names the full-day forms once the tape has run long enough to show them.
+
+<TermFirst id="compression-lean" />
+<TermFirst id="continuation-lean" />
+
+Gexbot adds one thing to the lean: if the overnight move carried spot *past* a Classic open-interest major, that node is now behind price, re-marked, owner unknown — an inherited node in H10’s sense.
+
+## E1 — Compression lean into a fade at a wall (*inferred*, uses H6, H7, H12)
+
+Overnight range inside yesterday’s; fifteen-minute range inside both; skew dots drifting lower (falling vol, H12); by about 10:15, minus-convexity spread across strikes and flat nets — H6’s well-distributed shape.
+
+<TermFirst id="e1" />
+
+Pressure: dealer long gamma on the mirror, fading — mandate. Customer shorts incentivized to hold.
+
+The read: a fifteen-minute-range extreme is a stall candidate **only** where it coincides with Grade-C customer-long leftover in falling vol. Not at every edge. The target is the nearest transition zone (H7), not the far side of the range.
+
+Falsifier — price: acceptance through the range edge and the node. Falsifier — leftover: a crowded minus-convexity node forms and is taken, or net convexity begins a one-sided run.
+
+Misread: fading both edges of the fifteen-minute range because the overnight was quiet.
+
+## E2 — Continuation lean through the fifteen-minute range (*inferred*, uses H3, H12, H13)
+
+Open outside yesterday’s range. The fifteen-minute range breaks in the direction of the displacement. Grade-C customer-short leftover builds on the path ahead in falling vol. A persistent drip of minus-convexity bars.
+
+<TermFirst id="e2" />
+
+Pressure: customer shorts on the path incentivized to hedge or add as price approaches; dealer long gamma on the mirror fades, so expect a grind rather than a spike. If the sequence later shows crowded short convexity being taken (H6), the dealer side flips to short gamma chasing — mandate with the move.
+
+The read: yesterday’s extreme, now behind price, is a **checkpoint**, not a fade. Nodes ahead are places the move must still clear.
+
+Falsifier — price: price reclaims the fifteen-minute range. Falsifier — leftover: the convexity sequence flips, or H8’s single dominant bar appears ahead.
+
+Misread: fading yesterday’s high because it is yesterday’s high, on a morning that opened above it with fuel ahead.
+
+## E3 — The gap-fill path (*inferred*, uses H10, H13)
+
+Open away from yesterday’s close. In Phase 0 and 1 only Classic can speak: an open-interest pile and latest zero gamma may sit on the path to the fill. Location only. Owner unknown.
+
+<TermFirst id="e3" />
+
+Pressure: unknown until Phase 2.
+
+The read, once leftover builds: customer-short leftover between price and the close → fuel toward the fill. Customer-long leftover → stall candidate before the fill. Rewrite the read every fifteen minutes; the so-far map keeps changing.
+
+Falsifier — price: acceptance through the node in the wrong direction for the thesis. Falsifier — leftover: the leftover on the path flips sign.
+
+Misread: calling the gap “filled or not filled by 09:40” from Classic alone.
+
+## E4 — Open drive into a compound zone, failed break (*folklore* on SPX; *inferred* combination, uses H1)
+
+Price runs from the open in one direction without a pause. This book calls that an **open drive**. When the drive reaches a compound zone — a daily level plus yesterday’s high, say — prints beyond it, and immediately returns inside, that is a **failed break** of the level.
+
+<TermFirst id="open-drive" />
+<TermFirst id="failed-break" />
+<TermFirst id="e4" />
+
+On SPX, pair the failed break with H1: a standout plus GEX-orderflow bar with minus convexity at that moment is call selling, and the combination is a local-top *candidate*. The H1 sentence stays folklore. On NQ, rename the claim (Chapter 6’s transfer rule).
+
+Pressure: dealer absorbs the sold calls, long gamma, fades — mandate. Customer shorts at the zone incentivized to defend it.
+
+Falsifier — price: acceptance above the zone. Falsifier — leftover: GEX orderflow stays plus *and* convexity turns plus, which is long calls and expansion demand, not a top.
+
+Misread: writing H1 from the failed break alone, or from the bar alone, when only one of the two objects is present.
+
+## E5 — Overnight extreme taken before the open (*inferred*)
+
+Price opens above the overnight high. The rookie writes “support.”
+
+<TermFirst id="e5" />
+
+The book writes: location; no State leftover under price yet. The level earns a pressure word only when Grade-C leftover forms there — plus-DEX leftover below spot, customers synthetically bid in share-equivalents, or customer-long leftover in falling vol. Until then, location only.
+
+Pressure: unknown, then whatever Grade C shows.
+
+Falsifier — price: acceptance back below the overnight high. Falsifier — leftover: the leftover that formed under price flips or vanishes.
+
+Misread: attaching a wall thesis to a level that no Gexbot screen has spoken to.
+
+## E6 — Fifteen-minute range edge on an open-interest mountain (*inferred*, uses H10, H11, H13)
+
+The fifteen-minute-range high forms exactly at a Classic open-interest major. Two objects, one location. Grade A.
+
+<TermFirst id="e6" />
+
+Do nothing with it until State either populates that strike (Grade C) or stays thin (pressure none). This is the single most common early misread: the coincidence of a fresh tape edge and an old inventory pile is read as a wall. The pile is full-group and old; the edge is fifteen minutes young. H11 says do not put them in one sentence; H13 says check the leftover behind the pile.
+
+Pressure: unknown, then Grade C or none.
+
+Falsifier — price: acceptance through the edge. Falsifier — leftover: none needed until Grade C exists; before that there is no thesis to falsify.
+
+Misread: “the range high is a GEX wall.”
+
+## Early-window warnings
+
+**The first bars are events.** One large plus-DEX bar at 09:33 is a print. H3 needs a sequence; knowability says thirty to sixty minutes.
+
+**Re-marking is violent at the open.** Ladders re-mark as much as they fill in Phase 1. Orderflow for the same minute, every time.
+
+**Basis moved overnight.** Yesterday’s futures levels map onto index strikes through today’s basis.
+
+**Two clocks for “yesterday’s high.”** Cash-hours versus overnight-inclusive. Choose cash-hours to match Gexbot’s residual clock. Write which.
+
+**Full versus latest.** The daily level is a full-group sentence; behavior at it this morning is a latest-group sentence. Two sentences.
+
+**Scheduled releases.** A 10:00 release re-marks every ladder and can flip the regime. Re-tag with H12 after the print.
+
+**The early window closes at 11:00.** Whatever E-read you carried, rename it or drop it.
+
+**Gexbot sees one slice.** The open is also when options on the ES future itself, SPY options, and single-stock hedging are heaviest, and Gexbot does not merge them into `ES_SPX`. A daily level can hold with no Gexbot node and break with one. Absence of a node is not absence of pressure. Write “no Gexbot object here,” not “nothing here.”
+
+## Writing the early journal line
+
+Use Chapter 9’s journal line unchanged. In the `Node:` field, write the level, its grade, and the phase:
+
+```
+Node: yesterday's high + daily level (compound zone); Grade A at 09:35; Grade C (customer-short, standout) at 09:52
+```
+
+Until Grade C, the `Forced-flow sentence:` field says `UNKNOWN` and the line is a location note, not a read. The next chapter adds a dedicated field for what price did at the node.
+
+## Order to write, early window
+
+1. **Phase 0.** Draw the levels. Note Classic open-interest majors and zero gamma as locations. Note the lean. Note the scheduled releases.
+2. **Phase 1.** Watch max-change for Grade B at your levels. Name nothing.
+3. **Phase 2.** H12, then H13. Assign grades. E1–E6 become nameable where Grade C exists.
+4. **Phase 3.** H3 for day-type. Confirm or rename the lean.
+5. **11:00.** Rename or drop.
+
+## Summary
+
+State is empty at 09:30 and every level you drew is a location until leftover reaches its strike. Four phases, three grades, two leans. Classic open interest marks location with owner unknown; max-change marks attention; only State assigns a pressure word. Daily levels are a full-group sentence; this morning is a latest-group sentence. The early window closes at 11:00.
+
+## Terms introduced
+
+<ChapterTerms docId="practice/09a-early-session" />
+
+## Newcomer questions
+
+1. **The overnight high sits on a Classic major. Is that a wall?** Grade A. Location. Owner unknown. Wait for Grade C.
+2. **Can I name anything at 09:35?** A location and a lean. Not a pressure word. State is too thin.
+3. **Why fifteen minutes and not thirty?** Fifteen is the finest usable box, and it completes when leftover is barely nameable. Thirty to sixty is safer; the next chapter uses it.
+4. **The DEX ladder changed shape before the open. Who traded?** Nobody. Re-marking: the sensitivities moved with the overnight spot change.
+5. **A daily level has a huge full-group pile. Does that decide this morning?** No. The pile is context across days. This morning is decided by latest leftover as it builds.
+
+<CheckYourself
+  items={[
+    {
+      q: 'It is 09:36. Price tests yesterday’s high. Classic max-change lights up at that strike. Grade?',
+      a: 'Grade B. Fresh curvature placed there; sign unknown. Attention marker, not a reversal. Wait for State.',
+    },
+    {
+      q: 'Overnight range inside yesterday’s; fifteen-minute range inside both; skew dots drifting lower. Which lean, and which E-read?',
+      a: 'Compression lean. E1 — but only fade an edge where Grade-C customer-long leftover sits in falling vol.',
+    },
+    {
+      q: 'Open above yesterday’s high, range breaks up at 09:47, customer-short leftover builds ahead. Is yesterday’s high a fade?',
+      a: 'No. E2: continuation lean; yesterday’s high behind price is a checkpoint. Fuel ahead. Falsifier is a reclaim of the range plus a convexity flip.',
+    },
+    {
+      q: 'Which two H-drills must run before any E-read names wall or fuel?',
+      a: 'H12 to tag the vol regime from the skew dots. H13 to confirm leftover exists behind the Classic pile.',
+    },
+    {
+      q: 'Fifteen-minute-range high forms exactly on a full-group open-interest major. What do you write?',
+      a: 'E6: Grade A; location; pressure unknown. Two sentences — the pile is full-group and old, the edge is latest and young. Nothing to falsify until Grade C.',
+    },
+    {
+      q: 'At 10:00 a scheduled release prints and every ladder jumps. Flow?',
+      a: 'Mostly re-marking. Check Orderflow for the same minute, then re-tag the regime with H12 before reusing any E-read.',
+    },
+  ]}
+/>
+
+## Gate
+
+Next: [Structure and Gexbot together](/docs/practice/09b-structure-and-gexbot). It generalizes these levels into structure the tape draws all day, and gives the journal line a field for it.
