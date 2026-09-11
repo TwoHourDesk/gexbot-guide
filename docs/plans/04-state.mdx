@@ -16,6 +16,8 @@ import DealerHedgeSim from '@site/src/components/charts/DealerHedgeSim';
 
 # State
 
+By the time a leftover lean appears on State, the first futures hedge that lean required is mostly already done — you cannot pick it out of the tape. What is still coming depends on where the index walks next, and this screen shows where, not whether.
+
 **Which Gexbot screen this is.** State — leftover trades so far today, by strike, labeled customer bought versus customer sold.
 
 **What you will be able to do.** Read four drawings without mixing their left-and-right meanings, and split a hedge that is **already done** from a hedge that is still **ahead** if the index walks.
@@ -66,7 +68,7 @@ A tall pile here is a **node** you can name — a concentration of leftover pape
 
 The price of an option embeds a guess about how much the index will wiggle. That guess is **implied volatility**, often written **IV**.
 
-Through a session, that guess can generally be falling (a **crush**) or rising. This book calls that the **vol regime**. If you cannot tell which regime you are in, stand down on any “wall versus fuel” story.
+Through a session, that guess can generally be falling (a **crush**) or rising. This book calls that the **vol regime**. It matters because the holder of a leftover option is winning or losing depending on which way that guess moves, and their incentive at the strike flips with it: the same bar can argue for a stall *candidate* in one regime and for a continuation *candidate* in the other. If you cannot tell which regime you are in, stand down on any “wall versus fuel” story.
 
 Gexbot’s own docs tell a *folklore* story that **flips** with the regime:
 
@@ -74,14 +76,14 @@ In a **falling-vol** tape, customer **longs** often act like **walls**: holders 
 
 In a **rising-vol** tape, both stories invert. A long leftover can become fuel. A short leftover can become a wall.
 
-A wall is a **hypothesis**, not a fact. “Long bar = support” is the first import mistake on this page.
+A wall is a **hypothesis**, not a fact. A reader who treats a tall long bar as support, and leans on it without a regime, is using a falling-vol story on a tape that may have already flipped. “Long bar = support” is the first import mistake on this page.
 
 <TermFirst id="implied-vol" />
 <TermFirst id="vol-regime" />
 <TermFirst id="wall" />
 <TermFirst id="fuel" />
 
-Customer pressure on OP is **incentive**. The dealer on the mirror still has **mandate**. Do not write “the customer must dump.”
+Customer pressure on OP is **incentive**. The holder is not obliged to act. The dealer on the mirror still has **mandate**. Do not write “the customer must dump.”
 
 ## Which wing is heavy: the GEX profile
 
@@ -152,9 +154,9 @@ Metaphor: an options depth ladder. Heavy minus-DEX above the index is a stack of
 
 This is the hinge of State.
 
-When leftover delta appears on the DEX ladder, hedge-chain **link 3** — the initial offset in the futures — is mostly **already on**. DEX is a **record** of a lean. It is not a queue of buying still to come. “DEX bar = pending buying” is the second import mistake on this page.
+Go back to 10:05. The customer lifted 500 calls; within seconds, the dealer bought about 500 ES. You did not see that print and cannot find it on your tape, but by the time the plus-DEX bar is on your screen, that buying has happened. A reader who sees the bar at 10:06 and buys ES expecting 500 contracts of dealer demand is buying after the demand, not ahead of it. So: DEX is a **record** of a lean — hedge-chain **link 3**, mostly **already on**. It is not a queue of buying still to come. “DEX bar = pending buying” is the second import mistake on this page.
 
-What is still **ahead** is hedge-chain **link 4**: if the index walks, gamma changes delta, and the professional must top up or unwind. That pending force is **path-conditional**. It appears only if the index walks a certain way. The next drawing shows where and with which sign. It cannot show the path.
+What is still **ahead** is hedge-chain **link 4**: if the index walks, gamma changes delta, and the professional must top up or unwind. That pending force is **path-conditional**. It appears only if the index walks a certain way. You now have the record. The next drawing is the part still owed: where, and with which sign. It cannot show the path.
 
 <TermFirst id="already-hedged-vs-pending" />
 <TermFirst id="path-conditional" />
@@ -189,7 +191,7 @@ The largest customer-long gamma node and the largest customer-short gamma node o
 
 <DealerHedgeSim />
 
-GEX profile versus convexity, in one line: GEX profile asks **which wing** (call versus put). Convexity asks **paid versus collected**. Do not swap them.
+GEX profile versus convexity, in one line: GEX profile asks **which wing** (call versus put). Convexity asks **paid versus collected**. Do not swap them: wing is not ownership.
 
 ## Running example
 
@@ -209,8 +211,8 @@ State shows leftover paper by strike. Read the orientation of *this* drawing bef
 
 ## Newcomer questions
 
-1. **Long bar = support?** Only as a falling-vol *incentive* hypothesis (*folklore*). Rising vol can make that long into fuel.
-2. **DEX printed plus — will they buy ES?** The inferred initial hedge is mostly done. Pending force is on gamma.
+1. **There is a tall customer-long bar a few strikes below price. Is that support?** Only as a falling-vol *incentive* hypothesis (*folklore*). Rising vol can make that long into fuel.
+2. **A plus-DEX bar printed. Are they about to buy ES?** The inferred initial hedge is mostly done. Pending force is on gamma.
 3. **Is GEX profile the same as convexity?** No. Wing (call versus put) versus ownership (paid versus collected).
 
 <CheckYourself
