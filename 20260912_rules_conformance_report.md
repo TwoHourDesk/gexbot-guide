@@ -261,7 +261,7 @@ Chapters 11 and 12: works kept; years and “the chapter on X” locators added 
 
 ## WP9 — Closer density
 
-**Commit:** *(filled after commit)*
+**Commit:** `fe79342ee193e77a325ad081cdbbc73f8e6331b7`
 
 **Before / after.** CHECK 0 → 0. WARN 133 → 134 (pre-existing `stand down` in Chapter 4 teaching prose, not a closer). Build clean; no rendered-page failures.
 
