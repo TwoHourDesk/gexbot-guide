@@ -221,8 +221,8 @@ The two branches share a Classic bar and share a classifier clock. They do not s
 
 ## Newcomer questions
 
-1. **Did they just put on longs?** Not stated. Buy to close looks the same as buy to open.
-2. **Is the dealer about to buy because leftover delta printed?** The initial hedge is mostly already done. Pending force lives on gamma (Chapter 4) and on the clock (Chapter 7).
+1. **The classifier tagged bought. Did they put on a new long?** Not stated. The hedge inference can survive a close. The intent inference cannot.
+2. **Leftover delta printed at 10:06. You wait for the dealer to buy the 500.** Which clock has already passed? Link 3. Pending force lives on gamma (Chapter 4) and on the clock (Chapter 7).
 3. **State is nearly empty but my tape says volume is heavy. Which one is wrong?** Neither. Residual can be tiny while two-way volume is huge. Pressure: none.
 
 <AdjacentConcepts docId="plans/03-classification" />
@@ -230,12 +230,12 @@ The two branches share a Classic bar and share a classifier clock. They do not s
 <CheckYourself
   items={[
     {
-      q: 'Write the bought-branch pending-gamma sentence and the Classic sentence for the same 500-call print.',
-      a: 'Bought leftover, pending gamma: dealer · mandate · index up · buy ES (chase) · ES. Classic on the same print: unknown. Same location, opposite honesty.',
+      q: 'Write the sold-branch pending-gamma sentence and the Classic sentence for the same 500-call print.',
+      a: 'Sold leftover, pending gamma: dealer · mandate · index up · sell ES (fade) · ES. Classic on the same print: unknown. Same location, opposite honesty.',
     },
     {
-      q: 'Two customers cross 300 of the 500 calls. Write leftover size and whether link 3 happens for the rest.',
-      a: 'Leftover 200, signed as the uncancelled side. Link 3 happens for those 200, not for the 300 that cancelled. Pressure: mandate on the 200; none on the 300.',
+      q: 'The 500 bought calls are fully crossed by 500 sold. What leftover remains, does link 3 happen, and what does Classic still show?',
+      a: 'Leftover zero. Link 3 does not happen. Pressure: none. Classic still draws the unsigned volume pile. Same location, no owner, no leftover.',
     },
   ]}
 />

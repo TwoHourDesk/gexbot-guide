@@ -241,7 +241,7 @@ Chapter 12’s “kept about 72 percent” (not 72 points) is `$540 / $750` from
 
 ## WP8 — Citations
 
-**Commit:** *(filled after commit)*
+**Commit:** `46ec22be676e6f4b19c9f1d98cb686763123ab12`
 
 No URLs remain (WP1 URL check stays clean). Forty-nine adjacent `reading` fields reformatted: Hull years added (2021, 11th ed.); two-works fields reduced to the primary; book locators changed to “the chapter on X”; purpose clauses after cites stripped.
 
@@ -256,6 +256,80 @@ Chapters 11 and 12: works kept; years and “the chapter on X” locators added 
 **Deferred.** Quoting titles on Chapter 11’s Part 3 author-year table.
 
 **Outside scope, unapplied.** None.
+
+---
+
+## WP9 — Closer density
+
+**Commit:** *(filled after commit)*
+
+**Before / after.** CHECK 0 → 0. WARN 133 → 134 (pre-existing `stand down` in Chapter 4 teaching prose, not a closer). Build clean; no rendered-page failures.
+
+Judgment: most Summaries already connect two sections. Closers that only restated a body sentence were rewritten when the page already had an unused case, clock, cancel, or production. Teaching prose, cards, and captions were not touched. No headword was introduced.
+
+### Rewritten blocks
+
+| loc | before | after (sense) | what the reader now gains |
+|---|---|---|---|
+| `intro` NQ1 | “Is this going to tell me when to buy or sell?” recap | Tall bar at a watched strike: no entry; labels ≠ decision; bar is a hypothesis until a later screen can show an owner | A case that applies the contract to an unsigned pile, before Classic arrives |
+| `intro` NQ2 | “Do I need to know options first?” recap | Later page uses a schoolbook word you lack: the page must stop and define; collapse the box if you already own it | A clock on the stop-and-define promise, not a FAQ of the opening |
+| `intro` NQ3 | “Why does every sentence carry a label?” recap | Unlabeled “the index will stall at a pile”: the defect is a claim with no mark | A refuse: unlabeled is the defect, not a fifth label |
+| `on-ramp/00-intro` CY2 | Name the pressure-word swap | Produce the on-ramp twin of “dealer must buy ES”; the word you may not copy is *must* | Production of the seat test, not a recap of the paragraph that taught it |
+| `plans/03` NQ1 | “Did they just put on longs?” + buy-to-close | Classifier tagged bought: intent not stated; hedge can survive a close | Hedge vs intent on a signed print, not a restatement of the docs limit alone |
+| `plans/03` NQ2 | “Is the dealer about to buy because leftover delta printed?” | Leftover at 10:06; you wait for the 500: link 3’s clock has passed | A clock case on the same leftover the body walked as narrative |
+| `plans/03` CY1 | Produce the *bought*-branch five-field sentence | Produce the *sold*-branch five-field sentence + Classic: unknown | The mirror the body gave in parts (sold narrative + five-field template) |
+| `plans/03` CY2 | Partial cancel 300 of 500 | Full cancel of 500: leftover zero, no link 3, Classic still draws the unsigned pile | Full cancel vs the Classic bar the body left side by side with leftover |
+| `plans/04` NQ1 | Long bar = support? falling-vol folklore | Same bar, *rising* vol: fuel candidate, still incentive, still folklore; refuse the wall if the regime is untagged | The flip the body named and did not stage |
+| `plans/04` CY1 | Write DEX/convexity signs for both 500 branches | Fade plus-DEX at 10:06 expecting 500 still to buy: which clock, and does the right regime save it? | The import-mistake clock the Summary named, as a production |
+| `layer/07` NQ2 | “Must dealers buy if net minus-vanna is $800 million?” | Same $800 million *at 10:00*: none of last-hour; morning bar is not the last-hour object | A clock refuse the body taught as a family, not as 10:00 |
+| `on-ramp/07` Summary | Price-unchanged ≠ P&L-unchanged recap | Dealer last-hour mandate and your rent are one clock from two seats; ladders locate the crowd, cannot invoice you | Seat + residual-only in one cut; dropped the recap of the opening |
+| `practice/12` CY1 | Unchanged index, vol down two, ATM 0DTE: −3.4 | First-row split: +5.4 vs +15; which pieces made the gap; what Gexbot did not show | Attribution of the table’s first row, not a reprint of the second |
+
+### Already passing (no edit)
+
+Summaries on Chapters 1–6, 8–12 and their on-ramps already connect two objects or two clocks. Check Yourself items that already produce a combination, toy, or chain-of-custody slot were left. Drill-sheet FAQs on 08 and 09b that stage a named H/S/E case were left.
+
+### LEAVE — rewrite would invent a fact or reprint another closer
+
+| loc | why left |
+|---|---|
+| `on-ramp/02` CY1 | Break-even 6013 is the body toy; CY2 already splits two holders. A new combination needs a mark the page does not add |
+| `on-ramp/07` both CY | Already produce drift + counterparty for the two toys. No unused field left |
+| `on-ramp/09` Summary, NQ, CY | Already connect the dead-mark case; NQ2 refuses a number this page does not give |
+| `practice/11` both CY | Already a toy number and a bands combination |
+| `practice/12` CY2 | Non-ATM 0.20-delta size would need a figure the page does not give (ATM ≈ 1 ES only) |
+| `practice/09b` NQ1–2, 5–9 | Catalogue FAQ; rewriting the set is a voice pass, not a missing fact |
+| Remaining drill-sheet items on 08 / 09b | Same: they name a case the catalogue already staged |
+
+**Judgment calls.** Applied a focused set, not every FAQ recap. Density beats completeness: a closer that already produces stays. “Stand down” was not used in the Chapter 4 NQ (forward headword, Chapter 8). On-ramp 00 CY2 does not say “may sell the calls” (that action is later folklore).
+
+**Rule conflicts.** Closer density vs. editing scope: a rewrite that needed a new fact was left (precedence 1 / “not stated”). Closer density vs. voice: catalogue Newcomers on drill sheets were left.
+
+**Deferred.** A second pass on 08 / 09b Newcomers if the owner wants the catalogue FAQs converted to unused clocks. Non-ATM sizing toy for Chapter 12.
+
+**Outside scope, unapplied.** Teaching-prose recap inside chapters. Moving `firstDefinedIn` for `stand-down`.
+
+---
+
+## Rule feedback
+
+Do not treat this as an amendment. Proposed wording only.
+
+1. **`just` as a word-boundary ban.** Temporal/locative uses name objects (“the map that just redrew,” “just under the level,” “just bought”). A `\bjust\b` Check cannot tell filler from those. **Propose:** ban filler `just` by hand, or allow-list the object phrases in Checks; do not fail temporal `just` that is the increment or the redraw.
+
+2. **Inline label on every screen-teaching sentence.** A paragraph beside its `TermFirst` / `GexbotConcept` that restates the card is already labeled by the card. Requiring `(*docs*)` on every restatement is a voice rewrite and does not add a claim. **Propose:** a paragraph beside its card, or that restates a labeled section, is labeled by that card or section. Inline labels are required when the paragraph asserts a *new* hedge, pressure, or update-clock.
+
+3. **Forward-vocabulary alias false positives.** The checker flags `unknown`, `none`, `holder`, `chain`, `skew` inside “skew dots,” and `09:29–11:00` as the early-window alias. **Propose:** stop-list those plain words; do not treat a clock range as a headword; do not flag `skew` inside the already-taught phrase **skew dots**.
+
+4. **“First use of each taught term links.”** Unenforceable without a term→chapter map the checker does not have. Pages already link the prior chapter in “What you already need.” Linking every earlier headword on first mention is a voice rewrite. **Propose:** required link is the prior chapter in the opening block; optional first-use links for terms taught two or more chapters back.
+
+5. **`always` on “that sentence is inferred.”** Book-rule sentences about the label itself are not mechanism claims. **Propose:** `always` / `will` are illegal on mechanism claims only; a sentence that names the labeling rule may use them.
+
+6. **Citation Checks the script does not yet run.** Two-works `reading` fields and yearless Hull passed WP1. WP8 cleaned them by hand. **Propose:** fail `reading` that contains a URL, a second `(` year, or a book without a year; do not parse titles.
+
+7. **Term budget.** Twelve chapters are over twelve taught terms. Handoff correctly says no action. **Propose:** keep the budget forward-binding only; do not rewrite existing chapters for it.
+
+8. **`intro` opening block.** The Checks treat `intro` as a main chapter but skip `**Which Gexbot` / `**What you already need.**` because it is not a screen. **Propose:** write that exception into Checks, or give `intro` its own opening-block rule (contract page, not a screen).
 
 
 
