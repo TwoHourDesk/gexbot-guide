@@ -421,7 +421,7 @@ export const glossary: GlossaryEntry[] = [
     headword: 'two books',
     aliases: ['customer channel'],
     shortDef:
-      'Customer book: I just bought or sold paper. Dealer book: I absorbed that paper and may hedge. Gexbot reports the customer sign.',
+      'Two ledgers move together. Customer book: I just bought or sold paper. Dealer book: I absorbed that paper and may hedge. Gexbot reports the customer sign.',
     firstDefinedIn: 'plans/03-classification',
     alsoAppears: ['practice/08-heuristics-as-reading'],
     unit: 'Customer-signed residual',
@@ -980,7 +980,7 @@ export const glossary: GlossaryEntry[] = [
     id: 'hedge-chain',
     headword: 'hedge chain',
     shortDef:
-      'Print → absorb → initial delta hedge → gamma re-hedge → clock re-hedge → resolution. Taught in Classification; every later screen points to a link.',
+      'The six steps from an option print to the last futures trade it can force: print → absorb → initial delta hedge → gamma re-hedge → clock re-hedge → resolution. Taught in Classification; every later screen points to a link.',
     firstDefinedIn: 'plans/03-classification',
     unit: 'Six links',
     notCounted: 'The hedge print on the futures tape',
@@ -1819,7 +1819,7 @@ export const glossary: GlossaryEntry[] = [
     headword: 'local zero',
     aliases: ['local zeros', 'polarity flip'],
     shortDef:
-      'A level where the minus-vanna or charm ladder crosses zero. The sign flips as the index crosses it and is zero when the index sits on it. Docs: sharp pivots. Residual-only. Beta. Folklore.',
+      'The level where the clock-hedge ladder switches from buying to selling: minus-vanna or charm crosses zero. The sign flips as the index crosses it and is zero when the index sits on it. Docs: sharp pivots. Residual-only. Beta. Folklore.',
     firstDefinedIn: 'practice/08-heuristics-as-reading',
     seeAlso: ['minus-vanna-ladder', 'charm-ladder', 'h15'],
     kind: 'gexbot',

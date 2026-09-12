@@ -118,7 +118,7 @@ Deliberate break: renaming one `<TermFirst id>` to a missing id produced `CHECK 
 
 ## WP4 — Page structure
 
-**Commit:** *(filled after commit)*
+**Commit:** `c1cf32bce4ae41b00124a03f362240d93f2ebe3e`
 
 **Before / after.** Page-order and Check Yourself CHECKs 7 → 0. Total CHECK 40 → 33 (remaining are times).
 
@@ -142,4 +142,37 @@ Deliberate break: renaming one `<TermFirst id>` to a missing id produced `CHECK 
 **Deferred.** None.
 
 **Outside scope, unapplied.** None.
+
+---
+
+## WP5 — Vocabulary
+
+**Commit:** *(filled after commit)*
+
+**Forward-vocabulary.** 135 WARN lines classified. None rephrased as a leak: every hit is a false-positive alias, a sanctioned forward pointer, or a proposed `firstDefinedIn` move (not applied).
+
+False positives (plain word or alias of a later term): `unknown`, `none`, `stack`, `holder`, `chain`, `crowded`, `offer`, `synthetic`, `cash open`, `09:29–11:00`, `reversal`, `smile`, `regime change`, `first two hours`, `scheduled release`, `no Gexbot object here`, `scalp`, `market maker`, `how stock-like`, `skew` inside the taught phrase **skew dots**.
+
+Sanctioned: `plus-DEX` / `minus-DEX` in Chapter 4; “Chapter N will …” / “Chapter 3 is the whole lesson”; intro’s contract preview of the four pressure words; H12’s own `skew dots` (taught on that page as `skew-dots`).
+
+Proposed moves (logged, not applied): `skew` → Chapter 8 (H12); `customer-long` / `customer-short` / `classification-engine` → Chapter 1 (the map names them); leftover / unsigned / the four pressure words → intro (the contract page uses them as ordinary language).
+
+**Cross-references.** Duplicate `](/docs/…)` links removed: `layer/06-nq-es-layer.mdx:107` second Classification link; `layer/07-clocks-and-late-greeks.mdx:135` second Chapter 6 link. First use kept. No flood of new first-use links added — every numbered chapter already links the prior chapter in “What you already need.” Adding a link on the first mention of every earlier headword would be a voice rewrite. See Rule feedback.
+
+**Coinage paraphrases.** Nineteen ids checked. Sixteen already opened with a plain clause. Three gained one:
+
+| id | added clause |
+|---|---|
+| hedge-chain | “The six steps from an option print to the last futures trade it can force” |
+| two-books | “Two ledgers move together” |
+| local-zero | “The level where the clock-hedge ladder switches from buying to selling” |
+
+**Judgment calls.** Not moving `firstDefinedIn` (needs approval). Not rephrasing H12 to avoid the word “skew.”
+
+**Rule conflicts.** Reader’s vocabulary (rule 2) vs. the intro’s job of naming the four pressure words before Chapter 3 teaches them. The contract page wins; proposed move logged.
+
+**Deferred.** Proposed term moves above. Mechanical first-use linking of every earlier headword.
+
+**Outside scope, unapplied.** Expanding the checker stop-list (would hide real leaks).
+
 
