@@ -179,7 +179,7 @@ Proposed moves (logged, not applied): `skew` → Chapter 8 (H12); `customer-long
 
 ## WP6 — Times and durability
 
-**Commit:** *(filled after commit)*
+**Commit:** `4213f993b13b1c4fdad9ecc0a826c237364c7dc1`
 
 **Before / after.** Time CHECKs 33 → 0. Total CHECK 33 → 0. WARN 135 → 133. First `HH:MM` on each page now carries ` ET`; later times are bare. `Eastern` replaced by `ET` on the first clock of a page and stripped from later ones.
 
@@ -207,5 +207,35 @@ Proposed moves (logged, not applied): `skew` → Chapter 8 (H12); `customer-long
 **Deferred.** Updating zero-dte-share to 2025 and its citation.
 
 **Outside scope, unapplied.** None.
+
+---
+
+## WP7 — Canonical toy
+
+**Commit:** *(filled after commit)*
+
+Chapter 12’s “kept about 72 percent” (not 72 points) is `$540 / $750` from the canonical 6000 / 0.50 / 15-point / $100 / $50 figures plus Chapter 11’s stated 16% / two-hour illustration. Untouched.
+
+| page | numbers | class | fix |
+|---|---|---|---|
+| most chapters | 500 / 6000 / 0.50 / 0.80 / 15 pts / $25,000 / 500 ES / sold mirror | canonical | none |
+| on-ramp/02 | 13 pts / $1,330 debit | stated (“Chapter 11 shows where 13 comes from; here it is a toy, given”) | none |
+| on-ramp/02 | close at 5000 | undocumented crash | added “a thousand-point crash” |
+| on-ramp/02 Check | debit 8 / mark 10 | undocumented | “Toy. Suppose instead …” |
+| on-ramp/04 Summary | vol 20 / 15 / 12 | undocumented | “Toy. Suppose instead …” |
+| on-ramp/07 | 6010 / 5990 / 0.55 | undocumented 10-pt drift | “Toy. Suppose instead the index drifted ten points in” |
+| layer/06 | 1,250 NQ / 2.5 NQ | canonical NDX stretch of the same 500 | none |
+| practice/11 | 16% / √time slices | stated (“illustration values, not today’s market”) | none |
+| practice/12 | 13 / +5.4 / $540 / 72% | stated two-hour attribution of the running example | none |
+| practice/12 Check | 10 SPX calls | unit-lot scale | logged, not converted (smaller than restating the 500) |
+
+**Judgment calls.** 13-pt debit already had a why-not clause; left it. 5000 kept as the crash close with a clause (smaller than inventing 5500).
+
+**Rule conflicts.** None.
+
+**Deferred.** Converting Chapter 12’s 10-lot Check to 500.
+
+**Outside scope, unapplied.** Recalculating Chapter 11’s 0.82 vs linear γ 0.86.
+
 
 

@@ -17,7 +17,7 @@ The words Chapter 2 used to build a histogram are the words on the ticket you wo
 
 The index is at 6000. You buy one call, strike 6000, expiring today: the ATM 0DTE of the running example. Say it costs about 13 index points, $1,330 for the contract. (Chapter 11 shows where a number like 13 comes from; here it is a toy, given.)
 
-That 13 points is your **debit**. On a bought option it is also the most you can lose, whatever the index does, because the contract gives you a right and no obligation. If the index closes at 5990 you lose 13 points. If it closes at 5000 you lose 13 points.
+That 13 points is your **debit**. On a bought option it is also the most you can lose, whatever the index does, because the contract gives you a right and no obligation. If the index closes at 5990 you lose 13 points. If it closes at 5000 — a thousand-point crash — you lose the same 13 points.
 
 At expiry the call is worth the index minus 6000 if that is positive, and nothing otherwise. So you have your money back only if the index closes at 6013, and you are ahead only above it. The strike plus the debit is your **break-even**. It is a point on your payoff. It is not a level on anyone’s chart, and nothing on Gexbot knows it exists.
 
@@ -68,7 +68,7 @@ Crowded-versus-lonely and ahead-versus-behind are independent readings of the sa
       a: 'Break-even 6013. Maximum loss 13 points, $1,330, whatever the index does.',
     },
     {
-      q: 'Two holders bought the same 6000 call, one at 13 and one at 8. The mark is 10. Classic’s bar is identical. Who is ahead?',
+      q: 'Toy. Suppose instead two holders bought the same 6000 call, one at 13 and one at 8. The mark is 10. Classic’s bar is identical. Who is ahead?',
       a: 'The holder who paid 8. The holder who paid 13 is behind. Classic cannot split them: same strike, same unsigned pile, no ticket numbers.',
     },
   ]}
