@@ -40,7 +40,7 @@ Deliberate break: renaming one `<TermFirst id>` to a missing id produced `CHECK 
 
 ## WP2 — Glossary data hygiene
 
-**Commit:** *(filled after commit)*
+**Commit:** `fe8abf937a253813eb4c892e4b38d16bd79e3994`
 
 **Before / after.** Glossary CHECKs 24 → 0 (9 alias collisions, 14 compound `evidence`, 1 URL). Total CHECK 64 → 40. WARN 136 → 135 (one colliding alias had been a forward-vocab hit). Build clean; no rendered-page failures. Keyword index now lists each alias once because collisions are gone.
 
@@ -69,3 +69,48 @@ Deliberate break: renaming one `<TermFirst id>` to a missing id produced `CHECK 
 **Deferred.** None.
 
 **Outside scope, unapplied.** None.
+
+---
+
+## WP3 — Claim labels and modals
+
+**Commit:** *(filled after commit)*
+
+**Before / after.** Seven `always` uses read; two modal mismatches fixed; folklore modal aligned on the wall/fuel block; five double-label headings reduced to the weaker label; two `will` mechanism sentences labeled or remodaled. CHECK count unchanged (labels are not a mechanical Check). Build clean expected.
+
+**Seven `always` uses**
+
+| loc | verdict | action |
+|---|---|---|
+| plans/01:58 | quoted folklore being rejected | none |
+| plans/02:81 | reader-behaviour denial (“does not always mean”) | none |
+| plans/02:170 | reader-behaviour (“the reader who always leans”) | none |
+| plans/03:142 | `always` + labeled verb *inferred* | dropped `always` |
+| layer/06:167 | same | dropped `always`; added `(*market-general*)` on delta-neutral |
+| practice/09b:247 | strike-grid density is market-general | added `(*market-general*)` |
+| practice/12:303 | reader-behaviour reminder (“partial picture, always”) | none |
+
+**Changed sentences** (page:line · before → after · reason)
+
+- `plans/03-classification.mdx:142` — “That sentence is always **inferred**.” → “That sentence is **inferred**.” — `always` is illegal on an inferred claim.
+- `layer/06-nq-es-layer.mdx:167` — same drop of `always`; “usually run **delta-neutral**” → “usually run **delta-neutral** (*market-general*)” — mandate is market-general; the unprinted hedge stays inferred.
+- `plans/04-state.mdx:76` — “often act like / holders may” → “are said to act like / holders are said to” — folklore modal.
+- `practice/09b-structure-and-gexbot.mdx:247` — added `(*market-general*)` on “always a strike within a few points.”
+- `practice/08-heuristics-as-reading.mdx:76` — heading `(*beta*)` removed; body now “Beta feature: residual-only, still being practiced.” — `beta` is product status, not a claim label.
+- `practice/08-heuristics-as-reading.mdx:124` — “people short gamma … must chase” → “dealers short gamma … must chase it (*market-general*)” — `must` is legal only for dealer mandate.
+- `practice/08-heuristics-as-reading.mdx:196` — H14 heading dropped the second label (“documented open-versus-close limit”); body already carries the docs limit. Weaker label kept: folklore.
+- `practice/08-heuristics-as-reading.mdx:209` — H15 heading dropped `(*beta*)`; weaker label kept: folklore.
+- `practice/09a-early-session.mdx:165` — E4 heading dropped `*inferred* combination`; weaker label kept: folklore.
+- `practice/09b-structure-and-gexbot.mdx:141` — S6 same.
+- `practice/09b-structure-and-gexbot.mdx:189` — S9 dropped `*beta*`; folklore kept.
+- `on-ramp/08-heuristics-as-reading.mdx:30` — “will land” → “is said to land (*folklore*)”.
+- `practice/12-futures-to-options.mdx:71` — hedge-chain sentence tagged `(*market-general*)` so `will re-hedge` is a legal modal.
+
+**Judgment calls.** A line-by-line agent pass flagged ~80 “missing `(*docs*)`” on screen-teaching sentences (Classic draws OI and volume, State starts empty, etc.). Those sit next to `TermFirst` / `GexbotConcept` cards that already carry the object. Plastering `(*docs*)` on every restatement would be a voice rewrite (precedence 5) and would not add a new claim. Not applied. H3 grind side is tagged folklore in the book and docs in the source-of-truth file; changing folklore → docs would *strengthen* a label. Not applied.
+
+**Rule conflicts.** Claim integrity vs. density/voice on restated screen facts: integrity wins for *new* hedge/pressure/`always`/`will` claims; density/voice wins against repeating `(*docs*)` on a card the paragraph already sits beside. Logged as Rule feedback.
+
+**Deferred.** The agent defect lists (every unlabeled “Classic draws…”, every restated hedge-chain toy, ScreenOrientation props). Proposed rule: a paragraph beside its card, or that restates a labeled section, is labeled by that card/section. Inline labels are required when the paragraph asserts a *new* hedge, pressure, or update-clock.
+
+**Outside scope, unapplied.** Strengthening H3 folklore to docs. Labeling every screen-teaching sentence.
+
