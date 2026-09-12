@@ -1,116 +1,137 @@
 ---
-description: Write the Gexbot wiki as a book for readers new to options, not as a specialist reference.
-globs: docs/**/*.mdx
-alwaysApply: true
+description: How a chapter or on-ramp page is written — page order, teach-before-naming, quantities and the canonical toy, glossary, adjacent concepts, closers, voice, citations, durability, editing scope, and the checks a page must pass. The reader and the claim labels live in audience.mdc.
+globs: docs/**/*.mdx, src/data/glossary.ts, src/components/textbook/**
+alwaysApply: false
 ---
 
-# Textbook prose (uninitiated reader)
+# Textbook prose
 
-The reader can follow an ES/NQ chart and has **not** traded options (see `audience.mdc` for the full audience statement and the two tracks). Every `docs/**/*.mdx` page — main chapter or `docs/on-ramp/**` sub-chapter — is a book chapter, not a reference card, and every rule below applies to both.
+This file is the page. The reader, the two tracks, precedence, labels, and pressure words are in `audience.mdc` and are not restated here. Every `docs/**/*.mdx` page — main chapter or on-ramp — is a book chapter, not a reference card, and every rule below applies to both tracks unless a bullet names one.
+
+## Page order
+
+Both tracks, in this order, no slot skipped and none repeated:
+
+1. **Stake** — the force the reader cannot see on the ES/NQ tape, in one or two sentences, before any definition.
+2. **Opening block** — main chapters: **Which Gexbot screen (or capability) this is** · **What you will be able to do** · **What you already need** (link the prior chapter). On-ramp pages: **What this page assumes** · **What you will be able to do**. "Able to do" names a competence of reconstruct or refuse; it may not name an entry or spoil the Check Yourself answers.
+3. **Sections** — the teaching.
+4. **Summary**
+5. **Terms introduced** — `<ChapterTerms docId="…" />`
+6. **Newcomer questions**
+7. `<AdjacentConcepts docId="…" />` (if the page has one)
+8. `<CheckYourself … />`
+9. **Gate** — where to go next, one line. Main chapters add the `On-ramp:` line (see `textbook-operations.mdc`).
+
+Every rule on the page carries its reason within two sentences, because a rule without a "because" is memorized, not learned. This file holds itself to that.
 
 ## Before you use a word
 
-- If this chapter has not defined it, and no earlier chapter has, **do not use it**. Teach it in a sentence first, then name it.
-- Acronyms get the long form once: “gamma exposure (GEX)”, “open interest (OI)”.
-- API names (`dexoflow`, `ES_SPX`) wait until the chapter that owns that screen.
-- A summary table may **repeat** terms already taught. It may not **introduce** them. Repeating a *term* is not a license to retell the thesis.
+- If this page has not defined a word, and no earlier page in reading order has, do not use it. Teach it in a sentence first, then name it. Examples: "leftover trades so far today" until *residual* is taught; "we can see the pile, not who owns it" until *unsigned* is taught.
+- Acronyms get the long form once, on the page that teaches them: "gamma exposure (GEX)", "open interest (OI)". On later pages the first use is linked (next bullet), which is how a reader landing mid-book recovers the long form.
+- API names (`dexoflow`, `ES_SPX`) wait for the chapter that owns that screen.
+- Link a term on its first use per page to the chapter that taught it. The link text is the term. No second link for the same term on the same page.
+- **Coin a term only when the market has none.** Where the market has a word, use it and record the book's or Gexbot's alias in the glossary. Every coined term's glossary row carries a one-clause plain paraphrase, because each private word is a tax on a reader who is impatient with vocabulary.
+- **Term budget: at most twelve taught terms per new chapter**, not counting enumerated catalog codes (H-, S-, E-reads) or claim labels. Above that, defer the term to the chapter whose object needs it, or split the chapter. Existing chapters over the budget are not rewritten for it, and an edit to one adds a term only by deferring another, because every term is a cost the reader pays before the read changes.
+- A summary table may repeat terms already taught. It may not introduce them, and repeating a term is not a license to retell the thesis.
+- Do not preview later objects by dumping their names (no "OP, DEX, convexity" in Chapter 1).
 
-## Track introductions
+## Quantities and the canonical toy
 
-- Open with what this chapter may assume (link the prior chapter).
-- “What you will be able to do” names a competence. It may not spoil the Check Yourself answers.
-- Close with “terms introduced here.” Do not treat a `<TermFirst>` box as the only teaching.
-- Do not preview later objects by dumping their names (no “OP, DEX, convexity” in Chapter 1).
+For each newly named quantity or screen object, the prose supplies, in this order, before any formula:
 
-## Glossary and index (required)
+what goes wrong without it → what it counts → unit and sign, and what the flipped sign would mean → owner, if knowable → input authority and clock (who publishes the raw count or print; when it is knowable) → transform (what Gexbot or folklore did to it) → the uncounted, and whether it is taught here or parked as adjacent → the Gexbot name → the toy.
 
-Every named term a chapter teaches or uses as a term — headword, acronym, or Gexbot screen name — **must** have a row in `src/data/glossary.ts`. The Glossary and keyword index pages are generated from that file. A prose definition or a `<TermFirst>` box is not enough.
+Any slot that is unknown is written **not stated** in the sentence. A formula arrives only after that prose has earned it; a formula without it is another black box. No derivation, PDE, or calibration is added to look complete, and unit, sign, and authority are never skipped to stay punchy. Write the chain of custody as sentences, one slot at a time, labeled where the claim type changes — not as an unlabeled table.
 
-- Add the entry in the same edit as the chapter that first teaches the word. Set `firstDefinedIn` to that chapter’s doc id (for example `plans/02-classic`).
-- Put every reader-facing alias on `aliases` (OI, 0DTE, fulcrum, `dexoflow`). The index lists those strings; it cannot invent them.
-- Point `alsoAppears` at later chapters that treat the term again. Point `seeAlso` only at ids that exist.
-- After the edit, every `<TermFirst>`, `<GexbotConcept>`, and `NeededForThisScreen` id must resolve. Chapter 10 (and every other chapter) must not render “No lexicon headwords list this page.”
+**Hidden flow — teach or park.** Teach the absence in the chapter when the screen's claim depends on it (unsigned Classic, cancelled leftover, a self-hedged customer, converted NQ/ES); the absence gets the same order as any other object. Park it as adjacent when the reader needs the name for the tape or for a later move and this chapter's object does not require working it. Never invent a hidden flow the source of truth and the labels cannot support.
+
+**The canonical toy.** Every worked number in the book uses these figures unless the paragraph says why not:
+
+| Field | Value |
+|---|---|
+| Time | 10:05 ET |
+| Trade | a customer trades **500 SPX 0DTE ATM calls** |
+| Index | about 6000 |
+| Delta | about 0.50 ATM; about 0.80 after a 15-point rise |
+| SPX multiplier | $100 per index point |
+| ES point value | $50 per point |
+| Share-equivalent | 500 × 0.50 × $100 = $25,000 per point ≈ **500 ES** |
+| Mirror | the same 500 calls **sold**: same bar, opposite branch |
+
+Toy numbers are round, carry their units, and are reconstructable by hand in three arithmetic steps or fewer. On-ramp pages retell the same toy from the customer seat and add no P&L beyond it.
+
+## Glossary and index
+
+Every named term a page teaches or uses as a term — headword, acronym, coinage, Gexbot screen name — has a row in `src/data/glossary.ts`, added in the same edit as the page that first teaches it, with `firstDefinedIn` set to that page's doc id. The Glossary and keyword index are generated from that file; a prose definition or a `<TermFirst>` box is not enough.
+
+- `aliases` carries every reader-facing form (OI, 0DTE, `dexoflow`). The index lists those strings and cannot invent them. **An alias appears on one entry only.**
+- `alsoAppears` points at later chapters that treat the term again. `seeAlso` points only at ids that exist.
+- `shortDef` stands alone: the glossary is read without the chapter.
+- **Ids are immutable once published.** A rename is a new alias, not a new id. One concept, one id.
+- After the edit, every `<TermFirst>`, `<GexbotConcept>`, `<AdjacentConcepts>`, and `NeededForThisScreen` id resolves, and no page renders "No lexicon headwords list this page."
 
 ## Adjacent concepts (named, not taught)
 
-- Each chapter may end with one `<AdjacentConcepts docId="…" />` block, placed immediately before `<CheckYourself>`: ideas the chapter leans on that **no** chapter teaches and that a reader needs for the screen or for a later move into index options.
-- Every item is a `glossary.ts` row with `kind: 'adjacent'`, `firstDefinedIn` = that chapter, `bearsOn`, `evidence` (market-general / docs / folklore / not stated), and one `reading` citation in Chapter 11’s style. The index lists them; `ChapterTerms` does not.
-- Each item says what it is, then what it bears on here: two to four sentences, at most 110 words, five items per block. Full sentences over clipped ones; if the item needs a worked example or a number, the idea belongs in a chapter, not here.
-- Before adding one, search `docs/` and `glossary.ts` for the headword and its aliases. If it is taught or listed anywhere (Chapters 11 and 12 included), it does not qualify.
-- Track split: on a **main chapter** the item bears on the futures tape or on reading Gexbot (basis, auctions, expiration-day flows, market-structure facts that decide what a screen can see). On an **on-ramp page** the item bears on holding or trading the option (chain, marks, settlement value, routing, greeks beyond the chapter, practitioner tools). An options-side item that a reader needs only to read a screen stays on the main chapter; otherwise it belongs to the on-ramp.
-- Naming an adjacent concept may not add a mechanism claim about Gexbot or soften a label, pressure word, or guardrail.
+A page may end with one `<AdjacentConcepts docId="…" />` block in slot 7: ideas the page leans on that no chapter teaches and that the reader needs for the screen or for a later move into index options.
 
-## Closers and cards (density, not DRY)
+- **Three to five items.** An item that fails the coverage search is deleted, not replaced; a page with fewer than three legitimate items has no block. Quotas invite padding, and a padded item teaches the reader that the block can be skipped.
+- Coverage search first: `docs/` and `glossary.ts` for the headword and every alias. A term taught or given a glossary row anywhere, Chapters 11 and 12 included, does not qualify. A bare reading-list citation does not teach; an item may name a cited work's concept, and then links that chapter and reuses its citation.
+- Each item is a `glossary.ts` row with `kind: 'adjacent'`, `firstDefinedIn` = this page, `bearsOn`, `evidence` (one of `market-general` / `docs` / `folklore` / `not stated`; qualifiers go in `evidenceNote`), and one `reading` in the citation format below.
+- Each item says what it is, then what it bears on here: two to four full sentences, at most 110 words. If it needs a worked example or a number, the idea belongs in a chapter.
+- **Track split.** On a main chapter the item bears on the futures tape or on reading Gexbot (basis, auctions, expiration-day flows, market-structure facts that decide what a screen can see). On an on-ramp page it bears on holding or trading the option (chain, marks, settlement, routing, greeks the chapter did not teach, practitioner tools). An options-side item the reader needs only to read a screen stays on the main chapter.
+- An adjacent item adds no Gexbot mechanism and softens no label, pressure word, or guardrail.
 
-The fault is same-page paraphrase: the same claim, the same work, a new heading. Cross-chapter return is review. Same-page paraphrase is not.
+## Closers and cards
 
-The fix is **information density**, not brevity. Deleting a closer that only paraphrased leaves a hole. Keeping a closer that only paraphrases leaves the same hole in more words. The slot stays. What fills it must be information the teaching section did not already give.
+The fault is same-page paraphrase: the same claim, the same work, a new heading. The fix is density, not brevity: the slot stays, and what fills it is information the teaching did not give. Test: if the reader skipped this block, they lose a distinction, a number, a misread, a connection, or a production task they cannot reconstruct from the teaching alone. If they lose nothing, the block is a defect however short it is.
 
-A closer may connect, case, refuse, misread, or demand production. It may not retell. It may not introduce a headword. It may not soften a label to make room.
-
-Test: if the reader skipped this block, they lose a distinction, number, misread, **connection**, or production task they cannot reconstruct from the teaching alone. A shorter recap that adds no such loss is not a closer.
-
-### Slot jobs
-
-- **Teaching prose** — the only place the idea is taught. What goes wrong without it → the idea → the Gexbot name → the tiny number. If a later paragraph would reprint this, densify *this* paragraph with the clock, cancel, or number, and give the later paragraph a different job.
-- **`<TermFirst>`** — the portable definition. The glossary must stand alone, so `shortDef` stays complete. The paragraph is the worked case. They may not be the same sentences. If they are, add the case to the paragraph; do not shrink the card.
-- **`<GexbotConcept>` / `<WhoMustAct>` / `<ScreenOrientation>`** — abstract fields (unit, not-counted, actor, trigger, venue). The paragraph beside them is the case. The card’s first line may not copy the paragraph.
-- **`<DistinguishingNote>`** — only if it adds a cousin, cut, or import mistake that is not already on the `<GexbotConcept>` above it. Identical fields are zero information: drop the note. A new cut is density: keep it.
-- **Figure `teaching=`** — one visual instruction the prose did not already give. Not a second thesis.
-- **On-ramp “what the screen cannot” / “the one thing that changes”** — one new distinction each, from the customer seat. Summary, Newcomer questions, and Check Yourself do not retell those two distinctions; they connect, case, or produce from them.
-- **Summary** — two to four sentences that *connect* what the sections left side by side. The reader who read every section still learns why those sections belong on one page. Not a recap. Not a one-line shrinkage of the thesis.
-- **`<ChapterTerms>`** — names only. Keep.
-- **Newcomer questions** — a case, clock, cancel, or refusal the body did not write. Illegal: a paraphrase of the Summary or of the teaching paragraph.
-- **`<CheckYourself>`** — production of a *combination* the body presented in parts, or a toy number. Two items max unless the chapter is a drill sheet (Chapter 8). If an item restates a Newcomer question or the Summary, replace it with a combination.
-- **Gate** — where to go next. One line. No thesis reprise.
-- **`<AdjacentConcepts>`** — stays; named, not taught. See above.
+- **Teaching prose** — the only place an idea is taught, with unit, sign, and authority folded in. If a later paragraph would reprint it, densify this one and give the later one another job.
+- **`<TermFirst>`** — the portable definition; `shortDef` stays complete. The paragraph beside it is the worked case, in different sentences.
+- **`<GexbotConcept>` / `<WhoMustAct>` / `<ScreenOrientation>`** — abstract fields (unit, not-counted, actor, trigger, venue). The paragraph is the case; the card's first line may not copy it.
+- **`<DistinguishingNote>`** — only when it adds a cousin, cut, or import mistake not already on the card above it.
+- **Figure `teaching=`** — one visual instruction the prose did not give.
+- **On-ramp "what the screen cannot" / "the one thing that changes"** — one new distinction each, from the customer seat; later closers do not retell them.
+- **Summary** — two to four sentences that connect what the sections left side by side. Not a recap.
+- **Newcomer questions** — a case, clock, cancel, or refusal the body did not write, phrased as a person would ask.
+- **`<CheckYourself>`** — production of a combination the body gave in parts, a toy number, or a chain-of-custody slot. Two items, unless the page declares itself a drill sheet in its opening.
+- **Gate** — one line, no thesis reprise.
 
 ```mdx
-<!-- BAD: three recitations of the teaching -->
-**Summary.** One trade leaves three traces: volume now, leftover now
-if uncancelled, open interest tonight if held.
-**Newcomer Q.** Will I see my trade? As one contract in leftover.
-**Check Yourself.** Name the three traces and the clock each is on.
+<!-- BAD: the Summary retells the teaching -->
+**Summary.** One trade leaves three traces: volume now, leftover now if uncancelled, open interest tonight.
 
-<!-- ALSO BAD: DRY shrinkage — shorter, no new information -->
-**Summary.** The map records the trade and hides the trader.
-
-<!-- GOOD: teach the clocks once; closers add a connection, a case, a combination -->
-**Summary.** A reader at 10:05 and a reader at tomorrow’s open are
-not looking at the same object when they look at this trade. Neither
-sees you.
-**Newcomer Q.** You flatten before the close. Which traces die
-tonight, and which never become open interest?
-**Check Yourself.** You buy at 10:05; someone sells the same strike
-at 10:06; you still hold overnight. Write the traces at 10:06 and
-at tomorrow’s open.
+<!-- GOOD: the Summary connects -->
+**Summary.** A reader at 10:05 and a reader at tomorrow's open are not looking at the same object when they look at this trade. Neither sees you.
 ```
 
 ## Voice
 
-- One idea per paragraph. Plain English first, then the Gexbot name, then a tiny picture.
-- Prefer “leftover trades so far today” over “classified residual” until residual is taught.
-- Prefer “we can see the pile, not who owns it” over “unsigned” until unsigned is taught.
-- Open each chapter with the stake: the force the reader cannot see on the ES/NQ tape, in one or two sentences, before any definition.
-- Every rule carries its reason within two sentences. A rule with no “because” is a rewrite candidate.
-- Order inside a section: what goes wrong without the idea → the idea → the Gexbot name → the tiny number.
 - Second person, to a capable colleague new to one domain. Assume intelligence; do not assume vocabulary. Name what is hard once, plainly, then give the handle.
-- Short sentence for the rule; longer sentence for the reason and the picture. Not three imperatives in a row.
-- One metaphor per concept, taken from the SoT where it has one.
-- A misread is a cause-and-effect sentence naming who is hurt and how, not a “Misread:” fragment.
-- Signpost at transitions: what the reader now has, what the next section *adds*. A signpost names the next job; it does not recap the last thesis.
-- Newcomer questions read as a person would ask them, and they obey the closer jobs above.
-- No “we”, no exclamation, no praise, no “just / simply / easy / don’t worry / let’s”, no rhetorical-question chains, no hedging filler.
-- Never soften a label (docs / folklore / inferred / not stated / market-general), a pressure word, a verb (observed / inferred / assumed), a stand-down, or a guardrail to gain warmth.
-- Test: would a senior desk colleague say it to a sharp junior in their first week — direct, unhurried, no performance? If it sounds like a coach, a salesperson, or a rulebook, rewrite.
+- One idea per paragraph: plain English, then the Gexbot name, then a tiny picture. Short sentence for the rule; longer sentence for the reason and the picture.
+- Signpost at transitions with the next job, not the last thesis.
+- A misread is a cause-and-effect sentence naming who is hurt and how, not a "Misread:" fragment.
+- Banned outside quotation: "we", exclamation marks, praise, *just / simply / easy / don't worry / let's*, rhetorical-question chains, hedging filler.
+- Labels, pressure words, verbs, stand-downs, and guardrails are never softened for warmth (precedence rule 1).
+- Tie-breaker: would a senior desk colleague say it to a sharp junior in their first week — direct, unhurried, no performance? A coach, a salesperson, or a rulebook fails.
 
-```mdx
-<!-- BAD: Chapter 1 table -->
-| Classic | Unsigned GEX from OI and from volume |
+## Citations and durability
 
-<!-- GOOD: teach, then name -->
-Open interest is the pile of option contracts still open from earlier days.
-Volume is what traded today. Classic draws gamma exposure from each pile.
-That drawing does not say who is long or short. This book calls that
-**unsigned**.
-```
+- Papers: *Author(s), "Title" (Year, Journal)*. Books: *Author, Title (Year), the chapter on X*. Specs and rules: issuer and document name, no URL. One citation per adjacent item; primary sources over commentary; product docs are the only blogs.
+- Prefer mechanism to current figures. A current figure (a volume share, a threshold, a fee) carries its year in the sentence, because the book will outlive the number.
+- Times are 24-hour `HH:MM`, Eastern. The first time on a page carries `ET`; later times on the same page are bare. Vol changes are "points" of implied vol; index moves are points; futures increments are ticks only when the tick matters.
+
+## Editing scope
+
+An edit changes the slot it was asked to change. Improvements noticed elsewhere are reported at the end, not applied, because the existing writing is the user's and a wider diff hides the requested one.
+
+## Checks
+
+A page edit is not done until all of these pass:
+
+- `NODE_OPTIONS=--max-old-space-size=8192 npm run build` succeeds, and `build/` is removed afterward.
+- Every `TermFirst`, `GexbotConcept`, `AdjacentConcepts`, and `NeededForThisScreen` id resolves; no rendered page contains "Missing term" or "No lexicon headwords".
+- No page uses a term whose `firstDefinedIn` is later in reading order (intro, on-ramp 00, Chapter 1, on-ramp 01, …); no main chapter uses an on-ramp term.
+- No banned word outside quotation.
+- Glossary: no duplicate ids, no alias on two entries, every `seeAlso` resolves, every adjacent item ≤ 110 words with `bearsOn`, `evidence`, and `reading` present.
+- Page slots appear in the order above; every main chapter has an on-ramp page and a Gate `On-ramp:` line.
+- New quantities filled the order in "Quantities and the canonical toy", with `not stated` where a slot is unknown.
