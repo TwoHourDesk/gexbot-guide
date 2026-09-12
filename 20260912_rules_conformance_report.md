@@ -74,7 +74,7 @@ Deliberate break: renaming one `<TermFirst id>` to a missing id produced `CHECK 
 
 ## WP3 — Claim labels and modals
 
-**Commit:** *(filled after commit)*
+**Commit:** `def99ce87e3f6e24f778de6c1f762ba1c72a0c7a`
 
 **Before / after.** Seven `always` uses read; two modal mismatches fixed; folklore modal aligned on the wall/fuel block; five double-label headings reduced to the weaker label; two `will` mechanism sentences labeled or remodaled. CHECK count unchanged (labels are not a mechanical Check). Build clean expected.
 
@@ -113,4 +113,33 @@ Deliberate break: renaming one `<TermFirst id>` to a missing id produced `CHECK 
 **Deferred.** The agent defect lists (every unlabeled “Classic draws…”, every restated hedge-chain toy, ScreenOrientation props). Proposed rule: a paragraph beside its card, or that restates a labeled section, is labeled by that card/section. Inline labels are required when the paragraph asserts a *new* hedge, pressure, or update-clock.
 
 **Outside scope, unapplied.** Strengthening H3 folklore to docs. Labeling every screen-teaching sentence.
+
+---
+
+## WP4 — Page structure
+
+**Commit:** *(filled after commit)*
+
+**Before / after.** Page-order and Check Yourself CHECKs 7 → 0. Total CHECK 40 → 33 (remaining are times).
+
+**Chapter 10 Newcomer questions.** Three questions between ChapterTerms and AdjacentConcepts: (1) H4 wall-candidate vs “walls are hypotheses”; (2) partial-picture vs confluence bias; (3) VIX down / dots flat. Each is a case the catalogue table does not stage.
+
+**Check Yourself**
+
+| page | decision | kept | removed (for restore) |
+|---|---|---|---|
+| 08 | drill sheet — catalogue of H1–H15 | all 8 | — |
+| 09b | drill sheet — catalogue of S1–S10 | all 14 | — |
+| 09 | reduce to 2 | plus DEX / no convexity (2×2); Classic major as stop (pressure) | State major-long alert = journal line? (overlaps Newcomer Q1) |
+| 09a | reduce to 2 | 09:36 max-change grade; compression lean + E1 | E2 yesterday’s-high fade; H12+H13 before wall/fuel; E6 full-group major; 10:00 re-marking |
+| 11 | reduce to 2 | expected-move toy; high 0DTE gamma ≠ tick chase | straddle √time; first-hour published effect; GEX formula vs bar; 40-session 65% |
+| 12 | reduce to 2 | unchanged-index vol drop; 10 SPX calls in ES | Friday SPY assignment; three kill conditions; +DEX as entry; 9/10 win rate; six tools |
+
+**Judgment calls.** 08 and 09b declared drill sheets because they are catalogue chapters (handoff default). Kept items are combinations, toy numbers, or chain-of-custody slots; removed items are listed above.
+
+**Rule conflicts.** None.
+
+**Deferred.** None.
+
+**Outside scope, unapplied.** None.
 
