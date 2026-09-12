@@ -8,16 +8,18 @@ alwaysApply: false
 
 ## Play card — fixed sections, this order
 
-1. **Situation** — one recurring situation in one sentence: the day-gate that admits it (for the Daily Playbook, one of the six GX-vs-PD geometries) and the object price is approaching.
-2. **Clock** — live window and expiry in `HH:MM` ET; what may speak in each room and what may not.
-3. **Preconditions** — a checklist. Every item is observable or a cited SG read (`H12 tagged falling`, `Grade C at the level`, `S1 six fields filled`). All must be true. One false item is a stand-down, not a smaller position.
-4. **Trigger** — one tape event, in the Guide's words: acceptance through, failure to take, failed break, sweep (`SG Ch. 9`, `SG Ch. 11`). Never a color, a ping, a ladder redraw, a VXX tick, a breadth print, or a VWAP touch.
-5. **Invalidation** — the dual falsifier (`SG Ch. 11`): a price sentence and a leftover sentence, each mapped to a price or an event before entry. This is where the stop goes.
-6. **Management** — the four slots: SL · break-even · scale-in · targets (partial, then trail). Each slot names the object that moves it.
-7. **Stand-downs** — what keeps you out today even when 1–5 are true: event day, monthly or quarterly expiry, S10 disagreement, unmapped width, context contradiction.
-8. **Review** — what to log: the Guide's journal line plus `Structure:`, `Geometry:`, `Trigger time:`, and outcome in R. No dollars.
-9. **Worked case** — one walk with round numbers and a clock. An illustration, and the page says so.
-10. **Not tested against** — instruments, regimes, and date ranges this play has no sample for.
+0. **Header** — `version:`, `sample-start:`, `stage:` (L / P / 1R / S / retired). A change to a hard gate, trigger, grain, SL rule, or target rule bumps the version and restarts the sample.
+1. **Situation** — one recurring situation in one sentence: the day-gate that admits it (for the Daily Playbook, an in-sample GX-vs-PD geometry) and the object price is approaching.
+2. **Hypothesis** — one line: mechanism (labeled) → direction → expected behavior → horizon → the control it must beat. A play without a hypothesis cannot be killed, only abandoned.
+3. **Clock** — entry window and management boundary in `HH:MM` ET; what happens at each (rename, hand off, flat); what may speak in each room and what may not.
+4. **Preconditions** — a checklist. Every item is observable or a cited SG read (`H12 tagged falling`, `Grade C at the level`, `S1 six fields filled`), and every item is marked **hard** (false → stand down) or **soft** (false → log the flag, take the play). Context layers whose value is unmeasured are soft, because blocking on them means never measuring them.
+5. **Trigger** — one tape event, in the Guide's words: acceptance through, failure to take, failed break, sweep (`SG Ch. 9`, `SG Ch. 11`), with its **time grain** (which bar close) and **entry location** (trigger-bar close, or retest) fixed on the card. Never a color, a ping, a ladder redraw, a VXX tick, a breadth print, or a VWAP touch.
+6. **Invalidation** — the dual falsifier (`SG Ch. 11`): a price sentence and a leftover sentence, each mapped to a price or an event before entry. This is where the stop goes.
+7. **Management** — the **feasibility gate** first (first partial ≥ 1R; SL within the remaining-window expected move, or stand down), then the four slots: SL · break-even · scale-in · targets (partial, then trail). Each slot names the object that moves it.
+8. **Stand-downs** — what keeps you out today even when 1–7 are true: event day, monthly or quarterly expiry, S10 disagreement with unknown pressure, unmapped width, missing hard-gate input.
+9. **Review** — the occurrence-log row: every occurrence (all hard gates true) is logged, traded or not; untraded occurrences record MFE/MAE in R from the would-be trigger; every row carries the control column. Plus the Guide's journal line with `Structure:`, `Geometry:`, `Trigger time:`. Outcome in R. No dollars.
+10. **Worked case** — one walk with round numbers and a clock. An illustration, and the page says so.
+11. **Not tested against** — instruments, regimes, and date ranges this play has no sample for; and the **kill criterion** that retires it.
 
 A section with nothing to say holds `not stated` or `not measured`. It is not deleted, because a missing section hides a missing decision.
 
@@ -26,10 +28,11 @@ A section with nothing to say holds `not stated` or `not measured`. It is not de
 - **Conditional and observable.** "If X, then Y" where X is on the reader's screen at that minute. Write the knowability gate beside it: `(nameable from about 09:45)`.
 - **Falsifier first.** The invalidation sentence is written before the trigger sentence is acted on. A play whose stop is decided after entry is not a play.
 - **Stops at objects.** SL is the falsifier mapped to a price: a named node, a level with leftover, or a σ band that *is* the level of the read. An ATR or fixed-tick width is not a stop unless mapped onto a named distance (`SG Ch. 9 (The journal line), stop logic`); if it cannot be mapped, the line is "do not trade it."
-- **Risk in R.** One R is the distance from entry to SL. Scale-ins and targets are written in R and in the object that justifies them. No contracts, no dollars, no percent of account, because the playbook does not know the account.
-- **Add only on evidence.** A scale-in needs the read still nameable and leftover thickening on Orderflow, not a ladder re-mark. Never through the falsifier; never at Grade A or B.
+- **Risk in R.** One R is the distance from entry to SL. Scale-ins and targets are written in R and in the object that justifies them. No contracts, no dollars, no percent of account, because the playbook does not know the account. Every play runs under the envelope in `reference/risk.md` (daily R budget, positions per bet, ES and NQ as one bet, re-entries); a play does not override it.
+- **Feasible or stand down.** A play that passes every gate and offers 0.3R to the first pressure-end is not a play. The feasibility gate is hard.
+- **Add only on evidence.** A scale-in needs the read still nameable and leftover thickening on Orderflow, not a ladder re-mark. Never through the falsifier; never at Grade A or B; capped by the envelope.
 - **Exit rule per slot.** Partial at the nearest pressure-end (node, stack, or H7 zone, whichever is first). Trail on the next named leftover object or event, not on ticks.
-- **Expiry.** At the window's close the position is flat, the read is renamed, or it is handed to a play that owns the next clock family. Never carried silently.
+- **Boundaries, not expiries.** No entry after the entry window closes, because that is where knowability was defined. An open position is not flattened by the clock; at the window's close the read is renamed to its S-form and managed on. A play never crosses into a clock family it does not own (the last hour): flat or formally handed off before it. Never carried silently.
 
 ```markdown
 <!-- BAD: unobservable condition, width stop, size in contracts -->
@@ -43,11 +46,16 @@ Partial at 1R or the first opposing node, whichever is first.
 
 ## Context layers
 
-VXX, breadth (Mag7 vs SPY), and the VWAP families are context. They may gate a play (a contradiction is a stand-down) and may set a tape level. They may not trigger, attach a pressure word, replace H12, or move a stop.
+VXX, breadth (Mag7 vs SPY), and the VWAP families are context. They are soft gates until the occurrence log shows the flag separates outcomes; then a version bump may make one hard. They may set a tape level. They may not trigger, attach a pressure word, replace H12, or move a stop.
+
+## Operational definitions
+
+A gate the reader cannot apply the same way twice is not observable. "Standout bar," "acceptance," "contradiction," and "entry location" each get a numeric or procedural definition in `reference/system.md`, frozen before the sample starts. A play cites the definition; it does not restate or loosen it.
 
 ## Evidence for performance
 
-- No hit rate, expectancy, or win rate unless it comes from a measured sample with N, date range, instrument, and the definition of "hit" in the same sentence. Default text: `Hit rate: not measured.`
+- No hit rate, expectancy, or win rate unless it comes from the occurrence log with N, date range, instrument, and the definition of "hit" in the same sentence. Default text: `Hit rate: not measured.`
+- The sample unit is the occurrence, not the trade. Trades alone cannot show whether a play fires or whether it fails.
 - A worked case is an illustration, not evidence.
 - "Works," "reliable," "high probability," and "edge" without a sample are banned.
 
@@ -60,9 +68,12 @@ VXX, breadth (Mag7 vs SPY), and the VWAP families are context. They may gate a p
 
 ## Checks — a play is not done until
 
-- All ten sections are present, in order, none omitted.
+- Header and all eleven sections are present, in order, none omitted.
+- The hypothesis line names a labeled mechanism, a direction, an expected behavior, a horizon, and a control.
+- Every precondition is marked hard or soft; the feasibility gate is present and hard.
 - Every mechanism sentence carries exactly one label; every pressure word is one of the four; *forced* appears only beside mandate.
 - Every `SG Ch. N` cite resolves to an object that exists on that page.
-- The trigger is a tape event; the SL is an object; every size word is in R.
+- The trigger is a tape event with a grain and an entry location; the SL is an object; every size word is in R and under the envelope.
+- No entry after the entry window; no flat-by-clock inside a family the play owns; no crossing into a family it does not.
 - Every worked-case number is round and reconstructable in three arithmetic steps.
 - No file under `docs/**` changed.

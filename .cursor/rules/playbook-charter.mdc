@@ -16,7 +16,9 @@ Not the reader: someone who has not read the Guide; a signal-chaser (a playbook 
 
 ## What a playbook does
 
-A **play** is an executable procedure: situation → preconditions → trigger → invalidation → management → exit → review. The reader acts on it. Imperatives to the reader are the playbook's voice, not a defect. Each play yields a decision that a second trader with the same screens at the same clock would make the same way, because a procedure two readers execute differently is an opinion.
+A **play** is an executable procedure: situation → hypothesis → preconditions → trigger → invalidation → management → exit → review. The reader acts on it. Imperatives to the reader are the playbook's voice, not a defect. Each play yields a decision that a second trader with the same screens at the same clock would make the same way, because a procedure two readers execute differently is an opinion.
+
+A playbook is also a **system**: it states why each play should work, logs every occurrence whether or not it traded, and says in advance what would retire a play and what would retire the whole document. Without that layer a playbook is a checklist that can only be abandoned, never falsified.
 
 ## Two documents, one boundary
 
@@ -42,19 +44,33 @@ When two rules collide, the higher wins and the lower gets no relief:
 1. **Claim integrity** — labels, pressure words, `not stated`, source of truth.
 2. **Observability** — every condition, trigger, and invalidation is something the reader can see on their own screens at that clock, under the Guide's knowability gates. An unobservable condition ("the dealer is short gamma") is rewritten as the observable that infers it (Grade-C customer-short leftover, H12 tagged).
 3. **Falsifier before action** — no instruction to act precedes its written invalidation.
-4. **Clock** — every play has a live window and an expiry; nothing is carried past it unrenamed.
+4. **Clock** — every play has an entry window and a management boundary; nothing is entered after the first, nothing crosses the second, and nothing is carried past the window unrenamed.
 5. **Brevity and voice.**
+
+## Risk envelope
+
+`reference/risk.md` holds the numbers every play runs under: initial risk per trade in R, scale-in cap, daily R budget, positions per bet, ES and NQ on the same geometry as one bet, re-entries per play per day. A play cites the envelope and does not override it, because a play that sets its own risk limits is the one that breaks them.
+
+## Promotion and change control
+
+- Every play carries `version:`, `sample-start:`, and `stage:`. Stages: **L** log-only → **P** paper → **1R** live at one unit → **S** scaled → **retired**. Thresholds live in `reference/system.md`; a stage changes only when its gate is met, never on the calendar.
+- Every reader starts at Stage L. The plays are not live for anyone until the sample exists.
+- Changing a hard gate, trigger, grain, SL rule, or target rule bumps the version and restarts the sample. Cosmetic edits do not. A soft gate becomes hard only when the log shows its flag separates outcomes.
+- A retired play stays in `plays/` with its log and a `retired` header. Deleting it deletes the record, and the record is the point.
+- The README carries the **system-level falsifier**: the measured condition under which the whole Playbook retires, whatever any single play shows.
 
 ## Layout
 
 ```
 playbook/
-  README.md             index: one paragraph per play; the sitting clock
+  README.md             index: one paragraph per play; the rooms; the structural bet; the system-level falsifier
   00-course-memo.md     the design memo (first deliverable)
   plays/NN-<slug>.md    one play per file, in the shape playbook-play.mdc fixes
   reference/terms.md    Playbook-native handles, one line each, with the SG term each extends
   reference/clocks.md   session clocks and retired names
-  cases/                worked walks and review logs; outcomes in R, never dollars
+  reference/risk.md     the risk envelope
+  reference/system.md   hypothesis format, occurrence-log schema, operational definitions, base rates, promotion ladder, kill criteria
+  cases/                worked walks and the occurrence log; outcomes in R, never dollars
 ```
 
 How `playbook/` is published (a second Docusaurus docs instance at route `/playbook`, or plain Markdown) is a config decision. It changes no rule above.
