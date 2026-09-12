@@ -3260,7 +3260,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'It is the screen you would sign a ticket from: the bid and ask that set your debit, the mark, and the open interest at your strike are all read off it, and every Gexbot picture is computed from the same table.',
     evidence: 'market-general',
-    reading: 'Hull, Options, Futures, and Other Derivatives, the chapter on the mechanics of options markets.',
+    reading: 'Hull, Options, Futures, and Other Derivatives (2021), the chapter on the mechanics of options markets.',
     firstDefinedIn: 'on-ramp/02-classic',
     seeAlso: ['strike', 'expiry', 'open-interest'],
     kind: 'adjacent',
@@ -3373,7 +3373,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'It is why the four single-leg positions are not four independent bets: a bought call and a sold put at one strike together behave like a long future, and the prices of the three are tied.',
     evidence: 'market-general',
-    reading: 'Hull, Options, Futures, and Other Derivatives, the chapter on properties of stock options.',
+    reading: 'Hull, Options, Futures, and Other Derivatives (2021), the chapter on properties of stock options.',
     firstDefinedIn: 'on-ramp/05-orderflow',
     seeAlso: ['two-by-two', 'multi-leg'],
     kind: 'adjacent',
@@ -3401,7 +3401,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'It is why the basis exists at all, why it drifts through the session as rate and dividend expectations move, and why it jumps when the front contract rolls. A converted strike is therefore a moving target, never exactly a futures price.',
     evidence: 'market-general',
-    reading: 'Hull, Options, Futures, and Other Derivatives, the chapter on forward and futures prices.',
+    reading: 'Hull, Options, Futures, and Other Derivatives (2021), the chapter on forward and futures prices.',
     firstDefinedIn: 'layer/06-nq-es-layer',
     seeAlso: ['basis', 'conversion', 'roll'],
     kind: 'adjacent',
@@ -3444,7 +3444,7 @@ export const glossary: GlossaryEntry[] = [
       'It is a whole-book, unsigned, expiry-day number. Gexbot’s last-hour magnet is residual-only and signed, so the two can point at different strikes on the same afternoon, and a reader who conflates them has imported an owner shortcut this book rejects.',
     evidence: 'folklore',
     reading:
-      'Ni, Pearson, and Poteshman, “Stock price clustering on option expiration dates” (2005, Journal of Financial Economics), for what pinning evidence actually shows.',
+      'Ni, Pearson, and Poteshman, “Stock price clustering on option expiration dates” (2005, Journal of Financial Economics).',
     firstDefinedIn: 'layer/07-clocks-and-late-greeks',
     seeAlso: ['h5', 'minus-vanna-ladder', 'cousin-unsigned-gex'],
     kind: 'adjacent',
@@ -3517,7 +3517,7 @@ export const glossary: GlossaryEntry[] = [
       'That morning’s SPX opening prints include settlement orders, so Phase 1 bars and Classic volume can be large for reasons that have nothing to do with the day; know the date before you read the open.',
     evidence: 'market-general',
     reading:
-      'Cboe, VIX Index settlement methodology; Griffin and Shams, “Manipulation in the VIX?” (2018, Review of Financial Studies).',
+      'Cboe, VIX Index settlement methodology.',
     firstDefinedIn: 'practice/09a-early-session',
     seeAlso: ['vix', 'early-phase', 'opening-auction'],
     kind: 'adjacent',
@@ -3559,7 +3559,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'S10 asks whether the two tapes disagree; a move that is only NQ’s usual beta to ES is agreement, not disagreement.',
     evidence: 'market-general',
-    reading: 'Hull, Options, Futures, and Other Derivatives, the chapter on hedging with index futures.',
+    reading: 'Hull, Options, Futures, and Other Derivatives (2021), the chapter on hedging with index futures.',
     firstDefinedIn: 'practice/09b-structure-and-gexbot',
     seeAlso: ['s10', 'nq-future', 'es-future'],
     kind: 'adjacent',
@@ -3574,7 +3574,7 @@ export const glossary: GlossaryEntry[] = [
       'They are the formal version of “hedge in bands” and of the dealer as a population that nets internally; read them after Whalley–Wilmott.',
     evidence: 'market-general',
     reading:
-      'Ho and Stoll, “Optimal dealer pricing under transactions and return uncertainty” (1981, Journal of Financial Economics); Avellaneda and Stoikov, “High-frequency trading in a limit order book” (2008, Quantitative Finance).',
+      'Ho and Stoll, “Optimal dealer pricing under transactions and return uncertainty” (1981, Journal of Financial Economics).',
     firstDefinedIn: 'practice/11-further-learning',
     seeAlso: ['hedge-in-bands', 'dealer'],
     kind: 'adjacent',
@@ -3604,7 +3604,7 @@ export const glossary: GlossaryEntry[] = [
       'It is why falling-vol regimes coincide with rallies often enough that a reader is tempted to tag the regime from price direction. H12 forbids that shortcut because the days the tendency fails are exactly the days the wall-and-fuel map inverts.',
     evidence: 'market-general',
     reading:
-      'Derman, “Regimes of Volatility” (1999); Bennett, Trading Volatility (2014), the chapter on the spot–vol relationship.',
+      'Derman, “Regimes of Volatility” (1999, Risk).',
     firstDefinedIn: 'plans/04-state',
     seeAlso: ['vol-regime', 'implied-vol', 'h12'],
     kind: 'adjacent',
@@ -3619,7 +3619,7 @@ export const glossary: GlossaryEntry[] = [
       'It is the futures-native object most often confused with a Gexbot node. Both are “a lot at one level,” but one counts traded futures at a price and the other counts option gamma at a strike; the first has no owner, no hedge, and no pressure word. A wall read that leans on the futures node has changed subject.',
     evidence: 'market-general',
     reading:
-      'Dalton, Jones, and Dalton, Mind over Markets (1990), for the vocabulary; Harris, Trading and Exchanges (2003), on price clustering.',
+      'Dalton, Jones, and Dalton, Mind over Markets (1990).',
     firstDefinedIn: 'practice/08-heuristics-as-reading',
     seeAlso: ['node', 'cousin-futures-native', 'h4', 'confluence-bias'],
     kind: 'adjacent',
@@ -3650,7 +3650,7 @@ export const glossary: GlossaryEntry[] = [
       'The seat you can sit in is decided before the first ticket. The tier also enforces, from outside, the order Chapter 12’s ramp asks you to keep from inside: defined risk before undefined.',
     evidence: 'market-general',
     evidenceNote: 'U.S. brokerage practice',
-    reading: 'FINRA Rule 2360, the account approval provisions; your broker’s options agreement.',
+    reading: 'FINRA Rule 2360, the account approval provisions.',
     firstDefinedIn: 'on-ramp/00-intro',
     seeAlso: ['seat', 'defined-risk'],
     kind: 'adjacent',
@@ -3737,7 +3737,7 @@ export const glossary: GlossaryEntry[] = [
       'It is the quickest translation between a single-leg position and what its holder is betting on, and it is why the four cells are not four coin flips: a 0.20-delta sold put is a bet that wins about four times in five and owes a great deal the fifth time.',
     evidence: 'market-general',
     evidenceNote: 'approximation',
-    reading: 'Natenberg, Option Volatility and Pricing (2015), the discussion of delta as a probability.',
+    reading: 'Natenberg, Option Volatility and Pricing (2015), the chapter on delta as a probability.',
     firstDefinedIn: 'on-ramp/05-orderflow',
     seeAlso: ['single-leg', 'delta', 'short-put'],
     kind: 'adjacent',
@@ -3765,7 +3765,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'A holder who reads Friday’s afternoon marks as “the index did nothing, why did I lose so much” has met the weekend priced early. It is the clearest case of the clock on your ticket running on a different calendar from your chart.',
     evidence: 'market-general',
-    reading: 'Natenberg, Option Volatility and Pricing (2015), the chapter on theta; Sinclair, Volatility Trading (2013), on trading-day versus calendar-day conventions.',
+    reading: 'Natenberg, Option Volatility and Pricing (2015), the chapter on theta.',
     firstDefinedIn: 'on-ramp/07-clocks-and-late-greeks',
     seeAlso: ['theta', 'delta-drift', 'mark'],
     kind: 'adjacent',
@@ -3822,7 +3822,7 @@ export const glossary: GlossaryEntry[] = [
       'Every holder’s misread on this page arrives more easily when the mark is below the debit, because the misread offers a reason not to realize the loss. The guardrail is applied to the position, not to the debit.',
     evidence: 'market-general',
     reading:
-      'Odean, “Are investors reluctant to realize their losses?” (1998, Journal of Finance); Kahneman, Thinking, Fast and Slow (2011), the chapter on anchors.',
+      'Odean, “Are investors reluctant to realize their losses?” (1998, Journal of Finance).',
     firstDefinedIn: 'on-ramp/10-misreads-and-mastery',
     seeAlso: ['holders-misread', 'mark', 'debit'],
     kind: 'adjacent',
@@ -3850,7 +3850,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'It is the tool for the first week’s loop, and its fills are its weakness: a simulator that fills at mid teaches the hand price and the ledger while teaching nothing true about execution. Stage 1 needs the marks; Stage 5 needs real fills.',
     evidence: 'market-general',
-    reading: 'Your broker’s paper-trading documentation, read for how fills and marks are simulated.',
+    reading: 'Your broker’s paper-trading documentation.',
     firstDefinedIn: 'on-ramp/12-futures-to-options',
     seeAlso: ['hand-price', 'paper-position', 'mark-to-mid'],
     kind: 'adjacent',
@@ -3881,7 +3881,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'This book’s premise is that hedging demand is the part of options-market activity that can be inferred, because a hedger’s reason is written in what they already hold. The tape does not carry the reason; the labels in this introduction exist to keep inferred reasons from being read as observed ones.',
     evidence: 'market-general',
-    reading: 'Hull, Options, Futures, and Other Derivatives, chapter 1, on hedgers, speculators, and arbitrageurs.',
+    reading: 'Hull, Options, Futures, and Other Derivatives (2021), the chapter on hedgers, speculators, and arbitrageurs.',
     firstDefinedIn: 'intro',
     seeAlso: ['inferred', 'observed', 'labeling-leak'],
     kind: 'adjacent',
@@ -3951,7 +3951,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'They are a large, steady source of ES volume with no option behind it. On a day their flow dominates, the tape is moving for reasons no options screen can show; the partial-picture caveat is partly about them.',
     evidence: 'market-general',
-    reading: 'Hull, Options, Futures, and Other Derivatives, the chapter on swaps, the section on equity swaps.',
+    reading: 'Hull, Options, Futures, and Other Derivatives (2021), the chapter on swaps, the section on equity swaps.',
     firstDefinedIn: 'plans/01-what-gexbot-is',
     seeAlso: ['partial-picture', 'es-future'],
     kind: 'adjacent',
@@ -4007,7 +4007,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'The pile Classic draws is large enough that its hedges are a real share of ES volume, which is the only reason the question in this book is worth asking. Whether one strike’s pile is large enough on a given day is a separate question the histogram’s height begins to answer.',
     evidence: 'market-general',
-    reading: 'Cboe Global Markets and CME Group, published daily volume statistics.',
+    reading: 'Cboe Global Markets, published daily volume statistics.',
     firstDefinedIn: 'plans/02-classic',
     seeAlso: ['histogram', 'gex-by-oi'],
     kind: 'adjacent',
@@ -4049,7 +4049,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'That choice is a second reason two Classic pictures of the same open interest can disagree, even after both shops have picked a model. Gexbot’s quote choice is not stated.',
     evidence: 'not stated',
-    reading: 'Hull, Options, Futures, and Other Derivatives, the chapter on volatility smiles, on how a volatility is backed out of a quote.',
+    reading: 'Hull, Options, Futures, and Other Derivatives (2021), the chapter on volatility smiles.',
     firstDefinedIn: 'plans/02-classic',
     seeAlso: ['gamma', 'black-scholes', 'not-stated', 'gex-by-oi'],
     kind: 'adjacent',
@@ -4163,7 +4163,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'Gexbot’s cadence for the Orderflow bars is not stated. A bar is an increment over an unknown window, which is why the book reads bars as a sequence and not as events with a timestamp you can match to the ES tape.',
     evidence: 'not stated',
-    reading: 'Harris, Trading and Exchanges (2003), on the difference between a trade record and a bar.',
+    reading: 'Harris, Trading and Exchanges (2003), the chapter on the difference between a trade record and a bar.',
     firstDefinedIn: 'plans/05-orderflow',
     seeAlso: ['dex-orderflow', 'spike-sequence-noise', 'not-stated'],
     kind: 'adjacent',
@@ -4177,7 +4177,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'One customer’s decision arrives on the tape looking like a sequence, which is the pattern Chapter 5 asks you to weigh more than a single spike. Sweeps are a reason a burst is stronger evidence of one large intent than of many small ones.',
     evidence: 'market-general',
-    reading: 'Harris, Trading and Exchanges (2003), the chapter on order routing; SEC Regulation NMS, on intermarket sweep orders.',
+    reading: 'SEC, Regulation NMS, the section on intermarket sweep orders.',
     firstDefinedIn: 'plans/05-orderflow',
     seeAlso: ['spike-sequence-noise', 'aggressor'],
     kind: 'adjacent',
@@ -4261,7 +4261,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'It is the full-inventory version of the late-hour pressures this chapter teaches, applied to a week and to open interest rather than to today’s leftover. The book carries it as folklore: the mechanism is Chapter 7’s, the size and sign claims are not measured here.',
     evidence: 'folklore',
-    reading: 'Ni, Pearson, and Poteshman, “Stock price clustering on option expiration dates” (2005, Journal of Financial Economics), for the evidence that does exist.',
+    reading: 'Ni, Pearson, and Poteshman, “Stock price clustering on option expiration dates” (2005, Journal of Financial Economics).',
     firstDefinedIn: 'layer/07-clocks-and-late-greeks',
     seeAlso: ['minus-vanna-ladder', 'charm-ladder', 'folklore', 'monthly-opex'],
     kind: 'adjacent',
@@ -4331,7 +4331,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'The heuristics compare heights on a ladder; the tape prices them in contracts per minute. A tall node on a heavy-volume day can produce less than a modest one at lunch, which is why the read is a candidate and the tape decides.',
     evidence: 'market-general',
-    reading: 'CME Group, ES volume statistics; Bouchaud et al., Trades, Quotes and Prices (2018), on participation and impact.',
+    reading: 'CME Group, ES volume statistics.',
     firstDefinedIn: 'practice/08-heuristics-as-reading',
     seeAlso: ['fuel', 'wall', 'heuristic'],
     kind: 'adjacent',
@@ -4345,7 +4345,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'It is the futures trader’s usual scorekeeping, and the journal line here deliberately does not use it. The line grades the read — were the cell, the clock, and the falsifier right — not the result; R belongs in a separate column so the two are not confused.',
     evidence: 'market-general',
-    reading: 'Tharp, Trade Your Way to Financial Freedom (1999), on R-multiples.',
+    reading: 'Tharp, Trade Your Way to Financial Freedom (1999), the chapter on R-multiples.',
     firstDefinedIn: 'practice/09-grammar-and-journal',
     seeAlso: ['journal-line', 'falsifier'],
     kind: 'adjacent',
@@ -4443,7 +4443,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'Absorption at a level is often an iceberg working. It looks like a wall holding, and it has nothing to do with options; a structure reader who sees repeated refills at the same price is watching one participant, not a dealer population.',
     evidence: 'market-general',
-    reading: 'Harris, Trading and Exchanges (2003), on hidden and reserve orders.',
+    reading: 'Harris, Trading and Exchanges (2003), the chapter on hidden and reserve orders.',
     firstDefinedIn: 'practice/09b-structure-and-gexbot',
     seeAlso: ['absorb', 'wall', 's6'],
     kind: 'adjacent',
@@ -4642,7 +4642,7 @@ export const glossary: GlossaryEntry[] = [
       'An SPX position and the ES you hedge it with can be in different accounts that do not offset each other for margin. ES options stay in the futures account. The instrument choice in Gap 5 is also an account choice.',
     evidence: 'market-general',
     evidenceNote: 'U.S. only',
-    reading: 'Your broker’s account agreement, the sections on futures and securities accounts; CFTC and SEC customer-protection rules.',
+    reading: 'CFTC and SEC, customer-protection rules.',
     firstDefinedIn: 'practice/12-futures-to-options',
     seeAlso: ['margin', 'es-options', 'spx'],
     kind: 'adjacent',
@@ -4686,7 +4686,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'Approval levels sit on top of the account type. The two together decide which side of an option you are permitted to be on, before any read is made.',
     evidence: 'market-general',
-    reading: 'FINRA, margin account rules; your broker’s account-types page.',
+    reading: 'FINRA, margin account rules.',
     firstDefinedIn: 'on-ramp/00-intro',
     seeAlso: ['approval-levels', 'margin'],
     kind: 'adjacent',
@@ -4715,7 +4715,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'Someone does know who owns the pile; it is not the tape and not any vendor. The ownership question this book keeps calling unanswerable is unanswerable from public data, which is a narrower statement than it sounds.',
     evidence: 'market-general',
-    reading: 'FINRA Rule 2360(b)(5) and the exchanges’ large options position reporting rules.',
+    reading: 'FINRA Rule 2360(b)(5).',
     firstDefinedIn: 'on-ramp/01-what-gexbot-is',
     seeAlso: ['footprint', 'unsigned'],
     kind: 'adjacent',
@@ -4771,7 +4771,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'On a $50 premium a round trip’s fees are a noticeable share; on a $5 one they can be most of it. The counterparty pays fees too, at different rates, which is part of why the quoting firm is content with a spread you find wide.',
     evidence: 'market-general',
-    reading: 'Your broker’s commission schedule; Cboe fee schedule.',
+    reading: 'Your broker’s commission schedule.',
     firstDefinedIn: 'on-ramp/03-classification',
     seeAlso: ['counterparty', 'bid-ask-spread', 'premium'],
     kind: 'adjacent',
@@ -4813,7 +4813,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'The size on the chain is an offer to trade, not a promise. Market makers reprice on every futures tick, and a fast ES move is exactly when the quote you were about to hit moves away; the tape you read and the fill you get are different objects.',
     evidence: 'market-general',
-    reading: 'Harris, Trading and Exchanges (2003), on quote cancellation and the option value of a standing quote.',
+    reading: 'Harris, Trading and Exchanges (2003), the chapter on quote cancellation.',
     firstDefinedIn: 'on-ramp/03-classification',
     seeAlso: ['counterparty', 'ask', 'bid'],
     kind: 'adjacent',
@@ -4855,7 +4855,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'The vol you paid matters most on the expiries this book spends least time on. A 0DTE ticket is mostly a bet on the move; a monthly bought at the same strike is mostly a bet on the vol, and the vol you paid is doing different work on each.',
     evidence: 'market-general',
-    reading: 'Hull, Options, Futures, and Other Derivatives, the chapter on the Greek letters, on gamma and vega against time to maturity.',
+    reading: 'Hull, Options, Futures, and Other Derivatives (2021), the chapter on the Greek letters.',
     firstDefinedIn: 'on-ramp/04-state',
     seeAlso: ['gamma', 'vega', 'vol-falsifier', 'theta'],
     kind: 'adjacent',
@@ -4925,7 +4925,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'For American-style contracts the position can change hands after every screen has gone quiet. A writer of SPY calls who is short at 16:15 may be short shares by the morning, decided in a window no tape records.',
     evidence: 'market-general',
-    reading: 'Your broker’s exercise and assignment procedures; OCC exercise cutoff rules.',
+    reading: 'OCC, exercise cutoff rules.',
     firstDefinedIn: 'on-ramp/06-nq-es-layer',
     seeAlso: ['assignment', 'american-style', 'exercise-by-exception'],
     kind: 'adjacent',
@@ -4953,7 +4953,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'A futures trader knows their contract’s notional; a writer of ETF options inherits a share position they did not size. It is the concrete form of the writer’s obligation that Chapter 12’s instrument table asks you to state before choosing.',
     evidence: 'market-general',
-    reading: 'OCC, Characteristics and Risks of Standardized Options, on physical settlement.',
+    reading: 'OCC, Characteristics and Risks of Standardized Options, the chapter on physical settlement.',
     firstDefinedIn: 'on-ramp/06-nq-es-layer',
     seeAlso: ['assignment', 'physically-settled', 'spy'],
     kind: 'adjacent',
@@ -4967,7 +4967,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'Two 0DTE tickets bought at 09:30 decay on different schedules. The holder’s last-hour clock, which this chapter reads from the outside, is the ATM curve; the OTM holder’s clock ran earlier and quieter.',
     evidence: 'market-general',
-    reading: 'Hull, Options, Futures, and Other Derivatives, the chapter on the Greek letters, the section on theta.',
+    reading: 'Hull, Options, Futures, and Other Derivatives (2021), the chapter on the Greek letters, the section on theta.',
     firstDefinedIn: 'on-ramp/07-clocks-and-late-greeks',
     seeAlso: ['theta', 'atm', 'otm'],
     kind: 'adjacent',
@@ -4981,7 +4981,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'The mark on a 0DTE ticket falls at a pace the textbook theta does not describe: faster than clock time in the morning, and in a way that varies by shop. A theta computed by hand checks against a mark that has already made this adjustment.',
     evidence: 'market-general',
-    reading: 'Sinclair, Volatility Trading (2013), on time and variance.',
+    reading: 'Sinclair, Volatility Trading (2013), the chapter on time and variance.',
     firstDefinedIn: 'on-ramp/07-clocks-and-late-greeks',
     seeAlso: ['theta', 'mark'],
     kind: 'adjacent',
@@ -4995,7 +4995,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'It is the greek this book leaves out because its clock is a day. A holder moving to monthlies or longer meets it, and meets it in the mark before meeting it in any explanation.',
     evidence: 'market-general',
-    reading: 'Hull, Options, Futures, and Other Derivatives, the chapter on the Greek letters, the section on rho.',
+    reading: 'Hull, Options, Futures, and Other Derivatives (2021), the chapter on the Greek letters, the section on rho.',
     firstDefinedIn: 'on-ramp/07-clocks-and-late-greeks',
     seeAlso: ['vega', 'theta', 'greek-attribution'],
     kind: 'adjacent',
@@ -5038,7 +5038,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'A holder in the tallest node has company on the way out; one at an empty strike may find only the market maker’s widened quote. The pile this chapter reads as pressure is also the pile that decides how your ticket ends.',
     evidence: 'market-general',
-    reading: 'Harris, Trading and Exchanges (2003), on liquidity and its dimensions.',
+    reading: 'Harris, Trading and Exchanges (2003), the chapter on liquidity and its dimensions.',
     firstDefinedIn: 'on-ramp/08-heuristics-as-reading',
     seeAlso: ['open-interest', 'volume', 'bid-ask-spread'],
     kind: 'adjacent',
@@ -5094,7 +5094,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'It is the number that stops a Stage 5 loop before a stop does. A short leg’s reduction can rise as the index moves toward it, so the journal’s sizing field for an option is a range, not a figure, until the position is closed.',
     evidence: 'market-general',
-    reading: 'Your broker’s margin documentation; Cboe, Margin Manual.',
+    reading: 'Cboe, Margin Manual.',
     firstDefinedIn: 'on-ramp/09-grammar-and-journal',
     seeAlso: ['margin', 'journal-line'],
     kind: 'adjacent',
@@ -5108,7 +5108,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'The journal line here is one read, one falsifier, one outcome. From the customer seat that unit is the decision, not the ticket; the fills are evidence for the line, not lines of their own.',
     evidence: 'market-general',
-    reading: 'Sinclair, Positional Option Trading (2020), on record-keeping.',
+    reading: 'Sinclair, Positional Option Trading (2020), the chapter on record-keeping.',
     firstDefinedIn: 'on-ramp/09-grammar-and-journal',
     seeAlso: ['journal-line', 'rolling-a-position'],
     kind: 'adjacent',
@@ -5123,7 +5123,7 @@ export const glossary: GlossaryEntry[] = [
       'A holder who buys a 0DTE at 09:31 pays the opening vol and can be right on direction and down on the mark by 10:30. It is the vol falsifier’s most common trigger, and it is a schedule, not a surprise.',
     evidence: 'market-general',
     evidenceNote: 'empirical regularity; not measured here',
-    reading: 'Sinclair, Volatility Trading (2013), on intraday variance; Cboe Global Markets research on 0DTE intraday pricing.',
+    reading: 'Sinclair, Volatility Trading (2013), the chapter on intraday variance.',
     firstDefinedIn: 'on-ramp/09a-early-session',
     seeAlso: ['opening-vol', 'vol-falsifier', 'implied-vol'],
     kind: 'adjacent',
@@ -5151,7 +5151,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'A chain showing absurd vols at 09:31 is usually reporting a stale index, not a real price. Market makers quote off the futures; the holder reading the chain’s vol column is reading a different, and worse, input.',
     evidence: 'market-general',
-    reading: 'S&P Dow Jones Indices, index calculation methodology, on real-time dissemination; Hull, on implied volatility.',
+    reading: 'S&P Dow Jones Indices, index calculation methodology, the section on real-time dissemination.',
     firstDefinedIn: 'on-ramp/09a-early-session',
     seeAlso: ['opening-vol', 'implied-vol', 'stale-index-prints'],
     kind: 'adjacent',
@@ -5207,7 +5207,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'A structure trader names a strike by its distance to a chart level; an options desk names it by delta. Both describe the same strike, and translating between them is how a level on the chart becomes a ticket.',
     evidence: 'market-general',
-    reading: 'Natenberg, Option Volatility and Pricing (1994), on delta as a measure of moneyness.',
+    reading: 'Natenberg, Option Volatility and Pricing (1994), the chapter on delta as a measure of moneyness.',
     firstDefinedIn: 'on-ramp/09b-structure-and-gexbot',
     seeAlso: ['delta', 'strike-selection', 'delta-as-probability'],
     kind: 'adjacent',
@@ -5221,7 +5221,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'On a 0DTE the fall came from theta and vol as much as from price, and both keep working against the larger position. A futures trader’s habit of adding at a better price meets an instrument that is cheaper because it is worth less, which is not the same thing.',
     evidence: 'market-general',
-    reading: 'Natenberg, Option Volatility and Pricing (1994), on the risks of long premium positions.',
+    reading: 'Natenberg, Option Volatility and Pricing (1994), the chapter on the risks of long premium positions.',
     firstDefinedIn: 'on-ramp/10-misreads-and-mastery',
     seeAlso: ['debit-anchoring', 'holders-misread', 'theta'],
     kind: 'adjacent',
@@ -5235,7 +5235,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'It is the option holder’s form of not taking a stop, and it is worse, because the position’s value decays while the holder waits. The mark-based stop from the on-ramp exists for this case.',
     evidence: 'market-general',
-    reading: 'OCC, Characteristics and Risks of Standardized Options, on the risks of option buyers.',
+    reading: 'OCC, Characteristics and Risks of Standardized Options, the chapter on the risks of option buyers.',
     firstDefinedIn: 'on-ramp/10-misreads-and-mastery',
     seeAlso: ['mark-based-stop', 'holders-misread', 'debit'],
     kind: 'adjacent',
@@ -5263,7 +5263,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'The holder meant to own direction and now owns a gamma position they did not price. It is the self-hedge Chapter 3 read from the outside, made by accident from the inside; the tape shows the futures leg and nothing about the intent.',
     evidence: 'market-general',
-    reading: 'Natenberg, Option Volatility and Pricing (1994), on delta-neutral positions.',
+    reading: 'Natenberg, Option Volatility and Pricing (1994), the chapter on delta-neutral positions.',
     firstDefinedIn: 'on-ramp/10-misreads-and-mastery',
     seeAlso: ['self-hedge', 'delta-neutral', 'holders-misread'],
     kind: 'adjacent',
@@ -5291,7 +5291,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'The mark-to-mid ledger overstates what you have by half the spread on every leg. A paper position that shows a small gain at mid can be a loss at liquidation, and the difference is largest at the open and at the strikes with the widest quotes.',
     evidence: 'market-general',
-    reading: 'Harris, Trading and Exchanges (2003), on transaction costs.',
+    reading: 'Harris, Trading and Exchanges (2003), the chapter on transaction costs.',
     firstDefinedIn: 'on-ramp/11-further-learning',
     seeAlso: ['mark-to-mid', 'bid-ask-spread', 'mark'],
     kind: 'adjacent',
@@ -5305,7 +5305,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'A paper position’s attribution across days of different vol is not comparable in points. In sigma units the same gamma line means the same thing every day, and the residual stands out against a stable scale.',
     evidence: 'market-general',
-    reading: 'Sinclair, Volatility Trading (2013), on measuring realized against implied.',
+    reading: 'Sinclair, Volatility Trading (2013), the chapter on measuring realized against implied.',
     firstDefinedIn: 'on-ramp/11-further-learning',
     seeAlso: ['expected-move', 'greek-attribution', 'paper-position'],
     kind: 'adjacent',
@@ -5333,7 +5333,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'They are the public denominator behind several numbers this book labels market-general, and the first place to check any claim about how large a pile or a flow is. Learning to read them is part of the first week’s practice.',
     evidence: 'market-general',
-    reading: 'Cboe Global Markets, Market Statistics; OCC, Volume and Open Interest reports.',
+    reading: 'Cboe Global Markets, Market Statistics.',
     firstDefinedIn: 'on-ramp/12-futures-to-options',
     seeAlso: ['market-general', 'hedge-complex-scale', 'zero-dte-share'],
     kind: 'adjacent',
@@ -5347,7 +5347,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'It is the plain, non-selling introduction to the mechanics that Chapter 12’s Gap 5 requires, and it is free. It teaches the customer seat; it does not teach the reading this book does.',
     evidence: 'market-general',
-    reading: 'Options Industry Council, the Options Education program and the current Characteristics and Risks of Standardized Options.',
+    reading: 'Options Industry Council, the Options Education program.',
     firstDefinedIn: 'on-ramp/12-futures-to-options',
     seeAlso: ['approval-levels', 'seat'],
     kind: 'adjacent',
@@ -5361,7 +5361,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'A cash-account holder who sells a position and re-buys the same day can run into unsettled funds. Futures settle daily; the different rhythm shows up in the first week of the loop as a broker message, not a market event.',
     evidence: 'market-general',
-    reading: 'OCC, settlement procedures; your broker’s cash-account rules on unsettled funds.',
+    reading: 'OCC, settlement procedures.',
     firstDefinedIn: 'on-ramp/12-futures-to-options',
     seeAlso: ['cash-vs-margin-account', 'premium'],
     kind: 'adjacent',

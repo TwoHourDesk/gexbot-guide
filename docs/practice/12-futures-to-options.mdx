@@ -117,7 +117,7 @@ You need to price an option in your head to within a rough tolerance and know wh
 
 Gexbot bridge: you already own delta, gamma, theta, vega, vanna, and charm as pressures. Now they are outputs of a formula you can run.
 
-Read: Natenberg, *Option Volatility and Pricing*, the pricing and greek chapters. Hull, *Options, Futures, and Other Derivatives*, the Black–Scholes chapter, for the derivation once. Passarelli, *Trading Options Greeks* (2012), for the practitioner's greek intuition.
+Read: Natenberg, *Option Volatility and Pricing* (2015), the chapters on pricing and on the greeks. Hull, *Options, Futures, and Other Derivatives* (2021), the chapter on Black–Scholes. Passarelli, *Trading Options Greeks* (2012).
 
 Gate: given index, strike, time, and implied vol, you can state the approximate price of an at-the-money option and the sign and rough size of each greek without a calculator; and you can explain why the 0.4 and 0.8 shortcuts from Chapter 11 work.
 
@@ -142,7 +142,7 @@ Implied vol on index options has, on average over long samples, exceeded the vol
 
 Gexbot bridge: the gamma-theta ledger from Chapter 11 is this premium seen one day at a time. The OP folklore — long options as walls, short options as fuel in falling vol — is the crowd acting on it.
 
-Read: Sinclair, *Volatility Trading*, the chapters on forecasting and on the premium. Carr and Wu, "Variance risk premiums" (2009, *Review of Financial Studies*). Bollerslev, Tauchen, and Zhou, "Expected stock returns and variance risk premia" (2009, *Review of Financial Studies*).
+Read: Sinclair, *Volatility Trading* (2013), the chapters on forecasting and on the premium. Carr and Wu, "Variance risk premiums" (2009, *Review of Financial Studies*). Bollerslev, Tauchen, and Zhou, "Expected stock returns and variance risk premia" (2009, *Review of Financial Studies*).
 
 Gate: you can explain, with the ledger, why a short straddle wins most days and how many points a single day must move to erase a month of those wins at your toy size.
 
@@ -156,7 +156,7 @@ A single leg is one bet with two exposures. Combinations shape them. A **vertica
 
 Gexbot bridge: Chapter 9b told you a multi-leg trade prints two or more bars and that a Gexbot reader may misread each leg as a separate opinion. Now you are the one printing them. Also: every structure decomposes into 2×2 cells; write which.
 
-Read: Natenberg, the spread chapters. McMillan, *Options as a Strategic Investment*, as the reference to look things up in. Sinclair, *Positional Option Trading* (2020), for which structure fits which forecast.
+Read: Natenberg, *Option Volatility and Pricing* (2015), the chapters on spreads. McMillan, *Options as a Strategic Investment* (2012). Sinclair, *Positional Option Trading* (2020).
 
 Gate: for eight structures — the four single legs, a call vertical, a put vertical, a straddle, a calendar — you can draw the payoff at expiry, state the sign of each greek today, name the 2×2 cells the legs print, and say what a Gexbot user would misread about you.
 
@@ -188,7 +188,7 @@ Futures risk is a stop and a size. Option risk is a scenario grid: P&L across a 
 
 Gexbot bridge: the DealerHedgeSim is a risk graph for one leg from the dealer's side. Turn it around.
 
-Read: Taleb, *Dynamic Hedging*, the chapters on pin risk, liquidity holes, and short-dated gamma. Sinclair on position sizing under fat tails. Your broker's margin documentation.
+Read: Taleb, *Dynamic Hedging* (1997), the chapters on pin risk, liquidity holes, and short-dated gamma. Sinclair, *Volatility Trading* (2013), the chapter on position sizing. Your broker's margin documentation.
 
 Gate: for every structure in Gap 4 you can write the worst-case dollar loss including an overnight gap of the expected move times three and an implied-vol doubling, and say whether margin would have forced you out before the loss finished.
 
@@ -200,7 +200,7 @@ The options book is not the ES book. Spreads are wide in ticks and wider in perc
 
 Gexbot bridge: you know what the aggressor is. Every time you cross the spread you are one, and Gexbot signs you as such. Every time you rest at mid and get filled, the other side was.
 
-Read: Harris, *Trading and Exchanges*, again, this time the chapters on dealers and on order types. Your exchange's rules on complex orders and price improvement.
+Read: Harris, *Trading and Exchanges* (2003), the chapters on dealers and on order types. Your exchange's rules on complex orders and price improvement.
 
 Gate: twenty logged fills with distance from mid, time of day, and whether you crossed or rested. You can state your average cost in ticks and in percent of premium.
 
@@ -210,7 +210,7 @@ Futures P&L is symmetric enough that win rate and average size tell the story. O
 
 Gexbot bridge: Chapter 11 module 8 — distributions, not directions. The docs' own +GEX OF sentence was the first example.
 
-Read: Chapter 11's Stage 5 readings. Taleb, *Dynamic Hedging*, on payoff asymmetry.
+Read: Chapter 11's Stage 5 readings. Taleb, *Dynamic Hedging* (1997), the chapter on payoff asymmetry.
 
 Gate: you refuse to evaluate any structure by win rate alone, and you can state the tail loss that makes a 90-percent winner a losing strategy at your size.
 

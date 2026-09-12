@@ -212,7 +212,7 @@ Proposed moves (logged, not applied): `skew` → Chapter 8 (H12); `customer-long
 
 ## WP7 — Canonical toy
 
-**Commit:** *(filled after commit)*
+**Commit:** `9c1fdd85798edcc473425be832d335c56f874261`
 
 Chapter 12’s “kept about 72 percent” (not 72 points) is `$540 / $750` from the canonical 6000 / 0.50 / 15-point / $100 / $50 figures plus Chapter 11’s stated 16% / two-hour illustration. Untouched.
 
@@ -236,6 +236,26 @@ Chapter 12’s “kept about 72 percent” (not 72 points) is `$540 / $750` from
 **Deferred.** Converting Chapter 12’s 10-lot Check to 500.
 
 **Outside scope, unapplied.** Recalculating Chapter 11’s 0.82 vs linear γ 0.86.
+
+---
+
+## WP8 — Citations
+
+**Commit:** *(filled after commit)*
+
+No URLs remain (WP1 URL check stays clean). Forty-nine adjacent `reading` fields reformatted: Hull years added (2021, 11th ed.); two-works fields reduced to the primary; book locators changed to “the chapter on X”; purpose clauses after cites stripped.
+
+Dropped seconds (primary kept): Griffin and Shams; Avellaneda and Stoikov; Bennett (spot-vol); Harris (high-volume-node, intermarket-sweep); Sinclair (weekend-theta); Kahneman; CME (hedge-complex-scale); Bouchaud (hedge-size-vs-volume); broker agreements (approval-levels, account-segregation, cash-vs-margin, per-contract-fees, exercise-cutoff, t-plus-one); Cboe fee schedule; unnamed Cboe 0DTE research; OCC volume reports; Characteristics and Risks on the OIC row; Hull (chain-iv).
+
+Chapters 11 and 12: works kept; years and “the chapter on X” locators added on the Read: lines listed in the agent table. Part 3 table titles not rewritten (would be a large voice change of a reference table; logged).
+
+**Judgment calls.** Hull year 2021 (11th). Two-works: official spec over commentary. OIC row: keep the education program, drop the OCC booklet (already cited on other rows).
+
+**Rule conflicts.** None.
+
+**Deferred.** Quoting titles on Chapter 11’s Part 3 author-year table.
+
+**Outside scope, unapplied.** None.
 
 
 

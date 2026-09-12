@@ -64,7 +64,7 @@ Toy. One percent of 6000 is about 60 points for the full cash day. With two hour
 
 Gexbot screen: the reason 0DTE bars dominate every ladder is hidden in that shrinking number. The next module makes it explicit.
 
-Read: Natenberg, *Option Volatility and Pricing* (2nd ed., 2015), the chapters on volatility. Sinclair, *Volatility Trading* (2nd ed., 2013), chapters 1–3.
+Read: Natenberg, *Option Volatility and Pricing* (2015), the chapters on volatility. Sinclair, *Volatility Trading* (2013), the chapters on measuring and forecasting volatility.
 
 Caveat (*market-general*). Conventions differ. Some desks count calendar time and include overnight variance; others count trading minutes only. A 0DTE option at the open often carries variance for a scheduled release that the square-root rule does not know about. Use the rule for intuition, and use the traded straddle (module 3) for the number.
 
@@ -91,7 +91,7 @@ Toy. Full day: 0.8 times 60, about 48 points. Two hours left: about 27 points. T
 
 Gexbot screen: the options profile at the money is where that straddle trades. The expected move is the yardstick for calling a node "near" or "far": a node 30 points away at 09:35 is inside the day's expected move; the same node at 15:30 is outside it.
 
-Read: Natenberg, the chapters on theta and on the at-the-money straddle. Bennett, *Trading Volatility* (2014), a free practitioner text, for the 0.8 approximation and its limits.
+Read: Natenberg, *Option Volatility and Pricing* (2015), the chapters on theta and on the at-the-money straddle. Bennett, *Trading Volatility* (2014).
 
 ### 4. Why gamma explodes at the end
 
@@ -103,7 +103,7 @@ Gexbot screen: the convexity ladder and the 0DTE dominance of every bar. Also th
 
 Hedge size follows. A dealer short 500 of those calls with thirty minutes left must buy roughly 0.32 times 500 times 100 divided by 50, about 320 ES, for that 15-point move — after having already bought about 500 ES at the print. The same dealer with two hours left would need about half as much. The clock, not the crowd, doubled the forced flow.
 
-Read: Taleb, *Dynamic Hedging* (1997), the chapters on gamma and on short-dated options. Sinclair, *Positional Option Trading* (2020) for the practitioner's view of gamma near expiry.
+Read: Taleb, *Dynamic Hedging* (1997), the chapters on gamma and on short-dated options. Sinclair, *Positional Option Trading* (2020), the chapter on gamma near expiry.
 
 ### 5. Gamma against theta: the hedger's ledger
 
@@ -116,7 +116,7 @@ Toy. If the index actually moves 7 points every five minutes while the straddle 
 
 Gexbot screen: this is the arithmetic under the OP folklore. A customer long options in a falling-vol tape is on the losing side of the ledger and is incentivized to dump. A customer short options is on the winning side and is incentivized to hold. The incentive words come from this line.
 
-Read: Sinclair, *Volatility Trading*, the chapter on hedging P&L. Ahmad and Wilmott, "Which free lunch would you like today, Sir?" (2005, *Wilmott* magazine) for what happens when you hedge at one vol and the market realizes another.
+Read: Sinclair, *Volatility Trading* (2013), the chapter on hedging P&L. Ahmad and Wilmott, "Which free lunch would you like today, Sir?" (2005, *Wilmott*).
 
 ### 6. Why dealers hedge in bands, and how wide
 
@@ -154,7 +154,7 @@ Toy. Suppose after such a bar the market offers a 60 percent chance of a 10-poin
 
 Gexbot screen: GEX orderflow, and the target grammar in Chapter 9 — near target and scaled exit for expansion, node-as-target for pins.
 
-Read: Taleb, *Dynamic Hedging*, on asymmetric payoffs. Derman and Miller, *The Volatility Smile* (2016), for the skew that prices this asymmetry.
+Read: Taleb, *Dynamic Hedging* (1997), the chapter on asymmetric payoffs. Derman and Miller, *The Volatility Smile* (2016).
 
 ## Part 2 — Microstructure of the open
 
