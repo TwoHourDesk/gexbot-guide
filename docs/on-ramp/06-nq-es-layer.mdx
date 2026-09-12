@@ -40,7 +40,7 @@ A futures contract expires into cash or rolls into the next contract at a price 
 
 ## Summary
 
-Notional is multiplier times index; delta times notional is your exposure in dollars, and one ATM SPX option is about one ES. Your break-even is in index points and reaches your chart through a moving basis. SPX and NDX options settle in cash and cannot be exercised before expiry; SPY and QQQ options can be exercised against you and deliver shares.
+The contract you would hold on Monday is decided by how it settles, not by the delta you translated. Two tickets with the same notional — one SPX, one SPY — can leave you with a cash amount or with shares you did not buy. The translation gets you onto the ticket. Settlement decides what is still in the account after the ticket dies.
 
 ## Terms introduced
 
@@ -50,7 +50,7 @@ Notional is multiplier times index; delta times notional is your exposure in dol
 
 1. **I trade two NQ. What is that in NDX options?** About 0.8 of one ATM NDX option in delta. Size in options is delta times notional, not contracts.
 2. **My break-even is 6013. Where is that on ES?** 6013 plus today’s basis, which moves. Not a fixed line.
-3. **Can someone exercise my SPX short early?** No; European style. On SPY, yes.
+3. **You are short the same strike over the weekend, once in SPX and once in SPY.** What can Monday look like on SPY that SPX cannot? Shares you did not buy, delivered by someone else’s early exercise. SPX can only be cash, and only at expiry.
 
 <AdjacentConcepts docId="on-ramp/06-nq-es-layer" />
 
@@ -61,8 +61,8 @@ Notional is multiplier times index; delta times notional is your exposure in dol
       a: '$600,000 and $300,000. One ATM SPX option ≈ 0.50 × $600,000 = $300,000, about one ES.',
     },
     {
-      q: 'Which of SPX, NDX, SPY, QQQ options can be exercised against you before expiry?',
-      a: 'SPY and QQQ (American, physical). SPX and NDX are European and cash-settled.',
+      q: 'Same strike, same delta, both expire in the money: an SPX call and a SPY call. What do you hold on Monday in each case?',
+      a: 'SPX: a cash amount, no contract, no shares. SPY: the shares, unless you already flattened. Settlement, not delta, decided that.',
     },
   ]}
 />

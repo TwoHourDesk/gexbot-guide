@@ -13,11 +13,12 @@ The reader can follow an ES/NQ chart and has **not** traded options (see `audien
 - If this chapter has not defined it, and no earlier chapter has, **do not use it**. Teach it in a sentence first, then name it.
 - Acronyms get the long form once: “gamma exposure (GEX)”, “open interest (OI)”.
 - API names (`dexoflow`, `ES_SPX`) wait until the chapter that owns that screen.
-- A summary table may **repeat** terms already taught. It may not **introduce** them.
+- A summary table may **repeat** terms already taught. It may not **introduce** them. Repeating a *term* is not a license to retell the thesis.
 
 ## Track introductions
 
 - Open with what this chapter may assume (link the prior chapter).
+- “What you will be able to do” names a competence. It may not spoil the Check Yourself answers.
 - Close with “terms introduced here.” Do not treat a `<TermFirst>` box as the only teaching.
 - Do not preview later objects by dumping their names (no “OP, DEX, convexity” in Chapter 1).
 
@@ -39,6 +40,52 @@ Every named term a chapter teaches or uses as a term — headword, acronym, or G
 - Track split: on a **main chapter** the item bears on the futures tape or on reading Gexbot (basis, auctions, expiration-day flows, market-structure facts that decide what a screen can see). On an **on-ramp page** the item bears on holding or trading the option (chain, marks, settlement value, routing, greeks beyond the chapter, practitioner tools). An options-side item that a reader needs only to read a screen stays on the main chapter; otherwise it belongs to the on-ramp.
 - Naming an adjacent concept may not add a mechanism claim about Gexbot or soften a label, pressure word, or guardrail.
 
+## Closers and cards (density, not DRY)
+
+The fault is same-page paraphrase: the same claim, the same work, a new heading. Cross-chapter return is review. Same-page paraphrase is not.
+
+The fix is **information density**, not brevity. Deleting a closer that only paraphrased leaves a hole. Keeping a closer that only paraphrases leaves the same hole in more words. The slot stays. What fills it must be information the teaching section did not already give.
+
+A closer may connect, case, refuse, misread, or demand production. It may not retell. It may not introduce a headword. It may not soften a label to make room.
+
+Test: if the reader skipped this block, they lose a distinction, number, misread, **connection**, or production task they cannot reconstruct from the teaching alone. A shorter recap that adds no such loss is not a closer.
+
+### Slot jobs
+
+- **Teaching prose** — the only place the idea is taught. What goes wrong without it → the idea → the Gexbot name → the tiny number. If a later paragraph would reprint this, densify *this* paragraph with the clock, cancel, or number, and give the later paragraph a different job.
+- **`<TermFirst>`** — the portable definition. The glossary must stand alone, so `shortDef` stays complete. The paragraph is the worked case. They may not be the same sentences. If they are, add the case to the paragraph; do not shrink the card.
+- **`<GexbotConcept>` / `<WhoMustAct>` / `<ScreenOrientation>`** — abstract fields (unit, not-counted, actor, trigger, venue). The paragraph beside them is the case. The card’s first line may not copy the paragraph.
+- **`<DistinguishingNote>`** — only if it adds a cousin, cut, or import mistake that is not already on the `<GexbotConcept>` above it. Identical fields are zero information: drop the note. A new cut is density: keep it.
+- **Figure `teaching=`** — one visual instruction the prose did not already give. Not a second thesis.
+- **On-ramp “what the screen cannot” / “the one thing that changes”** — one new distinction each, from the customer seat. Summary, Newcomer questions, and Check Yourself do not retell those two distinctions; they connect, case, or produce from them.
+- **Summary** — two to four sentences that *connect* what the sections left side by side. The reader who read every section still learns why those sections belong on one page. Not a recap. Not a one-line shrinkage of the thesis.
+- **`<ChapterTerms>`** — names only. Keep.
+- **Newcomer questions** — a case, clock, cancel, or refusal the body did not write. Illegal: a paraphrase of the Summary or of the teaching paragraph.
+- **`<CheckYourself>`** — production of a *combination* the body presented in parts, or a toy number. Two items max unless the chapter is a drill sheet (Chapter 8). If an item restates a Newcomer question or the Summary, replace it with a combination.
+- **Gate** — where to go next. One line. No thesis reprise.
+- **`<AdjacentConcepts>`** — stays; named, not taught. See above.
+
+```mdx
+<!-- BAD: three recitations of the teaching -->
+**Summary.** One trade leaves three traces: volume now, leftover now
+if uncancelled, open interest tonight if held.
+**Newcomer Q.** Will I see my trade? As one contract in leftover.
+**Check Yourself.** Name the three traces and the clock each is on.
+
+<!-- ALSO BAD: DRY shrinkage — shorter, no new information -->
+**Summary.** The map records the trade and hides the trader.
+
+<!-- GOOD: teach the clocks once; closers add a connection, a case, a combination -->
+**Summary.** A reader at 10:05 and a reader at tomorrow’s open are
+not looking at the same object when they look at this trade. Neither
+sees you.
+**Newcomer Q.** You flatten before the close. Which traces die
+tonight, and which never become open interest?
+**Check Yourself.** You buy at 10:05; someone sells the same strike
+at 10:06; you still hold overnight. Write the traces at 10:06 and
+at tomorrow’s open.
+```
+
 ## Voice
 
 - One idea per paragraph. Plain English first, then the Gexbot name, then a tiny picture.
@@ -51,7 +98,8 @@ Every named term a chapter teaches or uses as a term — headword, acronym, or G
 - Short sentence for the rule; longer sentence for the reason and the picture. Not three imperatives in a row.
 - One metaphor per concept, taken from the SoT where it has one.
 - A misread is a cause-and-effect sentence naming who is hurt and how, not a “Misread:” fragment.
-- Signpost at transitions: what the reader now has, what the next section adds. Newcomer questions read as a person would ask them.
+- Signpost at transitions: what the reader now has, what the next section *adds*. A signpost names the next job; it does not recap the last thesis.
+- Newcomer questions read as a person would ask them, and they obey the closer jobs above.
 - No “we”, no exclamation, no praise, no “just / simply / easy / don’t worry / let’s”, no rhetorical-question chains, no hedging filler.
 - Never soften a label (docs / folklore / inferred / not stated / market-general), a pressure word, a verb (observed / inferred / assumed), a stand-down, or a guardrail to gain warmth.
 - Test: would a senior desk colleague say it to a sharp junior in their first week — direct, unhurried, no performance? If it sounds like a coach, a salesperson, or a rulebook, rewrite.

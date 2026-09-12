@@ -40,7 +40,7 @@ A futures trader wants direction; there is nothing else to want. Two of the four
 
 ## Summary
 
-The four cells are the four single-leg positions. Bought convexity wants movement and pays rent; sold convexity wants stillness and collects it. Your one print is three bars on three tapes. Orderflow shows your bar’s time and sign and nothing about your reason.
+Plus DEX names a lean, not a cell. The two plus-DEX cells want opposite things from time: the long call pays rent and needs a run; the short put is paid to wait and needs the index not to fall. That is why “bullish” cannot name a position, and why a plus DEX-orderflow bar is not a buy signal.
 
 ## Terms introduced
 
@@ -49,7 +49,7 @@ The four cells are the four single-leg positions. Bought convexity wants movemen
 ## Newcomer questions
 
 1. **Which cell is “bullish”?** Long call and short put both have plus DEX. One pays to wait and wants a run; the other is paid to wait and wants the index not to fall. Direction alone does not name a cell.
-2. **My one trade shows on three tapes. Is that three signals?** No. One print, three drawings.
+2. **You sell the 500 calls.** Which of the three Orderflow bars flips, and which does not? DEX and convexity flip to minus. GEX orderflow stays plus — call-sided leftover still grew. Same plus GEX bar, opposite cell.
 3. **Can I be paid for the index doing nothing?** Yes; that is what the two sold cells are. What they owe when the index does something is Chapter 12’s subject.
 
 <AdjacentConcepts docId="on-ramp/05-orderflow" />
@@ -57,12 +57,12 @@ The four cells are the four single-leg positions. Bought convexity wants movemen
 <CheckYourself
   items={[
     {
-      q: 'Name the cell that has minus DEX and plus convexity, and say what it wants.',
-      a: 'Long put. Expansion downward, away from the strike. It pays rent while waiting.',
+      q: 'You want to be paid if the index sits still above the strike. Name the cell and its two signs.',
+      a: 'Short put. Plus DEX, minus convexity. Paid to wait; owes on a drop.',
     },
     {
-      q: 'Your 500-call lift prints on how many Orderflow tapes, and as what?',
-      a: 'Three: plus DEX orderflow, call-sided plus GEX orderflow, plus convexity orderflow. One print.',
+      q: 'Write the three Orderflow signs for the sold-500-calls branch.',
+      a: 'Minus DEX orderflow, plus (call-sided) GEX orderflow, minus convexity orderflow. One print, opposite cell from the lift.',
     },
   ]}
 />

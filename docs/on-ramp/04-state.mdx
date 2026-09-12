@@ -37,7 +37,7 @@ A futures position never changes value while price is still. Yours does, on a nu
 
 ## Summary
 
-Vol paid is the implied vol at which you opened. If vol falls afterwards, the mark falls with price unchanged. Your 500 calls are a customer-long, plus-DEX, plus-convexity bar; the wall and fuel folklore describes an incentive you will feel, and stays folklore. State shows the pile and your counterparty’s finished hedge; it shows nothing about your ticket.
+Two holders of the same plus-convexity bar can have opposite marks, because vol paid is a ticket number and the ladder is a pile number. The falling-vol wall folklore is an incentive those two holders will not share: the one who paid 20 and now sees 15 feels the pull to sell; the one who paid 12 does not. The ladder cannot split them. The folklore stays folklore.
 
 ## Terms introduced
 
@@ -47,19 +47,19 @@ Vol paid is the implied vol at which you opened. If vol falls afterwards, the ma
 
 1. **I bought calls, the index rose, and I am losing. How?** Vol paid was higher than vol now, or rent ran, or both. Chapter 12 splits the pieces.
 2. **If I am part of the wall, is the wall real?** The wall is a hypothesis about people like you in falling vol, labeled folklore. You being one of them does not promote it to fact.
-3. **Does State know I am winning?** No. It knows the pile’s sign and size. It does not know what anyone paid.
+3. **You paid 20 vol; the holder next to you paid 12; both are long the same bar; implied vol is now 15.** Who sits in the wall folklore’s “losing, so sell” seat? Only you. They are ahead on vol. Same bar, opposite incentive. State still draws one pile.
 
 <AdjacentConcepts docId="on-ramp/04-state" />
 
 <CheckYourself
   items={[
     {
-      q: 'Define vol paid and say what happens to the mark if implied vol falls with price unchanged.',
-      a: 'The implied vol at which you opened. The mark falls; you paid for movement the market now expects less of.',
+      q: 'Vol paid 18, vol now 14, index unchanged. What happens to the mark, and what happens to the DEX bar?',
+      a: 'The mark falls — you paid for movement the market now expects less of. The DEX bar does not care: it is leftover share-equivalent, a record of the lean, not of anyone’s ticket.',
     },
     {
-      q: 'Where do your 500 bought calls appear on the three State ladders?',
-      a: 'Customer-long bar at 6000 on the options profile; plus bar on DEX; plus bar on convexity.',
+      q: 'Write the three State-ladder signs for 500 bought calls and for 500 sold calls at the same strike.',
+      a: 'Bought: customer-long / plus DEX / plus convexity. Sold: customer-short / minus DEX / minus convexity. Same strike, opposite signs on every ladder.',
     },
   ]}
 />

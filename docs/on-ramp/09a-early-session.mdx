@@ -41,7 +41,7 @@ A futures fill at 09:31 costs a tick or two of spread and nothing else. An optio
 
 ## Summary
 
-Opening vol is the implied vol quoted before leftover exists to test it; a ticket signed then has a vol paid with the same standing as an ungraded level. Grade A and B strikes have location and no owner; Grade C is the first minute your strike has a sign. The early window charges a holder in a currency the futures tape does not have.
+Grade C is the first minute the strike has a sign, and it is the first minute your own fill can be part of that sign. An early Grade C bar is not independent confirmation of a 09:31 thesis. It may be you. Grade A at that same strike is unsigned location plus an untested opening vol — two untested numbers, not one.
 
 ## Terms introduced
 
@@ -58,12 +58,12 @@ Opening vol is the implied vol quoted before leftover exists to test it; a ticke
 <CheckYourself
   items={[
     {
-      q: 'Define opening vol and say what it has in common with a Grade A level.',
-      a: 'The implied vol quoted before leftover exists to test it. Like a Grade A level it is observed and carries no tested standing yet.',
+      q: 'You buy at 09:31. At 10:30 the mark is lower and the index is unchanged. Which number moved, and what standing did it have at the fill?',
+      a: 'Implied vol — the opening vol you paid. At 09:31 it was observed and untested, same standing as a Grade A level. The 10:30 mark is the test arriving.',
     },
     {
-      q: 'What does an option fill at 09:31 cost that a futures fill at 09:31 does not?',
-      a: 'A vol paid that cannot yet be judged, on top of the spread.',
+      q: 'Same strike: Grade A at 09:31, Grade C at 10:15. What may you write about the owner at each clock?',
+      a: '09:31: unknown. 10:15: leftover has a sign, and if you traded early some of that sign may be you. Not independent confirmation of the 09:31 ticket.',
     },
   ]}
 />

@@ -41,7 +41,7 @@ For a futures trader a level is external: price approaches it, holds or breaks, 
 
 ## Summary
 
-At your own strike, every heuristic describes you. H4’s wall is your incentive to sell into a rally; H6’s shove is your counterparty’s chase through your short; H5’s magnet includes holders like you; H12’s regime is the vol you paid. The heuristics remain reads, with their labels and stand-downs intact, and they never tell a holder what to do.
+The same leftover can be a wall, a shove, a magnet, and a rent bill at once, depending on which heuristic is looking. All four can be true of one holder. None of them is an instruction. The stand-down that silences a reader at a thin or two-sided strike silences the holder there too: a position with no read is a position with no thesis.
 
 ## Terms introduced
 
@@ -49,7 +49,7 @@ At your own strike, every heuristic describes you. H4’s wall is your incentive
 
 ## Newcomer questions
 
-1. **If I am part of the wall, does the wall hold?** The wall is a hypothesis about holders in falling vol. You being one does not make it hold; it makes you feel the incentive.
+1. **H4 and H6 fire at your strike on the same minute.** What is each describing about you, and do they agree on what you will do? H4: your incentive to sell into a rally if you are long and vol is falling (*folklore*). H6: your counterparty’s mandate to chase if you are short and the node breaks. They describe different seats. They do not agree on an action, and neither one is yours to take.
 2. **Does H6 tell me to close a short at a crowded node?** No heuristic tells anyone to do anything. It says what the dealers on the mirror must do if price breaks.
 3. **Is there a heuristic for my own P&L?** No. Nothing on Gexbot knows what you paid.
 
@@ -58,8 +58,8 @@ At your own strike, every heuristic describes you. H4’s wall is your incentive
 <CheckYourself
   items={[
     {
-      q: 'Define own strike and say what changes about a heuristic there.',
-      a: 'The strike you hold. A heuristic there describes you and your incentive rather than an anonymous crowd.',
+      q: 'You hold 6000 calls. H4 reads a wall at 6000 and a wall at 5980. Which sentence is about you?',
+      a: 'Only 6000 — that is your own strike. 5980 is still a crowd. The heuristic does not become about you at every wall, only at the strike you hold.',
     },
     {
       q: 'You sold calls at a crowded short-convexity node and price breaks it. Whose pressure word is mandate?',

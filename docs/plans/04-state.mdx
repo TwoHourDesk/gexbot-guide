@@ -204,7 +204,7 @@ DEX is the record of the about-500 ES already done (link 3). Convexity is the ab
 
 ## Summary
 
-State shows leftover paper by strike. Read the orientation of *this* drawing before the color. DEX is a record — already hedged. Convexity and the GEX profile are pending and path-conditional. Left on the options profile is not left on the GEX profile.
+The two import mistakes on this page fail at different times. “Long bar = support” fails when the regime is wrong. “DEX = pending buying” fails even when the regime is right, because the clock for that hedge has already passed. Left on the options profile and left on the GEX profile fail for a third reason: they are different axes, not a color error.
 
 ## Terms introduced
 
@@ -213,7 +213,7 @@ State shows leftover paper by strike. Read the orientation of *this* drawing bef
 ## Newcomer questions
 
 1. **There is a tall customer-long bar a few strikes below price. Is that support?** Only as a falling-vol *incentive* hypothesis (*folklore*). Rising vol can make that long into fuel.
-2. **A plus-DEX bar printed. Are they about to buy ES?** The inferred initial hedge is mostly done. Pending force is on gamma.
+2. **Plus-DEX printed at 10:06. You buy ES at 10:06 expecting the 500.** Who already did that trade? The dealer, within seconds of 10:05. The bar is the record. The 500 you wanted were the ones you did not see.
 3. **Is GEX profile the same as convexity?** No. Wing (call versus put) versus ownership (paid versus collected).
 
 <AdjacentConcepts docId="plans/04-state" />
@@ -221,12 +221,12 @@ State shows leftover paper by strike. Read the orientation of *this* drawing bef
 <CheckYourself
   items={[
     {
-      q: 'Which State ladder is a record, and which is pending force?',
-      a: 'DEX is a record (already hedged). Convexity and the GEX profile are pending, path-conditional.',
+      q: 'Bought 500 versus sold 500. Write DEX sign, convexity sign, and which hedge-chain link each ladder is, for both branches.',
+      a: 'Bought: plus DEX (link 3, record), plus convexity (link 4, pending). Sold: minus DEX (link 3, record), minus convexity (link 4, pending). Same strike, opposite signs, same clocks.',
     },
     {
-      q: 'Right on the options profile versus right on the GEX profile?',
-      a: 'Options profile right = customer long leftover. GEX profile right = call-sided leftover gamma. Different axes.',
+      q: 'A bar is right on the options profile and left on the GEX profile. What is the leftover?',
+      a: 'Customer long, put wing heavier — leftover long puts (or the put side won the net). Right means owner on OP and wing on GEX. Not the same axis.',
     },
   ]}
 />

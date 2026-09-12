@@ -45,7 +45,7 @@ A futures position has no rent. Hold one ES unchanged for two hours and you hold
 
 ## Summary
 
-A bought call costs its debit and can lose no more than that. Break-even is strike plus debit, a point on the payoff and not a chart level. The mark is what the position is worth now; gamma helps the mark as the index goes your way, and theta charges rent while it does not. Classic shows how crowded your strike is and nothing about your ticket.
+Crowded-versus-lonely and ahead-versus-behind are independent readings of the same strike. Classic can answer the first and cannot see the two numbers that decide the second: the debit and the mark. Two holders of the same bar can be on opposite sides of flat.
 
 ## Terms introduced
 
@@ -66,8 +66,8 @@ A bought call costs its debit and can lose no more than that. Break-even is stri
       a: 'Break-even 6013. Maximum loss 13 points, $1,330, whatever the index does.',
     },
     {
-      q: 'What does Classic show about your strike, and what does it not show?',
-      a: 'Shows the gamma pile at 6000 in OI and in volume, unsigned. Does not show your debit, mark, break-even, or that you are long.',
+      q: 'Two holders bought the same 6000 call, one at 13 and one at 8. The mark is 10. Classic’s bar is identical. Who is ahead?',
+      a: 'The holder who paid 8. The holder who paid 13 is behind. Classic cannot split them: same strike, same unsigned pile, no ticket numbers.',
     },
   ]}
 />

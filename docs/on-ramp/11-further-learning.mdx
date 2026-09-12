@@ -37,7 +37,7 @@ A futures trader’s P&L on a flat day is zero. A holder’s is not, in either d
 
 ## Summary
 
-A paper position is a written, unheld position tracked at marks and attributed at the close. Price it from the straddle rule, record the vol paid, and split each day into movement earned against waiting paid. Twenty sessions with no money show what a flat day costs a holder. Chapter 12 makes the drill its first two stages.
+A flat-index day is the only day that isolates the waiting side of the ledger. A trend day buries theta and the vol bill under a delta win or loss the futures trader already knows. That is why the drill cares more about the close that matches the open than about the close that trends. Twenty such sessions, on paper, before the ticket is real.
 
 ## Terms introduced
 
@@ -54,12 +54,12 @@ A paper position is a written, unheld position tracked at marks and attributed a
 <CheckYourself
   items={[
     {
-      q: 'Define a paper position and name the two sides of the ledger you split its day into.',
-      a: 'A written, unheld position tracked at marks and attributed at the close. Movement earned (delta and gamma) against waiting paid (theta and the vol bill).',
+      q: 'Index closes unchanged. Implied vol fell. Write which side of the ledger printed, and the sign of the paper P&L for a long ATM call.',
+      a: 'The waiting side: theta and the vol bill, both against the long. Paper P&L is negative. The movement side is near zero.',
     },
     {
-      q: 'From the straddle rule, roughly what fraction of the expected move does the ATM call cost?',
-      a: 'About 0.4 of the expected move; the straddle about 0.8.',
+      q: 'Expected move 20 points. Write the paper debit for the ATM call and for the ATM straddle from the rule.',
+      a: 'Call about 8 points (0.4). Straddle about 16 points (0.8). Both toys from the rule, written before the mark arrives.',
     },
   ]}
 />

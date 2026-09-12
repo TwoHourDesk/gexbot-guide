@@ -37,7 +37,7 @@ One ES at 15:00 is worth what one ES was worth at 10:00 if the price is the same
 
 ## Summary
 
-Delta drift is your delta changing from the clock (charm) or from vol (vanna), not from price; your counterparty hedges it, in ES, without you moving. Theta is your rent, vega your vol bill. The last-hour ladders show holders like you as a crowd; they show nothing about your ticket. A futures position has none of this.
+Price-unchanged is not P&L-unchanged and is not delta-unchanged. The last-hour ladders locate the crowd whose drift is being re-hedged; they do not list the rent, the vol bill, or your own drift. A futures position at the same price at 15:00 as at 10:00 has none of those line items.
 
 ## Terms introduced
 
@@ -45,7 +45,7 @@ Delta drift is your delta changing from the clock (charm) or from vol (vanna), n
 
 ## Newcomer questions
 
-1. **The index is unchanged since I bought. Why is my delta different?** Charm if the clock ran, vanna if vol moved. Both are delta drift.
+1. **Index still at 6010 from 14:00 to 15:30. Your call was 0.55 delta.** Which way does delta drift, and which ladder is the crowd’s version of that? Toward 1.00 — in-the-money, clock running, charm. The charm ladder is the leftover crowd’s version; it is not your 0.55.
 2. **Is the minus-vanna ladder about me?** About holders like you, in aggregate, for today’s leftover only. Not about your ticket.
 3. **Why does my call decay faster at 15:00 than at 10:00?** Theta grows as time runs out; Chapter 2’s time decay is not a straight line.
 
@@ -54,12 +54,12 @@ Delta drift is your delta changing from the clock (charm) or from vol (vanna), n
 <CheckYourself
   items={[
     {
-      q: 'Define delta drift and name its two causes.',
-      a: 'A change in your position’s delta not caused by price. Charm (clock) and vanna (implied vol).',
+      q: 'Index at 5990, implied vol falls, you do not trade. Write the drift and what the counterparty does.',
+      a: 'Out-of-the-money call: vanna shrinks delta toward zero. The counterparty sells ES — unwinding hedge they no longer need. Flow you did not cause by moving.',
     },
     {
-      q: 'Your ITM call’s delta climbs into the close with the index still. What does your counterparty do?',
-      a: 'Buys ES to re-hedge the drift. Futures flow you did not cause by moving.',
+      q: 'Same strike, now slightly in the money at 6010, vol unchanged, clock runs into 15:30. Write the drift and what the counterparty does.',
+      a: 'Charm climbs delta toward 1.00. The counterparty buys ES. Opposite flow from the 5990 / falling-vol case, still with the index still.',
     },
   ]}
 />

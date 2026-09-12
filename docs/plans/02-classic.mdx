@@ -169,25 +169,26 @@ Now the mirror: the customer **sold** the same 500 calls. Classic’s bar still 
 
 That is why Classic is not State. You now have a location. Chapter 3 adds the sign — who bought and who sold — and with it the direction of the hedge.
 
-## Newcomer question
-
-**Is a big green bar bullish?** It is call-sided gamma. On SPX, Gexbot’s own docs often treat that as *sold* calls (*folklore*). Whether it stalls or fuels depends on owner and on whether implied vol is falling or rising. Classic cannot show the owner.
-
 ## Summary
 
-Classic is the unsigned cousin of public GEX maps. Every Who-must-act row on this page says **unknown**. Location can be real while the owner’s sign is not.
+The running example’s identical bars are why every Who-must-act row on this page says **unknown**. Location survived the buy/sell split. The hedge sentence did not. A reader who writes a hedge from Classic has used a later chapter’s object on a screen that cannot hold it.
 
 ## Terms introduced
 
 <ChapterTerms docId="plans/02-classic" />
+
+## Newcomer questions
+
+1. **Is a big green bar bullish?** It is call-sided gamma. On SPX, Gexbot’s own docs often treat that as *sold* calls (*folklore*). Whether it stalls or fuels depends on owner and on whether implied vol is falling or rising. Classic cannot show the owner.
+2. **Call pile and put pile at one strike are huge and equal.** Is the warehouse empty? No. That is a **balanced node**. Classic’s one bar nets toward zero; both piles are still there.
 
 <AdjacentConcepts docId="plans/02-classic" />
 
 <CheckYourself
   items={[
     {
-      q: 'Bought 500 calls versus sold 500 calls: what does Classic show?',
-      a: 'The same call-side volume-GEX growth. Owner unknown.',
+      q: 'Huge equal call and put piles at one strike. The bar nets near zero. May you write pressure none?',
+      a: 'No. None is leftover cancelled — a later-screen word. Classic’s net is unsigned location, and both piles are still there. Pressure unknown.',
     },
     {
       q: 'May you write “dealers must buy” under a Classic put-side pile?',

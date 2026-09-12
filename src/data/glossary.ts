@@ -989,6 +989,9 @@ export const glossary: GlossaryEntry[] = [
       'Dealers short gamma chase; dealers long gamma fade. Gexbot keeps this polarity and adds the customer book.',
     firstDefinedIn: 'plans/01-what-gexbot-is',
     alsoAppears: ['practice/08-heuristics-as-reading'],
+    distinguishingCut:
+      'Gexbot keeps chase/fade polarity and adds a customer book. The customer channel is incentive, not mandate.',
+    importMistake: 'Reading every bar as “dealers will now do X” with no customer side.',
     kind: 'cousin',
   },
   {
@@ -997,6 +1000,11 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Public gamma-exposure maps built from leftover contracts times gamma, often with a fulcrum line and named walls, as if the owner were known. Closest Gexbot cousin is Classic.',
     firstDefinedIn: 'plans/01-what-gexbot-is',
+    alsoAppears: ['plans/02-classic', 'practice/11-further-learning'],
+    distinguishingCut:
+      'Classic is the cousin. Pressure on Classic is unknown. State and Orderflow reject the unsigned-owner shortcut.',
+    importMistake:
+      'Importing named walls or a zero-gamma flip as if ownership were known.',
     kind: 'cousin',
   },
   {
@@ -1005,6 +1013,11 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Gamma computed on ES/NQ themselves, often with pre-drawn levels. Gexbot’s ES/NQ is converted index options.',
     firstDefinedIn: 'plans/01-what-gexbot-is',
+    alsoAppears: ['layer/06-nq-es-layer'],
+    distinguishingCut:
+      'Gexbot’s ES/NQ picture is leftover index options stretched onto the futures, not gamma computed on ES or NQ themselves.',
+    importMistake:
+      'Pre-drawn futures levels, or treating converted walls as exchange volume.',
     kind: 'cousin',
   },
   {
@@ -1013,6 +1026,66 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'Debit-credit tapes, often with open/close. Gexbot is greek-weighted residual and does not split open from close.',
     firstDefinedIn: 'plans/01-what-gexbot-is',
+    alsoAppears: ['plans/03-classification'],
+    distinguishingCut:
+      'Gexbot weights leftover by schoolbook sensitivities. It does not split open from close, and a large debit is not a large leftover.',
+    importMistake: 'A large debit as a large DEX print.',
+    kind: 'cousin',
+  },
+  {
+    id: 'cousin-full-book-vanna',
+    headword: 'full-book vanna/charm pinning',
+    aliases: ['full-book vanna', 'full-book charm'],
+    shortDef:
+      'Pinning literature that uses the whole open-interest vault. Gexbot’s minus-vanna and charm ladders are beta and applied to today’s classified residual only.',
+    firstDefinedIn: 'layer/07-clocks-and-late-greeks',
+    alsoAppears: ['practice/08-heuristics-as-reading'],
+    distinguishingCut:
+      'Residual-only, last-hour family. Not a morning object. Gexbot does not show hedge-chain link 6.',
+    importMistake: 'A morning minus-vanna stack as a 09:45 directional signal.',
+    seeAlso: ['minus-vanna-ladder', 'charm-ladder'],
+    kind: 'cousin',
+  },
+  {
+    id: 'cousin-chart-methodology',
+    headword: 'named session-level methodologies',
+    aliases: ['charting methodology', 'named opening-range'],
+    shortDef:
+      'Session-level systems with named levels and setups. This book uses plain tape words. Gexbot nodes are converted index strikes, mapped through the basis.',
+    firstDefinedIn: 'practice/09a-early-session',
+    alsoAppears: ['practice/09b-structure-and-gexbot'],
+    distinguishingCut:
+      'Structure is observed on the futures tape. A Gexbot node is an index strike on a converted ruler. Overnight structure has no State leftover at 09:30.',
+    importMistake:
+      'A methodology’s named levels, targets, or setups as if they were Gexbot objects.',
+    seeAlso: ['opening-range', 'structural-location', 'futures-tape-delta'],
+    kind: 'cousin',
+  },
+  {
+    id: 'cousin-public-gex-papers',
+    headword: 'public GEX white papers',
+    aliases: ['public GEX dashboards'],
+    shortDef:
+      'Papers and dashboards that compute dealer gamma from open interest under an ownership assumption. Classic is the nearest Gexbot cousin.',
+    firstDefinedIn: 'practice/11-further-learning',
+    distinguishingCut:
+      'They assume an owner. Classic does not. State and Orderflow use classified customer residual instead.',
+    importMistake:
+      'Their level names, their scaling, or their sign convention as if they were Gexbot’s.',
+    seeAlso: ['cousin-unsigned-gex', 'classic'],
+    kind: 'cousin',
+  },
+  {
+    id: 'cousin-strategy-courses',
+    headword: 'strategy-first options courses',
+    aliases: ['options courses that start from strategies'],
+    shortDef:
+      'Courses that open with a list of structures. This book’s ramp starts from the other side of the trade and from mechanics and risk before structures.',
+    firstDefinedIn: 'practice/12-futures-to-options',
+    distinguishingCut:
+      'Structures come fourth, not first. A Gexbot read may choose a structure type after a thesis exists; it never supplies the thesis.',
+    importMistake:
+      'A strategy list as a substitute for the position sentence and the risk graph.',
     kind: 'cousin',
   },
   {
@@ -1292,6 +1365,11 @@ export const glossary: GlossaryEntry[] = [
       'A broker contract that pays the difference as a Nasdaq-100 (or S&P) number moves. Not CME. Not leftover. Sit NQ_NDX beside it the same way you sit it beside NQ. The inferred option hedge still lands in NQ (inferred).',
     firstDefinedIn: 'layer/06-nq-es-layer',
     seeAlso: ['nq-future', 'ndx', 'conversion-limit', 'basis'],
+    nearestCousin: 'Index CFDs (NAS100 / US100 and cousins)',
+    distinguishingCut:
+      'A broker quote on the same basket. Not CME NQ. Not leftover NDX options.',
+    importMistake:
+      'CFD volume or the broker last as if they were NQ tape or a Gexbot node.',
     kind: 'market-general',
   },
   {
@@ -5296,4 +5374,33 @@ export function sortedGlossary(): GlossaryEntry[] {
   return [...glossary].sort((a, b) =>
     a.headword.localeCompare(b.headword, 'en', {sensitivity: 'base'}),
   );
+}
+
+/** Chapter number from a doc id (`plans/09a-…` → 9), then the id as tiebreak. */
+export function chapterSortKey(docId: string): [number, string] {
+  const m = docId.match(/(\d+)/);
+  return [m ? Number(m[1]) : 99, docId];
+}
+
+export function cousinFamilies(): GlossaryEntry[] {
+  return entriesByKind('cousin').sort((a, b) => {
+    const [na, sa] = chapterSortKey(a.firstDefinedIn);
+    const [nb, sb] = chapterSortKey(b.firstDefinedIn);
+    return na - nb || sa.localeCompare(sb);
+  });
+}
+
+/** Object-level cuts: cousin / cut / import mistake on a taught Gexbot (or other) term. */
+export function objectCuts(): GlossaryEntry[] {
+  return glossary
+    .filter((e) => e.kind !== 'cousin' && e.distinguishingCut && e.nearestCousin)
+    .sort((a, b) => {
+      const cousin = a.nearestCousin!.localeCompare(b.nearestCousin!, 'en', {
+        sensitivity: 'base',
+      });
+      if (cousin) return cousin;
+      const [na, sa] = chapterSortKey(a.firstDefinedIn);
+      const [nb, sb] = chapterSortKey(b.firstDefinedIn);
+      return na - nb || sa.localeCompare(sb);
+    });
 }

@@ -29,7 +29,9 @@ This book calls the set of traces one trade leaves across the screens its **foot
 
 ## What the map cannot say about you
 
-The map cannot say the trace is yours. It cannot say whether you opened a new position or closed an old one; Chapter 3 gives that limit its name. It cannot say whether you did something else at the same time that cancels the risk your contract carries. So a reader looking at your bar sees exactly what Chapter 1 said every reader sees: a pile, not a person. You are now on the far side of “we can see the pile, not who owns it,” and the sentence is as true of you as of anyone.
+The map cannot say the trace is yours. It cannot say whether you opened a new position or closed an old one; Chapter 3 gives that limit its name. It cannot say whether you did something else at the same time that cancels the risk your contract carries.
+
+Those limits split the screens. After a cancel, you are still in **volume** and gone from **leftover**. Classic tonight can still draw you; State now cannot. A reader who treats those two pictures as two views of the same trade has counted a cancelled contract as if it were still live. You are now on the far side of “we can see the pile, not who owns it,” and the sentence is as true of you as of anyone.
 
 ## The one thing that changes
 
@@ -37,7 +39,7 @@ When you trade ES, your fill lands on another futures trader with the same instr
 
 ## Summary
 
-One option trade leaves a footprint on three clocks: volume now, leftover now if uncancelled, open interest tonight if held. No trace carries your name or your reason. The difference from a futures fill is not the trace; it is that the other side of your ticket now has work to do on the tape you used to trade.
+A reader at 10:05 and a reader at tomorrow’s open are not looking at the same object when they look at this trade. The first can see you in volume and maybe in leftover. The second sees you only if you held. Neither can name you. The clocks are why “your bar” is not one bar.
 
 ## Terms introduced
 
@@ -45,7 +47,7 @@ One option trade leaves a footprint on three clocks: volume now, leftover now if
 
 ## Newcomer questions
 
-1. **Will I see my own trade on Gexbot?** As one contract inside a pile, if it was leftover. Never labeled, never signed as yours.
+1. **You flatten before the close. Which traces die tonight, and which never become open interest?** Leftover dies when you sell (if it was yours and uncancelled). Volume keeps the two prints. Open interest never lists you; you did not hold through the snapshot.
 2. **Does buying an option move ES?** Chapter 3 answers that. This page only says: your fill obliges someone; a futures fill does not.
 3. **If someone sold the same strike a second later, where am I?** In volume. Not in leftover. The two of you cancelled, and the map is honest about that.
 
@@ -54,12 +56,12 @@ One option trade leaves a footprint on three clocks: volume now, leftover now if
 <CheckYourself
   items={[
     {
-      q: 'Name the three traces one option trade can leave and the clock each one is on.',
-      a: 'Volume — at once. Leftover — at once, only if aggressive and uncancelled. Open interest — tonight, only if still held.',
+      q: 'You buy at 10:05. Someone sells the same strike at 10:06. You still hold overnight. Write the traces at 10:06 and at tomorrow’s open.',
+      a: 'At 10:06: volume (both prints), leftover gone (cancelled). Tomorrow’s open: open interest includes you if you still hold; leftover does not, because today’s leftover died at 10:06. Volume is yesterday’s footprint.',
     },
     {
-      q: 'What is the difference between your option fill and your ES fill, as far as the tape is concerned?',
-      a: 'The ES fill obliges nobody. The option fill lands on a firm that now has to act in ES because of you.',
+      q: 'Which of the two fills — one ES, one option — can appear as leftover on State the same morning?',
+      a: 'Only the option fill, and only if it was aggressive and uncancelled. The ES fill is not an options leftover. State does not draw it.',
     },
   ]}
 />

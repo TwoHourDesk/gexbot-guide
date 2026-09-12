@@ -38,7 +38,7 @@ A futures trader has one leg. A holder may have several, and Gexbot reads each o
 
 ## Summary
 
-Strike selection is choosing where a position sits from structure and leftover together; once chosen, the strike’s place in the structure field and on the ladders describes the holder. Multi-leg positions print as separate bars, a self-hedge is invisible, and positions outside Gexbot’s venues leave nothing. The reader’s S-reads are now descriptions of you.
+Structure picks the shelf. Gexbot draws each leg on that shelf as if the leg were the whole position. The holder is the only one who can add the legs back up. A reader who names two opinions from your two bars is not wrong about the bars; they are wrong about you.
 
 ## Terms introduced
 
@@ -55,12 +55,12 @@ Strike selection is choosing where a position sits from structure and leftover t
 <CheckYourself
   items={[
     {
-      q: 'Define strike selection and give one S-read that describes a holder at the chosen strike.',
-      a: 'Choosing where a position sits from structure and leftover together. Example: a long call inside customer-long leftover at a swing high is in the S2 wall.',
+      q: 'Long call inside customer-long leftover at a swing high. Write the S2 sentence about the holder, without a recommendation.',
+      a: 'The holder is among the leftover longs whose incentive to sell on approach the sweep will test. Not “buy this strike.” Not “the wall will hold.”',
     },
     {
-      q: 'How does Gexbot draw a bought call plus a sold call at two strikes?',
-      a: 'As two bars with two signs at two strikes. It reads legs, not positions.',
+      q: 'Bought 6000 call, sold 6050 call. Write what a Gexbot reader names for each bar, and what they cannot name about the pair.',
+      a: 'Two bars, two signs, two strikes. They cannot name that the pair is one position with one thesis. Legs, not the whole.',
     },
   ]}
 />

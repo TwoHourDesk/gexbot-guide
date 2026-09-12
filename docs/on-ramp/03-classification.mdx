@@ -46,7 +46,7 @@ In futures your counterparty is another trader with the same instrument and no o
 
 ## Summary
 
-Your counterparty is the dealer who absorbed your print. With you as link 1, the hedge chain is a description of what they do next: hedge once under mandate, then follow the index. Your pressure word is incentive throughout. The classifier signs you correctly and knows nothing about open versus close or your own hedge. Buying calls does not push the market; it creates a follower.
+Link 3 is a one-time obligation timed to the fill. Link 4 is an obligation timed to the index. Buying the calls purchases the first and does not aim the second: the counterparty who bought ES for you will buy more only if the index has already risen, and will sell if it falls. The classifier records the purchase. It does not record the aim.
 
 ## Terms introduced
 
@@ -54,7 +54,7 @@ Your counterparty is the dealer who absorbed your print. With you as link 1, the
 
 ## Newcomer questions
 
-1. **If I buy 500 calls, do I move ES?** Once, by about 500 contracts, through your counterparty, within seconds. After that they follow the index, not you.
+1. **You buy 500 calls and sell 500 ES yourself.** What does the classifier show, and what is left of link 3? Customer long, same bar. Link 3 nets toward nothing: two hedgers face each other. The self-hedge case Chapter 3 marked *inferred*. Gexbot draws the bar as if you had not sold the ES.
 2. **Can I say I am forced to sell my calls if the index drops?** No. You have incentive, never mandate. Forced is the dealer’s word.
 3. **I bought to close a short. Does Gexbot know?** No. Your bar is customer long, identical to a fresh buy.
 
@@ -63,12 +63,12 @@ Your counterparty is the dealer who absorbed your print. With you as link 1, the
 <CheckYourself
   items={[
     {
-      q: 'Write links 1 to 4 of the hedge chain with yourself as link 1, with the pressure word at each.',
-      a: 'You lift 500 calls (incentive) · dealer absorbs · dealer buys ≈500 ES (mandate) · index +15, dealer buys ≈300 more (mandate, chase).',
+      q: 'You lift the 500 calls. The index then falls 15 points and delta walks toward 0.20. Write link 4: who acts, which way, which pressure word, which verb.',
+      a: 'The dealer sells ES (unwinds part of the about-500 bought at the fill). Mandate. Chase — short gamma still hedges with the move, now down. The body wrote the up branch; this is the down one.',
     },
     {
-      q: 'What two things about your trade does classification not know?',
-      a: 'Whether you opened or closed, and whether you hedged your own delta in ES.',
+      q: 'You bought to close a short and also sold ES against that old short. Write what the bar says, and whether link 3 has net force.',
+      a: 'Bar: customer long, identical to a fresh buy. Net force at link 3: close to nothing — the classifier cannot see the ES, and buy-to-close already closed option risk the dealer may already have been hedging.',
     },
   ]}
 />
