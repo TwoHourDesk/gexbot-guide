@@ -1,0 +1,60 @@
+---
+description: What the Gexbot Daily Playbook is, who reads it, what it may decide, which textbook rules still bind inside playbook/** and which do not, precedence, and file layout. Read when creating or editing anything under playbook/. The play-card shape and decision grammar live in playbook-play.mdc.
+globs: playbook/**
+alwaysApply: false
+---
+
+# Playbook charter
+
+The Study Guide (`docs/**`) teaches a reader to reconstruct and refuse; it writes no entry. The Playbook (`playbook/**`) is the other document: it writes the decision. Inside `playbook/**` this file and `playbook-play.mdc` govern. `audience.mdc`, `textbook-prose.mdc`, and `textbook-operations.mdc` do not apply here except for the parts named under "What still binds."
+
+## The reader
+
+The same trader as the Study Guide — ES or NQ, points and ticks, a level is a hypothesis until price accepts through it — who has finished the Guide through Chapter 12 and now wants a procedure for one recurring situation. They know the 2×2, the four pressure words, level grades, the H/E/S codes, and the journal line. Do not reteach any of it; cite it.
+
+Not the reader: someone who has not read the Guide; a signal-chaser (a playbook without falsifiers is a signal service); a reader who wants a hit rate before their own sample exists.
+
+## What a playbook does
+
+A **play** is an executable procedure: situation → preconditions → trigger → invalidation → management → exit → review. The reader acts on it. Imperatives to the reader are the playbook's voice, not a defect. Each play yields a decision that a second trader with the same screens at the same clock would make the same way, because a procedure two readers execute differently is an opinion.
+
+## Two documents, one boundary
+
+- The Playbook cites the Guide as `SG Ch. N (Title), <object>`. It does not restate a Guide lesson, teach a Gexbot screen, redefine a Guide term, or edit `docs/**`.
+- Where the Guide says "location only, pressure unknown," the Playbook says the same and adds what the reader does *with* that (stand down; wait for Grade C). It never resolves a Guide stand-down into a trade.
+- A play may need an object the Guide does not have (a Playbook-native handle: a geometry, a session clock, a VWAP band). Define it once in `playbook/reference/terms.md`, and coin only when the market has no word.
+
+## What still binds from the textbook
+
+1. **Claim labels** on every mechanism sentence — docs / market-general / folklore / inferred / not stated — exactly one, inline. A decision built on an unlabeled mechanism cannot be audited when it fails.
+2. **Pressure words** — mandate · incentive · none · unknown. *Forced* is a dealer word (mandate). The reader is instructed, never "forced."
+3. **Source of truth** for Gexbot mechanisms: `20260910_gexbot_study.md` and the public sources it cites. No new Gexbot mechanism, screen, or update. While that file is absent from the repo, no `docs` label may be written.
+4. **Gexbot is a lens, not the market.** A play's trigger is a tape event. Gexbot decides *which* plays are live today; the tape decides *when* (`SG Ch. 13 (The next course), horizon mismatch`).
+
+## What does not bind
+
+Page order (Stake, Opening block, Summary, Newcomer questions); the term budget; `TermFirst`, glossary rows, `AdjacentConcepts`, `CheckYourself`; on-ramp pages and the `On-ramp:` Gate line; sidebars machinery; the canonical toy as the only worked number; "competence, not a decision"; the ban on imperatives. Those exist to teach. A playbook is executed.
+
+## Precedence inside playbook/**
+
+When two rules collide, the higher wins and the lower gets no relief:
+
+1. **Claim integrity** — labels, pressure words, `not stated`, source of truth.
+2. **Observability** — every condition, trigger, and invalidation is something the reader can see on their own screens at that clock, under the Guide's knowability gates. An unobservable condition ("the dealer is short gamma") is rewritten as the observable that infers it (Grade-C customer-short leftover, H12 tagged).
+3. **Falsifier before action** — no instruction to act precedes its written invalidation.
+4. **Clock** — every play has a live window and an expiry; nothing is carried past it unrenamed.
+5. **Brevity and voice.**
+
+## Layout
+
+```
+playbook/
+  README.md             index: one paragraph per play; the sitting clock
+  00-course-memo.md     the design memo (first deliverable)
+  plays/NN-<slug>.md    one play per file, in the shape playbook-play.mdc fixes
+  reference/terms.md    Playbook-native handles, one line each, with the SG term each extends
+  reference/clocks.md   session clocks and retired names
+  cases/                worked walks and review logs; outcomes in R, never dollars
+```
+
+How `playbook/` is published (a second Docusaurus docs instance at route `/playbook`, or plain Markdown) is a config decision. It changes no rule above.

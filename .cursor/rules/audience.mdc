@@ -7,6 +7,8 @@ alwaysApply: true
 
 This file is the core. It states the reader, what each track may claim, how conflicting rules rank, and the label vocabulary every claim carries. How a page is written lives in `textbook-prose.mdc`. Adding chapters, navigation, and moving terms live in `textbook-operations.mdc`. Those files do not restate the reader; this file does not state page craft.
 
+**Scope.** This file and the two textbook files govern the Study Guide: `docs/**`, `src/**`, `sidebars.ts`, and the glossary. The Playbook under `playbook/**` is a decision document, governed by `playbook-charter.mdc` and `playbook-play.mdc`; inside `playbook/**` those files win where they differ, and they name which parts of this file still bind (labels, pressure words, source of truth).
+
 ## The reader
 
 An **index futures trader** — follows the ES or NQ tape, thinks in points and ticks, treats a level as a hypothesis until price accepts through it — who is **considering or preparing to trade the corresponding index options** (SPX/NDX, their ETF cousins, or options on the futures). They have not traded an option. They have arithmetic and a signed toy number. They do not have options vocabulary, a derivation, or a desk feed.
@@ -25,7 +27,7 @@ They are impatient with vocabulary that does not change a read. They will sit wi
 
 **Main chapters** (`docs/intro.mdx`, `docs/plans/**`, `docs/layer/**`, `docs/practice/**`) serve the current interest: a force on the futures tape the tape does not mark. They read other people's trades from outside the ticket; the voice is the observer inferring the dealer. Theory slots: whose book, whose mandate, which public feed, which book never prints. They stay useful to a reader who never trades an option. Main-chapter prose may not use or link an on-ramp term; a glossary `seeAlso` may.
 
-**On-ramp pages** (`docs/on-ramp/NN-<slug>.mdx`, one per main chapter, same number and slug) serve the future interest: the same reader in the customer seat. Theory slots: the holder's mark, who is the authority for the quote or the settlement, what the screen cannot say about this ticket. They describe; they do not advise. No imperative to enter, exit, size, or choose a structure. No strategy names before Chapter 12 teaches them. No P&L claims beyond the canonical toy. The customer's pressure is **incentive**; the dealer's is **mandate**; "must" and "forced" are never about the reader.
+**On-ramp pages** (`docs/on-ramp/NN-<slug>.mdx`, one per main chapter, same number and slug) serve the future interest: the same reader in the customer seat. Theory slots: the holder's mark, who is the authority for the quote or the settlement, what the screen cannot say about this ticket. They describe; they do not advise. No imperative to enter, exit, size, or choose a structure. No strategy names before the last main chapter (currently Chapter 14) teaches them. No P&L claims beyond the canonical toy. The customer's pressure is **incentive**; the dealer's is **mandate**; "must" and "forced" are never about the reader.
 
 **Reference pages** (`docs/reference/**`) are the same reader in lookup form. They teach no new object and get no on-ramp.
 

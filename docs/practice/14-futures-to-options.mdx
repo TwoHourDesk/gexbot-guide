@@ -1,5 +1,5 @@
 ---
-title: "12. From futures to options: a roadmap"
+title: "14. From futures to options"
 ---
 
 import TermFirst from '@site/src/components/textbook/TermFirst';
@@ -8,13 +8,13 @@ import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
 import CheckYourself from '@site/src/components/textbook/CheckYourself';
 import AdjacentConcepts from '@site/src/components/textbook/AdjacentConcepts';
 
-# From futures to options: a roadmap
+# From futures to options
 
 **Which Gexbot capability this is.** None new. This chapter uses everything the book taught about *other people's* option positions and turns it toward the day you hold one yourself.
 
 **What you will be able to do.** Name what transfers from trading NQ and ES to trading index options and what does not; say which Gexbot habits carry over directly, which mislead, and which have no counterpart; and follow a staged ramp that closes the theory and tooling gaps in an order that does not hurt you.
 
-**What you already need.** The whole book, including [Chapter 11](/docs/practice/11-further-learning) for the square-root-of-time rule, the straddle as expected move, the gamma-theta ledger, and the statistics hygiene.
+**What you already need.** The whole book, including [Chapter 13](/docs/practice/13-next-course) for the square-root-of-time rule, the straddle as expected move, the gamma-theta ledger, and the statistics hygiene.
 
 The book still writes no entry. This chapter names a curriculum and the tools to buy or build. Where it gives a number, the number is a toy.
 
@@ -78,7 +78,7 @@ Most people arrive at options with none of what this book taught. You arrive wit
 
 **Expiry groups become which chain you trade.** Latest, next, full: you already know that a 0DTE and a weekly are different instruments, and what the roll is.
 
-**The gamma-theta ledger becomes your thesis.** Chapter 11 said every hedged option position is a bet on realized versus implied variance. An unhedged one is that bet plus a directional one. You will know which of the two you are making, and most people do not.
+**The gamma-theta ledger becomes your thesis.** Chapter 13 said every hedged option position is a bet on realized versus implied variance. An unhedged one is that bet plus a directional one. You will know which of the two you are making, and most people do not.
 
 **The forced-flow sentence becomes the position sentence.** Actor, pressure, trigger, direction, venue — written for yourself. This book calls that the **position sentence**: what I own, its greeks, what must happen for it to pay, what kills it, and by when.
 
@@ -119,7 +119,7 @@ Gexbot bridge: you already own delta, gamma, theta, vega, vanna, and charm as pr
 
 Read: Natenberg, *Option Volatility and Pricing* (2015), the chapters on pricing and on the greeks. Hull, *Options, Futures, and Other Derivatives* (2021), the chapter on Black–Scholes. Passarelli, *Trading Options Greeks* (2012).
 
-Gate: given index, strike, time, and implied vol, you can state the approximate price of an at-the-money option and the sign and rough size of each greek without a calculator; and you can explain why the 0.4 and 0.8 shortcuts from Chapter 11 work.
+Gate: given index, strike, time, and implied vol, you can state the approximate price of an at-the-money option and the sign and rough size of each greek without a calculator; and you can explain why the 0.4 and 0.8 shortcuts from Chapter 13 work.
 
 ### Gap 2 — The vol surface
 
@@ -140,7 +140,7 @@ Implied vol on index options has, on average over long samples, exceeded the vol
 
 <TermFirst id="variance-risk-premium" />
 
-Gexbot bridge: the gamma-theta ledger from Chapter 11 is this premium seen one day at a time. The OP folklore — long options as walls, short options as fuel in falling vol — is the crowd acting on it.
+Gexbot bridge: the gamma-theta ledger from Chapter 13 is this premium seen one day at a time. The OP folklore — long options as walls, short options as fuel in falling vol — is the crowd acting on it.
 
 Read: Sinclair, *Volatility Trading* (2013), the chapters on forecasting and on the premium. Carr and Wu, "Variance risk premiums" (2009, *Review of Financial Studies*). Bollerslev, Tauchen, and Zhou, "Expected stock returns and variance risk premia" (2009, *Review of Financial Studies*).
 
@@ -154,7 +154,7 @@ A single leg is one bet with two exposures. Combinations shape them. A **vertica
 <TermFirst id="option-structures" />
 <TermFirst id="defined-risk" />
 
-Gexbot bridge: Chapter 9b told you a multi-leg trade prints two or more bars and that a Gexbot reader may misread each leg as a separate opinion. Now you are the one printing them. Also: every structure decomposes into 2×2 cells; write which.
+Gexbot bridge: Chapter 11 told you a multi-leg trade prints two or more bars and that a Gexbot reader may misread each leg as a separate opinion. Now you are the one printing them. Also: every structure decomposes into 2×2 cells; write which.
 
 Read: Natenberg, *Option Volatility and Pricing* (2015), the chapters on spreads. McMillan, *Options as a Strategic Investment* (2012). Sinclair, *Positional Option Trading* (2020).
 
@@ -206,11 +206,11 @@ Gate: twenty logged fills with distance from mid, time of day, and whether you c
 
 ### Gap 8 — Expectancy with asymmetric payoffs
 
-Futures P&L is symmetric enough that win rate and average size tell the story. Option P&L is not: a structure can win nine times in ten and lose more than the nine wins. Chapter 11's statistics hygiene applies with more force, and the sample sizes needed are larger.
+Futures P&L is symmetric enough that win rate and average size tell the story. Option P&L is not: a structure can win nine times in ten and lose more than the nine wins. Chapter 13's statistics hygiene applies with more force, and the sample sizes needed are larger.
 
-Gexbot bridge: Chapter 11 module 8 — distributions, not directions. The docs' own +GEX OF sentence was the first example.
+Gexbot bridge: Chapter 13 module 8 — distributions, not directions. The docs' own +GEX OF sentence was the first example.
 
-Read: Chapter 11's Stage 5 readings. Taleb, *Dynamic Hedging* (1997), the chapter on payoff asymmetry.
+Read: Chapter 13's Stage 5 readings. Taleb, *Dynamic Hedging* (1997), the chapter on payoff asymmetry.
 
 Gate: you refuse to evaluate any structure by win rate alone, and you can state the tail loss that makes a 90-percent winner a losing strategy at your size.
 
@@ -220,7 +220,7 @@ A futures trader's stack is a chart, a DOM, and a broker. An options trader need
 
 1. **A live chain with greeks and implied vol per strike**, and a way to see the skew and the term structure across expiries. Your broker's platform usually has one; learn its conventions (per-share vs per-contract greeks, which vol model).
 2. **A pricing and scenario tool.** A greeks calculator (a standard options library in a scripting language, or the broker's analytics) and a risk graph that takes price, vol, and time as inputs. The DealerHedgeSim in this wiki uses the same formulas; it is a toy, not the tool.
-3. **Vol data.** Historical implied vol for the strikes you trade, a realized-vol calculation from your own futures data, and the term-structure indices (the short-dated, standard, and three-month volatility indices Cboe publishes). Chapter 11's morning card grows two lines: implied-vol level versus its recent range, and the term structure's slope.
+3. **Vol data.** Historical implied vol for the strikes you trade, a realized-vol calculation from your own futures data, and the term-structure indices (the short-dated, standard, and three-month volatility indices Cboe publishes). Chapter 13's morning card grows two lines: implied-vol level versus its recent range, and the term structure's slope.
 4. **Execution tools.** Complex-order entry, mid-price limit orders, and a fill log with the fields from Gap 7.
 5. **A margin calculator** for your account type, run before every structure, with the vol-shock scenario.
 6. **A calendar.** Expiries by product, settlement times, scheduled releases, dividends for the ETFs, and the monthly AM-settlement days.
@@ -235,7 +235,7 @@ Six stages after the one you are in. Gates, not dates.
 
 ### Stage 0 — Where you are
 
-A futures trader who can read Gexbot: 2×2, hedge chain, pressure words, clock families, S-reads, the rookie list, the Chapter 11 mathematics. Nothing here is wasted.
+A futures trader who can read Gexbot: 2×2, hedge chain, pressure words, clock families, S-reads, the rookie list, the Chapter 13 mathematics. Nothing here is wasted.
 
 ### Stage 1 — Language
 
@@ -274,7 +274,7 @@ Gate: for twenty sessions, every position you held has a position sentence, a Ge
 
 ## Rookie mistakes specific to the transition
 
-Chapter 9b listed the reading errors. These are the holding errors, and most of them are the futures habit in options clothing.
+Chapter 11 listed the reading errors. These are the holding errors, and most of them are the futures habit in options clothing.
 
 **Buying far out-of-the-money 0DTE because it is cheap.** Cheap in dollars, near zero in delta and gamma, all theta. Chapter 1's debit-as-size mistake, now on your own statement. Check: state the delta before the price.
 
@@ -282,7 +282,7 @@ Chapter 9b listed the reading errors. These are the holding errors, and most of 
 
 **A stop on the index.** The fallacy above. Check: the position sentence has three kill conditions, not one.
 
-**Ignoring vol crush after a release.** Implied vol collapses when the event passes; a long option can lose on a move in its favor. Chapter 9b's event day, now with your money in it. The collapse is **IV crush**. Check: the regime-paid line in the position sentence, and the vega row in attribution.
+**Ignoring vol crush after a release.** Implied vol collapses when the event passes; a long option can lose on a move in its favor. Chapter 11's event day, now with your money in it. The collapse is **IV crush**. Check: the regime-paid line in the position sentence, and the vega row in attribution.
 
 <TermFirst id="iv-crush" />
 
@@ -318,7 +318,7 @@ Gexbot literacy buys the counterparty and the footprint. It does not buy the mar
 
 ## Terms introduced
 
-<ChapterTerms docId="practice/12-futures-to-options" />
+<ChapterTerms docId="practice/14-futures-to-options" />
 
 ## Newcomer questions
 
@@ -328,7 +328,7 @@ Gexbot literacy buys the counterparty and the footprint. It does not buy the mar
 4. **Why no undefined-risk in the whole ramp?** Gap 3: the average is positive and the tail ends accounts. You have not yet measured your own tail.
 5. **Will my own trades show on Gexbot?** If they are SPX or SPY prints large enough to leave leftover, yes, signed by aggressor, open-or-close unknown — exactly as the book described everyone else's.
 
-<AdjacentConcepts docId="practice/12-futures-to-options" />
+<AdjacentConcepts docId="practice/14-futures-to-options" />
 
 <CheckYourself
   items={[
@@ -345,6 +345,6 @@ Gexbot literacy buys the counterparty and the footprint. It does not buy the mar
 
 ## After this chapter
 
-On-ramp: [The first week of Stage 1](/docs/on-ramp/12-futures-to-options) — the ramp’s first gate, day by day.
+On-ramp: [The first week of Stage 1](/docs/on-ramp/14-futures-to-options) — the ramp’s first gate, day by day.
 
-This is the end of the book. Chapter 11 is the syllabus for the tape. Chapter 12 is the syllabus for the other side of it. Both end the same way: the position sentence written before the trade, the falsifier in every language you have, and no number recorded that you would be tempted to believe from forty sessions.
+This is the end of the book. Chapter 13 is the syllabus for the tape. Chapter 14 is the syllabus for the other side of it. Both end the same way: the position sentence written before the trade, the falsifier in every language you have, and no number recorded that you would be tempted to believe from forty sessions.

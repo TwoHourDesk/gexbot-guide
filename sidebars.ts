@@ -25,26 +25,26 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Gexbot plans',
+      label: 'The screens',
       collapsed: false,
       items: [
-        chapter('plans/01-what-gexbot-is', '1. What Gexbot is', 'on-ramp/01-what-gexbot-is'),
-        chapter('plans/02-classic', '2. Classic', 'on-ramp/02-classic'),
+        chapter('plans/01-what-gexbot-is', '1. The map of the screens', 'on-ramp/01-what-gexbot-is'),
+        chapter('plans/02-classic', '2. Classic — the unsigned map', 'on-ramp/02-classic'),
         chapter(
           'plans/03-classification',
           '3. Classification and the hedge chain',
           'on-ramp/03-classification',
         ),
-        chapter('plans/04-state', '4. State', 'on-ramp/04-state'),
-        chapter('plans/05-orderflow', '5. Orderflow', 'on-ramp/05-orderflow'),
+        chapter('plans/04-state', '4. State — leftover by strike', 'on-ramp/04-state'),
+        chapter('plans/05-orderflow', '5. Orderflow — leftover over time', 'on-ramp/05-orderflow'),
       ],
     },
     {
       type: 'category',
-      label: 'NQ layer',
+      label: 'The complex',
       collapsed: false,
       items: [
-        chapter('layer/06-nq-es-layer', '6. NQ and the Nasdaq family', 'on-ramp/06-nq-es-layer'),
+        chapter('layer/06-nq-es-layer', '6. The Nasdaq family', 'on-ramp/06-nq-es-layer'),
         chapter(
           'layer/07-clocks-and-late-greeks',
           '7. Clocks and late greeks',
@@ -54,42 +54,42 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Practice',
+      label: 'Reconstruct and refuse',
+      collapsed: false,
       items: [
         chapter(
           'practice/08-heuristics-as-reading',
-          '8. Heuristics as reading',
+          '8. Named reads (H1–H15)',
           'on-ramp/08-heuristics-as-reading',
         ),
         chapter(
           'practice/09-grammar-and-journal',
-          '9. Grammar and journal',
+          '9. The journal line',
           'on-ramp/09-grammar-and-journal',
         ),
         chapter(
-          'practice/09a-early-session',
-          '9a. Early session: levels before leftover',
-          'on-ramp/09a-early-session',
+          'practice/10-early-session',
+          '10. Early session (E1–E6)',
+          'on-ramp/10-early-session',
         ),
         chapter(
-          'practice/09b-structure-and-gexbot',
-          '9b. Structure and Gexbot together',
-          'on-ramp/09b-structure-and-gexbot',
+          'practice/11-structure-and-leftover',
+          '11. Structure and leftover (S1–S10)',
+          'on-ramp/11-structure-and-leftover',
         ),
+        chapter('practice/12-misreads', '12. Misreads', 'on-ramp/12-misreads'),
+      ],
+    },
+    {
+      type: 'category',
+      label: 'After this book',
+      collapsed: false,
+      items: [
+        chapter('practice/13-next-course', '13. The next course', 'on-ramp/13-next-course'),
         chapter(
-          'practice/10-misreads-and-mastery',
-          '10. Misreads and mastery',
-          'on-ramp/10-misreads-and-mastery',
-        ),
-        chapter(
-          'practice/11-further-learning',
-          '11. Further learning: the first two hours',
-          'on-ramp/11-further-learning',
-        ),
-        chapter(
-          'practice/12-futures-to-options',
-          '12. From futures to options: a roadmap',
-          'on-ramp/12-futures-to-options',
+          'practice/14-futures-to-options',
+          '14. From futures to options',
+          'on-ramp/14-futures-to-options',
         ),
       ],
     },

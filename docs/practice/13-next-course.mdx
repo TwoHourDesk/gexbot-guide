@@ -1,5 +1,5 @@
 ---
-title: "11. Further learning: the first two hours"
+title: "13. The next course"
 ---
 
 import TermFirst from '@site/src/components/textbook/TermFirst';
@@ -8,13 +8,13 @@ import ChapterTerms from '@site/src/components/textbook/ChapterTerms';
 import CheckYourself from '@site/src/components/textbook/CheckYourself';
 import AdjacentConcepts from '@site/src/components/textbook/AdjacentConcepts';
 
-# Further learning: scalping NQ and ES with Gexbot in the 0DTE era
+# The next course
 
 **Which Gexbot capability this is.** None new. This chapter maps what to learn *after* the book so that Classic, State, Orderflow, and the Quant feed can serve as a context layer for short-horizon trading in ES and NQ during the first two hours of cash trading.
 
 **What you will be able to do.** Follow a staged path — mathematical intuition, then microstructure of the open, then the published evidence on dealer hedging, then your own measurement — and know at each stage what Gexbot can and cannot add to a fast futures tape.
 
-**What you already need.** The whole book. The four pressure words, the hedge chain, the clock families, the S-reads, and the rookie list in [Chapter 9b](/docs/practice/09b-structure-and-gexbot).
+**What you already need.** The whole book. The four pressure words, the hedge chain, the clock families, the S-reads, and the rookie list in [Chapter 11](/docs/practice/11-structure-and-leftover).
 
 This chapter still writes no entry. It names books, papers, formulas, and drills. It is the syllabus for the course you take next, not the course itself.
 
@@ -32,7 +32,7 @@ Gexbot does not produce that trigger. It produces context: who is positioned nea
 
 **Early-session thinness.** The first two hours hold the best structure of the day and the least Gexbot leftover. State starts empty at 09:30 ET. Classic open interest is last night's map with an unknown owner. The screens become nameable at different times, and the drills below are about learning those times on your own tape.
 
-**Partial picture.** Chapter 9b said it. Gexbot is one measured slice of the hedge complex. On a scalp horizon that slice is smaller still.
+**Partial picture.** Chapter 11 said it. Gexbot is one measured slice of the hedge complex. On a scalp horizon that slice is smaller still.
 
 ## Early session, defined
 
@@ -99,7 +99,7 @@ Gamma measures how fast delta changes per point of index move. At the money it i
 
 Toy. Full day, expected move about 60 points: gamma about 0.0066 per point. Two hours: about 0.012 per point. Thirty minutes: about 0.024 per point, three and a half times the open. A 15-point move with thirty minutes left carries an at-the-money delta from 0.50 to about 0.82. That is the Chapter 2 toy, now with its arithmetic.
 
-Gexbot screen: the convexity ladder and the 0DTE dominance of every bar. Also the re-marking caveat from Chapter 9b: bars grow into the afternoon because this number grows, whether or not anyone trades.
+Gexbot screen: the convexity ladder and the 0DTE dominance of every bar. Also the re-marking caveat from Chapter 11: bars grow into the afternoon because this number grows, whether or not anyone trades.
 
 Hedge size follows. A dealer short 500 of those calls with thirty minutes left must buy roughly 0.32 times 500 times 100 divided by 50, about 320 ES, for that 15-point move — after having already bought about 500 ES at the print. The same dealer with two hours left would need about half as much. The clock, not the crowd, doubled the forced flow.
 
@@ -162,11 +162,11 @@ Gexbot's docs describe what customers and dealers do at strikes. They do not des
 
 ### What to understand
 
-**The opening auction and its aftermath.** Chapter 9a named the **opening auction**: cash equities open through an auction at 09:30 that sets a single price from all accumulated orders, and index futures, which traded all night, absorb that information in minutes (*market-general*). Index-option leftover cannot exist before it; Classic open interest is the only Gexbot picture, and it is being re-marked to a spot that may have moved a hundred points overnight.
+**The opening auction and its aftermath.** Chapter 10 named the **opening auction**: cash equities open through an auction at 09:30 that sets a single price from all accumulated orders, and index futures, which traded all night, absorb that information in minutes (*market-general*). Index-option leftover cannot exist before it; Classic open interest is the only Gexbot picture, and it is being re-marked to a spot that may have moved a hundred points overnight.
 
 **Who trades early.** Overnight risk being reset. Hedgers rolling protection. Systematic flows keyed to the open. Market makers rebuilding inventory and quotes. Retail 0DTE buyers. The mixture changes minute by minute, and the mixture is what Gexbot's classification is sampling. Know the population before trusting the sample.
 
-**Resting orders, aggressors, and absorption.** A limit order rests; a market order takes. When a run of aggressive selling hits a price and price does not move, resting buyers are *absorbing*. When aggressive buying lifts through several prices quickly, price is being *swept*. Chapter 9b named the sweep as a structural fact. Both behaviors can be seen on a futures tape. Neither can be attributed to "the dealer." The book's stance holds: observe the behavior, infer the pressure, never name the counterparty.
+**Resting orders, aggressors, and absorption.** A limit order rests; a market order takes. When a run of aggressive selling hits a price and price does not move, resting buyers are *absorbing*. When aggressive buying lifts through several prices quickly, price is being *swept*. Chapter 11 named the sweep as a structural fact. Both behaviors can be seen on a futures tape. Neither can be attributed to "the dealer." The book's stance holds: observe the behavior, infer the pressure, never name the counterparty.
 
 **Price impact.** Large aggressive flow moves price roughly with the square root of its size, not linearly (*market-general*, an empirical regularity). A dealer hedging 500 ES in bands over ten minutes leaves a different footprint from a fund hitting 500 ES at once. Gexbot tells you the first kind may be coming; the tape shows you which kind arrived.
 
@@ -177,7 +177,7 @@ Gexbot's docs describe what customers and dealers do at strikes. They do not des
 1. Harris, *Trading and Exchanges: Market Microstructure for Practitioners* (2003). The whole book. It is the plain-English foundation.
 2. Bouchaud, Bonart, Donier, and Gould, *Trades, Quotes and Prices* (2018). Order books, price impact, and the square-root law, with data.
 3. Kyle, "Continuous auctions and insider trading" (1985, *Econometrica*), and Glosten and Milgrom, "Bid, ask and transaction prices in a specialist market with heterogeneously informed traders" (1985, *Journal of Financial Economics*). The two models everyone else builds on.
-4. Cont, Kukanov, and Stoikov, "The price impact of order book events" (2014, *Journal of Financial Econometrics*). Order-flow imbalance as a measurable object on the futures tape — the closest legitimate cousin to what Chapter 9b called futures-tape delta.
+4. Cont, Kukanov, and Stoikov, "The price impact of order book events" (2014, *Journal of Financial Econometrics*). Order-flow imbalance as a measurable object on the futures tape — the closest legitimate cousin to what Chapter 11 called futures-tape delta.
 5. Menkveld, "High frequency trading and the new market makers" (2013, *Journal of Financial Markets*), and Budish, Cramton, and Shim, "The high-frequency trading arms race" (2015, *Quarterly Journal of Economics*). Who your counterparties in the ES book actually are.
 6. O'Hara, *Market Microstructure Theory* (1995), and Hasbrouck, *Empirical Market Microstructure* (2007), when you want the formal versions. Cartea, Jaimungal, and Penalva, *Algorithmic and High-Frequency Trading* (2015), if you build.
 7. Gao, Han, Li, and Zhou, "Market intraday momentum" (2018, *Journal of Financial Economics*); Lou, Polk, and Skouras, "A tug of war: overnight versus intraday expected returns" (2019, *Journal of Financial Economics*); Bogousslavsky, "The cross-section of intraday and overnight returns" (2021, *Journal of Financial Economics*). The measured shape of the trading day.
@@ -296,7 +296,7 @@ The horizon mismatch is the chapter’s one cut. Every math item and every paper
 
 ## Terms introduced
 
-<ChapterTerms docId="practice/11-further-learning" />
+<ChapterTerms docId="practice/13-next-course" />
 
 ## Newcomer questions
 
@@ -306,7 +306,7 @@ The horizon mismatch is the chapter’s one cut. Every math item and every paper
 4. **Is there evidence dealers hedge the way the book says?** At daily and last-half-hour horizons, yes. At the horizon of a scalp, no paper has measured it.
 5. **When is State usable in the morning?** Measure it (Drill 2). This book's guess is the second hour, and the guess is inferred.
 
-<AdjacentConcepts docId="practice/11-further-learning" />
+<AdjacentConcepts docId="practice/13-next-course" />
 
 <CheckYourself
   items={[
@@ -323,8 +323,8 @@ The horizon mismatch is the chapter’s one cut. Every math item and every paper
 
 ## After this chapter
 
-On-ramp: [The paper position](/docs/on-ramp/11-further-learning) — this chapter’s arithmetic from the customer seat.
+On-ramp: [The paper position](/docs/on-ramp/13-next-course) — this chapter’s arithmetic from the customer seat.
 
 Keep the [forced-flow ledger](/docs/reference/forced-flow-ledger) and [guardrails](/docs/reference/guardrails) open. Run the drills. Read one paper a week. Write the hypothesis before the plot. The book's last rule holds: if you write an entry, you left the course — but the course was never the point. The tape is.
 
-If the tape eventually leads you to hold an option yourself, [Chapter 12](/docs/practice/12-futures-to-options) is the roadmap from futures to options: what transfers, what Gexbot literacy buys you on the other side of the print, and the theory and tooling gaps to close first.
+If the tape eventually leads you to hold an option yourself, [Chapter 14](/docs/practice/14-futures-to-options) is the roadmap from futures to options: what transfers, what Gexbot literacy buys you on the other side of the print, and the theory and tooling gaps to close first.

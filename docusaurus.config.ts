@@ -25,6 +25,56 @@ const config: Config = {
     locales: ['en'],
   },
 
+  plugins: [
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            from: '/docs/practice/09a-early-session',
+            to: '/docs/practice/10-early-session',
+          },
+          {
+            from: '/docs/on-ramp/09a-early-session',
+            to: '/docs/on-ramp/10-early-session',
+          },
+          {
+            from: '/docs/practice/09b-structure-and-gexbot',
+            to: '/docs/practice/11-structure-and-leftover',
+          },
+          {
+            from: '/docs/on-ramp/09b-structure-and-gexbot',
+            to: '/docs/on-ramp/11-structure-and-leftover',
+          },
+          {
+            from: '/docs/practice/10-misreads-and-mastery',
+            to: '/docs/practice/12-misreads',
+          },
+          {
+            from: '/docs/on-ramp/10-misreads-and-mastery',
+            to: '/docs/on-ramp/12-misreads',
+          },
+          {
+            from: '/docs/practice/11-further-learning',
+            to: '/docs/practice/13-next-course',
+          },
+          {
+            from: '/docs/on-ramp/11-further-learning',
+            to: '/docs/on-ramp/13-next-course',
+          },
+          {
+            from: '/docs/practice/12-futures-to-options',
+            to: '/docs/practice/14-futures-to-options',
+          },
+          {
+            from: '/docs/on-ramp/12-futures-to-options',
+            to: '/docs/on-ramp/14-futures-to-options',
+          },
+        ],
+      },
+    ],
+  ],
+
   presets: [
     [
       'classic',
@@ -80,7 +130,7 @@ const config: Config = {
           title: 'Read',
           items: [
             {label: 'Start here', to: '/docs/intro'},
-            {label: 'What Gexbot is', to: '/docs/plans/01-what-gexbot-is'},
+            {label: 'The map of the screens', to: '/docs/plans/01-what-gexbot-is'},
             {label: 'Glossary', to: '/docs/reference/glossary'},
           ],
         },

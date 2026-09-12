@@ -1,5 +1,5 @@
 ---
-description: Machinery for adding or restructuring chapters — the on-ramp page's fixed shape, sidebars, the Gate line, moving a term between chapters, Chapter 12's role. Read when adding a main chapter or on-ramp page, editing sidebars.ts, or relocating a term. The reader lives in audience.mdc; page craft in textbook-prose.mdc.
+description: Machinery for adding or restructuring chapters — the on-ramp page's fixed shape, sidebars, the Gate line, moving a term between chapters, the last main chapter's role. Read when adding a main chapter or on-ramp page, editing sidebars.ts, or relocating a term. The reader lives in audience.mdc; page craft in textbook-prose.mdc.
 globs: sidebars.ts, docs/on-ramp/**
 alwaysApply: false
 ---
@@ -12,8 +12,8 @@ This file is the machinery of the two tracks. Why the tracks exist and what each
 
 Each `docs/on-ramp/NN-<slug>.mdx` is a full chapter page under every rule in `textbook-prose.mdc`, and additionally:
 
-- **May assume** its parent chapter, every earlier chapter, and every earlier on-ramp page. **May not assume** a later chapter's terms. Where Chapter 12 owns the word, describe the experience in plain words and forward-link Chapter 12 ("Chapter 12 calls this …").
-- **Fixed content**, in the page's sections: the seat change for this chapter's object · the canonical toy retold from the customer seat · what the chapter's screen tells the holder about their own position and what it cannot · the one thing that changes for a holder and never changes for a futures trader · a Chapter 12 forward link.
+- **May assume** its parent chapter, every earlier chapter, and every earlier on-ramp page. **May not assume** a later chapter's terms. Where the last main chapter (currently Chapter 14, From futures to options) owns the word, describe the experience in plain words and forward-link Chapter 14 ("Chapter 14 calls this …").
+- **Fixed content**, in the page's sections: the seat change for this chapter's object · the canonical toy retold from the customer seat · what the chapter's screen tells the holder about their own position and what it cannot · the one thing that changes for a holder and never changes for a futures trader · a Chapter 14 forward link.
 - Terms it teaches get `TermFirst` and a glossary row with `firstDefinedIn: 'on-ramp/NN-slug'`.
 - Closers do not retell the seat change or the one-thing-that-changes; they connect, case, or produce from them.
 
@@ -23,7 +23,7 @@ Each `docs/on-ramp/NN-<slug>.mdx` is a full chapter page under every rule in `te
 - Each main chapter's Gate (or "After …" section) carries one line of this shape:
   `On-ramp: [title](/docs/on-ramp/NN-slug) — <one clause naming what the on-ramp retells from the customer seat>.`
   The prefix, link, and dash are fixed; the clause is the page's own and is not a thesis reprise.
-- Chapter 12 is the destination of the on-ramp track. Its own on-ramp page is the first week of its Stage 1, not a summary.
+- The last main chapter (currently Chapter 14, From futures to options) is the destination of the on-ramp track. Its own on-ramp page is the first week of its Stage 1, not a summary.
 
 ## Adding a main chapter
 
@@ -31,7 +31,7 @@ In one edit: the chapter page; its on-ramp page (or an explicit "on-ramp pending
 
 ## Moving a term
 
-A term the on-ramp track needs earlier than a main chapter teaches it is a **proposed move**, never a silent addition. State the term, from, to, and why, and wait for approval, because a move changes the glossary id's `firstDefinedIn`, every `TermFirst` placement, the forward-vocabulary order, and Chapter 12's structure. Ids never change (see glossary change control in `textbook-prose.mdc`).
+A term the on-ramp track needs earlier than a main chapter teaches it is a **proposed move**, never a silent addition. State the term, from, to, and why, and wait for approval, because a move changes the glossary id's `firstDefinedIn`, every `TermFirst` placement, the forward-vocabulary order, and the last main chapter's structure. Ids never change (see glossary change control in `textbook-prose.mdc`).
 
 ## Adjacent blocks when restructuring
 

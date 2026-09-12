@@ -1,0 +1,68 @@
+---
+description: The fixed shape of a play page under playbook/**, the decision grammar (observable conditions, falsifier first, stops at objects, risk in R, clocks), evidence rules for performance claims, voice, and the checks a play must pass. The charter, reader, and precedence live in playbook-charter.mdc.
+globs: playbook/**
+alwaysApply: false
+---
+
+# Writing a play
+
+## Play card — fixed sections, this order
+
+1. **Situation** — one recurring situation in one sentence: the day-gate that admits it (for the Daily Playbook, one of the six GX-vs-PD geometries) and the object price is approaching.
+2. **Clock** — live window and expiry in `HH:MM` ET; what may speak in each room and what may not.
+3. **Preconditions** — a checklist. Every item is observable or a cited SG read (`H12 tagged falling`, `Grade C at the level`, `S1 six fields filled`). All must be true. One false item is a stand-down, not a smaller position.
+4. **Trigger** — one tape event, in the Guide's words: acceptance through, failure to take, failed break, sweep (`SG Ch. 9`, `SG Ch. 11`). Never a color, a ping, a ladder redraw, a VXX tick, a breadth print, or a VWAP touch.
+5. **Invalidation** — the dual falsifier (`SG Ch. 11`): a price sentence and a leftover sentence, each mapped to a price or an event before entry. This is where the stop goes.
+6. **Management** — the four slots: SL · break-even · scale-in · targets (partial, then trail). Each slot names the object that moves it.
+7. **Stand-downs** — what keeps you out today even when 1–5 are true: event day, monthly or quarterly expiry, S10 disagreement, unmapped width, context contradiction.
+8. **Review** — what to log: the Guide's journal line plus `Structure:`, `Geometry:`, `Trigger time:`, and outcome in R. No dollars.
+9. **Worked case** — one walk with round numbers and a clock. An illustration, and the page says so.
+10. **Not tested against** — instruments, regimes, and date ranges this play has no sample for.
+
+A section with nothing to say holds `not stated` or `not measured`. It is not deleted, because a missing section hides a missing decision.
+
+## Decision grammar
+
+- **Conditional and observable.** "If X, then Y" where X is on the reader's screen at that minute. Write the knowability gate beside it: `(nameable from about 09:45)`.
+- **Falsifier first.** The invalidation sentence is written before the trigger sentence is acted on. A play whose stop is decided after entry is not a play.
+- **Stops at objects.** SL is the falsifier mapped to a price: a named node, a level with leftover, or a σ band that *is* the level of the read. An ATR or fixed-tick width is not a stop unless mapped onto a named distance (`SG Ch. 9 (The journal line), stop logic`); if it cannot be mapped, the line is "do not trade it."
+- **Risk in R.** One R is the distance from entry to SL. Scale-ins and targets are written in R and in the object that justifies them. No contracts, no dollars, no percent of account, because the playbook does not know the account.
+- **Add only on evidence.** A scale-in needs the read still nameable and leftover thickening on Orderflow, not a ladder re-mark. Never through the falsifier; never at Grade A or B.
+- **Exit rule per slot.** Partial at the nearest pressure-end (node, stack, or H7 zone, whichever is first). Trail on the next named leftover object or event, not on ticks.
+- **Expiry.** At the window's close the position is flat, the read is renamed, or it is handed to a play that owns the next clock family. Never carried silently.
+
+```markdown
+<!-- BAD: unobservable condition, width stop, size in contracts -->
+When dealers are short gamma above PDH, buy 2 contracts on the break with a 6-point stop.
+
+<!-- GOOD: observable condition, object stop, risk in R -->
+If Grade-C customer-short leftover sits above PDH (H13) and H12 is tagged falling (nameable from about 09:45),
+and price accepts through PDH: SL = failure to take the node (`SG Ch. 9`), mapped to the strike below it.
+Partial at 1R or the first opposing node, whichever is first.
+```
+
+## Context layers
+
+VXX, breadth (Mag7 vs SPY), and the VWAP families are context. They may gate a play (a contradiction is a stand-down) and may set a tape level. They may not trigger, attach a pressure word, replace H12, or move a stop.
+
+## Evidence for performance
+
+- No hit rate, expectancy, or win rate unless it comes from a measured sample with N, date range, instrument, and the definition of "hit" in the same sentence. Default text: `Hit rate: not measured.`
+- A worked case is an illustration, not evidence.
+- "Works," "reliable," "high probability," and "edge" without a sample are banned.
+
+## Voice
+
+- Second person, imperative, short. Checklists and tables over prose. Each rule carries its reason in one clause, because a rule without a reason is memorized and then bent.
+- SG terms as taught, cited on first use per page. Playbook-native terms defined once in `reference/terms.md`.
+- Times `HH:MM` ET; the first time on a page carries `ET`. Index and futures moves in points; ticks only when the tick matters.
+- Banned: retired session names (ON, ONH, ONL, ON-VWAP, ETH, ETHH, ETHL, ETH-VWAP, PMH, PML); "the dealer" for a futures print; "guaranteed," "easy," "free"; exclamation marks.
+
+## Checks — a play is not done until
+
+- All ten sections are present, in order, none omitted.
+- Every mechanism sentence carries exactly one label; every pressure word is one of the four; *forced* appears only beside mandate.
+- Every `SG Ch. N` cite resolves to an object that exists on that page.
+- The trigger is a tape event; the SL is an object; every size word is in R.
+- Every worked-case number is round and reconstructable in three arithmetic steps.
+- No file under `docs/**` changed.
