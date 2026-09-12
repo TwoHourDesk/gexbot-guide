@@ -1,5 +1,5 @@
 ---
-description: Who this book is for, what every chapter is geared to, and the options on-ramp sub-chapter each chapter carries
+description: Who this book is for, the theory and market-mechanics interest every chapter must serve, and the options on-ramp each chapter carries
 alwaysApply: true
 ---
 
@@ -9,10 +9,24 @@ alwaysApply: true
 
 An **index futures trader** — someone who follows the ES or NQ tape, thinks in points and ticks, and knows that a level is a hypothesis until price accepts through it — who is **considering or preparing to trade the corresponding index options** (SPX/NDX, their ETF cousins, or options on the futures). They have not traded an option. They are intelligent and impatient with vocabulary they cannot yet use.
 
+They are not here to sit at a black box and divine decisions from abstract colored bars. They want **mathematical intuition** for the objects under those bars — what a quantity counts, why the construction has that shape, which assumptions sit under it — and they want the **market mechanics** that put a number in public: who owns the position, who is the authority for the print or the input, how the formula and the current figure reach a retail-grade screen, and which flows that screen never sees. The aim is to read the market and its flow, including flow hidden from readily available data, not to treat Gexbot as an oracle.
+
 Two things follow for every page:
 
-- **Current interest first.** The reader opens Gexbot to understand a force on the futures tape they cannot see from the tape alone: who holds option risk, what pressures them, when they must act, and which screen makes it inferable. Every main chapter is written for that interest, from the outside of the ticket, and stays useful to a reader who never trades an option.
+- **Current interest first.** The reader opens Gexbot to understand a force on the futures tape they cannot see from the tape alone: who holds option risk, what pressures them, when they must act, and which screen makes it inferable. That understanding includes the math and the plumbing, not only the geometry on the screen. Every main chapter is written for that interest, from the outside of the ticket, and stays useful to a reader who never trades an option.
 - **Future interest second, and separately.** The same reader may later sit on the other side of the ticket. Each main chapter therefore carries a supporting **options on-ramp sub-chapter** that retells the chapter's object from the customer's seat.
+
+## Theory and mechanics on the page
+
+A chapter that names a bar, a strike, or a greek also names the object it measures. Colored geometry is the surface of a claim, not the claim. Every main chapter therefore:
+
+- Builds **mathematical intuition** for the chapter's object at the level of a tiny picture after the prose has earned it. A formula without that intuition is another black box. A specialist derivation is not required and is not the voice of this book.
+- Names the **market mechanics** the object depends on: who owns what, who must act, who is the authority for the input or the print, and how the formula and the current number reach the public sphere.
+- Marks the **hidden flow**: what a retail-grade tool, including Gexbot, does not surface, and why that absence matters for reading the tape. Awareness of the uncounted is part of the reading, not a footnote.
+
+A page that only maps colored bars onto trading decisions has the wrong reader. Intuition and mechanics do not soften a label, a pressure word, a stand-down, or a guardrail. They do not license a term the chapter has not taught.
+
+On-ramp pages serve the same reader from the customer seat: intuition for the holder's object, mechanics of the mark and the authority, and what the screen cannot tell the holder. They do not become a decision box.
 
 ## The two tracks
 

@@ -37,7 +37,31 @@ The contract dies at **expiry**. If that expiry is *today*, this book says **0DT
 
 Where the strike sits versus the index is **moneyness**. Near the index: **at the money (ATM)**. A call with strike below the index, or a put with strike above it: **in the money (ITM)**. The other way: **out of the money (OTM)**.
 
-Chapter 1 said the firms in the middle of the options market buy and sell the index as it moves. How much index they need to hold against an option is not fixed; it changes as the index moves, and **gamma** is how fast it changes per point. Think of it not as the car’s speed but as how sharply the accelerator itself gets more or less sensitive as you press it. Long calls and long puts are long gamma; short calls and short puts are short gamma. Gamma has no up or down. It peaks ATM and grows sharply into expiry, which is why a cheap 0DTE can be a huge gamma pile while an expensive far-dated ticket is not. The ticket price is the **debit** — what the buyer paid. Gexbot weights by gamma, not by debit.
+Chapter 1 said the firms in the middle of the options market buy and sell the index as it moves. How much index they need to hold against one contract looks like a fixed amount. It is not. A reader who treats it as fixed expects the same futures flow at every print, and is looking at the wrong force once the index walks.
+
+At expiry the call’s payoff is a kink: worthless below the strike, then a straight line up. Before expiry the live price is a smooth curve that leans toward that kink as the clock runs. The first toy on this page is that kink. It is not the live curve.
+
+The slope of that live curve is how stock-like the contract is right now. The schoolbook name is **delta**. A call traces an S from 0 (far out of the money) through about 0.50 at the money to 1 (deep in the money). A put traces the same S from 0 to −1. Lottery stub at one end; the index in costume at the other.
+
+**Gamma** is the slope of that S — how fast delta itself changes per point. Plot it against the index and the picture is a hill. The hill is the same for a call and a put. Gamma has no up or down. Think of it not as the car’s speed but as how sharply the accelerator itself gets more or less sensitive as you press it.
+
+An at-the-money 0DTE call sits near 0.50 delta. After a 15-point rise it sits nearer 0.80. That walk *is* gamma. A call that still has months left has a flatter S, so the same 15 points barely move delta.
+
+The buyer of a call or a put is long gamma: their S steepens in their favor as the index runs. The seller of either is short gamma. A put is not negative gamma. The sign is who paid versus who collected, not call versus put.
+
+The hill peaks at the money and grows sharply into expiry. Far from the index the S is already flat — the contract has decided — so gamma is nearly zero. That is why a cheap 0DTE can be a huge gamma pile while an expensive far-dated ticket is not.
+
+The ticket price is the **debit** — what the buyer paid. Gexbot weights by gamma, not by debit. A reader who ranks strikes by debit will stare at the expensive far-dated ticket and miss the 0DTE mountain Classic is actually drawing.
+
+Those two shapes are not printed on any tape. They come from differentiating a pricing model: delta is how the model price changes if the index ticks; gamma is how that change itself changes. The schoolbook model is **Black–Scholes** — a call or put priced from the index, the strike, time left, and a single volatility the model is fed. Gexbot’s model is **not stated**. The toys on this page are Black–Scholes. They are not Gexbot.
+
+The listed tape announces the option’s **price**. It does not announce delta or gamma. Each professional book recalculates both, continuously, in its own risk system, whenever the index, the clock, or the vol input moves. Each vendor does the same job independently. Two shops can draw different hills from the same open interest. A Classic bar is one shop’s picture, compared only with itself.
+
+<PayoffSketch />
+
+<GreeksSurface defaultMetric="gamma" />
+
+The first toy is the expiry kink. The second is the live slope and the live hill. They are **not Gexbot**.
 
 As the clock runs, an option’s value tends to leak even if the index does not move. The schoolbook name is **theta**, or time decay. Classic does not plot theta. You will need the word in Chapter 4 when customer incentive appears.
 
@@ -47,21 +71,16 @@ The cash index this running example uses is **SPX** (the S&P 500). Chapter 6 wil
 
 <NeededForThisScreen
   title="Needed to read Classic — collapse if you already own these words"
-  ids={['call', 'put', 'strike', 'expiry', 'zero-dte', 'premium', 'moneyness', 'atm', 'itm', 'otm', 'gamma', 'theta', 'open-interest', 'volume', 'cash-rth', 'spx', 'histogram', 'debit']}
+  ids={['call', 'put', 'strike', 'expiry', 'zero-dte', 'premium', 'moneyness', 'atm', 'itm', 'otm', 'delta', 'gamma', 'black-scholes', 'theta', 'open-interest', 'volume', 'cash-rth', 'spx', 'histogram', 'debit']}
 />
 
 <TermFirst id="histogram" />
+<TermFirst id="delta" />
 <TermFirst id="debit" />
 
 A **node** is a strike where the pile is large enough to point at. A quiet picture can mean leftover cancelled later — or, on Classic, that call and put cancelled each other. It does not always mean “nothing traded.”
 
 <TermFirst id="node" />
-
-<PayoffSketch />
-
-<GreeksSurface defaultMetric="gamma" />
-
-Drag hours-to-expiry toward zero on the toy: the ATM gamma peak grows. That is why a 0DTE print outweighs a far-dated expensive ticket. The toy is **not Gexbot**.
 
 ## How to face the screen
 
@@ -138,7 +157,17 @@ A common story says: below this fulcrum the book is more short-gamma (moves get 
 
 ## Tallest hill, deepest hole
 
-**Major positive** and **major negative** are the largest right bar and the largest left bar on that unsigned map. They jump when a bigger node prints or when the index moves the gamma surface. They are candidates people call magnets or walls. Whether a hole is a fade or an acceleration lane depends on ownership — unknown here.
+The fulcrum is a center. The two extremes of the same map are a ranking, not a weighted middle.
+
+A reader who treats the tallest bar as a level the index must stall at has already written an owner. The bar does not say who must act there.
+
+The largest right bar on today’s volume-GEX map is **major positive**. The largest left bar is **major negative**. Last night’s open-interest map has its own pair. The two pairs can sit at different strikes; Classic uses the volume pair for the live tallest piles.
+
+The label jumps for two reasons that look the same on the screen. A bigger node prints at another strike — even a one-print overtake of the runner-up — and the ranking moves. Or the index walks and the gamma surface redraws: gamma peaks at the money, so a strike that was quiet can become the tallest hill without anyone adding a contract. The name moved. Nobody had to trade.
+
+People call these magnets or walls. Whether a hill stalls the index or a hole lets it travel depends on who owns the pile. Classic cannot say.
+
+The reader who always leans against the major is treating a ranking as a bounce. A deep left bar can be an acceleration lane.
 
 <GexbotConcept id="major-pos-neg" />
 <WhoMustAct id="major-pos-neg" />

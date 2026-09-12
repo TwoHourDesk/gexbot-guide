@@ -117,8 +117,9 @@ export default function GreeksSurface({
         </ResponsiveContainer>
       </div>
       <p>
-        Drag hours toward zero: gamma peaks ATM and the call delta becomes a cliff.
-        That is why a 0DTE print outweighs a far-dated debit on Gexbot.
+        {metric === 'gamma'
+          ? 'This hill is the slope of the S. Switch to delta to see the S. Drag hours toward zero: the hill becomes a spike.'
+          : 'This S is delta against the index. Drag hours toward zero: the S becomes a cliff. Switch to gamma to see that cliff’s slope as a hill.'}
       </p>
       <p className="gb-chart-note">{toyDisclaimer} Toy Black-Scholes.</p>
     </div>

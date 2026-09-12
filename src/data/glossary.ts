@@ -94,14 +94,14 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'gamma',
     headword: 'gamma',
-    aliases: ['Γ'],
+    aliases: ['Γ', 'long gamma', 'short gamma'],
     shortDef:
-      'How much delta changes when spot moves $1. Long calls and long puts are long gamma; short calls and short puts are short gamma. Gamma has no up/down.',
+      'How fast delta changes when the index moves one point — the slope of delta’s S-curve, a hill that peaks at the money. Long calls and long puts are long gamma; short calls and short puts are short gamma. Gamma has no up or down.',
     longDef:
-      'Gamma peaks ATM and explodes as DTE goes to zero. That is why 0DTE prints dominate every Gexbot tape. High gamma means the hedge ratio is unstable.',
+      'Gamma peaks ATM and explodes as DTE goes to zero. That is why 0DTE prints dominate every Gexbot tape. High gamma means the hedge ratio is unstable. The hill is a model output, not a tape print.',
     firstDefinedIn: 'plans/02-classic',
     alsoAppears: ['plans/03-classification', 'plans/04-state'],
-    seeAlso: ['delta', 'convexity', 'gex-by-volume'],
+    seeAlso: ['delta', 'black-scholes', 'convexity', 'gex-by-volume'],
     kind: 'options',
     neededForPlan: 'Classic',
   },
@@ -174,14 +174,26 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'delta',
     headword: 'delta',
-    aliases: ['Δ'],
+    aliases: ['Δ', 'how stock-like'],
     shortDef:
-      'How much the option’s value moves if spot moves $1. A 0.50-delta call behaves like half a share times the multiplier.',
-    firstDefinedIn: 'plans/03-classification',
-    alsoAppears: ['plans/04-state', 'plans/05-orderflow'],
-    seeAlso: ['share-equivalent', 'dex-ladder'],
+      'How much the option’s value moves if the index moves one point — the slope of the live price. A call traces an S from 0 to 1 and sits near 0.50 at the money; a put traces 0 to −1. A model number, not a tape print.',
+    firstDefinedIn: 'plans/02-classic',
+    alsoAppears: ['plans/03-classification', 'plans/04-state', 'plans/05-orderflow'],
+    seeAlso: ['gamma', 'black-scholes'],
     kind: 'options',
-    neededForPlan: 'State',
+    neededForPlan: 'Classic',
+  },
+  {
+    id: 'black-scholes',
+    headword: 'Black–Scholes',
+    aliases: ['Black-Scholes', 'Black–Scholes–Merton', 'BSM', 'schoolbook model'],
+    shortDef:
+      'The schoolbook formula for the price of a call or put from the index, the strike, time left, and a single volatility. Delta is its first derivative with respect to the index; gamma is the second. Not Gexbot’s recipe — Gexbot’s model is not stated.',
+    firstDefinedIn: 'plans/02-classic',
+    alsoAppears: ['practice/11-further-learning', 'practice/12-futures-to-options'],
+    seeAlso: ['delta', 'gamma', 'greek-source'],
+    kind: 'options',
+    neededForPlan: 'Classic',
   },
   {
     id: 'share-equivalent',
@@ -4027,15 +4039,15 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'greek-source',
     headword: 'the greek source (not stated)',
-    aliases: ['which volatility feeds the gamma'],
+    aliases: ['which volatility feeds the gamma', 'which quote feeds the model'],
     shortDef:
-      'Every gamma number depends on the volatility input and the pricing model that produced it. Vendors differ in which quote they use — bid, ask, or mid — and in how they handle wide or stale quotes.',
+      'Vendors differ in which option quote they feed the model — the resting buy price, the resting sell price, or the middle — and in how they treat a wide or stale quote.',
     bearsOn:
-      'Gexbot’s choice is not stated in the source-of-truth file. Two vendors drawing “the same” gamma from the same open interest can disagree on a strike’s height, so a Classic bar is a picture from one shop’s greeks, compared only with itself.',
+      'That choice is a second reason two Classic pictures of the same open interest can disagree, even after both shops have picked a model. Gexbot’s quote choice is not stated.',
     evidence: 'not stated',
     reading: 'Hull, Options, Futures, and Other Derivatives, the chapter on volatility smiles, on how a volatility is backed out of a quote.',
     firstDefinedIn: 'plans/02-classic',
-    seeAlso: ['gamma', 'not-stated', 'gex-by-oi'],
+    seeAlso: ['gamma', 'black-scholes', 'not-stated', 'gex-by-oi'],
     kind: 'adjacent',
   },
   {

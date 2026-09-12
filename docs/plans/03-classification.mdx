@@ -22,7 +22,7 @@ When a customer lifts 500 calls, someone on the other side now owes the market a
 
 **What you will be able to do.** Sign one option trade as customer bought or customer sold, say what remains after matched trades cancel, walk six links from that trade to a possible futures hedge, and write one pressure sentence for both branches of the running example.
 
-**What you already need.** [Classic](/docs/plans/02-classic): the unsigned map, call versus put, long versus short gamma, and the fact that the same Classic bar can be a buy or a sell. You still do not need to have sent an options order.
+**What you already need.** [Classic](/docs/plans/02-classic): the unsigned map, call versus put, the S of delta and the hill of gamma, and the fact that the same Classic bar can be a buy or a sell. You still do not need to have sent an options order.
 
 ## Who crossed the price
 
@@ -113,13 +113,10 @@ If the leftover is zero, the second book has nothing new to hedge from *this* ta
 
 ## How stock-like is the leftover? (delta)
 
-To talk about a hedge you need one schoolbook number Classic did not need.
+Chapter 2 gave the S of delta and the hill of gamma, and that nobody announces either number. A hedge needs that slope applied to leftover size.
 
-**Delta** is how much the option’s value moves if the index moves one point. A 0.50-delta call behaves like *half* a share of the index, times the contract’s multiplier.
+A 0.50-delta call behaves like *half* a share of the index, times the contract’s multiplier. Size times delta times multiplier is the **share-equivalent**: how many “shares of index” the leftover represents. That is what a professional typically offsets in ES, NQ, or SPY. You will see this number drawn as a ladder in Chapter 4. Here you only need it for the running example.
 
-Size times delta times multiplier is the **share-equivalent**: how many “shares of index” the leftover represents. That is what a professional typically offsets in ES, NQ, or SPY. You will see this number drawn as a ladder in Chapter 4. Here you only need it for the running example.
-
-<TermFirst id="delta" />
 <TermFirst id="share-equivalent" />
 
 ## Who has to act?
