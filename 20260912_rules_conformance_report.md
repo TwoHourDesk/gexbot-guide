@@ -147,7 +147,7 @@ Deliberate break: renaming one `<TermFirst id>` to a missing id produced `CHECK 
 
 ## WP5 — Vocabulary
 
-**Commit:** *(filled after commit)*
+**Commit:** `cf05c1f0201e1d7b46b36f572a6c3e0be6ad784e`
 
 **Forward-vocabulary.** 135 WARN lines classified. None rephrased as a leak: every hit is a false-positive alias, a sanctioned forward pointer, or a proposed `firstDefinedIn` move (not applied).
 
@@ -174,5 +174,38 @@ Proposed moves (logged, not applied): `skew` → Chapter 8 (H12); `customer-long
 **Deferred.** Proposed term moves above. Mechanical first-use linking of every earlier headword.
 
 **Outside scope, unapplied.** Expanding the checker stop-list (would hide real leaks).
+
+---
+
+## WP6 — Times and durability
+
+**Commit:** *(filled after commit)*
+
+**Before / after.** Time CHECKs 33 → 0. Total CHECK 33 → 0. WARN 135 → 133. First `HH:MM` on each page now carries ` ET`; later times are bare. `Eastern` replaced by `ET` on the first clock of a page and stripped from later ones.
+
+**Dated figures**
+
+| id | figure | action | source |
+|---|---|---|---|
+| zero-dte-share | roughly half | dated **as of 2023** | cited Cboe 2023 research note (2025 full-year share was ~59%; not used, would need a new citation) |
+| pattern-day-trader-rule | $25,000 | dated **as of 2025** | FINRA Rule 4210 |
+| large-options-position-report | 200 contracts | dated **as of 2025** | FINRA Rule 2360(b)(5) |
+| nbbo | sixteen exchanges | **dropped** — 18 US options exchanges as of 2025 (Cboe 2025 10-K: four Cboe + 14 others). Mechanism kept: “across the listed options exchanges” | SEC Options Order Protection Plan does not freeze a count |
+| hedge-complex-scale | millions / over a million | dated **as of 2025** | Cboe / CME daily volume (SPX ADV ~3.9M in 2025; ES still over a million) |
+| per-contract-fees | fraction of a dollar to a dollar | dated **as of 2025** | typical retail; Cboe fee schedule / broker schedules |
+| exercise-cutoff | 17:30 | dated **as of 2025** | FINRA 2360 / OCC 5:30 p.m. ET |
+| t-plus-one-settlement | T+1 | dated **since 2024** | OCC settlement (T+1 from May 2024) |
+| global-trading-hours | overnight session exists | dated **as of 2025** | Cboe GTH specs |
+| daily-expirations | every trading day | dated **as of 2025** | Cboe SPXW specs |
+
+**Main-chapter figures.** Toys in Chapters 11–12 (16 percent, $750, $1,330) already say they are illustration values. Docs folklore thresholds ($800 million / $1000 million minus-vanna) are product-doc constants, not market figures — left undated. CME tick values ($12.50 ES, $5.00 NQ) are contract specs — left as mechanism.
+
+**Judgment calls.** Dropped “sixteen” rather than write “eighteen as of 2025” because the cited plan is not a census. Dated 0DTE share to the cited 2023 note rather than silently updating to 2025’s 59%.
+
+**Rule conflicts.** None.
+
+**Deferred.** Updating zero-dte-share to 2025 and its citation.
+
+**Outside scope, unapplied.** None.
 
 

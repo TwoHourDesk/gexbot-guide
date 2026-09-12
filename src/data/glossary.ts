@@ -3284,7 +3284,7 @@ export const glossary: GlossaryEntry[] = [
     headword: 'daily expirations',
     aliases: ['SPXW', 'weeklys', 'Monday / Wednesday / Friday expiries'],
     shortDef:
-      'Cboe lists SPX options expiring every trading day (ticker SPXW) alongside the standard monthly (SPX) that settles on the third Friday morning.',
+      'As of 2025, Cboe lists SPX options expiring every trading day (ticker SPXW) alongside the standard monthly (SPX) that settles on the third Friday morning.',
     bearsOn:
       'It is why a 0DTE ticket exists every session and why the latest group carries most of the gamma; a holder choosing an expiry is choosing among these, and the monthly settles on a different clock.',
     evidence: 'market-general',
@@ -3789,7 +3789,7 @@ export const glossary: GlossaryEntry[] = [
     headword: 'global trading hours',
     aliases: ['GTH', 'overnight SPX options session'],
     shortDef:
-      'SPX and VIX options trade in an overnight session on Cboe, thinner and wider than the day session, with its own quotes and prints.',
+      'As of 2025, SPX and VIX options trade in an overnight session on Cboe, thinner and wider than the day session, with its own quotes and prints.',
     bearsOn:
       'The opening vol at 09:31 is not the first vol of the day; it inherits an overnight session’s marks, and a holder who carried a position through the night was marked, and could have been stopped on the mark, while the futures trader watched only ES.',
     evidence: 'market-general',
@@ -4003,7 +4003,7 @@ export const glossary: GlossaryEntry[] = [
     headword: 'size of the listed hedge complex',
     aliases: ['SPX volume versus ES volume'],
     shortDef:
-      'How much index exposure the listed option market controls relative to the futures market it hedges in. SPX options trade millions of contracts a day; ES trades over a million, on a smaller contract.',
+      'How much index exposure the listed option market controls relative to the futures market it hedges in. As of 2025, SPX options trade millions of contracts a day; ES trades over a million, on a smaller contract.',
     bearsOn:
       'The pile Classic draws is large enough that its hedges are a real share of ES volume, which is the only reason the question in this book is worth asking. Whether one strike’s pile is large enough on a given day is a separate question the histogram’s height begins to answer.',
     evidence: 'market-general',
@@ -4090,7 +4090,7 @@ export const glossary: GlossaryEntry[] = [
     shortDef:
       'The best bid and best offer across all options exchanges at a moment, which every exchange is required to honour: a print may not execute at a price worse than the best quote elsewhere.',
     bearsOn:
-      'A signing engine compares each print to some quote. With sixteen exchanges, that quote is either the NBBO or one venue’s own, and the two differ often enough to flip a sign on a fast print. Which one Gexbot uses is not stated.',
+      'A signing engine compares each print to some quote. Across the listed options exchanges, that quote is either the NBBO or one venue’s own, and the two differ often enough to flip a sign on a fast print. Which one Gexbot uses is not stated.',
     evidence: 'market-general',
     evidenceNote: 'Gexbot method not stated',
     reading: 'SEC, Options Order Protection and Locked/Crossed Market Plan.',
@@ -4117,7 +4117,7 @@ export const glossary: GlossaryEntry[] = [
     headword: '0DTE share of volume',
     aliases: ['same-day options volume share'],
     shortDef:
-      'Since an SPX expiry was listed for every trading day, contracts expiring the same day have grown to roughly half of all SPX option volume on an ordinary session.',
+      'Since an SPX expiry was listed for every trading day, contracts expiring the same day had grown to roughly half of all SPX option volume on an ordinary session as of 2023.',
     bearsOn:
       'It is why State’s leftover is dominated by the latest group and why its map can be rebuilt from nothing each morning. It also means the population being inferred is mostly people who will be flat by the close, whatever their reason for the trade.',
     evidence: 'market-general',
@@ -4622,7 +4622,7 @@ export const glossary: GlossaryEntry[] = [
     headword: 'pattern day trader rule',
     aliases: ['PDT', '$25,000 minimum'],
     shortDef:
-      'A FINRA rule for U.S. margin securities accounts: four or more day trades in five business days classifies the account as a pattern day trader, which requires $25,000 of equity to continue. Futures accounts are outside it.',
+      'A FINRA rule for U.S. margin securities accounts: four or more day trades in five business days classifies the account as a pattern day trader, which requires $25,000 of equity to continue as of 2025. Futures accounts are outside it.',
     bearsOn:
       'A futures trader moving to SPX or SPY options moves from an exempt account to a covered one. The Stage 5 loop of small daily trades meets this rule in its first week; it is a sizing constraint set by regulation, not by risk.',
     evidence: 'market-general',
@@ -4711,7 +4711,7 @@ export const glossary: GlossaryEntry[] = [
     headword: 'large options position reporting',
     aliases: ['LOPR'],
     shortDef:
-      'Brokers report to regulators, daily, every account holding 200 or more contracts on the same side of the market in one underlying. The report is not public.',
+      'Brokers report to regulators, daily, every account holding 200 or more contracts on the same side of the market in one underlying, as of 2025. The report is not public.',
     bearsOn:
       'Someone does know who owns the pile; it is not the tape and not any vendor. The ownership question this book keeps calling unanswerable is unanswerable from public data, which is a narrower statement than it sounds.',
     evidence: 'market-general',
@@ -4767,7 +4767,7 @@ export const glossary: GlossaryEntry[] = [
     headword: 'per-contract fees and commissions',
     aliases: ['exchange fees', 'commission per contract'],
     shortDef:
-      'Each option contract carries a broker commission and exchange and regulatory fees, typically a fraction of a dollar to a dollar or so per contract per side.',
+      'Each option contract carries a broker commission and exchange and regulatory fees, typically a fraction of a dollar to a dollar or so per contract per side as of 2025.',
     bearsOn:
       'On a $50 premium a round trip’s fees are a noticeable share; on a $5 one they can be most of it. The counterparty pays fees too, at different rates, which is part of why the quoting firm is content with a spread you find wide.',
     evidence: 'market-general',
@@ -4921,7 +4921,7 @@ export const glossary: GlossaryEntry[] = [
     headword: 'exercise cutoff time',
     aliases: ['broker exercise deadline', '17:30 cutoff'],
     shortDef:
-      'Brokers accept exercise instructions until a set time after the close, at or before OCC’s 17:30 ET deadline, later than the options market itself stops trading.',
+      'Brokers accept exercise instructions until a set time after the close, at or before OCC’s 17:30 ET deadline as of 2025, later than the options market itself stops trading.',
     bearsOn:
       'For American-style contracts the position can change hands after every screen has gone quiet. A writer of SPY calls who is short at 16:15 may be short shares by the morning, decided in a window no tape records.',
     evidence: 'market-general',
@@ -5357,7 +5357,7 @@ export const glossary: GlossaryEntry[] = [
     headword: 'T+1 settlement of option trades',
     aliases: ['next-day settlement', 'premium settlement'],
     shortDef:
-      'Listed option trades settle on the next business day: the premium leaves or arrives in the account on T+1, though the position and its margin effect are immediate.',
+      'Listed option trades settle on the next business day: the premium leaves or arrives in the account on T+1 (since 2024), though the position and its margin effect are immediate.',
     bearsOn:
       'A cash-account holder who sells a position and re-buys the same day can run into unsettled funds. Futures settle daily; the different rhythm shows up in the first week of the loop as a broker message, not a market event.',
     evidence: 'market-general',
