@@ -8,12 +8,12 @@ alwaysApply: false
 
 ## Play card — fixed sections, this order
 
-0. **Header** — `version:`, `sample-start:`, `stage:` (L / P / 1R / S / retired). A change to a hard gate, trigger, grain, SL rule, or target rule bumps the version and restarts the sample.
-1. **Situation** — one recurring situation in one sentence: the day-gate that admits it (for the Daily Playbook, an in-sample GX-vs-PD geometry) and the object price is approaching.
+0. **Header** — `version:`, `sample-start:`, `stage:` (L / P / 1R / S / retired), followed by the **spec block**: a fenced YAML block, in the schema `reference/system.md` fixes, that states the play as predicates — `geometries`, `clock` (entry window, management boundary), `gates` (each with `hard: true|false`, inputs, operator, parameter, evaluated-at), `arm`, `route`, `fire` (event, grain, entry-location class), `invalidation` (price and leftover predicates), `management` (four slots, each with its object), `stand_downs`, `envelope: reference/risk.md`, `kill`. The spec is the play; sections 1–11 read it in words. A change to a hard gate, trigger, grain, SL rule, or target rule is a change to the spec, bumps the version, and restarts the sample.
+1. **Situation** — one recurring situation in one sentence: the day-gate that admits it (for the Daily Playbook, an in-sample GX-vs-PD geometry) and the **tradeable level** price is approaching. Reading lines appear here only inside the intent sentence.
 2. **Hypothesis** — one line: mechanism (labeled) → direction → expected behavior → horizon → the control it must beat. A play without a hypothesis cannot be killed, only abandoned.
 3. **Clock** — entry window and management boundary in `HH:MM` ET; what happens at each (rename, hand off, flat); what may speak in each room and what may not.
-4. **Preconditions** — a checklist. Every item is observable or a cited SG read (`H12 tagged falling`, `Grade C at the level`, `S1 six fields filled`), and every item is marked **hard** (false → stand down) or **soft** (false → log the flag, take the play). Context layers whose value is unmeasured are soft, because blocking on them means never measuring them.
-5. **Trigger** — one tape event, in the Guide's words: acceptance through, failure to take, failed break, sweep (`SG Ch. 9`, `SG Ch. 11`), with its **time grain** (which bar close) and **entry location** (trigger-bar close, or retest) fixed on the card. Never a color, a ping, a ladder redraw, a VXX tick, a breadth print, or a VWAP touch.
+4. **Preconditions** — a checklist. Every item is observable or a cited SG read (`H12 tagged falling`, `Grade C at the level`, `S1 six fields filled`), and every item is marked **hard** (false → stand down) or **soft** (false → log the flag, take the play). The first hard item is always a tradeable level within strike spacing of the node. The **intent sentence** — what the market is attempting to do, read off the reading lines in tape words, rewritten within the last fifteen minutes — is a required item; whether its contradiction is hard or soft is the play's call and is logged either way. Context layers whose value is unmeasured are soft, because blocking on them means never measuring them.
+5. **Trigger — Arm / Route / Fire.** *Arm*: the Gexbot object that names the destination — an exceptional signed residual within the remaining-window expected move — with its verb (*assumed* on an unsigned Classic ladder, *inferred* once State signs it at Grade C) and its type (pin: the node is the target; wall: the target sits in front of it). *Route*: each tradeable level between price and the destination tagged **launch** or **checkpoint**, and what the path leftover says. *Fire*: one tape event in the direction of the destination, in the Guide's words — acceptance through, failure to take, failed break, sweep (`SG Ch. 9`, `SG Ch. 11`) — with its **time grain** (which bar close) and **entry-location class** (`launch` · `checkpoint` · `path`) fixed on the card. Gexbot arms and routes; the tape fires. A bar is never the click, because hedging is in bands and a node gives direction and location, not timing.
 6. **Invalidation** — the dual falsifier (`SG Ch. 11`): a price sentence and a leftover sentence, each mapped to a price or an event before entry. This is where the stop goes.
 7. **Management** — the **feasibility gate** first (first partial ≥ 1R; SL within the remaining-window expected move, or stand down), then the four slots: SL · break-even · scale-in · targets (partial, then trail). Each slot names the object that moves it.
 8. **Stand-downs** — what keeps you out today even when 1–7 are true: event day, monthly or quarterly expiry, S10 disagreement with unknown pressure, unmapped width, missing hard-gate input.
@@ -25,7 +25,10 @@ A section with nothing to say holds `not stated` or `not measured`. It is not de
 
 ## Decision grammar
 
-- **Conditional and observable.** "If X, then Y" where X is on the reader's screen at that minute. Write the knowability gate beside it: `(nameable from about 09:45)`.
+- **Levels are traded; lines are read.** The Playbook keeps two closed classes in `reference/levels.md`. A **tradeable level** (prior-day high and low first; significant daily levels marked before the open under a cap; options-complex levels — strikes carrying an exceptional signed node; compound zones) is where a destination, a launch, or a checkpoint may sit, and where a stop may sit. A **reading line** (range midpoints, prior close, VWAPs and their bands, overnight extremes, opening-range edges) exists to answer one question — what is the market attempting to do — and is never a stop or a reason; it may host a `path` fire toward an armed destination, and names a target's price only where a Gexbot pressure-end sits at it. A chart level marked because a node appeared there is confluence bias run backwards; an options-complex level is declared as a node, not disguised as a chart level.
+- **With, never against.** The play's direction equals the **direction** field of the Guide's forced-flow sentence (actor · pressure · trigger · direction · venue) at the node that armed it. Gexbot does not tag participants; size relative to today's ladder, signed by State, is the observable that stands in for "the large positions." A play that sells into a node whose sign and regime say fuel, or buys into one that says wall from the wrong side, fails this gate.
+- **Folklore is a legal basis.** A play may rest on a *folklore* mechanism. The label stays on the sentence, the hypothesis line names it, and the occurrence log measures it. Labels classify evidence; they do not rank what may be traded. A `not stated` Gexbot *mechanism* slot is never filled by folklore — folklore may say what price does at a node, never what Gexbot computes.
+- **Conditional, observable, encodable.** "If X, then Y" where X is on the reader's screen at that minute and is a predicate over named inputs — type, unit, threshold as a named parameter, evaluated-at clock. Write the knowability gate beside it: `(nameable from about 09:45)`. Adjectives are not conditions: "large," "heavy," "clean," and "decisive" are rewritten as the input and threshold they stand for or removed.
 - **Falsifier first.** The invalidation sentence is written before the trigger sentence is acted on. A play whose stop is decided after entry is not a play.
 - **Stops at objects.** SL is the falsifier mapped to a price: a named node, a level with leftover, or a σ band that *is* the level of the read. An ATR or fixed-tick width is not a stop unless mapped onto a named distance (`SG Ch. 9 (The journal line), stop logic`); if it cannot be mapped, the line is "do not trade it."
 - **Risk in R.** One R is the distance from entry to SL. Scale-ins and targets are written in R and in the object that justifies them. No contracts, no dollars, no percent of account, because the playbook does not know the account. Every play runs under the envelope in `reference/risk.md` (daily R budget, positions per bet, ES and NQ as one bet, re-entries); a play does not override it.
@@ -35,13 +38,15 @@ A section with nothing to say holds `not stated` or `not measured`. It is not de
 - **Boundaries, not expiries.** No entry after the entry window closes, because that is where knowability was defined. An open position is not flattened by the clock; at the window's close the read is renamed to its S-form and managed on. A play never crosses into a clock family it does not own (the last hour): flat or formally handed off before it. Never carried silently.
 
 ```markdown
-<!-- BAD: unobservable condition, width stop, size in contracts -->
-When dealers are short gamma above PDH, buy 2 contracts on the break with a 6-point stop.
+<!-- BAD: bar as the click, unobservable condition, width stop, size in contracts -->
+A huge GEX bar printed at 6050 at 09:37, so dealers must push price there; buy 2 contracts now with a 6-point stop.
 
-<!-- GOOD: observable condition, object stop, risk in R -->
-If Grade-C customer-short leftover sits above PDH (H13) and H12 is tagged falling (nameable from about 09:45),
-and price accepts through PDH: SL = failure to take the node (`SG Ch. 9`), mapped to the strike below it.
-Partial at 1R or the first opposing node, whichever is first.
+<!-- GOOD: arm (labeled, verb), route, fire on tape, object stop, direction field, risk in R -->
+Arm: exceptional residual at 6050 on Classic at 09:37 — destination *assumed*, owner unknown; State signs it customer-short
+at 09:48 (Grade C, H13) — destination *inferred*, pin-type, target is the node (`SG Ch. 9`). Direction field: toward 6050.
+Route: PDH at 6030 is a checkpoint; customer-short path leftover at 6035 is fuel (E3). H12 tagged falling.
+Fire: a 5-minute close above 6030 by one strike spacing (acceptance through; class `checkpoint`).
+SL = failure to take 6030, mapped to the strike below it. Partial at 1R or the first opposing node, whichever is first; target 6050.
 ```
 
 ## Context layers
@@ -50,7 +55,7 @@ VXX, breadth (Mag7 vs SPY), and the VWAP families are context. They are soft gat
 
 ## Operational definitions
 
-A gate the reader cannot apply the same way twice is not observable. "Standout bar," "acceptance," "contradiction," and "entry location" each get a numeric or procedural definition in `reference/system.md`, frozen before the sample starts. A play cites the definition; it does not restate or loosen it.
+A gate the reader cannot apply the same way twice is not observable, and one a program cannot apply is not a gate. "Significant daily level" (lookback, touch count, cap), "intent sentence" (coded fields and contradiction), "standout bar," "exceptional residual," "acceptance," "failure to take," "contradiction," and "entry location" each get a table row in `reference/levels.md` or `reference/system.md` — name · inputs · parameters (default, unit) · procedure · output type · evaluated-at — frozen before the sample starts. A play cites the row by name; it does not restate or loosen it. Categorical outputs draw from the enumerations in `reference/system.md`; a new value is a change to the enumeration, versioned there, not a word invented on a play page.
 
 ## Evidence for performance
 
@@ -68,12 +73,15 @@ A gate the reader cannot apply the same way twice is not observable. "Standout b
 
 ## Checks — a play is not done until
 
-- Header and all eleven sections are present, in order, none omitted.
+- Header, spec block, and all eleven sections are present, in order, none omitted.
+- **Spec–prose parity.** Every condition in sections 1–11 appears in the spec block, and every spec entry is read somewhere in the prose. Every predicate names its inputs, operator, parameter, and evaluated-at clock; every parameter has a default and a unit; every categorical value is on its enumeration. No adjective stands where a threshold should.
 - The hypothesis line names a labeled mechanism, a direction, an expected behavior, a horizon, and a control.
 - Every precondition is marked hard or soft; the feasibility gate is present and hard.
 - Every mechanism sentence carries exactly one label; every pressure word is one of the four; *forced* appears only beside mandate.
 - Every `SG Ch. N` cite resolves to an object that exists on that page.
-- The trigger is a tape event with a grain and an entry location; the SL is an object; every size word is in R and under the envelope.
+- The trigger has an arm (destination, verb, type), a route (launch/checkpoint tags), and a fire that is a tape event with a grain and an entry-location class; the destination is a tradeable level with a Grade-C node; no stop sits on a reading line; a `path` entry exists only toward such a destination; the SL is an object; every size word is in R and under the envelope.
+- The play's direction equals the direction field at the destination; every folklore sentence keeps its label.
+- The intent sentence is present, in tape words, with no pressure word and no Gexbot object, beside its coded fields; the gate reads the coded fields; the occurrence row carries both and the level class.
 - No entry after the entry window; no flat-by-clock inside a family the play owns; no crossing into a family it does not.
 - Every worked-case number is round and reconstructable in three arithmetic steps.
 - No file under `docs/**` changed.

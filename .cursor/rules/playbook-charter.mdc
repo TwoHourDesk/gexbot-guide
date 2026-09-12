@@ -20,6 +20,19 @@ A **play** is an executable procedure: situation → hypothesis → precondition
 
 A playbook is also a **system**: it states why each play should work, logs every occurrence whether or not it traded, and says in advance what would retire a play and what would retire the whole document. Without that layer a playbook is a checklist that can only be abandoned, never falsified.
 
+## Encodable by construction
+
+The Playbook is executed two ways — by the trader by hand and by software that narrows the trader's decision surface — and both must reach the same answer from the same text. So:
+
+- Every gate, trigger, invalidation, management slot, and definition is a **predicate over named inputs**: inputs named, type and unit stated, threshold numeric, and the clock at which it is evaluated written. "Price accepts through PDH" is prose; "5-minute bar close > PDH + 1 × strike_spacing, evaluated on bar close, 09:30–11:00" is the rule.
+- Every categorical value comes from a **closed enumeration** in `reference/system.md`. No column and no gate takes a value that is not on its list.
+- Every threshold is a **named parameter** with a default and a unit. The set of parameters the bench may sweep is exactly this set.
+- Every play carries a **spec block** (YAML, under the header) that states the play in those predicates. The prose explains the spec; it never adds a condition the spec lacks, and a condition the spec cannot express is rewritten or removed, not left in prose.
+- Definitions in `reference/*.md` are **tables** — name · inputs · parameters (default, unit) · procedure · output type · evaluated-at — not paragraphs.
+- Free text lives in two fields only, the intent sentence and the exit note, and each sits beside coded fields carrying the same content. Gates read the coded fields.
+
+Reason: a condition a program cannot evaluate is one two traders evaluate differently, and one the bench cannot test.
+
 ## Two documents, one boundary
 
 - The Playbook cites the Guide as `SG Ch. N (Title), <object>`. It does not restate a Guide lesson, teach a Gexbot screen, redefine a Guide term, or edit `docs/**`.
@@ -28,10 +41,14 @@ A playbook is also a **system**: it states why each play should work, logs every
 
 ## What still binds from the textbook
 
-1. **Claim labels** on every mechanism sentence — docs / market-general / folklore / inferred / not stated — exactly one, inline. A decision built on an unlabeled mechanism cannot be audited when it fails.
+1. **Claim labels** on every mechanism sentence — docs / market-general / folklore / inferred / not stated — exactly one, inline. A decision built on an unlabeled mechanism cannot be audited when it fails. The labels classify evidence; they do not rank what may be traded. A play may rest on *folklore*, labeled as such and measured by the log. `not stated` Gexbot mechanism slots stay empty.
 2. **Pressure words** — mandate · incentive · none · unknown. *Forced* is a dealer word (mandate). The reader is instructed, never "forced."
 3. **Source of truth** for Gexbot mechanisms: `20260910_gexbot_study.md` and the public sources it cites. No new Gexbot mechanism, screen, or update. While that file is absent from the repo, no `docs` label may be written.
-4. **Gexbot is a lens, not the market.** A play's trigger is a tape event. Gexbot decides *which* plays are live today; the tape decides *when* (`SG Ch. 13 (The next course), horizon mismatch`).
+4. **Gexbot is a lens, not the market.** Gexbot arms a destination and routes the levels toward it; the tape fires. Gexbot decides *which* plays are live today and *where*; the tape decides *when* (`SG Ch. 13 (The next course), horizon mismatch`).
+
+## Stance
+
+The reader trades **with** the large positions the options complex has left on the ladder, not against them. In the Guide's grammar: the destination is a signed node whose size stands out on today's ladder; the play's direction is the direction field of the forced-flow sentence at that node. Gexbot does not identify participants, so "institutional" is never written as a fact; size relative to the ladder, signed by State, is the observable that stands in for it.
 
 ## What does not bind
 
@@ -42,7 +59,7 @@ Page order (Stake, Opening block, Summary, Newcomer questions); the term budget;
 When two rules collide, the higher wins and the lower gets no relief:
 
 1. **Claim integrity** — labels, pressure words, `not stated`, source of truth.
-2. **Observability** — every condition, trigger, and invalidation is something the reader can see on their own screens at that clock, under the Guide's knowability gates. An unobservable condition ("the dealer is short gamma") is rewritten as the observable that infers it (Grade-C customer-short leftover, H12 tagged).
+2. **Observability and encodability** — every condition, trigger, and invalidation is something the reader can see on their own screens at that clock, under the Guide's knowability gates, and is written as a predicate a program evaluates the same way. An unobservable condition ("the dealer is short gamma") is rewritten as the observable that infers it (Grade-C customer-short leftover, H12 tagged); an unencodable one ("looks heavy") is rewritten as a named input and threshold or dropped.
 3. **Falsifier before action** — no instruction to act precedes its written invalidation.
 4. **Clock** — every play has an entry window and a management boundary; nothing is entered after the first, nothing crosses the second, and nothing is carried past the window unrenamed.
 5. **Brevity and voice.**
@@ -68,8 +85,9 @@ playbook/
   plays/NN-<slug>.md    one play per file, in the shape playbook-play.mdc fixes
   reference/terms.md    Playbook-native handles, one line each, with the SG term each extends
   reference/clocks.md   session clocks and retired names
+  reference/levels.md   the two classes: tradeable levels (with the daily-level test and cap) and reading lines; the intent-sentence format
   reference/risk.md     the risk envelope
-  reference/system.md   hypothesis format, occurrence-log schema, operational definitions, base rates, promotion ladder, kill criteria
+  reference/system.md   hypothesis format, play-spec schema, enumerations, occurrence-log schema (typed columns), operational definitions, base rates, promotion ladder, kill criteria
   cases/                worked walks and the occurrence log; outcomes in R, never dollars
 ```
 
