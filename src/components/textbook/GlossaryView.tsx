@@ -109,7 +109,13 @@ export default function GlossaryView(): JSX.Element {
                 <dt>Bears on</dt>
                 <dd>{e.bearsOn ?? '—'}</dd>
                 <dt>Evidence</dt>
-                <dd>{e.evidence ?? '—'}</dd>
+                <dd>
+                  {e.evidence
+                    ? e.evidenceNote
+                      ? `${e.evidence}; ${e.evidenceNote}`
+                      : e.evidence
+                    : '—'}
+                </dd>
                 <dt>Read</dt>
                 <dd>{e.reading ?? '—'}</dd>
               </dl>

@@ -21,7 +21,12 @@ export default function AdjacentConcepts({docId}: {docId: string}): JSX.Element 
           <li key={e.id} id={`adj-${e.id}`}>
             <strong>{e.headword}</strong>
             {e.aliases?.length ? ` (${e.aliases.join(', ')})` : ''}
-            {e.evidence ? <span className="gb-label">{e.evidence}</span> : null}
+            {e.evidence ? (
+              <span className="gb-label">
+                {e.evidence}
+                {e.evidenceNote ? `; ${e.evidenceNote}` : ''}
+              </span>
+            ) : null}
             {' — '}
             {e.shortDef}
             {e.bearsOn ? ` ${e.bearsOn}` : ''}

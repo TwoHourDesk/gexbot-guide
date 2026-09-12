@@ -44,7 +44,7 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'zero-dte',
     headword: '0DTE',
-    aliases: ['zero DTE', 'latest', 'zero expiry'],
+    aliases: ['zero DTE', 'zero expiry'],
     shortDef: 'An option that expires today. It owns most of the gamma Gexbot shows.',
     firstDefinedIn: 'plans/02-classic',
     seeAlso: ['gamma', 'latest'],
@@ -152,7 +152,7 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'long-option',
     headword: 'long option',
-    aliases: ['bought the option', 'customer long'],
+    aliases: ['bought the option'],
     shortDef:
       'Paid premium for a call or a put. Long gamma. Wants a larger move than priced.',
     firstDefinedIn: 'plans/03-classification',
@@ -163,7 +163,7 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'short-option',
     headword: 'short option',
-    aliases: ['sold the option', 'customer short'],
+    aliases: ['sold the option'],
     shortDef:
       'Collected premium on a call or a put. Short gamma. Wants a smaller move than priced.',
     firstDefinedIn: 'plans/03-classification',
@@ -585,7 +585,6 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'dex-ladder',
     headword: 'DEX ladder',
-    aliases: ['DEX'],
     shortDef:
       'Residual delta at each strike. Customer long calls and short puts → +DEX. Customer short calls and long puts → −DEX.',
     firstDefinedIn: 'plans/04-state',
@@ -606,7 +605,6 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'convexity-ladder',
     headword: 'convexity ladder',
-    aliases: ['convexity'],
     shortDef:
       'Residual gamma signed long option minus short option. Long calls and long puts → +convexity. Short calls and short puts → −convexity.',
     firstDefinedIn: 'plans/04-state',
@@ -2591,7 +2589,7 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'multi-leg',
     headword: 'multi-leg structure',
-    aliases: ['spread', 'vertical', 'synthetic', 'complex order', 'risk reversal'],
+    aliases: ['spread (multi-leg)', 'vertical', 'synthetic', 'complex order'],
     shortDef:
       'Two or more option legs sent together: a bought and a sold call at different strikes, a bought call and a sold put at one strike, and so on. Gexbot signs each leg as its own print (how complex orders are signed: not stated). Read opposite-sign bars at nearby strikes in the same minute as one structure. DEX largely adds; convexity largely cancels.',
     firstDefinedIn: 'practice/09b-structure-and-gexbot',
@@ -2859,7 +2857,7 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'assignment',
     headword: 'assignment',
-    aliases: ['early exercise', 'exercise'],
+    aliases: ['early exercise', 'assigned'],
     shortDef:
       'Being delivered the underlying because an option you sold was exercised. American-style, physically settled options (SPY, QQQ, ES options into the future) can assign, including overnight and around dividends. European cash-settled index options (SPX, XSP) cannot. Market-general.',
     firstDefinedIn: 'practice/12-futures-to-options',
@@ -3317,7 +3315,8 @@ export const glossary: GlossaryEntry[] = [
       'Published methods that infer whether the buyer or the seller was the aggressor from where a print sits relative to the bid and the ask at that moment. Tested against data where the true side is known, they misclassify a measurable share of trades, and more of them on midpoint fills and when the quote is moving.',
     bearsOn:
       'Gexbot’s customer-long and customer-short signing is the same kind of inference, and its method and error rate are not stated. Treat the sign as inferred, not observed, and expect it to be weakest on fast prints and midpoint fills.',
-    evidence: 'market-general; Gexbot method not stated',
+    evidence: 'market-general',
+    evidenceNote: 'Gexbot method not stated',
     reading: 'Lee and Ready, “Inferring trade direction from intraday data” (1991, Journal of Finance).',
     firstDefinedIn: 'plans/03-classification',
     seeAlso: ['aggressor', 'classification-engine', 'not-stated'],
@@ -3368,7 +3367,7 @@ export const glossary: GlossaryEntry[] = [
   {
     id: 'put-call-parity',
     headword: 'put–call parity',
-    aliases: ['synthetic forward', 'conversion', 'reversal'],
+    aliases: ['synthetic forward', 'conversion (parity)', 'reversal'],
     shortDef:
       'For the same strike and expiry, a long call plus a short put equals a long forward on the index; arbitrage keeps the three prices tied.',
     bearsOn:
@@ -3473,7 +3472,8 @@ export const glossary: GlossaryEntry[] = [
       'How vega itself changes when implied volatility changes — the second-order sensitivity to vol, in the way gamma is the second-order sensitivity to spot. Out-of-the-money options carry most of it, so their vega grows as vol rises and shrinks as vol falls.',
     bearsOn:
       'The minus-vanna ladder prices a total collapse of implied vol; whether that number allows for the sensitivities themselves changing on the way down is not stated. Read the ladder as direction and location, not size.',
-    evidence: 'market-general; Gexbot method not stated',
+    evidence: 'market-general',
+    evidenceNote: 'Gexbot method not stated',
     reading: 'Taleb, Dynamic Hedging (1997), the chapters on vega and its derivatives.',
     firstDefinedIn: 'on-ramp/07-clocks-and-late-greeks',
     seeAlso: ['vega', 'vanna', 'minus-vanna-ladder'],
@@ -3648,7 +3648,8 @@ export const glossary: GlossaryEntry[] = [
       'Brokers grant options permission in tiers — bought options first, spreads next, sold uncovered options last — based on a disclosed financial profile and experience, under regulatory rules for options accounts.',
     bearsOn:
       'The seat you can sit in is decided before the first ticket. The tier also enforces, from outside, the order Chapter 12’s ramp asks you to keep from inside: defined risk before undefined.',
-    evidence: 'market-general (U.S. brokerage practice)',
+    evidence: 'market-general',
+    evidenceNote: 'U.S. brokerage practice',
     reading: 'FINRA Rule 2360, the account approval provisions; your broker’s options agreement.',
     firstDefinedIn: 'on-ramp/00-intro',
     seeAlso: ['seat', 'defined-risk'],
@@ -3704,7 +3705,8 @@ export const glossary: GlossaryEntry[] = [
       'Most retail option orders are routed by the broker to a designated liquidity provider or to an exchange auction where one is guaranteed a share, in exchange for fees or price improvement, rather than to the open book.',
     bearsOn:
       'Your counterparty is often decided before your order reaches a screen. The dealer who absorbs you may have paid for the right to, and that dealer still carries mandate; routing changes who, not whether.',
-    evidence: 'market-general (U.S. market structure)',
+    evidence: 'market-general',
+    evidenceNote: 'U.S. market structure',
     reading:
       'SEC, Staff Report on Equity and Options Market Structure Conditions in Early 2021, the section on order routing and wholesalers.',
     firstDefinedIn: 'on-ramp/03-classification',
@@ -3733,7 +3735,8 @@ export const glossary: GlossaryEntry[] = [
       'An option’s delta is close to, but not equal to, the market-implied chance that it finishes in the money; the ATM 0.50 call is roughly a coin flip on the index closing above the strike.',
     bearsOn:
       'It is the quickest translation between a single-leg position and what its holder is betting on, and it is why the four cells are not four coin flips: a 0.20-delta sold put is a bet that wins about four times in five and owes a great deal the fifth time.',
-    evidence: 'market-general (approximation)',
+    evidence: 'market-general',
+    evidenceNote: 'approximation',
     reading: 'Natenberg, Option Volatility and Pricing (2015), the discussion of delta as a probability.',
     firstDefinedIn: 'on-ramp/05-orderflow',
     seeAlso: ['single-leg', 'delta', 'short-put'],
@@ -3860,7 +3863,8 @@ export const glossary: GlossaryEntry[] = [
       'Under U.S. tax law, broad-based index options such as SPX and XSP, and futures, are taxed 60 percent long-term and 40 percent short-term regardless of holding period; SPY and QQQ options are not.',
     bearsOn:
       'It changes the after-tax comparison between the Stage 5 instruments; not a reason to choose a structure, but a reason to know which contract you are in. U.S. only.',
-    evidence: 'market-general (U.S. only)',
+    evidence: 'market-general',
+    evidenceNote: 'U.S. only',
     reading: 'IRS Publication 550, the section on Section 1256 contracts.',
     firstDefinedIn: 'practice/12-futures-to-options',
     seeAlso: ['xsp', 'spy', 'es-options'],
@@ -4058,7 +4062,8 @@ export const glossary: GlossaryEntry[] = [
       'A method that signs volume in bulk from the price change over a bar rather than trade by trade against the quote, built for markets where individual prints are too fast or too fragmented to sign.',
     bearsOn:
       'It is one of the two families a signing engine can come from; the other is the print-against-quote family. Which family Gexbot’s engine belongs to is not stated, and the two make different errors: one on midpoint fills, the other on bars where price moved for other reasons.',
-    evidence: 'market-general; Gexbot method not stated',
+    evidence: 'market-general',
+    evidenceNote: 'Gexbot method not stated',
     reading: 'Easley, López de Prado, and O’Hara, “Flow toxicity and liquidity in a high-frequency world” (2012, Review of Financial Studies).',
     firstDefinedIn: 'plans/03-classification',
     seeAlso: ['classification-engine', 'trade-classification-algorithms', 'not-stated'],
@@ -4086,7 +4091,8 @@ export const glossary: GlossaryEntry[] = [
       'The best bid and best offer across all options exchanges at a moment, which every exchange is required to honour: a print may not execute at a price worse than the best quote elsewhere.',
     bearsOn:
       'A signing engine compares each print to some quote. With sixteen exchanges, that quote is either the NBBO or one venue’s own, and the two differ often enough to flip a sign on a fast print. Which one Gexbot uses is not stated.',
-    evidence: 'market-general; Gexbot method not stated',
+    evidence: 'market-general',
+    evidenceNote: 'Gexbot method not stated',
     reading: 'SEC, Options Order Protection and Locked/Crossed Market Plan.',
     firstDefinedIn: 'plans/03-classification',
     seeAlso: ['aggressor', 'bid', 'ask', 'not-stated'],
@@ -4604,7 +4610,8 @@ export const glossary: GlossaryEntry[] = [
       'U.S. tax rule that disallows a loss on a security sold and repurchased within thirty days. It applies to SPY and QQQ options and their shares, and not to Section 1256 contracts, which are marked to market instead.',
     bearsOn:
       'A Stage 5 trader working the same SPY strike daily accumulates disallowed losses without noticing until the tax statement. It is a reason the instrument table in Gap 5 has a tax column, not a reason to pick a structure. U.S. only.',
-    evidence: 'market-general (U.S. only)',
+    evidence: 'market-general',
+    evidenceNote: 'U.S. only',
     reading: 'IRS Publication 550, the section on wash sales.',
     firstDefinedIn: 'practice/12-futures-to-options',
     seeAlso: ['section-1256', 'spy', 'qqq'],
@@ -4618,7 +4625,8 @@ export const glossary: GlossaryEntry[] = [
       'A FINRA rule for U.S. margin securities accounts: four or more day trades in five business days classifies the account as a pattern day trader, which requires $25,000 of equity to continue. Futures accounts are outside it.',
     bearsOn:
       'A futures trader moving to SPX or SPY options moves from an exempt account to a covered one. The Stage 5 loop of small daily trades meets this rule in its first week; it is a sizing constraint set by regulation, not by risk.',
-    evidence: 'market-general (U.S. only)',
+    evidence: 'market-general',
+    evidenceNote: 'U.S. only',
     reading: 'FINRA Rule 4210, the pattern day trader provisions.',
     firstDefinedIn: 'practice/12-futures-to-options',
     seeAlso: ['margin', 'xsp'],
@@ -4632,7 +4640,8 @@ export const glossary: GlossaryEntry[] = [
       'Futures and options on futures sit in an account regulated by the CFTC; listed index options and ETF options sit in a securities account regulated by the SEC. Many brokers hold them as two accounts with separate cash and margin.',
     bearsOn:
       'An SPX position and the ES you hedge it with can be in different accounts that do not offset each other for margin. ES options stay in the futures account. The instrument choice in Gap 5 is also an account choice.',
-    evidence: 'market-general (U.S. only)',
+    evidence: 'market-general',
+    evidenceNote: 'U.S. only',
     reading: 'Your broker’s account agreement, the sections on futures and securities accounts; CFTC and SEC customer-protection rules.',
     firstDefinedIn: 'practice/12-futures-to-options',
     seeAlso: ['margin', 'es-options', 'spx'],
@@ -4690,7 +4699,8 @@ export const glossary: GlossaryEntry[] = [
       'An options trade can be cancelled by the exchange as erroneous, or its price or size corrected, minutes after it printed. The tape carries a cancel or correction message; the original print stays in some records.',
     bearsOn:
       'Your footprint can be rewritten after the fact. A trace that vanished is not proof the screen missed you, and a screen that keeps a cancelled print is over-counting; how a feed handles corrections is that feed’s business, and Gexbot’s handling is not stated.',
-    evidence: 'market-general; Gexbot handling not stated',
+    evidence: 'market-general',
+    evidenceNote: 'Gexbot handling not stated',
     reading: 'OPRA, Participant reporting requirements, on trade cancellations and corrections.',
     firstDefinedIn: 'on-ramp/01-what-gexbot-is',
     seeAlso: ['footprint', 'opra-feed', 'not-stated'],
@@ -5012,7 +5022,8 @@ export const glossary: GlossaryEntry[] = [
       'A common short-premium practice of buying back a short option once it has lost about half its value, rather than holding for the last half to expiry.',
     bearsOn:
       'It is the incentive behind a short strike seen from the inside: the writer wants out early and cheaply. Seen from the tape, it is buying at a strike that had been sold, and it is a reason a crowded short node can unwind before price ever reaches it.',
-    evidence: 'folklore (practitioner convention; not measured here)',
+    evidence: 'folklore',
+    evidenceNote: 'practitioner convention; not measured here',
     reading: 'Sinclair, Positional Option Trading (2020), the chapter on trade management.',
     firstDefinedIn: 'on-ramp/08-heuristics-as-reading',
     seeAlso: ['short-put', 'crowded-short-convexity', 'incentive'],
@@ -5110,7 +5121,8 @@ export const glossary: GlossaryEntry[] = [
       'On ordinary days the implied vol of same-day options is highest in the first minutes and falls through the morning as the day’s range becomes known, before flattening into the afternoon.',
     bearsOn:
       'A holder who buys a 0DTE at 09:31 pays the opening vol and can be right on direction and down on the mark by 10:30. It is the vol falsifier’s most common trigger, and it is a schedule, not a surprise.',
-    evidence: 'market-general (empirical regularity; not measured here)',
+    evidence: 'market-general',
+    evidenceNote: 'empirical regularity; not measured here',
     reading: 'Sinclair, Volatility Trading (2013), on intraday variance; Cboe Global Markets research on 0DTE intraday pricing.',
     firstDefinedIn: 'on-ramp/09a-early-session',
     seeAlso: ['opening-vol', 'vol-falsifier', 'implied-vol'],
@@ -5335,7 +5347,7 @@ export const glossary: GlossaryEntry[] = [
     bearsOn:
       'It is the plain, non-selling introduction to the mechanics that Chapter 12’s Gap 5 requires, and it is free. It teaches the customer seat; it does not teach the reading this book does.',
     evidence: 'market-general',
-    reading: 'Options Industry Council, optionseducation.org.',
+    reading: 'Options Industry Council, the Options Education program and the current Characteristics and Risks of Standardized Options.',
     firstDefinedIn: 'on-ramp/12-futures-to-options',
     seeAlso: ['approval-levels', 'seat'],
     kind: 'adjacent',

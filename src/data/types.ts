@@ -33,7 +33,8 @@ export interface GlossaryEntry {
   notShown?: string;
   /** kind 'adjacent' only: named in a chapter, taught nowhere in the book. */
   bearsOn?: string;
-  evidence?: string;
+  evidence?: 'market-general' | 'docs' | 'folklore' | 'not stated';
+  evidenceNote?: string;
   reading?: string;
 }
 
